@@ -5,7 +5,8 @@ using System.Text;
 
 namespace FaultLocalization
 {
-	interface IChain<T> : IEnumerable<T>
+
+	public interface IChain<T> : IEnumerable<T>
 	{
 		/// <summary>
 		/// Get the next item in the chain
@@ -17,7 +18,68 @@ namespace FaultLocalization
 		/// </summary>
 		T Value { get; }
 	}
-	abstract class AbstractChain<T> : IChain<T>
+
+	public static class Chains
+	{
+		public static IChain<T> Create<T>(IEnumerable<T> values)
+		{
+			return Create<T>(values.GetEnumerator());
+		}
+		static IChain<T> Create<T>(IEnumerator<T> itr)
+		{
+			if(itr.MoveNext())
+			{
+				return new Chain<T>(Create<T>(itr), itr.Current);
+			}
+			return null;
+		}
+
+		public static IChain<T> CreateLazy<T>(IEnumerable<T> values)
+		{
+			return CreateLazy<T>(values.GetEnumerator());
+		}
+
+		static IChain<T> CreateLazy<T>(IEnumerator<T> itr)
+		{
+			if(itr.MoveNext())
+			{
+				return new LazyChain<T>(itr.Current, itr);
+			}
+			return null;
+		}
+		private class LazyChain<T> : AbstractChain<T>
+		{
+			IChain<T> next;
+			T value;
+			IEnumerator<T> enumerator;
+
+			public LazyChain(T value, IEnumerator<T> enumerator)
+			{
+				this.value = value;
+				this.enumerator = enumerator;
+			}
+			
+			public override IChain<T> Next
+			{
+				get
+				{
+					if(enumerator != null)
+					{
+						next = CreateLazy(enumerator);
+						enumerator = null;
+					}
+					return next;
+				}
+			}
+
+			public override T Value
+			{
+				get { return value; }
+			}
+		}
+	}
+	
+	public abstract class AbstractChain<T> : IChain<T>
 	{
 		#region IChain<T> Members
 
@@ -80,50 +142,4 @@ namespace FaultLocalization
 			get { return value; }
 		}
 	}
-
-	public class LazyChain<T> : AbstractChain<T>
-	{
-		IChain<T> next;
-		T value;
-		IEnumerator<T> enumerator;
-
-		LazyChain(T value, IEnumerator<T> enumerator)
-		{
-			this.value = value;
-			this.enumerator = enumerator;
-		}
-
-		public static IChain<T> Create(IEnumerable<T> values)
-		{
-			return Create(values.GetEnumerator());
-		}
-
-		static IChain<T> Create(IEnumerator<T> itr)
-		{
-			if(itr.MoveNext())
-			{
- 				return new LazyChain<T>(itr.Current, itr);	
-			}
-			return null;
-		}
-
-		public override IChain<T> Next
-		{
-			get 
-			{
-				if(enumerator != null)
-				{
-					next = Create(enumerator);
-					enumerator = null;
-				}
-				return next;
-			}
-		}
-
-		public override T Value
-		{
-			get { return value; }
-		}
-	}
-
 }

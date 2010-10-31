@@ -11,7 +11,8 @@
     <RootNamespace>FaultLocalization</RootNamespace>
     <AssemblyName>FaultLocalization</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -47,11 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chains.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test.cs" />
+    <Compile Include="ExecutedTest.cs" />
+    <Compile Include="StackTraceElement.cs" />
+    <Compile Include="TestSuite.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="lib\dbghelp.dll" />
     <Content Include="lib\Microsoft.VisualStudio.Coverage.Symbols.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
