@@ -55,6 +55,7 @@
     <Compile Include="ExecutedTest.cs" />
     <Compile Include="RunTests.cs" />
     <Compile Include="StackTraceElement.cs" />
+    <Compile Include="SuspiciousnessRater.cs" />
     <Compile Include="TestSuite.cs" />
   </ItemGroup>
   <ItemGroup>
