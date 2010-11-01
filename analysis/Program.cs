@@ -14,7 +14,8 @@ namespace FaultLocalization
 		{
 			if(args.Length < 1)
 			{
-				Console.WriteLine("Usage: FaultLocalization.exe <TestResultsDir>");
+				Console.WriteLine("Usage: FaultLocalization.exe <SolutionDir>");
+                Console.WriteLine("<ProjectDir> = full path to solution folder containing the .testconfig file");
 				return;
 			}
 
@@ -26,7 +27,10 @@ namespace FaultLocalization
             uint passed = 0;
             uint failed = 0;
 
-			foreach(var test in tests.Tests)
+            var testRunner = new TestRunner(tests);
+            testRunner.RunTests();
+
+			foreach(var test in tests.TestResults)
 			{
                 Console.WriteLine(test);
 
