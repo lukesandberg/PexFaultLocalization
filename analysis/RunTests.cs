@@ -142,6 +142,7 @@ namespace FaultLocalization
             if (ExitCode != 0)
             {
                 throw new ApplicationException("mstest exited with status " + ExitCode + " while running individual tests for:" + AllTestsResultPath);
+            
             }
 
             File.Delete(individualTestsFilename);
@@ -151,12 +152,13 @@ namespace FaultLocalization
         {
             Process proc = new Process();
             String file = Path.GetFileNameWithoutExtension(command);
-            proc.StartInfo.FileName = command + "> " + file + ".log";
+            proc.StartInfo.FileName = command;
             proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             proc.StartInfo.WorkingDirectory = tests.TestResultsDirectory;
             proc.StartInfo.EnvironmentVariables["PATH"] += ";" + vsInstallDir;
             proc.StartInfo.UseShellExecute = false;
-            proc.StartInfo.RedirectStandardOutput = true;
+            //proc.StartInfo.RedirectStandardOutput = true;
+            
             proc.Start();
             proc.WaitForExit();
             return proc.ExitCode;

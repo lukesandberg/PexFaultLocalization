@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="eb683699-ca16-47f9-8c13-7ce87a7388e2" name="de050528@HCU-1D3TFG1 2010-11-01 04:48:26" runUser="GEMEDAMERICA\de050528" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local Test Run" id="093ff075-40fd-4238-8708-a877844b8a90">
+    <Description>This is a default test run configuration for a local test run.</Description>
+    <Deployment userDeploymentRoot="D:\Documents and Settings\de050528\My Documents\Visual Studio 2010\Projects\RunIndividualUnitTests\strings" useDefaultDeploymentRoot="false" runDeploymentRoot="de050528_HCU-1D3TFG1 2010-11-01 04_48_26" />
+    <Execution>
+      <TestTypeSpecific>
+        <WebTestRunConfiguration testTypeId="4e7599fa-5ecb-43e9-a887-cd63cf72d207">
+          <Browser name="Internet Explorer 7.0">
+            <Headers>
+              <Header name="User-Agent" value="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)" />
+              <Header name="Accept" value="*/*" />
+              <Header name="Accept-Language" value="{{$IEAcceptLanguage}}" />
+              <Header name="Accept-Encoding" value="GZIP" />
+            </Headers>
+          </Browser>
+          <Network Name="LAN" BandwidthInKbps="0" />
+        </WebTestRunConfiguration>
+        <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">
+          <AssemblyResolution>
+            <TestDirectory useLoadContext="true" />
+          </AssemblyResolution>
+        </UnitTestRunConfig>
+      </TestTypeSpecific>
+      <AgentRule name="Execution Agents">
+        <DataCollectors>
+          <DataCollector uri="datacollector://Microsoft/CodeCoverage/1.0" assemblyQualifiedName="Microsoft.VisualStudio.TestTools.CodeCoverage.CoveragePlugIn, Microsoft.VisualStudio.QualityTools.Plugins.CodeCoverage, PublicKeyToken=b03f5f7f11d50a3a" enabled="false">
+            <Configuration>
+              <CodeCoverage xmlns="">
+                <Regular>
+                  <CodeCoverageItem binaryFile="Strings\bin\Debug\Strings.dll" pdbFile="Strings\bin\Debug\Strings.pdb" instrumentInPlace="true" />
+                </Regular>
+              </CodeCoverage>
+            </Configuration>
+          </DataCollector>
+        </DataCollectors>
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2010-11-01T04:48:26.3281250-05:00" queuing="2010-11-01T04:48:27.3906250-05:00" start="2010-11-01T04:48:27.9843750-05:00" finish="2010-11-01T04:48:28.6406250-05:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="13" executed="13" passed="11" error="0" failed="2" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Capitalize983" storage="d:\documents and settings\de050528\my documents\visual studio 2010\projects\runindividualunittests\strings\strings.tests\bin\debug\strings.tests.dll" id="313a11d3-6650-c1d8-7091-dc7972038feb">
+      <Execution id="5cf4ba4e-76fe-4878-bc0b-090456d44197" />
+      <TestMethod codeBase="D:/Documents and Settings/de050528/My Documents/Visual Studio 2010/Projects/RunIndividualUnitTests/strings/Strings.Tests/bin/Debug/Strings.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Strings.StringExtensionsTest, Strings.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="Capitalize983" />
+    </UnitTest>
+    <UnitTest name="Capitalize896" storage="d:\documents and settings\de050528\my documents\visual studio 2010\projects\runindividualunittests\strings\strings.tests\bin\debug\strings.tests.dll" id="6df2a7cf-b8fa-b675-d125-5ce2e160d940">
+      <Execution id="2842e02b-2617-4d31-b099-ba75ae85ffb8" />
+      <TestMethod codeBase="D:/Documents and Settings/de050528/My Documents/Visual Studio 2010/Projects/RunIndividualUnitTests/strings/Strings.Tests/bin/Debug/Strings.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Strings.StringExtensionsTest, Strings.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="Capitalize896" />
+    </UnitTest>
+    <UnitTest name="Capitalize322" storage="d:\documents and settings\de050528\my documents\visual studio 2010\projects\runindividualunittests\strings\strings.tests\bin\debug\strings.tests.dll" id="dfdb9f07-f2a7-c814-622e-b9ca03be123d">
+      <Execution id="f2588645-6e0e-4651-82d4-960b66ab46c1" />
+      <TestMethod codeBase="D:/Documents and Settings/de050528/My Documents/Visual Studio 2010/Projects/RunIndividualUnitTests/strings/Strings.Tests/bin/Debug/Strings.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Strings.StringExtensionsTest, Strings.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="Capitalize322" />
+    </UnitTest>
+    <UnitTest name="Capitalize825" storage="d:\documents and settings\de050528\my documents\visual studio 2010\projects\runindividualunittests\strings\strings.tests\bin\debug\strings.tests.dll" id="60322a49-de25-7f1c-34e1-dd3cfc6f84b3">
+      <Execution id="118c919f-d1fe-4f09-bd0f-6043883cb505" />
+      <TestMethod codeBase="D:/Documents and Settings/de050528/My Documents/Visual Studio 2010/Projects/RunIndividualUnitTests/strings/Strings.Tests/bin/Debug/Strings.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Strings.StringExtensionsTest, Strings.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="Capitalize825" />
+    </UnitTest>
+    <UnitTest name="Capitalize439" storage="d:\documents and settings\de050528\my documents\visual studio 2010\projects\runindividualunittests\strings\strings.tests\bin\debug\strings.tests.dll" id="612c7c70-16e4-a652-946e-30ef72a363e9">
+      <Execution id="e9e81271-28c9-4884-8870-59ff33f229eb" />
+      <TestMethod codeBase="D:/Documents and Settings/de050528/My Documents/Visual Studio 2010/Projects/RunIndividualUnitTests/strings/Strings.Tests/bin/Debug/Strings.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Strings.StringExtensionsTest, Strings.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="Capitalize439" />
+    </UnitTest>
+    <UnitTest name="Capitalize67" storage="d:\documents and settings\de050528\my documents\visual studio 2010\projects\runindividualunittests\strings\strings.tests\bin\debug\strings.tests.dll" id="00d31897-80ba-0277-bb81-976d59c3d118">
+      <Execution id="a561c128-da25-469e-b67b-8c77122e3e66" />
+      <TestMethod codeBase="D:/Documents and Settings/de050528/My Documents/Visual Studio 2010/Projects/RunIndividualUnitTests/strings/Strings.Tests/bin/Debug/Strings.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Strings.StringExtensionsTest, Strings.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="Capitalize67" />
+    </UnitTest>
+    <UnitTest name="CapitalizeThrowsNullReferenceException195" storage="d:\documents and settings\de050528\my documents\visual studio 2010\projects\runindividualunittests\strings\strings.tests\bin\debug\strings.tests.dll" id="f9935de9-aa37-72dd-8262-edab2a0952b5">
+      <Execution id="f6b4ad66-8ff2-4731-9c56-7870d138bdbc" />
+      <TestMethod codeBase="D:/Documents and Settings/de050528/My Documents/Visual Studio 2010/Projects/RunIndividualUnitTests/strings/Strings.Tests/bin/Debug/Strings.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Strings.StringExtensionsTest, Strings.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="CapitalizeThrowsNullReferenceException195" />
+    </UnitTest>
+    <UnitTest name="Capitalize704" storage="d:\documents and settings\de050528\my documents\visual studio 2010\projects\runindividualunittests\strings\strings.tests\bin\debug\strings.tests.dll" id="dc6d3262-a999-8ed9-7ff2-f4dcfcddf3fc">
+      <Execution id="80294eec-c77a-4e0d-bec4-e19def37c065" />
+      <TestMethod codeBase="D:/Documents and Settings/de050528/My Documents/Visual Studio 2010/Projects/RunIndividualUnitTests/strings/Strings.Tests/bin/Debug/Strings.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Strings.StringExtensionsTest, Strings.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="Capitalize704" />
+    </UnitTest>
+    <UnitTest name="Capitalize582" storage="d:\documents and settings\de050528\my documents\visual studio 2010\projects\runindividualunittests\strings\strings.tests\bin\debug\strings.tests.dll" id="56355b11-0758-d6b2-429b-11012f672110">
+      <Execution id="eb286be6-d213-4500-a96f-3844a7fad786" />
+      <TestMethod codeBase="D:/Documents and Settings/de050528/My Documents/Visual Studio 2010/Projects/RunIndividualUnitTests/strings/Strings.Tests/bin/Debug/Strings.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Strings.StringExtensionsTest, Strings.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="Capitalize582" />
+    </UnitTest>
+    <UnitTest name="CapitalizeThrowsFormatException90" storage="d:\documents and settings\de050528\my documents\visual studio 2010\projects\runindividualunittests\strings\strings.tests\bin\debug\strings.tests.dll" id="8880a8fe-e57e-7c55-c00e-00820e779ae4">
+      <Execution id="59947ca1-1d73-4c45-bad3-b8155bca2469" />
+      <TestMethod codeBase="D:/Documents and Settings/de050528/My Documents/Visual Studio 2010/Projects/RunIndividualUnitTests/strings/Strings.Tests/bin/Debug/Strings.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Strings.StringExtensionsTest, Strings.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="CapitalizeThrowsFormatException90" />
+    </UnitTest>
+    <UnitTest name="Capitalize817" storage="d:\documents and settings\de050528\my documents\visual studio 2010\projects\runindividualunittests\strings\strings.tests\bin\debug\strings.tests.dll" id="00b2fea5-a72f-da31-2a92-8836ec41a354">
+      <Execution id="2fb81ec1-5c62-4966-a540-db2a6284f80c" />
+      <TestMethod codeBase="D:/Documents and Settings/de050528/My Documents/Visual Studio 2010/Projects/RunIndividualUnitTests/strings/Strings.Tests/bin/Debug/Strings.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Strings.StringExtensionsTest, Strings.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="Capitalize817" />
+    </UnitTest>
+    <UnitTest name="Capitalize870" storage="d:\documents and settings\de050528\my documents\visual studio 2010\projects\runindividualunittests\strings\strings.tests\bin\debug\strings.tests.dll" id="565c1026-f6f3-d5dc-d78d-d3909177ac84">
+      <Execution id="386ef74b-4df8-4ff9-b91f-0818748ea389" />
+      <TestMethod codeBase="D:/Documents and Settings/de050528/My Documents/Visual Studio 2010/Projects/RunIndividualUnitTests/strings/Strings.Tests/bin/Debug/Strings.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Strings.StringExtensionsTest, Strings.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="Capitalize870" />
+    </UnitTest>
+    <UnitTest name="Capitalize948" storage="d:\documents and settings\de050528\my documents\visual studio 2010\projects\runindividualunittests\strings\strings.tests\bin\debug\strings.tests.dll" id="85b5ce1a-e968-ade4-cdbe-dbffcac6ea7e">
+      <Execution id="d331756c-81f1-4ee0-a3ef-fd9621f12d04" />
+      <TestMethod codeBase="D:/Documents and Settings/de050528/My Documents/Visual Studio 2010/Projects/RunIndividualUnitTests/strings/Strings.Tests/bin/Debug/Strings.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Strings.StringExtensionsTest, Strings.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="Capitalize948" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="dfdb9f07-f2a7-c814-622e-b9ca03be123d" executionId="f2588645-6e0e-4651-82d4-960b66ab46c1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="612c7c70-16e4-a652-946e-30ef72a363e9" executionId="e9e81271-28c9-4884-8870-59ff33f229eb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="56355b11-0758-d6b2-429b-11012f672110" executionId="eb286be6-d213-4500-a96f-3844a7fad786" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="00d31897-80ba-0277-bb81-976d59c3d118" executionId="a561c128-da25-469e-b67b-8c77122e3e66" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dc6d3262-a999-8ed9-7ff2-f4dcfcddf3fc" executionId="80294eec-c77a-4e0d-bec4-e19def37c065" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="00b2fea5-a72f-da31-2a92-8836ec41a354" executionId="2fb81ec1-5c62-4966-a540-db2a6284f80c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="60322a49-de25-7f1c-34e1-dd3cfc6f84b3" executionId="118c919f-d1fe-4f09-bd0f-6043883cb505" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="565c1026-f6f3-d5dc-d78d-d3909177ac84" executionId="386ef74b-4df8-4ff9-b91f-0818748ea389" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6df2a7cf-b8fa-b675-d125-5ce2e160d940" executionId="2842e02b-2617-4d31-b099-ba75ae85ffb8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="85b5ce1a-e968-ade4-cdbe-dbffcac6ea7e" executionId="d331756c-81f1-4ee0-a3ef-fd9621f12d04" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="313a11d3-6650-c1d8-7091-dc7972038feb" executionId="5cf4ba4e-76fe-4878-bc0b-090456d44197" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8880a8fe-e57e-7c55-c00e-00820e779ae4" executionId="59947ca1-1d73-4c45-bad3-b8155bca2469" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f9935de9-aa37-72dd-8262-edab2a0952b5" executionId="f6b4ad66-8ff2-4731-9c56-7870d138bdbc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="f2588645-6e0e-4651-82d4-960b66ab46c1" testId="dfdb9f07-f2a7-c814-622e-b9ca03be123d" testName="Capitalize322" computerName="HCU-1D3TFG1" duration="00:00:00.0134986" startTime="2010-11-01T04:48:28.0156250-05:00" endTime="2010-11-01T04:48:28.4375000-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f2588645-6e0e-4651-82d4-960b66ab46c1">
+    </UnitTestResult>
+    <UnitTestResult executionId="e9e81271-28c9-4884-8870-59ff33f229eb" testId="612c7c70-16e4-a652-946e-30ef72a363e9" testName="Capitalize439" computerName="HCU-1D3TFG1" duration="00:00:00.0002075" startTime="2010-11-01T04:48:28.4375000-05:00" endTime="2010-11-01T04:48:28.4531250-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e9e81271-28c9-4884-8870-59ff33f229eb">
+    </UnitTestResult>
+    <UnitTestResult executionId="eb286be6-d213-4500-a96f-3844a7fad786" testId="56355b11-0758-d6b2-429b-11012f672110" testName="Capitalize582" computerName="HCU-1D3TFG1" duration="00:00:00.0023285" startTime="2010-11-01T04:48:28.4531250-05:00" endTime="2010-11-01T04:48:28.4531250-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="eb286be6-d213-4500-a96f-3844a7fad786">
+    </UnitTestResult>
+    <UnitTestResult executionId="a561c128-da25-469e-b67b-8c77122e3e66" testId="00d31897-80ba-0277-bb81-976d59c3d118" testName="Capitalize67" computerName="HCU-1D3TFG1" duration="00:00:00.0007665" startTime="2010-11-01T04:48:28.4687500-05:00" endTime="2010-11-01T04:48:28.4687500-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a561c128-da25-469e-b67b-8c77122e3e66">
+    </UnitTestResult>
+    <UnitTestResult executionId="80294eec-c77a-4e0d-bec4-e19def37c065" testId="dc6d3262-a999-8ed9-7ff2-f4dcfcddf3fc" testName="Capitalize704" computerName="HCU-1D3TFG1" duration="00:00:00.0007741" startTime="2010-11-01T04:48:28.4687500-05:00" endTime="2010-11-01T04:48:28.4843750-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="80294eec-c77a-4e0d-bec4-e19def37c065">
+    </UnitTestResult>
+    <UnitTestResult executionId="2fb81ec1-5c62-4966-a540-db2a6284f80c" testId="00b2fea5-a72f-da31-2a92-8836ec41a354" testName="Capitalize817" computerName="HCU-1D3TFG1" duration="00:00:00.0006464" startTime="2010-11-01T04:48:28.4843750-05:00" endTime="2010-11-01T04:48:28.4843750-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2fb81ec1-5c62-4966-a540-db2a6284f80c">
+    </UnitTestResult>
+    <UnitTestResult executionId="118c919f-d1fe-4f09-bd0f-6043883cb505" testId="60322a49-de25-7f1c-34e1-dd3cfc6f84b3" testName="Capitalize825" computerName="HCU-1D3TFG1" duration="00:00:00.0026615" startTime="2010-11-01T04:48:28.5000000-05:00" endTime="2010-11-01T04:48:28.5000000-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="118c919f-d1fe-4f09-bd0f-6043883cb505">
+    </UnitTestResult>
+    <UnitTestResult executionId="386ef74b-4df8-4ff9-b91f-0818748ea389" testId="565c1026-f6f3-d5dc-d78d-d3909177ac84" testName="Capitalize870" computerName="HCU-1D3TFG1" duration="00:00:00.0008252" startTime="2010-11-01T04:48:28.5000000-05:00" endTime="2010-11-01T04:48:28.5156250-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="386ef74b-4df8-4ff9-b91f-0818748ea389">
+    </UnitTestResult>
+    <UnitTestResult executionId="2842e02b-2617-4d31-b099-ba75ae85ffb8" testId="6df2a7cf-b8fa-b675-d125-5ce2e160d940" testName="Capitalize896" computerName="HCU-1D3TFG1" duration="00:00:00.0007229" startTime="2010-11-01T04:48:28.5156250-05:00" endTime="2010-11-01T04:48:28.5156250-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2842e02b-2617-4d31-b099-ba75ae85ffb8">
+    </UnitTestResult>
+    <UnitTestResult executionId="d331756c-81f1-4ee0-a3ef-fd9621f12d04" testId="85b5ce1a-e968-ade4-cdbe-dbffcac6ea7e" testName="Capitalize948" computerName="HCU-1D3TFG1" duration="00:00:00.0007576" startTime="2010-11-01T04:48:28.5156250-05:00" endTime="2010-11-01T04:48:28.5312500-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d331756c-81f1-4ee0-a3ef-fd9621f12d04">
+    </UnitTestResult>
+    <UnitTestResult executionId="5cf4ba4e-76fe-4878-bc0b-090456d44197" testId="313a11d3-6650-c1d8-7091-dc7972038feb" testName="Capitalize983" computerName="HCU-1D3TFG1" duration="00:00:00.0001933" startTime="2010-11-01T04:48:28.5312500-05:00" endTime="2010-11-01T04:48:28.5468750-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5cf4ba4e-76fe-4878-bc0b-090456d44197">
+    </UnitTestResult>
+    <UnitTestResult executionId="59947ca1-1d73-4c45-bad3-b8155bca2469" testId="8880a8fe-e57e-7c55-c00e-00820e779ae4" testName="CapitalizeThrowsFormatException90" computerName="HCU-1D3TFG1" duration="00:00:00.0662056" startTime="2010-11-01T04:48:28.5468750-05:00" endTime="2010-11-01T04:48:28.6093750-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="59947ca1-1d73-4c45-bad3-b8155bca2469">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Strings.StringExtensionsTest.CapitalizeThrowsFormatException90 threw exception: 
+System.FormatException: One of the identified items was in an invalid format.</Message>
+          <StackTrace>    at Strings.StringExtensions.Capitalize(String value) in D:\Documents and Settings\de050528\My Documents\Visual Studio 2010\Projects\RunIndividualUnitTests\strings\Strings\StringExtensions.cs:line 14
+   at Strings.StringExtensionsTest.Capitalize(String value) in D:\Documents and Settings\de050528\My Documents\Visual Studio 2010\Projects\RunIndividualUnitTests\strings\Strings.Tests\StringExtensionsTest.cs:line 20
+   at Strings.StringExtensionsTest.CapitalizeThrowsFormatException90() in D:\Documents and Settings\de050528\My Documents\Visual Studio 2010\Projects\RunIndividualUnitTests\strings\Strings.Tests\StringExtensionsTest.Capitalize.g.cs:line 66
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f6b4ad66-8ff2-4731-9c56-7870d138bdbc" testId="f9935de9-aa37-72dd-8262-edab2a0952b5" testName="CapitalizeThrowsNullReferenceException195" computerName="HCU-1D3TFG1" duration="00:00:00.0019044" startTime="2010-11-01T04:48:28.6250000-05:00" endTime="2010-11-01T04:48:28.6250000-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f6b4ad66-8ff2-4731-9c56-7870d138bdbc">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Strings.StringExtensionsTest.CapitalizeThrowsNullReferenceException195 threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at Strings.StringExtensions.Capitalize(String value) in D:\Documents and Settings\de050528\My Documents\Visual Studio 2010\Projects\RunIndividualUnitTests\strings\Strings\StringExtensions.cs:line 17
+   at Strings.StringExtensionsTest.Capitalize(String value) in D:\Documents and Settings\de050528\My Documents\Visual Studio 2010\Projects\RunIndividualUnitTests\strings\Strings.Tests\StringExtensionsTest.cs:line 20
+   at Strings.StringExtensionsTest.CapitalizeThrowsNullReferenceException195() in D:\Documents and Settings\de050528\My Documents\Visual Studio 2010\Projects\RunIndividualUnitTests\strings\Strings.Tests\StringExtensionsTest.Capitalize.g.cs:line 26
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
