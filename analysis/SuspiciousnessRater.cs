@@ -9,8 +9,8 @@ namespace FaultLocalization
     {
         public static Line applyTarantula(Line line, uint passed, uint failed)
         {
-            float numerator = line.Failed / failed;
-            float denominator = (line.Passed / passed) + (line.Failed / failed);
+			float numerator = (float) line.Failed / (float) failed;
+			float denominator = ((float) line.Passed / (float) passed) + ((float) line.Failed / (float) failed);
             line.Rating = numerator / denominator;
             return line;
         }

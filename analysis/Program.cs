@@ -27,8 +27,11 @@ namespace FaultLocalization
             uint passed = 0;
             uint failed = 0;
 
-            var testRunner = new TestRunner(tests);
-            testRunner.RunTests();
+			if(!Directory.Exists(tests.TestResultsDirectory))
+			{
+				var testRunner = new TestRunner(tests);
+				testRunner.RunTests();
+			}
 
 			foreach(var test in tests.TestResults)
 			{
@@ -40,7 +43,7 @@ namespace FaultLocalization
                     failed++;
 
                 CoverageDS data = test.CoverageData;
-                foreach (var line in data.Lines)
+                foreach (var line in test.Lines)
                 {
                     for (uint i = line.LnStart; i <= line.LnEnd; i++)
                     {
