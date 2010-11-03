@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using System.IO;
 using System.Diagnostics;
 using Microsoft.Win32;
+using FaultLocalization;
 
 namespace FaultLocalization
 {
@@ -29,6 +30,9 @@ namespace FaultLocalization
 
         public TestRunner(TestSuite testSuite)
         {
+            // <pex>
+            Debug.Assert(testSuite != (TestSuite)null, "testSuite");
+            // </pex>
             tests = testSuite;
         }
 

@@ -12,6 +12,12 @@ namespace FaultLocalization
 		private string line;
 		public StackTraceElement(string line, CoverageDS CoverageData)
 		{
+            // <pex>
+            if (line == (string)null)
+                throw new ArgumentNullException("line");
+            if (CoverageData == (CoverageDS)null)
+                throw new ArgumentNullException("CoverageData");
+            // </pex>
 			this.line = line;
 			Regex r = new Regex("\\s+at\\s+(.+)\\.(.+\\))(\\s+in\\s+(.+):line\\s(\\d+))?");
 			Match m = r.Match(line);

@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.VisualStudio.Coverage.Analysis;
 using System.IO;
 using System.Xml.Linq;
+using System.Diagnostics;
 
 namespace FaultLocalization
 {
@@ -12,24 +13,40 @@ namespace FaultLocalization
     {
         public static void Main(string[] args)
 		{
-			if(args.Length < 1)
+			if(args == (string[])null || args.Length < 1)
 			{
 				Console.WriteLine("Usage: FaultLocalization.exe <SolutionDir>");
-                Console.WriteLine("<ProjectDir> = full path to solution folder containing the .testconfig file");
+                Console.WriteLine("<SolutionDir> = full path to solution folder containing the .testconfig file");
 				return;
 			}
 
 			String TestResultsPath = args[0];
 			Console.WriteLine("Searching " + TestResultsPath + "...");
+            TestSuite tests;
+            try
+            {
+               tests = new TestSuite(TestResultsPath);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return;
+            }
 
-			var tests = new TestSuite(TestResultsPath);
+            try
+            {
+                var testRunner = new TestRunner(tests);
+                testRunner.RunTests();
+            }
+            catch (ApplicationException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return;
+            }
+
             Dictionary<LineIdentifier, Line> testedLines = new Dictionary<LineIdentifier, Line>();
             uint passed = 0;
             uint failed = 0;
-
-            var testRunner = new TestRunner(tests);
-            testRunner.RunTests();
-
 			foreach(var test in tests.TestResults)
 			{
                 Console.WriteLine(test);
@@ -40,7 +57,8 @@ namespace FaultLocalization
                     failed++;
 
                 CoverageDS data = test.CoverageData;
-                foreach (var line in data.Lines)
+                data.WriteXml(File.OpenWrite("coveragedataset.xml"));
+                foreach (var line in test.Lines)
                 {
                     for (uint i = line.LnStart; i <= line.LnEnd; i++)
                     {
@@ -67,12 +85,12 @@ namespace FaultLocalization
             {
                 Console.WriteLine("Line #" + line.Id + " had suspiciousness rating: " + line.Rating);
             }
-		
+            Directory.Delete(tests.TestResultsDirectory, true);
 			Console.Read();
 		}
     }
 
-    class LineIdentifier
+    public class LineIdentifier
     {
         
         private readonly uint LineNo;
@@ -93,6 +111,9 @@ namespace FaultLocalization
         }
         public override int GetHashCode()
         {
+            // <pex>
+            Debug.Assert(this.FileName != (string)null, "this.FileName");
+            // </pex>
             return (int)(FileName.GetHashCode() * 1021 ^ LineNo);
 
         }
@@ -102,7 +123,7 @@ namespace FaultLocalization
         }
     }
 
-    class Line
+    public class Line
     {
         public LineIdentifier Id { get; private set; }
 

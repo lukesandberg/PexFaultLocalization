@@ -30,7 +30,7 @@ namespace Strings
                 {
                     if (c == '.')
                         sb.Append('_');
-                    word = false;
+                    word = true;
                 }
             }
 
