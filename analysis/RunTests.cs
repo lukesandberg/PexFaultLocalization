@@ -19,7 +19,7 @@ namespace FaultLocalization
         private const string individualTestsFilename = "individualTests.bat";
 
         private const string allTestsCommand = "mstest /testcontainer:\"{0}\" /runconfig:\"{1}\" /resultsfile:\"{2}\"";
-        private const string individualTestCommand = "mstest /testcontainer:\"{0}\" /runconfig:\"{1}\" /test:\"{2}\" /resultsfile:\"{2}\".trx";
+        private const string individualTestCommand = "mstest /testcontainer:\"{0}\" /runconfig:\"{1}\" /test:\"{2}\"";
 
         private static string vsInstallDir;
 
@@ -52,7 +52,7 @@ namespace FaultLocalization
         private string getResultPathFromDllName(string testDllPath)
         {
             string allTestResultsFilename = Path.GetFileName(testDllPath) + ".trx";
-            string AllTestsResultsPath = Path.Combine(tests.TestResultsDirectory, allTestResultsFilename);
+            string AllTestsResultsPath = Path.Combine(tests.SolutionDirectory, allTestResultsFilename);
             return AllTestsResultsPath;
         }
 
@@ -105,8 +105,8 @@ namespace FaultLocalization
             
             batFileWriter.Close();
 
-            int ExitCode = RunBatchScriptSynchronous(AllTestsPath);
-            if (ExitCode != 0)
+            int ExitCode = RunBatchScriptSynchronous(AllTestsPath, tests.SolutionDirectory);
+            if (ExitCode > 1)
             {
                 throw new ApplicationException("mstest exited with status " + ExitCode + " while running command:" + allTestsFilename);
             }
@@ -137,24 +137,24 @@ namespace FaultLocalization
             }
             batFileWriter.Close();
             Console.Out.Flush();
-            int ExitCode = RunBatchScriptSynchronous(IndividualTestsPath);
+            int ExitCode = RunBatchScriptSynchronous(IndividualTestsPath, tests.SolutionDirectory);
 
-            if (ExitCode != 0)
+            if (ExitCode > 1)
             {
                 throw new ApplicationException("mstest exited with status " + ExitCode + " while running individual tests for:" + AllTestsResultPath);
             
             }
 
-            File.Delete(individualTestsFilename);
+            File.Delete(IndividualTestsPath);
         }
 
-        private int RunBatchScriptSynchronous(string command)
+        private int RunBatchScriptSynchronous(string command, string workingDirectory)
         {
             Process proc = new Process();
             String file = Path.GetFileNameWithoutExtension(command);
             proc.StartInfo.FileName = command;
             proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            proc.StartInfo.WorkingDirectory = tests.TestResultsDirectory;
+            proc.StartInfo.WorkingDirectory = workingDirectory;
             proc.StartInfo.EnvironmentVariables["PATH"] += ";" + vsInstallDir;
             proc.StartInfo.UseShellExecute = false;
             //proc.StartInfo.RedirectStandardOutput = true;
