@@ -12,6 +12,7 @@ namespace FaultLocalization
     {
 #region "Constants"
         private const string testFrameworkName = "Microsoft.VisualStudio.QualityTools.UnitTestFramework";
+        private const string testProjectGuid = "3AC096D0-A1C2-E12C-1390-A8335801FDAB";
 #endregion
 
 
@@ -96,36 +97,93 @@ namespace FaultLocalization
             }
         }
 
-        public List<string> testDllPaths;
+        /// <summary>
+        /// The path to each test dll in this solution
+        /// </summary>
         public IEnumerable<string> TestDllPaths
         {
             get
             {
-                if (testDllPaths == null)
+                if (testProjectGuids == null)
                 {
-                    testDllPaths = new List<string>();
-                    foreach (string projectFile in ProjectFilePaths)
-                    {
-                        XDocument projectDoc = XDocument.Load(projectFile);
-                        XNamespace ns = "http://schemas.microsoft.com/developer/msbuild/2003";
-                        var testFrameworkReferences = from reference in projectDoc.Descendants(ns + "Reference")
-                                                      where reference.Attribute("Include") != null && reference.Attribute("Include").Value.Contains( testFrameworkName)
-                                                      select reference;
-                        if (testFrameworkReferences.Count() != 0)
-                        {
-                            IEnumerable<string> OutputDirs = from propertyGroup in projectDoc.Descendants(ns + "PropertyGroup")
-                                                             where propertyGroup.Element(ns + "DebugSymbols") != null && 
-                                                             propertyGroup.Element(ns + "DebugSymbols").Value == "true"
-                                                             select propertyGroup.Element(ns + "OutputPath").Value;
-                            string OutputDir = OutputDirs.FirstOrDefault();
-                            string AssemblyName = projectDoc.Descendants(ns + "AssemblyName").FirstOrDefault().Value;
-                            string dllPath = Path.Combine(OutputDir, AssemblyName + ".dll");
-                            string projectFolder = Path.GetDirectoryName(projectFile);
-                            testDllPaths.Add(Path.Combine(projectFolder, dllPath));
-                        }
-                    }
+                    initializeDllPaths();
                 }
-                return testDllPaths;
+                return dllPaths.Where(dll => testProjectGuids.Contains(dll.Key)).Select(dll => dll.Value);
+            }
+        }
+
+        /// <summary>
+        /// Returns the paths to dlls from projects that are covered by the tests at the dll path provided.
+        /// </summary>
+        /// <param name="testDllPath">The full path to a test dll</param>
+        /// <returns>the paths to dlls from projects that are covered by the tests at the dll path provided.</returns>
+        public IEnumerable<string> CoveredDllPaths(string testDllPath)
+        {
+            if (coveredProjectGuids == null)
+            {
+                initializeDllPaths();
+            }
+            string testDllGuid = dllPaths.Where(dll => dll.Value == testDllPath).First().Key;
+            IEnumerable<string> coveredGuids = coveredProjectGuids[testDllGuid];
+            return dllPaths.Where(dll => coveredGuids.Contains(dll.Key)).Select(dll => dll.Value);
+        }
+
+       private Dictionary<string, string> dllPaths;
+       private IDictionary<string, IEnumerable<string>> coveredProjectGuids;
+       private List<string> testProjectGuids;
+
+       public List<string> TestProjectGuids
+       {
+           get
+           {
+               if (testProjectGuids == null)
+               {
+                   initializeDllPaths();
+               }
+               return testProjectGuids;
+           }
+       }
+
+        private void initializeDllPaths()
+        {
+            testProjectGuids = new List<string>();
+            dllPaths = new Dictionary<string, string>();
+            coveredProjectGuids = new Dictionary<string, IEnumerable<string>>();
+            foreach (string projectFile in ProjectFilePaths)
+            {
+                XDocument projectDoc = XDocument.Load(projectFile);
+                XNamespace ns = "http://schemas.microsoft.com/developer/msbuild/2003";
+                IEnumerable<string> OutputDirs = from propertyGroup in projectDoc.Descendants(ns + "PropertyGroup")
+                                                 where propertyGroup.Element(ns + "DebugSymbols") != null &&
+                                                 propertyGroup.Element(ns + "DebugSymbols").Value == "true"
+                                                 select propertyGroup.Element(ns + "OutputPath").Value;
+                
+                string OutputDir = OutputDirs.FirstOrDefault();
+                string AssemblyName = projectDoc.Descendants(ns + "AssemblyName").FirstOrDefault().Value;
+                string ProjectGuid = projectDoc.Descendants(ns + "ProjectGuid").FirstOrDefault().Value;
+                string dllPath = Path.Combine(OutputDir, AssemblyName + ".dll");
+                string projectFolder = Path.GetDirectoryName(projectFile);
+                dllPaths.Add(ProjectGuid, Path.Combine(projectFolder, dllPath));
+
+                var ProjectTypeNode = projectDoc.Descendants(ns + "ProjectTypeGuids").FirstOrDefault();
+                string ProjectTypeGuid;
+                if (ProjectTypeNode != null)
+                {
+                   ProjectTypeGuid = ProjectTypeNode.Value;
+                }
+                else
+                {
+                    ProjectTypeGuid = string.Empty;
+                }
+
+                if (ProjectTypeGuid.Contains(testProjectGuid))
+                {
+                    var CoveredProjects = from projectRef in projectDoc.Descendants(ns + "ProjectReference")
+                                          select projectRef.Element(ns + "Project").Value;
+                    coveredProjectGuids.Add(ProjectGuid, CoveredProjects);
+                    
+                    testProjectGuids.Add(ProjectGuid);
+                }
             }
         }
 
@@ -145,12 +203,22 @@ namespace FaultLocalization
             }
         }
 
-        public String TestResultsDirectory
+        public String TestResultsBase(string testDllPath)
         {
-            get
-            {
-                return Path.Combine(SolutionDirectory, "TestResults");
-            }
+            string testDllFileName = Path.GetFileNameWithoutExtension(testDllPath);
+            return Path.Combine(SolutionDirectory, "TestResults-" + testDllFileName);
+        }
+
+        public String TestResultsDirectory(string testDllPath)
+        {
+           return Path.Combine(TestResultsBase(testDllPath), "TestResults");
+        }
+
+        public string AllTestsResultsFile(string testDllPath)
+        {
+            string allTestResultsFilename = Path.GetFileName(testDllPath) + ".trx";
+            string AllTestsResultsPath = Path.Combine(TestResultsBase(testDllPath), allTestResultsFilename);
+            return AllTestsResultsPath;
         }
 
         #endregion
@@ -162,8 +230,14 @@ namespace FaultLocalization
 			{
 				if(cached == null)
 				{
+                    var files = new List<string>();
+                    foreach(string testDll in TestDllPaths) {
+                        var resultsDir = TestResultsDirectory(testDll);
+                        var trxFiles = Directory.GetFiles(resultsDir, "*.trx");
+                        files.AddRange(trxFiles);
+                    }           
 
-					var query = from file in Directory.GetFiles(TestResultsDirectory, "*.trx")
+					var query = from file in files
 								select ExecutedTest.CreateTest(file);
 
 					cached = Chains.CreateLazy(query);
@@ -171,6 +245,8 @@ namespace FaultLocalization
 				return cached;
 			}
 		}
+
+
 
 	}
 }

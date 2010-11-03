@@ -30,16 +30,14 @@ namespace FaultLocalization
             catch (ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.Read();
                 return;
             }
 
             try
             {
-			if(!Directory.Exists(tests.TestResultsDirectory))
-			{
 				var testRunner = new TestRunner(tests);
-				testRunner.RunTests();
-			}
+				testRunner.RunTests();   
             }
             catch (ApplicationException ex)
             {
@@ -60,7 +58,6 @@ namespace FaultLocalization
                     failed++;
 
                 CoverageDS data = test.CoverageData;
-                data.WriteXml(File.OpenWrite("coveragedataset.xml"));
                 foreach (var line in test.Lines)
                 {
                     for (uint i = line.LnStart; i <= line.LnEnd; i++)
@@ -88,7 +85,7 @@ namespace FaultLocalization
             {
                 Console.WriteLine("Line #" + line.Id + " had suspiciousness rating: " + line.Rating);
             }
-            Directory.Delete(tests.TestResultsDirectory, true);
+            
 			Console.Read();
 		}
     }

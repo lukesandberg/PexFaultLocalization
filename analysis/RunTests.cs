@@ -40,32 +40,65 @@ namespace FaultLocalization
 
         public void RunTests()
         {
+            var testDllsToRun = DetermineWhichTestsNeedToBeRun();
             GetVisualStudioPathFromRegistry();
-            CreateTestResultsDirectory();
-            foreach (string testDllPath in tests.TestDllPaths)
+            
+            foreach (string testDllPath in testDllsToRun.Keys)
             {
-                string AllTestsResultsPath = getResultPathFromDllName(testDllPath);
+                string AllTestsResultsPath = tests.AllTestsResultsFile(testDllPath);
+                string projectName = Path.GetFileNameWithoutExtension(testDllPath); 
+                if (testDllsToRun[testDllPath] && File.Exists(AllTestsResultsPath))
+                {
+                    
+                    Console.Out.WriteLine("Tests have changed for project " + projectName + ".  All tests must be re-run");
+                    File.Delete(AllTestsResultsPath);
+                }
+                
                 if (!File.Exists(AllTestsResultsPath))
                 {
                     RunAllTests(testDllPath);
                 }
+               
+                Console.Out.WriteLine("The software under test for project " + projectName + " has changed.  Individual tests must be re-run");
+                    
+                ClearTestResultsDirectory(testDllPath);
                 RunIndividualTests(testDllPath);
             }
         }
 
-        private string getResultPathFromDllName(string testDllPath)
+        private IDictionary<string, bool> DetermineWhichTestsNeedToBeRun()
         {
-            string allTestResultsFilename = Path.GetFileName(testDllPath) + ".trx";
-            string AllTestsResultsPath = Path.Combine(tests.SolutionDirectory, allTestResultsFilename);
-            return AllTestsResultsPath;
+            var needsToRun = new Dictionary<string, bool>();
+            foreach (string testDllPath in tests.TestDllPaths)
+            {
+                var coveredDlls = tests.CoveredDllPaths(testDllPath);
+                var coveredDllModDates = from coveredDll in coveredDlls
+                                                 select File.GetLastWriteTimeUtc(coveredDll);
+                DateTime testDllModDate = File.GetLastWriteTimeUtc(testDllPath);
+                DateTime allTestResultsModDate = File.GetLastWriteTimeUtc(tests.AllTestsResultsFile(testDllPath));
+                DateTime individualTestsModDate = File.GetLastWriteTimeUtc(tests.TestResultsDirectory(testDllPath));
+                if (testDllModDate > allTestResultsModDate)
+                {
+                    needsToRun.Add(testDllPath, true);
+                }
+                else if (coveredDllModDates.Any(date => date > individualTestsModDate))
+                {
+                    needsToRun.Add(testDllPath, false);
+                }
+            }
+            return needsToRun;
         }
 
-        private void CreateTestResultsDirectory()
+
+
+        private void ClearTestResultsDirectory(string testDllPath)
         {
-            if (!File.Exists(tests.TestResultsDirectory))
+            var testResultsDirectory = tests.TestResultsDirectory(testDllPath);
+            if (Directory.Exists(testResultsDirectory))
             {
-                Directory.CreateDirectory(tests.TestResultsDirectory);
+                Directory.Delete(testResultsDirectory, true);
             }
+            Directory.CreateDirectory(testResultsDirectory);
         }
 
         private static void GetVisualStudioPathFromRegistry()
@@ -109,7 +142,7 @@ namespace FaultLocalization
             
             batFileWriter.Close();
 
-            int ExitCode = RunBatchScriptSynchronous(AllTestsPath, tests.SolutionDirectory);
+            int ExitCode = RunBatchScriptSynchronous(AllTestsPath, tests.TestResultsBase(testDllPath));
             if (ExitCode > 1)
             {
                 throw new ApplicationException("mstest exited with status " + ExitCode + " while running command:" + allTestsFilename);
@@ -121,7 +154,7 @@ namespace FaultLocalization
         private void RunIndividualTests(string TestDllPath)
         {
             Console.Out.WriteLine("Generating individual test case coverage for tests in " + TestDllPath + "...");
-            string AllTestsResultPath = getResultPathFromDllName(TestDllPath);
+            string AllTestsResultPath = tests.AllTestsResultsFile(TestDllPath);
             XDocument xDoc = XDocument.Load(AllTestsResultPath);
             XNamespace ns = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010";
             var unitTests = from unitTest in xDoc.Descendants(ns + "UnitTest")
@@ -141,12 +174,11 @@ namespace FaultLocalization
             }
             batFileWriter.Close();
             Console.Out.Flush();
-            int ExitCode = RunBatchScriptSynchronous(IndividualTestsPath, tests.SolutionDirectory);
+            int ExitCode = RunBatchScriptSynchronous(IndividualTestsPath, tests.TestResultsBase(TestDllPath));
 
             if (ExitCode > 1)
             {
                 throw new ApplicationException("mstest exited with status " + ExitCode + " while running individual tests for:" + AllTestsResultPath);
-            
             }
 
             File.Delete(IndividualTestsPath);
