@@ -35,8 +35,11 @@ namespace FaultLocalization
 
             try
             {
-                var testRunner = new TestRunner(tests);
-                testRunner.RunTests();
+			if(!Directory.Exists(tests.TestResultsDirectory))
+			{
+				var testRunner = new TestRunner(tests);
+				testRunner.RunTests();
+			}
             }
             catch (ApplicationException ex)
             {

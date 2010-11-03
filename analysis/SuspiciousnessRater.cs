@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using FaultLocalization;
+using System.Diagnostics;
 
 namespace FaultLocalization
 {
@@ -18,9 +18,11 @@ namespace FaultLocalization
             if (line == (Line)null)
                 throw new ArgumentNullException("line");
             // </pex>
-            float numerator = line.Failed / failed;
-            float denominator = (line.Passed / passed) + (line.Failed / failed);
+            float numerator = (float) line.Failed / (float) failed;
+	    float denominator = ((float) line.Passed / (float) passed) + ((float) line.Failed / (float) failed);
+
             line.Rating = numerator / denominator;
+	    Debug.Assert(!Double.IsNaN(line.Rating));
             return line;
         }
 

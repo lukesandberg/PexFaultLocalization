@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Strings.Moles</name>
+    </assembly>
+    <members>
+        <member name="T:Strings.Moles.MStringExtensions">
+            <summary>Mole type of <see cref="T:Strings.StringExtensions"/>
+            .</summary>
+        </member>
+        <member name="M:Strings.Moles.MStringExtensions.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Strings.Moles.MStringExtensions.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Strings.Moles.MStringExtensions.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Strings.Moles.MStringExtensions.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Strings.Moles.MStringExtensions.CapitalizeString">
+            <summary>Sets the mole of <see cref="M:Strings.StringExtensions.Capitalize(T:System.String)"/>
+            </summary>
+        </member>
+    </members>
+</doc>
