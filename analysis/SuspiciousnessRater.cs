@@ -17,7 +17,9 @@ namespace FaultLocalization
 
         public static Line applyOchiai(Line line, uint passed, uint failed)
         {
-            throw new NotImplementedException();
+            double denominator = Math.Sqrt(failed + line.Failed + line.Passed);
+            line.Rating = line.Failed / (float)denominator;
+            return line;           
         }
     }
 }
