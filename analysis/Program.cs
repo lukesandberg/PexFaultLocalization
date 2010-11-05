@@ -77,8 +77,8 @@ namespace FaultLocalization
                     }
                 }
 			}
-            var ratedLines = testedLines.Select(kvp => SuspiciousnessRater.applyTarantula(kvp.Value, passed, failed))
-                                .OrderBy(l => l.Rating);
+            var ratedLines = testedLines.Select(kvp => SuspiciousnessRater.applyOchiai(kvp.Value, passed, failed))
+                                .OrderByDescending(l => l.Rating);
 
             
             foreach (var line in ratedLines)
