@@ -23,6 +23,10 @@ namespace FaultLocalization
 	{
 		public static IChain<T> Create<T>(IEnumerable<T> values)
 		{
+            // <pex>
+            if (values == (IEnumerable<int>)null)
+                throw new ArgumentNullException("values");
+            // </pex>
 			return Create<T>(values.GetEnumerator());
 		}
 		static IChain<T> Create<T>(IEnumerator<T> itr)
@@ -36,6 +40,10 @@ namespace FaultLocalization
 
 		public static IChain<T> CreateLazy<T>(IEnumerable<T> values)
 		{
+            // <pex>
+            if (values == (IEnumerable<int>)null)
+                throw new ArgumentNullException("values");
+            // </pex>
 			return CreateLazy<T>(values.GetEnumerator());
 		}
 

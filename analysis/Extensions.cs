@@ -19,6 +19,10 @@ namespace FaultLocalization
 		/// <returns>The source code around the given line</returns>
 		public static String GetCoveredLine(this CoverageDS ds, CoverageDS.LinesRow line)
 		{
+            // <pex>
+            if (line == (CoverageDSPriv.LinesRow)null)
+                throw new ArgumentNullException("line");
+            // </pex>
 			uint file_id = line.SourceFileID;
 			String filename = ds.SourceFileNames.Where(fn => fn.SourceFileID == file_id).Select(f => f.SourceFileName).First();
 			using(var reader = File.OpenText(filename))

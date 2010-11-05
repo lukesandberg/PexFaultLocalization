@@ -2,3 +2,6 @@ bin
 obj
 *user
 *suo
+strings/String.Tests/Strings.Moles.xml
+*trx
+TestResults
