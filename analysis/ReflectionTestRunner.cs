@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 
 namespace FaultLocalization
 {
@@ -13,6 +14,7 @@ namespace FaultLocalization
             : base(testSuite)
         {
             TestRunner = new UTCore.TestRunner();
+            Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
         }
 
         public override void RunTests()
@@ -21,6 +23,7 @@ namespace FaultLocalization
             {
                 TestRunner.LoadAssembly(testDllPath);
             }
+            TestRunner.ParseAssemblies();
             TestRunner.RunTests();
         }
 

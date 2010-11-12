@@ -147,7 +147,10 @@ namespace UTCore
 					Trace.WriteLine("***Ignore***: "+ta.TestMethod.ToString());
 					ta.State=TestAttribute.TestState.Ignore;
 				}
-				testNotificationEvent(ta);
+                if (testNotificationEvent != null)
+                {
+                    testNotificationEvent(ta);
+                }
 			}
 		}
 	}
