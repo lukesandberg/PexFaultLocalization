@@ -10,7 +10,7 @@ using FaultLocalization;
 
 namespace FaultLocalization
 {
-    class TestRunner
+    class CoverageTestRunner : AbstractTestRunner
     {
         private const string visualStudioKey = "\\SOFTWARE\\Microsoft\\VisualStudio";
         private static string[] visualStudioVersions = { "10.0", "9.0", "8.0", "7.1" };
@@ -23,22 +23,42 @@ namespace FaultLocalization
         private const string individualTestCommand = "mstest /testcontainer:\"{0}\" /runconfig:\"{1}\" /test:\"{2}\"";
 
         private static string vsInstallDir;
-
-        
-        private TestSuite tests;
         
 
-        public TestRunner(TestSuite testSuite)
+        public CoverageTestRunner(TestSuite testSuite)
+            :base(testSuite)
         {
-            // <pex>
-            Debug.Assert(testSuite != (TestSuite)null, "testSuite");
-            // </pex>
-            tests = testSuite;
+            
         }
 
-        
+        /// <summary>
+        /// Decides which tests need to be run based on the change date for the test dlls compared to the test results files
+        /// </summary>
+        /// <returns></returns>
+        private IDictionary<string, bool> DetermineWhichTestsNeedToBeRun()
+        {
+            var needsToRun = new Dictionary<string, bool>();
+            foreach (string testDllPath in tests.TestDllPaths)
+            {
+                var coveredDlls = tests.CoveredDllPaths(testDllPath);
+                var coveredDllModDates = from coveredDll in coveredDlls
+                                         select File.GetLastWriteTimeUtc(coveredDll);
+                DateTime testDllModDate = File.GetLastWriteTimeUtc(testDllPath);
+                DateTime allTestResultsModDate = File.GetLastWriteTimeUtc(tests.AllTestsResultsFile(testDllPath));
+                DateTime individualTestsModDate = File.GetLastWriteTimeUtc(tests.TestResultsDirectory(testDllPath));
+                if (testDllModDate > allTestResultsModDate)
+                {
+                    needsToRun.Add(testDllPath, true);
+                }
+                else if (coveredDllModDates.Any(date => date > individualTestsModDate))
+                {
+                    needsToRun.Add(testDllPath, false);
+                }
+            }
+            return needsToRun;
+        }
 
-        public void RunTests()
+        public override void RunTests()
         {
             var testDllsToRun = DetermineWhichTestsNeedToBeRun();
             GetVisualStudioPathFromRegistry();
@@ -64,29 +84,6 @@ namespace FaultLocalization
                 ClearTestResultsDirectory(testDllPath);
                 RunIndividualTests(testDllPath);
             }
-        }
-
-        private IDictionary<string, bool> DetermineWhichTestsNeedToBeRun()
-        {
-            var needsToRun = new Dictionary<string, bool>();
-            foreach (string testDllPath in tests.TestDllPaths)
-            {
-                var coveredDlls = tests.CoveredDllPaths(testDllPath);
-                var coveredDllModDates = from coveredDll in coveredDlls
-                                                 select File.GetLastWriteTimeUtc(coveredDll);
-                DateTime testDllModDate = File.GetLastWriteTimeUtc(testDllPath);
-                DateTime allTestResultsModDate = File.GetLastWriteTimeUtc(tests.AllTestsResultsFile(testDllPath));
-                DateTime individualTestsModDate = File.GetLastWriteTimeUtc(tests.TestResultsDirectory(testDllPath));
-                if (testDllModDate > allTestResultsModDate)
-                {
-                    needsToRun.Add(testDllPath, true);
-                }
-                else if (coveredDllModDates.Any(date => date > individualTestsModDate))
-                {
-                    needsToRun.Add(testDllPath, false);
-                }
-            }
-            return needsToRun;
         }
 
 

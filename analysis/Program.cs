@@ -36,7 +36,7 @@ namespace FaultLocalization
 
             try
             {
-				var testRunner = new TestRunner(tests);
+				var testRunner = new CoverageTestRunner(tests);
 				testRunner.RunTests();   
             }
             catch (ApplicationException ex)

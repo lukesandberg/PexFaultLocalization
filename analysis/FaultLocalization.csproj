@@ -48,11 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractTestRunner.cs" />
     <Compile Include="Chains.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="ITestRunner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ExecutedTest.cs" />
+    <Compile Include="ReflectionTestRunner.cs" />
     <Compile Include="RunTests.cs" />
     <Compile Include="StackTraceElement.cs" />
     <Compile Include="SuspiciousnessRater.cs" />
@@ -67,6 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\Microsoft.VisualStudio.Coverage.Analysis.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UTCore\UTCore.csproj">
+      <Project>{BF8705CC-B976-453C-916B-04F1B67EA035}</Project>
+      <Name>UTCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
