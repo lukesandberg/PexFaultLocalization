@@ -77,16 +77,22 @@ namespace FaultLocalization
                     }
                 }
 			}
-            var ratedLines = testedLines.Select(kvp => SuspiciousnessRater.applyOchiai(kvp.Value, passed, failed))
-                                .OrderByDescending(l => l.Rating);
 
-            
+            var ratedLines = testedLines.Select(kvp => SuspiciousnessRater.applyRatings(kvp.Value, passed, failed))
+                                .OrderByDescending(l => l.TarantulaRating);
+
+            string output = "results.csv";
+            string delim = ",";
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Line #,Tarantula,Ochiai");
+
+            //TODO: what's our expected output for value replacement?
             foreach (var line in ratedLines)
             {
-                Console.WriteLine("Line #" + line.Id + " had suspiciousness rating: " + line.Rating);
+                sb.AppendLine(line.Id + delim + line.TarantulaRating + delim + line.OchiaiRating);
+	            File.WriteAllText(output, sb.ToString()); 
             }
-            
-			Console.Read();
 		}
     }
 
@@ -127,10 +133,14 @@ namespace FaultLocalization
     {
         public LineIdentifier Id { get; private set; }
 
-
         public int Passed { get; private set; }
         public int Failed { get; private set; }
-        public float Rating { get; set; }
+
+        public float OchiaiRating { get; set; }
+        public float TarantulaRating { get; set; }
+
+        //TODO: what kind of output should we have for value replacement?
+        public float ReplacementRating { get; set; }
 
         public Line(LineIdentifier id)
         {
