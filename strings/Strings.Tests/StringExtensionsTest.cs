@@ -18,8 +18,11 @@ namespace Strings
         public string Capitalize(string value)
         {
             string result = StringExtensions.Capitalize(value);
+            PexAssert.IsTrue(!result.Contains("."));
+            PexAssert.IsTrue(result == String.Empty || !Char.IsLetter(result[0]) || Char.IsUpper(result[0]));
             return result;
             // TODO: add assertions to method StringExtensionsTest.Capitalize(String)
+           
         }
     }
 }

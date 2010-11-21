@@ -3,12 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using Microsoft.VisualStudio.Coverage.Analysis;
 
 namespace FaultLocalization
 {
-    public class SuspiciousnessRater
+    public interface ISuspiciousnessRater
     {
-        public static Line applyRatings(Line line, uint passed, uint failed)
+        void RateLines(IEnumerable<Line> ratedLines, IEnumerable<ExecutedTest> testResults);
+    }
+
+    public abstract class StatisticalRater : ISuspiciousnessRater {
+        public void RateLines(IEnumerable<Line> testedLines, IEnumerable<ExecutedTest> testResults)
+        {
+            uint passed = (uint)testResults.Where(t=> t.Result).Count();
+            uint failed = (uint)testResults.Count() - passed;
+            foreach (Line l in testedLines)
+            {
+                applyRating(l, passed, failed);
+            }
+        }
+
+        
+
+        protected virtual Line applyRating(Line line, uint passed, uint failed)
         {
             // <pex>
             if (passed == 0uL)
@@ -19,15 +36,33 @@ namespace FaultLocalization
                 throw new ArgumentNullException("line");
             // </pex>
 
+            return line;
+        }
+    }
+
+    public class TarantulaRater : StatisticalRater
+    {
+        protected override Line applyRating(Line line, uint passed, uint failed)
+        {
+            base.applyRating(line, passed, failed);
             float numerator = (float)line.Failed / (float)failed;
             float denominator = ((float)line.Passed / (float)passed) + ((float)line.Failed / (float)failed);
-            line.TarantulaRating = numerator / denominator;
-            Debug.Assert(!Double.IsNaN(line.TarantulaRating));
+            float rating = numerator / denominator;
+            Debug.Assert(!Double.IsNaN(rating));
+            line.SuspiciousnessRatings.Add(this, rating);
+            return line;
+        }
+    }
 
-            denominator = (float)Math.Sqrt(failed * (line.Failed + line.Passed));
-            line.OchiaiRating = line.Failed / denominator;
-            Debug.Assert(!Double.IsNaN(line.OchiaiRating));
-
+    public class OchiaiRater : StatisticalRater
+    {
+        protected override Line applyRating(Line line, uint passed, uint failed)
+        {
+            base.applyRating(line, passed, failed);
+            float denominator = (float)Math.Sqrt(failed * (line.Failed + line.Passed));
+            float rating = line.Failed / denominator;
+            Debug.Assert(!Double.IsNaN(rating));
+            line.SuspiciousnessRatings.Add(this, rating);
             return line;
         }
     }

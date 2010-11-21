@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AbstractTestRunner.cs" />
     <Compile Include="Chains.cs" />
+    <Compile Include="DynamicBasicBlock.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="ITestRunner.cs" />
     <Compile Include="Program.cs" />

@@ -67,5 +67,71 @@ namespace FaultLocalization
 				yield return line;
 			}
 		}
+
+
+        /// <summary> 
+        /// Returns all types in the current AppDomain implementing the interface or inheriting the type.  
+        /// </summary> 
+        /// <param name="onlyRealTypes">if true, only real, instantiable types will be returned</param>
+        public static IEnumerable<Type> TypesImplementingInterface(this Type interfaceType, bool onlyRealTypes)
+        {
+            return AppDomain
+                .CurrentDomain
+                .GetAssemblies()
+                .SelectMany(assembly => assembly.GetTypes())
+                .Where(type => interfaceType.IsAssignableFrom(type) && (!onlyRealTypes || type.IsRealClass()));
+        }
+
+
+        /// <param name="testType">The type to test</param>
+        /// <returns>true if this type is non-abstract, non-generic, and non-interface</returns>
+        public static bool IsRealClass(this Type testType)
+        {
+            return testType.IsAbstract == false
+                && testType.IsGenericTypeDefinition == false
+                && testType.IsInterface == false;
+        }
+
+
+        public static int SumNoOverflow<T>(this IEnumerable<T> list, Func<T, int> func)
+        {
+            long sum = 0;
+            foreach (T t in list)
+            {
+                try
+                {
+                    sum += func(t);
+                }
+                catch (OverflowException)
+                {
+                    sum = 0;
+                }
+            }
+            return (int)(sum % int.MaxValue);
+        }
 	}
+
+    public class EqualityComparer<T> : IEqualityComparer<T>
+    {
+        private Func<T, T, bool> equalityFunc;
+        private Func<T, int> hashCodeFunc;
+
+        public EqualityComparer(Func<T, T, bool> equalityFunc, Func<T, int> hashCodeFunc)
+        {
+            this.equalityFunc = equalityFunc;
+            this.hashCodeFunc = hashCodeFunc;
+        }
+
+        public bool Equals(T t1, T t2)
+        {
+            return equalityFunc(t1, t2);
+        }
+
+        public int GetHashCode(T t)
+        {
+            return hashCodeFunc(t);
+        }
+
+
+    } 
 }

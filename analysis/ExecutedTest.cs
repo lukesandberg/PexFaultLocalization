@@ -48,6 +48,9 @@ namespace FaultLocalization
 		public String CoverageFileLocation { get; private set; }//"IN/HCU-..../data.coverage
 		public String AssembliesLocation { get; private set; }//out/
 
+        /// <summary>
+        /// true if the test passed, false otherwise
+        /// </summary>
 		public bool Result { get; private set; }
 
 		private CoverageInfo _info = null;

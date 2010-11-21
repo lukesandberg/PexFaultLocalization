@@ -27,10 +27,9 @@ namespace FaultLocalization
             {
                tests = new TestSuite(TestResultsPath);
             }
-            catch (ArgumentException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Read();
+                Die(ex);
                 return;
             }
 
@@ -39,17 +38,60 @@ namespace FaultLocalization
 				var testRunner = new ReflectionTestRunner(tests);
 				testRunner.RunTests();   
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Die(ex);
                 return;
             }
 
-            Dictionary<LineIdentifier, Line> testedLines = new Dictionary<LineIdentifier, Line>();
+            var testResults = tests.TestResults;
+             
+            var ratedLines = BuildDiagnosisMatrix(testResults);
+
+            var dbbs = GetDynamicBasicBlocks(ratedLines);
+
+            foreach (Type SuspicousnessRaterType in typeof(ISuspiciousnessRater).TypesImplementingInterface(true))
+            {
+                ISuspiciousnessRater rater = (ISuspiciousnessRater)SuspicousnessRaterType.GetConstructor(Type.EmptyTypes).Invoke(new object[0]);
+                rater.RateLines(ratedLines, testResults);
+            }
+            OutputResults(ratedLines);
+            Console.Read();
+		}
+
+        private static IEnumerable<DynamicBasicBlock> GetDynamicBasicBlocks(IEnumerable<Line> ratedLines)
+        {
+            var TestComparer = new EqualityComparer<ExecutedTest>(
+                (left, right) => left.Name == right.Name, 
+                test => test.Name.GetHashCode());
+
+            var comparer = new EqualityComparer<IEnumerable<ExecutedTest>>(
+                (left, right) => left.SequenceEqual(right, TestComparer),
+                e => e.SumNoOverflow(t => TestComparer.GetHashCode(t)));
+
+            IDictionary<IEnumerable<ExecutedTest>, DynamicBasicBlock> dbbs = new Dictionary<IEnumerable<ExecutedTest>, DynamicBasicBlock>(comparer);
+            foreach (Line ratedLine in ratedLines)
+            {
+                DynamicBasicBlock block;
+                if (!dbbs.TryGetValue(ratedLine.Tests, out block))
+                {
+                    block = new DynamicBasicBlock(ratedLine.Tests);
+                    dbbs.Add(ratedLine.Tests, block);
+                }
+
+                block.Lines.Add(ratedLine);
+                ratedLine.DBB = block;
+            }
+            return dbbs.Values;
+        }
+
+        public static IEnumerable<Line> BuildDiagnosisMatrix(IEnumerable<ExecutedTest> tests)
+        {
+            var testedLines = new Dictionary<LineIdentifier, Line>();
             uint passed = 0;
             uint failed = 0;
-			foreach(var test in tests.TestResults)
-			{
+            foreach (var test in tests)
+            {
                 Console.WriteLine(test);
 
                 if (test.Result)
@@ -69,38 +111,58 @@ namespace FaultLocalization
                             currentLine = new Line(id);
                             testedLines.Add(id, currentLine);
                         }
-
-                        if(test.Result)
-                            currentLine.pass();
-                        else
-                            currentLine.fail();
+                        currentLine.Tests.Add(test);
                     }
                 }
-			}
+            }
 
-            var ratedLines = testedLines.Select(kvp => SuspiciousnessRater.applyRatings(kvp.Value, passed, failed))
-                                .OrderByDescending(l => l.TarantulaRating);
+            return testedLines.Values;
+        }
+
+        public static void OutputResults(IEnumerable<Line> ratedLines)
+        {
+            Debug.Assert(ratedLines.Count() != 0);
 
             string output = "results.csv";
             string delim = ",";
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Line #,Tarantula,Ochiai");
+            sb.Append("File" + delim + "Line #" + delim);
+            foreach (ISuspiciousnessRater rater in ratedLines.First().SuspiciousnessRatings.Keys)
+            {
+                sb.Append(rater.GetType().Name + delim);
+            }
+            sb.AppendLine("DBB Size");
 
             //TODO: what's our expected output for value replacement?
             foreach (var line in ratedLines)
             {
-                sb.AppendLine(line.Id + delim + line.TarantulaRating + delim + line.OchiaiRating);
-	            File.WriteAllText(output, sb.ToString()); 
+                sb.Append(line.Id.FileName + delim);
+                sb.Append(line.Id.LineNo + delim);
+                foreach (var rating in line.SuspiciousnessRatings)
+                {
+                    sb.Append(rating.Value + delim);
+                }
+                sb.Append(line.DBB.Lines.Count);
+                sb.AppendLine();
+                File.WriteAllText(output, sb.ToString());
             }
-		}
+            Console.WriteLine("Results stored in " + Path.GetFullPath(output));
+        }
+
+        private static void Die(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.Read();
+            Environment.Exit(1);
+        }
     }
 
     public class LineIdentifier
     {
-        
-        private readonly uint LineNo;
-        private readonly String FileName;
+
+       public uint LineNo { get; private set; }
+       public String FileName { get; private set; }
 
         public LineIdentifier(String s, uint l)
         {
@@ -133,31 +195,41 @@ namespace FaultLocalization
     {
         public LineIdentifier Id { get; private set; }
 
-        public int Passed { get; private set; }
-        public int Failed { get; private set; }
+        public int Passed
+        {
+            get
+            {
+                return Tests.Where(t => t.Result).Count();
+            }
+        }
 
-        public float OchiaiRating { get; set; }
-        public float TarantulaRating { get; set; }
+        public int Failed
+        {
+            get
+            {
+                return Tests.Where(t => !t.Result).Count();
+            }
 
-        //TODO: what kind of output should we have for value replacement?
-        public float ReplacementRating { get; set; }
+        }
+
+        public IList<ExecutedTest> Tests { get; private set; }
+
+        public IDictionary<ISuspiciousnessRater, float> SuspiciousnessRatings
+        {
+            get;
+            private set;
+        }
+
+        public DynamicBasicBlock DBB { get; set; }
 
         public Line(LineIdentifier id)
         {
             this.Id = id;
-            Passed = 0;
-            Failed = 0;
-            Rating = 0;
+            Tests = new List<ExecutedTest>();
+            SuspiciousnessRatings = new Dictionary<ISuspiciousnessRater, float>();
         }
 
-        public void fail()
-        {
-            Failed++;
-        }
 
-        public void pass()
-        {
-            Passed++;
-        }
+        
     }
 }
