@@ -66,9 +66,20 @@
       <DependentUpon>StringExtensionsTest.cs</DependentUpon>
     </Compile>
     <Compile Include="StringExtensionsTest.cs" />
+    <Compile Include="Strings.Designer.cs">
+      <DependentUpon>Strings.moles</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Moles Include="Strings.moles" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Strings.Moles.dll">
+      <DependentUpon>Strings.moles</DependentUpon>
+    </Content>
+    <Content Include="Strings.Moles.xml">
+      <DependentUpon>Strings.moles</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

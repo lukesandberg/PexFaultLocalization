@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using System.IO;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
+using FaultLocalization.Util;
 
 namespace FaultLocalization
 {
