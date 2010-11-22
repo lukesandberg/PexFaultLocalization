@@ -5,12 +5,13 @@ using System.Text;
 using System.IO;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
+using FaultLocalization.Util;
 
 namespace FaultLocalization
 {
 	public class TestSuite
     {
-#region "Constants"
+		#region "Constants"
         private const string testFrameworkName = "Microsoft.VisualStudio.QualityTools.UnitTestFramework";
         private const string testProjectGuid = "3AC096D0-A1C2-E12C-1390-A8335801FDAB";
 #endregion
@@ -245,8 +246,5 @@ namespace FaultLocalization
 				return cached;
 			}
 		}
-
-
-
 	}
 }

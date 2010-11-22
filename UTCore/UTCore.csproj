@@ -86,11 +86,14 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lib\KALib.csproj">
-      <Name>Lib</Name>
+      <Name>KALib</Name>
       <Project>{D87145D1-8315-4014-B79F-D378E1A7559C}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <Reference Include="Microsoft.ExtendedReflection, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ExtendedReflection, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Common Files\Microsoft Shared\ExtendedReflection\0.93.50813.0\bin\Microsoft.ExtendedReflection.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="Microsoft.Pex.Framework, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\WINDOWS\assembly\GAC_MSIL\Microsoft.Pex.Framework\0.94.0.0__31bf3856ad364e35\Microsoft.Pex.Framework.dll</HintPath>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FaultLocalization
+namespace FaultLocalization.Util
 {
 
 	public interface IChain<T> : IEnumerable<T>

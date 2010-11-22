@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FAA3A0C5-8F50-4EFB-9D10-B7E114DA2040}</ProjectGuid>
+    <ProjectGuid>{E50E8F57-2805-4C0B-B826-754AB1E9C257}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FaultLocalization</RootNamespace>
-    <AssemblyName>FaultLocalization</AssemblyName>
+    <RootNamespace>AssemblyRewriter</RootNamespace>
+    <AssemblyName>AssemblyRewriter</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -24,7 +24,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -48,11 +47,14 @@
     <Reference Include="envdte90, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.Coverage.Analysis">
-      <HintPath>lib\Microsoft.VisualStudio.Coverage.Analysis.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>lib\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb">
+      <HintPath>lib\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb">
+      <HintPath>lib\Mono.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -63,44 +65,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractTestRunner.cs" />
-    <Compile Include="DynamicBasicBlock.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="ITestRunner.cs" />
+    <Compile Include="CodeRewriter.cs" />
+    <Compile Include="CSProject.cs" />
+    <Compile Include="CSSolution.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectRewriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ExecutedTest.cs" />
-    <Compile Include="ReflectionTestRunner.cs" />
-    <Compile Include="RunTests.cs" />
-    <Compile Include="StackTraceElement.cs" />
-    <Compile Include="SuspiciousnessRater.cs" />
-    <Compile Include="TestSuite.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="lib\dbghelp.dll" />
-    <Content Include="lib\Microsoft.VisualStudio.Coverage.Symbols.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="lib\Microsoft.VisualStudio.Coverage.Analysis.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UTCore\UTCore.csproj">
-      <Project>{BF8705CC-B976-453C-916B-04F1B67EA035}</Project>
-      <Name>UTCore</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Util\FaultLocalization.Util.csproj">
       <Project>{E3F74663-FC5A-4E92-B47C-C5B882B63D3B}</Project>
       <Name>FaultLocalization.Util</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ValueInjector\ValueInjector.csproj">
+      <Project>{572DE8E6-DAE7-4541-81B6-AB0422ACBC6D}</Project>
+      <Name>ValueInjector</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>copy /y "$(ProjectDir)lib\dbghelp.dll"  "$(TargetDir)"
-copy /y "$(ProjectDir)lib\Microsoft.VisualStudio.Coverage.Symbols.dll" "$(TargetDir)"</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
