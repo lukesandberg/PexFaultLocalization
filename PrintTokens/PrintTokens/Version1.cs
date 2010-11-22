@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace PrintTokens
+namespace Edu.Unl.Sir.Seimens.PrintTokens
 {
 
 
-    class CharacterStream
+    public class CharacterStream
     {
         public Stream fp;  /* File pointer to stream */
         public int stream_ind; /* buffer index */
@@ -20,7 +20,7 @@ namespace PrintTokens
         }
     }
 
-    class Token
+    public class Token
     {
         public int token_id;
         public byte[] token_string;
@@ -31,14 +31,14 @@ namespace PrintTokens
         }
     }
 
-    class TokenStream
+    public class TokenStream
     {
         public CharacterStream ch_stream;
     }
 
-    class Version1
+    public class Version1
     {
-        static const int[] default1 ={
+        private static int[] default1 ={
                  54, 17, 17, 17, 17, 17, 17, 17, 17, 17,
                  17, 17, 17, 17, 17, 17, 17, 51, -2, -1,
                  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -46,7 +46,7 @@ namespace PrintTokens
                  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
                  -1, 52, -3, -1 ,-1, -1, -1, -1, -1, -1
                };
-        static const int[] baseArray ={
+        private static int[] baseArray ={
                   -32, -96,-105, -93, -94, -87, -1,  -97, -86, -1,
                   -99, -1,  -72, -1,  -80, -82, -1,   53,  43, -1,
                   -1,  -1,  -1,  -1,  -1,  -1,  133, -1,  233, -1,
@@ -54,7 +54,7 @@ namespace PrintTokens
                   -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,
                   -1,  46,  40,  -1, 251,  -1,  -1,  -1,  -1,  -1
               };
-        static int[] next = {
+        private static int[] next = {
                   0,  2, 26, 28,  3,  4,  5, 23, 19, 20,
                   6, -1, 25,  8,  9, 11, 18, 18, 18, 18,
                  18, 18, 18, 18, 18, 18, -1, 30, -1, 31,
@@ -92,7 +92,7 @@ namespace PrintTokens
                  29, 29, 29, 29, 29, 29, 29, 29, 29, 29,
                  29, 29, 29, 29, 29, 29, 29, 29, 29, 29
             };
-        static int[] check = {   0,  1,  0,  0,  2,  3,  4,  0,  0,  0,
+        private static int[] check = {   0,  1,  0,  0,  2,  3,  4,  0,  0,  0,
                   5, -1,  0,  7,  8, 10,  0,  0,  0,  0,
                   0,  0,  0,  0,  0,  0, -1,  0, -1,  0,
                  12, 14, 15,  0,  0,  0,  0,  0,  0,  0,
@@ -130,28 +130,28 @@ namespace PrintTokens
                  28, 28, 28, 28, 28, 28, 28, 28, 28, 28
               };
 
-        private static const int START = 5;
-        private static const int TRUE = 1;
-        private static const int FALSE = 0;
-        private static const int EOTSTREAM = 0;
-        private static const int NUMERIC = 18;
-        private static const int IDENTIFIER = 17;
-        private static const int LAMBDA = 6;
-        private static const int AND = 9;
-        private static const int OR = 11;
-        private static const int IF = 13;
-        private static const int XOR = 16;
-        private static const int LPAREN = 19;
-        private static const int RPAREN = 20;
-        private static const int LSQUARE = 21;
-        private static const int RSQUARE = 22;
-        private static const int QUOTE = 23;
-        private static const int BQUOTE = 24;
-        private static const int COMMA = 25;
-        private static const int EQUALGREATER = 32;
-        private static const int STRING_CONSTANT = 27;
-        private static const int CHARACTER_CONSTANT = 29;
-        private static const int ERROR = -1;
+        private const int START = 5;
+        private const int TRUE = 1;
+        private const int FALSE = 0;
+        private const int EOTSTREAM = 0;
+        private const int NUMERIC = 18;
+        private const int IDENTIFIER = 17;
+        private const int LAMBDA = 6;
+        private const int AND = 9;
+        private const int OR = 11;
+        private const int IF = 13;
+        private const int XOR = 16;
+        private const int LPAREN = 19;
+        private const int RPAREN = 20;
+        private const int LSQUARE = 21;
+        private const int RSQUARE = 22;
+        private const int QUOTE = 23;
+        private const int BQUOTE = 24;
+        private const int COMMA = 25;
+        private const int EQUALGREATER = 32;
+        private const int STRING_CONSTANT = 27;
+        private const int CHARACTER_CONSTANT = 29;
+        private const int ERROR = -1;
 
         static void Main(string[] args)
         {
@@ -189,7 +189,7 @@ namespace PrintTokens
                                to stdin else it opens the respective file as input.                   
          * * ******************************************************************* */
 
-        private static CharacterStream open_character_stream(String filename)
+        public static CharacterStream open_character_stream(String filename)
         {
             CharacterStream stream_ptr = new CharacterStream();
             stream_ptr.stream_ind = START;
@@ -215,7 +215,7 @@ namespace PrintTokens
                            returns the character.       
          * ****************************************************************** */
 
-        private static byte get_char(CharacterStream stream_ptr)
+        public static byte get_char(CharacterStream stream_ptr)
         {
             if (stream_ptr.stream[stream_ptr.stream_ind] == '\0')
             {
@@ -255,7 +255,7 @@ namespace PrintTokens
                            to unget the character then it returns
          * ******************************************************************* */
 
-        private static void unget_char(byte ch, CharacterStream stream_ptr)
+        public static void unget_char(byte ch, CharacterStream stream_ptr)
         {
             if (stream_ptr.stream_ind == 0)
                 return;
@@ -277,7 +277,7 @@ namespace PrintTokens
                            input. This function returns the token_stream.
          * ****************************************************************** */
 
-        static TokenStream open_token_stream(string FILENAME)
+        public static TokenStream open_token_stream(string FILENAME)
         {
             TokenStream token_ptr = new TokenStream();
             token_ptr.ch_stream = open_character_stream(FILENAME);/* Get character
@@ -298,7 +298,7 @@ namespace PrintTokens
                            returns the token type.
         * ******************************************************************* */
 
-        static Token get_token(TokenStream tstream_ptr)
+        public static Token get_token(TokenStream tstream_ptr)
         {
             byte[] token_str = new byte[80]; /* This buffer stores the current token */
             int token_ind;      /* Index to the token_str  */
@@ -381,6 +381,7 @@ namespace PrintTokens
                 cu_state = next_st;
                 ch = get_char(tstream_ptr.ch_stream);
             }
+            throw new ApplicationException("Execution should not have reached this line");
         }
 
         /* ******************************************************************
@@ -392,7 +393,7 @@ namespace PrintTokens
                            forms numeric token else forms error token.
          * ****************************************************************** */
 
-        static Token numeric_case(TokenStream tstream_ptr, Token token_ptr, byte ch, byte[] token_str, int token_ind)
+        public static Token numeric_case(TokenStream tstream_ptr, Token token_ptr, byte ch, byte[] token_str, int token_ind)
         {
             if (check_delimiter(ch) != TRUE)
             {   /* Error case */
@@ -426,7 +427,7 @@ namespace PrintTokens
                            token.
          * *****************************************************************/
 
-        static Token error_or_eof_case(TokenStream tstream_ptr, Token token_ptr, int cu_state, byte[] token_str, int token_ind, byte ch)
+        public static Token error_or_eof_case(TokenStream tstream_ptr, Token token_ptr, int cu_state, byte[] token_str, int token_ind, byte ch)
         {
             if (is_end_of_character_stream(tstream_ptr.ch_stream) == TRUE)
             {
@@ -455,7 +456,7 @@ namespace PrintTokens
                            it returns FALSE. 
          * ******************************************************************* */
 
-        static int check_delimiter(byte ch)
+        public static int check_delimiter(byte ch)
         {
 
             if (!Char.IsLetterOrDigit((char)ch)) /* Check for digit and alpha */
@@ -472,7 +473,7 @@ namespace PrintTokens
                            respective token_id is returned.
          * ***************************************************************** */
 
-        static int keyword(int state)
+        public static int keyword(int state)
         {
             switch (state)
             {   /* Return the respective macro for the Keyword. */
@@ -497,7 +498,7 @@ namespace PrintTokens
                            final state given by state.
          * ****************************************************************** */
 
-        static int special(int state)
+        public static int special(int state)
         {
             switch (state)
             {   /* return the respective macro for the special character. */
@@ -524,7 +525,7 @@ namespace PrintTokens
                            end_of_character_stream.                   
          * ******************************************************************* */
 
-        static void skip(CharacterStream stream_ptr)
+        public static void skip(CharacterStream stream_ptr)
         {
             byte c;
 
@@ -544,7 +545,7 @@ namespace PrintTokens
                            speccified by  the final state. 
          * ****************************************************************** */
 
-        static int constant(int state, byte[] token_str, int token_ind)
+        public static int constant(int state, byte[] token_str, int token_ind)
         {
             switch (state)
             {   /* Return the respective CONSTANT macro. */
@@ -565,7 +566,7 @@ namespace PrintTokens
                            state state and the inpu character ch.
          * ****************************************************************** */
 
-        static int next_state(int state, byte ch)
+        public static int next_state(int state, byte ch)
         {
             if (state < 0)
                 return (state);
@@ -590,7 +591,7 @@ namespace PrintTokens
                            EOTSTREAM then it is eof_token.
          * ***************************************************************** */
 
-        static int is_eof_token(Token t)
+        public static int is_eof_token(Token t)
         {
             if (t.token_id == EOTSTREAM)
                 return (TRUE);
@@ -611,7 +612,7 @@ namespace PrintTokens
                            and it is the limitation of the program.
          * ******************************************************************** */
 
-        static int print_token(Token token_ptr)
+        public static int print_token(Token token_ptr)
         {
             switch (token_ptr.token_id)
             {    /* Print the respective tokens. */
@@ -654,7 +655,7 @@ namespace PrintTokens
                            the leading and trailing  spaces and prints the token.
          * ****************************************************************** */
 
-        static void get_actual_token(byte[] token_str, int token_ind)
+        public static void get_actual_token(byte[] token_str, int token_ind)
         {
             int ind, start;
 
