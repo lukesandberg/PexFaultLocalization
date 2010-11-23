@@ -51,9 +51,6 @@
     <Reference Include="Microsoft.VisualStudio.Coverage.Analysis">
       <HintPath>lib\Microsoft.VisualStudio.Coverage.Analysis.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>lib\Mono.Cecil.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

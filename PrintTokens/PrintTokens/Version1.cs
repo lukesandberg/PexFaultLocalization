@@ -217,6 +217,14 @@ namespace Edu.Unl.Sir.Seimens.PrintTokens
 
         public static byte get_char(CharacterStream stream_ptr)
         {
+            // <pex>
+            if ((uint)(stream_ptr.stream_ind) >= (uint)(stream_ptr.stream.Length))
+                throw new ArgumentException("complex reason", "stream_ptr");
+            if (stream_ptr.fp == (Stream)null)
+                throw new ArgumentNullException("stream_ptr");
+            if (stream_ptr.stream.Length < 80)
+                throw new ArgumentException("stream_ptr.stream.Length < 80", "stream_ptr");
+            // </pex>
             if (stream_ptr.stream[stream_ptr.stream_ind] == '\0')
             {
                 if (stream_ptr.fp.Read(stream_ptr.stream, START, 80 - START) == 0)
