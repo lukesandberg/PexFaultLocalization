@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using System.IO;
 
-namespace Edu.Unl.Sir.Siemens.PrintTokens.V1
+namespace Edu.Unl.Sir.Siemens.PrintTokens.V4
 {
     private class CharacterStream
     {
@@ -29,7 +30,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V1
         }
     }
 
-    private class TokenStream
+    public class TokenStream
     {
         public CharacterStream ch_stream;
     }
@@ -125,7 +126,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V1
                  28, 28, 28, 28, 28, 28, 28, 28, 28, 28,
                  28, 28, 28, 28, 28, 28, 28, 28, 28, 28,
                  28, 28, 28, 28, 28, 28, 28, 28, 28, 28,
-                 28, 28, 28, 28, 28, 28, 28, 28, 28, 28
+                 28, 28, 28, 28, 28, 28, 28, 28, 28, 27 /* constant mutation */
               };
 
         private const int START = 5;
@@ -346,8 +347,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V1
                     case 9:
                     case 11:
                     case 13:
-                    case 16:
-                    case 32: ch = get_char(tstream_ptr.ch_stream);
+                    case 16: ch = get_char(tstream_ptr.ch_stream);
                         if (check_delimiter(ch) == TRUE)
                         {
                             token_ptr.token_id = keyword(next_st);
@@ -363,7 +363,8 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V1
                     case 22:
                     case 23:
                     case 24:
-                    case 25: token_ptr.token_id = special(next_st);
+                    case 25:
+                    case 32: token_ptr.token_id = special(next_st);
                         token_ptr.token_string[0] = (byte)'\0';
                         return (token_ptr);
                     case 27: /* These are constant cases */
@@ -480,7 +481,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V1
                 case 11: return (OR);
                 case 13: return (IF);
                 case 16: return (XOR);
-                case 32: return (EQUALGREATER);
+
                 default: Console.Write("error\n"); return ERROR; break;
             }
             System.Environment.Exit(0);
@@ -507,6 +508,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V1
                 case 23: return (QUOTE);
                 case 24: return (BQUOTE);
                 case 25: return (COMMA);
+                case 32: return (EQUALGREATER);
                 default: Console.Write("error\n"); return (ERROR); break;
             }
             System.Environment.Exit(0);
@@ -670,3 +672,4 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V1
         }
     }
 }
+
