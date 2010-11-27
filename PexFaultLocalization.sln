@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KALib", "Lib\KALib.csproj",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueInjector", "ValueInjector\ValueInjector.csproj", "{572DE8E6-DAE7-4541-81B6-AB0422ACBC6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyRewriter", "AssemblyRewriter\AssemblyRewriter.csproj", "{E50E8F57-2805-4C0B-B826-754AB1E9C257}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueReplacement", "ValueReplacement\ValueReplacement.csproj", "{E50E8F57-2805-4C0B-B826-754AB1E9C257}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaultLocalization.Util", "Util\FaultLocalization.Util.csproj", "{E3F74663-FC5A-4E92-B47C-C5B882B63D3B}"
 EndProject

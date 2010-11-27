@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ValueInjector
 {
-	internal class Value
+	public class Value
 	{
 		private Type _type;
 

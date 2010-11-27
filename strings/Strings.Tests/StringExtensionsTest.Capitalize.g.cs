@@ -16,119 +16,96 @@ using Microsoft.Pex.Framework.Exceptions;
 
 namespace Strings
 {
-    public partial class StringExtensionsTest
-    {
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-[PexRaisedException(typeof(NullReferenceException))]
-public void CapitalizeThrowsNullReferenceException195()
-{
-    string s;
-    s = this.Capitalize((string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-public void Capitalize983()
-{
-    string s;
-    s = this.Capitalize("");
-    Assert.AreEqual<string>("", s);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-public void Capitalize439()
-{
-    string s;
-    s = this.Capitalize("a");
-    Assert.AreEqual<string>("A", s);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-[PexRaisedException(typeof(FormatException))]
-public void CapitalizeThrowsFormatException90()
-{
-    string s;
-    s = this.Capitalize("jksdfhlasfhlskjfhsaljf");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-[PexRaisedException(typeof(PexAssertFailedException))]
-public void CapitalizeThrowsPexAssertFailedException533()
-{
-    string s;
-    s = this.Capitalize("a\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-[PexRaisedException(typeof(PexAssertFailedException))]
-public void CapitalizeThrowsPexAssertFailedException464()
-{
-    string s;
-    s = this.Capitalize(".");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-[PexRaisedException(typeof(PexAssertFailedException))]
-public void CapitalizeThrowsPexAssertFailedException656()
-{
-    string s;
-    s = this.Capitalize("Pa");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-[PexRaisedException(typeof(PexAssertFailedException))]
-public void CapitalizeThrowsPexAssertFailedException926()
-{
-    string s;
-    s = this.Capitalize("aaaaa.a");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-[PexRaisedException(typeof(PexAssertFailedException))]
-public void CapitalizeThrowsPexAssertFailedException246()
-{
-    string s;
-    s = this.Capitalize("\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-public void Capitalize896()
-{
-    string s;
-    s = this.Capitalize(".\0");
-    Assert.AreEqual<string>("_", s);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-public void Capitalize67()
-{
-    string s;
-    s = this.Capitalize("Aaa");
-    Assert.AreEqual<string>("Aaa", s);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-public void Capitalize817()
-{
-    string s;
-    s = this.Capitalize("..");
-    Assert.AreEqual<string>("__", s);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-public void Capitalize937()
-{
-    string s;
-    s = this.Capitalize("Aaaaa.aa.a.aaaaa..\0\0");
-    Assert.AreEqual<string>("Aaaaa_aa_a_aaaaa__", s);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(StringExtensionsTest))]
-[PexRaisedException(typeof(PexAssertFailedException))]
-public void CapitalizeThrowsPexAssertFailedException328()
-{
-    string s;
-    s = this.Capitalize("\u8061\0");
-}
-    }
+	public partial class StringExtensionsTest
+	{
+
+		[TestMethod]
+		[PexGeneratedBy(typeof(StringExtensionsTest))]
+		public void Capitalize983()
+		{
+			string s;
+			s = this.Capitalize("");
+			Assert.AreEqual<string>("", s);
+		}
+		[TestMethod]
+		[PexGeneratedBy(typeof(StringExtensionsTest))]
+		[PexRaisedException(typeof(FormatException))]
+		public void CapitalizeThrowsFormatException504()
+		{
+			string s;
+			s = this.Capitalize("jksdfhlasfhlskjfhsaljf");
+		}
+		[TestMethod]
+		[PexGeneratedBy(typeof(StringExtensionsTest))]
+		public void Capitalize870()
+		{
+			string s;
+			s = this.Capitalize("\0");
+			Assert.AreEqual<string>("", s);
+		}
+		[TestMethod]
+		[PexGeneratedBy(typeof(StringExtensionsTest))]
+		public void Capitalize704()
+		{
+			string s;
+			s = this.Capitalize(".");
+			Assert.AreEqual<string>("_", s);
+		}
+		[TestMethod]
+		[PexGeneratedBy(typeof(StringExtensionsTest))]
+		public void Capitalize439()
+		{
+			string s;
+			s = this.Capitalize("a");
+			Assert.AreEqual<string>("A", s);
+		}
+		[TestMethod]
+		[PexGeneratedBy(typeof(StringExtensionsTest))]
+		public void Capitalize351()
+		{
+			string s;
+			s = this.Capitalize("h\0");
+			Assert.AreEqual<string>("H", s);
+		}
+		[TestMethod]
+		[PexGeneratedBy(typeof(StringExtensionsTest))]
+		public void Capitalize255()
+		{
+			string s;
+			s = this.Capitalize("h\u8061\0");
+			Assert.AreEqual<string>("H\u8061", s);
+		}
+		[TestMethod]
+		[PexGeneratedBy(typeof(StringExtensionsTest))]
+		public void Capitalize233()
+		{
+			string s;
+			s = this.Capitalize("haa");
+			Assert.AreEqual<string>("Haa", s);
+		}
+		[TestMethod]
+		[PexGeneratedBy(typeof(StringExtensionsTest))]
+		public void Capitalize928()
+		{
+			string s;
+			s = this.Capitalize("h.\0");
+			Assert.AreEqual<string>("H_", s);
+		}
+		[TestMethod]
+		[PexGeneratedBy(typeof(StringExtensionsTest))]
+		public void Capitalize140()
+		{
+			string s;
+			s = this.Capitalize("h..");
+			Assert.AreEqual<string>("H__", s);
+		}
+		[TestMethod]
+		[PexGeneratedBy(typeof(StringExtensionsTest))]
+		public void Capitalize393()
+		{
+			string s;
+			s = this.Capitalize("haaaAaa\u8061\0\0");
+			Assert.AreEqual<string>("HaaaAaa\u8061", s);
+		}
+	}
 }

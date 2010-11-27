@@ -57,11 +57,10 @@ namespace UTCore
 		{
 			get
 			{
-				if (mi.ExpectedException!=null && mi.ExpectedException.GetType() == typeof(PexRaisedExceptionAttribute))
+				var pexRaisedException = mi.ExpectedException as PexRaisedExceptionAttribute;
+				if(pexRaisedException != null && pexRaisedException.ExceptionState == Microsoft.Pex.Engine.Exceptions.PexExceptionState.Expected)
 				{
-
-                    return ((PexRaisedExceptionAttribute)mi.ExpectedException).ExceptionType.GetType();
-                    
+					return pexRaisedException.ExceptionType.RuntimeType;
 				}
 				else
 				{

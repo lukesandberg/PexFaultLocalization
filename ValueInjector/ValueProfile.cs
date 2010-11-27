@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ValueInjector
 {
-	class ValueProfile
+	public class ValueProfile
 	{
 		private readonly Dictionary<String, ValueMapping> mappings = new Dictionary<string, ValueMapping>();
 		public ValueProfile() { }
@@ -19,6 +19,18 @@ namespace ValueInjector
 				mappings[TestName] = mapping;
 			}
 			mapping.AddValue(var, val);
+		}
+
+		public IEnumerable<String> TestsCovered
+		{
+			get
+			{
+				return mappings.Keys;
+			}
+		}
+		public ValueMapping GetMapping(String TestName)
+		{
+			return mappings[TestName];
 		}
 		public IEnumerable<ValueMapping> AlternateMappings(String TestName)
 		{

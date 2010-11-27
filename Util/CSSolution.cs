@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EnvDTE80;
-using FaultLocalization.Util;
 
-namespace AssemblyRewriter
+namespace FaultLocalization.Util
 {
-	class CSSolution
+	public class CSSolution
 	{
 		public String SolutionPath { get; private set; }
 		protected Solution2 Solution { get; private set; }
@@ -33,6 +32,7 @@ namespace AssemblyRewriter
 			finally
 			{
 				Solution.Close();
+				dte2.Quit();
 			}
 		}
 	}
