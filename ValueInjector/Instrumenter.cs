@@ -75,7 +75,6 @@ namespace ValueInjector
 		public static object Instrument(object value, String FileName, int lineStart, int lineEnd, int colStart, int colEnd, int id)
 		{
 			SourceCodeLocation location = new SourceCodeLocation(FileName, lineStart, lineEnd, colStart, colEnd);
-			//Console.WriteLine(location + "id: " + id + " value: " + value);
 			try
 			{
 				if(IsSaving || !CurrentStatement.Contains(location))
@@ -98,7 +97,8 @@ namespace ValueInjector
 				}
 			}
 			catch(Exception)
-			{//if anything goes wrong just return the value
+			{
+				//if anything goes wrong just return the value
 				return value;
 			}
 		}
