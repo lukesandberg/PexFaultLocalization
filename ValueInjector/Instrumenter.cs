@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace ValueInjector
 {
-	public static class ValueInjector
+	public static class Instrumenter
 	{
 		private static Dictionary<SourceCodeLocation, ValueProfile> profiles;
 
@@ -16,6 +16,14 @@ namespace ValueInjector
 
 		private static SourceCodeLocation CurrentStatement;
 		private static ValueMapping AlternateMapping;
+
+		public static IEnumerable<SourceCodeLocation> CurrentTestStatements
+		{
+			get
+			{
+				return profiles.Where(kvp => kvp.Value.TestsCovered.Contains(CurrentTestName)).Select(kvp => kvp.Key);
+			}
+		}
 
 		public static IEnumerable<ValueMapping> GetAlternateMappings(SourceCodeLocation stmt)
 		{
@@ -27,6 +35,15 @@ namespace ValueInjector
 			return vp.AlternateMappings(CurrentTestName);
 		}
 
+		public static ValueMapping GetCurrentMapping(SourceCodeLocation stmt)
+		{
+			ValueProfile vp;
+			if(!profiles.TryGetValue(stmt, out vp))
+			{
+				return null;
+			}
+			return vp.GetMapping(CurrentTestName);
+		}
 		public static void ApplyMapping(SourceCodeLocation stmt, ValueMapping vm)
 		{
 			IsSaving = false;
@@ -34,7 +51,7 @@ namespace ValueInjector
 			AlternateMapping = vm;
 		}
 
-		static ValueInjector()
+		static Instrumenter()
 		{
 			profiles = new Dictionary<SourceCodeLocation, ValueProfile>();
 		}
@@ -56,27 +73,33 @@ namespace ValueInjector
 			profile.AddValue(CurrentTestName, key, new Value{Type = t, Val = value});
 		}
 
-
 		public static object Instrument(object value, String FileName, int lineStart, int lineEnd, int colStart, int colEnd, int id)
 		{
 			SourceCodeLocation location = new SourceCodeLocation(FileName, lineStart, lineEnd, colStart, colEnd);
-			if(IsSaving || !CurrentStatement.Contains(location))
+			try
 			{
-				if(IsSaving)
-					SaveValue(location, id, value.GetType(), value);
-				return value;
-			}
-			else
-			{
-				Value saved;
-				if(!AlternateMapping.TryGetValue(id, out saved))
+				if(IsSaving || !CurrentStatement.Contains(location))
 				{
+					if(IsSaving)
+						SaveValue(location, id, value.GetType(), value);
 					return value;
 				}
 				else
 				{
-					return saved.Val;
+					Value saved;
+					if(!AlternateMapping.TryGetValue(id, out saved))
+					{
+						return value;
+					}
+					else
+					{
+						return saved.Val;
+					}
 				}
+			}
+			catch(Exception)
+			{//if anything goes wrong just return the value
+				return value;
 			}
 		}
 	}

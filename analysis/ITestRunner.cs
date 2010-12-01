@@ -1,8 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace FaultLocalization
 {
-    interface ITestRunner
+	public sealed class TestResult 
+	{
+		private readonly String name;
+		public String TestName { get {return name;}}
+
+		private readonly bool passed;
+		public bool Passed { get { return passed; } }
+
+		public TestResult(String n, bool b)
+		{
+			name = n;
+			passed = b;
+		}
+	}
+	
+    public interface ITestRunner
     {
-        void RunTests();
+		IEnumerable<String> TestNames { get; }
+        IEnumerable<TestResult> RunTests();
+		TestResult RunTest(String TestName);
     }
 }

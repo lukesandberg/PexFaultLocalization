@@ -12,12 +12,12 @@ using System.Diagnostics;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 using Mono.Cecil.Pdb;
+using FaultLocalization.Util;
 
-namespace AssemblyRewriter
+namespace ValueReplacement
 {
 	public class CodeRewriter
 	{
-		
 		private readonly CSSolution solution;
 		private readonly String TestAssemblyName;
 		public CodeRewriter(String solutionPath, String test_assembly_name)
@@ -25,20 +25,20 @@ namespace AssemblyRewriter
 			solution = new CSSolution(solutionPath);
 			this.TestAssemblyName = test_assembly_name;
 		}
-
-		public void Rewrite(String toDir)
+		/// <summary>
+		/// Rewrites the provided project in place so that it still cooperates with our test running capabilities
+		/// </summary>
+		public void Rewrite()
 		{
-			if(!Directory.Exists(toDir))
-			{
-				Directory.CreateDirectory(toDir);
-			}
-			var rewriters = solution.Projects.Where(p => !String.Equals(p.AssemblyName, TestAssemblyName)).Select(p => new ProjectRewriter(p, toDir));
+			var rewriters = solution.Projects.Where(p => !String.Equals(p.AssemblyName, TestAssemblyName)).Select(p => new ProjectRewriter(p));
+			var test = solution.Projects.Where(p => String.Equals(p.AssemblyName, TestAssemblyName)).First();
+			String dir = Path.GetDirectoryName(test.AssemblyLocation);
 			foreach(var writer in rewriters)
 			{
 				writer.Rewrite();
+				String newLoc = Path.Combine(dir, Path.GetFileName(writer.Proj.AssemblyLocation));
+				File.Copy(writer.Proj.AssemblyLocation, newLoc, true);
 			}
-			var testProject = solution.Projects.Where(p => String.Equals(p.AssemblyName, TestAssemblyName)).Single();
-			File.Copy(testProject.AssemblyLocation, Path.Combine(toDir, Path.GetFileName(testProject.AssemblyLocation)));
 		}
 	}
 }

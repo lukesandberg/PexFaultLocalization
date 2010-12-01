@@ -7,14 +7,36 @@ using Mono.Cecil.Pdb;
 using System.IO;
 using System.Reflection;
 using Mono.Cecil.Cil;
+using FaultLocalization.Util;
 
-namespace AssemblyRewriter
+namespace ValueReplacement
 {
 	class ProjectRewriter
 	{
-		private readonly CSProject Proj;
-		private readonly String outDirectory;
-		private readonly AssemblyDefinition Assembly;
+		private const String BackupExtension = ".prw_bak";
+		private static byte[] _id;
+		private static byte[] RewriterID
+		{
+			get
+			{
+				if(_id == null)
+				{
+					String loc = typeof(ProjectRewriter).Assembly.Location;
+					var hasher = System.Security.Cryptography.SHA512.Create();
+					using(var stream = File.OpenRead(loc))
+					{
+						_id = hasher.ComputeHash(stream);
+					}
+				}
+				return _id;
+			}
+		}
+
+
+		private readonly CSProject _proj;
+		public CSProject Proj {get { return _proj;}}
+
+		private AssemblyDefinition Assembly;
 		private readonly MethodReference instrumentMethod;
 		private static ReaderParameters GetReaderParameters(CSProject proj)
 		{
@@ -26,10 +48,9 @@ namespace AssemblyRewriter
 			_params.AssemblyResolver = resolver;
 			return _params;
 		}
-		public ProjectRewriter(CSProject proj, String outDir)
+		public ProjectRewriter(CSProject proj)
 		{
-			Proj = proj;
-			outDirectory = outDir;
+			_proj = proj;
 			if(!proj.Configuration.Equals("Debug"))
 			{
 				throw new Exception("Target Project must be built in debug mode for proper rewriting");
@@ -42,10 +63,27 @@ namespace AssemblyRewriter
 			{
 				throw new Exception("Unable to open target assembly... has it been built? : " + proj.AssemblyLocation, e);
 			}
-			MethodInfo instrumentMethodInfo = typeof(ValueInjector.ValueInjector).GetMethod("Instrument", new Type[] { typeof(object), typeof(String), typeof(int), typeof(int), typeof(int), typeof(int), typeof(int) });
+			
+			MethodInfo instrumentMethodInfo = typeof(ValueInjector.Instrumenter).GetMethod("Instrument", new Type[] { typeof(object), typeof(String), typeof(int), typeof(int), typeof(int), typeof(int), typeof(int) });
 			instrumentMethod = Assembly.MainModule.Import(instrumentMethodInfo);
-
 		}
+
+		private static bool ArraysEqual<T>(T[] ar1, T[] ar2)
+		{
+			if(ar1.Length == ar2.Length)
+			{
+				for(int i = 0; i < ar1.Length; i++)
+				{
+					if(!ar1[i].Equals(ar2[i]))
+					{
+						return false;
+					}
+				}
+				return true;
+			}
+			return false;
+		}
+
 		private Dictionary<Type, TypeReference> TypeLookup = new Dictionary<Type, TypeReference>();
 		private TypeReference GetTypeReference(Type t)
 		{
@@ -58,18 +96,72 @@ namespace AssemblyRewriter
 			return r;
 		}
 
+		private bool RewritePrepare()
+		{
+			var attribs = Assembly.CustomAttributes
+							.Where(ca => ca.AttributeType.FullName.Equals(typeof(ValueInjector.ValueInjectedAttribute).FullName));
+			if(attribs.Any())
+			{
+				//we have already instrumented this assembly
+				var injected = attribs.First();
+				var arg = injected.ConstructorArguments.First();
+				if(arg.Type.Equals(typeof(byte[])) && ArraysEqual((byte[]) arg.Value, RewriterID))
+				{
+					return false;//we have used the same version
+				}
+				else
+				{
+					//we already rewrote it but we used an old version so we should update it
+					//so we will restore the backup and then proceed as normal
+					RestoreBackup();
+				}
+			}
+			return true;
+		}
+
+		private void RestoreBackup()
+		{
+			String old_file = Proj.AssemblyLocation;
+			String backup = old_file + BackupExtension;
+			File.Copy(backup, old_file, true);
+			File.Delete(backup);
+			Assembly = AssemblyDefinition.ReadAssembly(Proj.AssemblyLocation, GetReaderParameters(Proj));
+		}
+
+		private void MarkAssembly()
+		{
+			var constructorInfo = typeof(ValueInjector.ValueInjectedAttribute).GetConstructor(new Type[] { typeof(byte[]) });
+			var constructor = Assembly.MainModule.Import(constructorInfo);
+			CustomAttribute ca = new CustomAttribute(constructor);
+			ca.ConstructorArguments.Add(new CustomAttributeArgument(GetTypeReference(typeof(byte[])), RewriterID));
+			Assembly.CustomAttributes.Add(ca);
+		}
+
 		public void Rewrite()
 		{
+			if(!RewritePrepare())
+				return;
+			MarkAssembly();
+			
 			var methods = Assembly.Modules
 				.SelectMany(m => m.Types)
 				.SelectMany(t => t.Methods)
 				.Where(m => m.HasBody && m.IsIL);
+
 			foreach(var method in methods)
 			{
 				RewriteMethod(method);
 			}
+			SaveModifications();
+		}
 
-			Assembly.Write(Path.Combine(outDirectory, Path.GetFileName(Proj.AssemblyLocation)));
+		private void SaveModifications()
+		{
+			String directory = Path.GetDirectoryName(Proj.AssemblyLocation);
+			String old_file = Proj.AssemblyLocation;
+			String backup = old_file + BackupExtension;
+			File.Copy(old_file, backup, true);
+			Assembly.Write(old_file);
 		}
 
 		private void RewriteMethod(MethodDefinition method)
@@ -135,15 +227,15 @@ namespace AssemblyRewriter
 				case Code.Ldarg_1:
 					ValueType = method.Parameters[1].ParameterType;
 					should_box = method.Parameters[1].ParameterType.IsValueType;
-					return true;
+					return false;
 				case Code.Ldarg_2:
 					ValueType = method.Parameters[2].ParameterType;
 					should_box = method.Parameters[2].ParameterType.IsValueType;
-					return true;
+					return false;
 				case Code.Ldarg_3:
 					ValueType = method.Parameters[3].ParameterType;
 					should_box = method.Parameters[3].ParameterType.IsValueType;
-					return true;
+					return false;
 				case Code.Ldarg_S:
 					throw new NotImplementedException();
 				case Code.Ldarga:
@@ -155,28 +247,28 @@ namespace AssemblyRewriter
 				case Code.Ldelem_I:
 					should_box = true;
 					ValueType = GetTypeReference(typeof(int));
-					return true;
+					return false;
 				case Code.Ldelem_I1:
 				case Code.Ldelem_I2:
 				case Code.Ldelem_I4:
 					should_box = true;
 					ValueType = GetTypeReference(typeof(Int32));
-					return true;
+					return false;
 				case Code.Ldelem_I8:
-					should_box = true;
+					should_box = false;
 					ValueType = GetTypeReference(typeof(Int64));
-					return true;
+					return false;
 				case Code.Ldelem_R4:
 					should_box = true;
 					ValueType = GetTypeReference(typeof(float));
-					return true;
+					return false;
 				case Code.Ldelem_R8:
 					should_box = true;
 					ValueType = GetTypeReference(typeof(double));
-					return true;
+					return false;
 				case Code.Ldelem_Ref:
 					should_box = false;
-					return true;
+					return false;
 				case Code.Ldelem_U1:
 				case Code.Ldelem_U2:
 				case Code.Ldelem_U4:
@@ -207,7 +299,7 @@ namespace AssemblyRewriter
 				case Code.Ldobj:
 				case Code.Ldsfld:
 				case Code.Ldsflda:
-					return true;
+					return false;
 				case Code.Ldtoken:
 				case Code.Ldvirtftn:
 					return false;//not sure how to handle these yet

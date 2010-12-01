@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using System.IO;
-using FaultLocalization.Util;
 
-namespace AssemblyRewriter
+namespace FaultLocalization.Util
 {
-	class CSProject
+	public class CSProject
 	{
+		#region "Constants"
+		private const string testFrameworkName = "Microsoft.VisualStudio.QualityTools.UnitTestFramework";
+		private const string testProjectGuid = "3AC096D0-A1C2-E12C-1390-A8335801FDAB";
+		#endregion
+
 		public String CSProj { get; private set; }
 		protected String ProjDir
 		{
@@ -129,6 +133,7 @@ namespace AssemblyRewriter
 				return cachedFileNames;
 			}
 		}
+
 		public CSProject(String path)
 		{
 			CSProj = path;

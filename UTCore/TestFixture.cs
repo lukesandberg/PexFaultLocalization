@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -11,7 +11,7 @@ namespace UTCore
 		private TestFixtureAttribute tfa=null;		// one per TF
 		private SetUpAttribute sua=null;			// one per TF
 		private TearDownAttribute tda=null;			// one per TF
-		private ArrayList testList=null;			// many per TF
+		private List<TestAttribute> testList=null;			// many per TF
 
 		public bool HasTestFixture
 		{
@@ -37,7 +37,7 @@ namespace UTCore
 			}
 		}
 
-		public ArrayList Tests
+		public IEnumerable<TestAttribute> Tests
 		{
 			get
 			{
@@ -55,7 +55,7 @@ namespace UTCore
 
 		public TestFixture()
 		{
-			testList=new ArrayList();
+			testList = new List<TestAttribute>();
 		}
 
 		public void AddTestFixtureAttribute(TestFixtureAttribute tfa)

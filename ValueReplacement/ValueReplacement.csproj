@@ -8,8 +8,8 @@
     <ProjectGuid>{E50E8F57-2805-4C0B-B826-754AB1E9C257}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AssemblyRewriter</RootNamespace>
-    <AssemblyName>AssemblyRewriter</AssemblyName>
+    <RootNamespace>ValueReplacement</RootNamespace>
+    <AssemblyName>ValueReplacement</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -35,18 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="envdte100, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="envdte80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="envdte90, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>lib\Mono.Cecil.dll</HintPath>
     </Reference>
@@ -65,9 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IVMP.cs" />
     <Compile Include="CodeRewriter.cs" />
-    <Compile Include="CSProject.cs" />
-    <Compile Include="CSSolution.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectRewriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,6 +63,10 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\analysis\FaultLocalization.csproj">
+      <Project>{FAA3A0C5-8F50-4EFB-9D10-B7E114DA2040}</Project>
+      <Name>FaultLocalization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Util\FaultLocalization.Util.csproj">
       <Project>{E3F74663-FC5A-4E92-B47C-C5B882B63D3B}</Project>
       <Name>FaultLocalization.Util</Name>

@@ -23,12 +23,11 @@ namespace FaultLocalization
         private const string individualTestCommand = "mstest /testcontainer:\"{0}\" /runconfig:\"{1}\" /test:\"{2}\"";
 
         private static string vsInstallDir;
-        
 
         public CoverageTestRunner(TestSuite testSuite)
             :base(testSuite)
         {
-            
+
         }
 
         /// <summary>
@@ -58,7 +57,7 @@ namespace FaultLocalization
             return needsToRun;
         }
 
-        public override void RunTests()
+        public override IEnumerable<TestResult> RunTests()
         {
             var testDllsToRun = DetermineWhichTestsNeedToBeRun();
             GetVisualStudioPathFromRegistry();
@@ -68,8 +67,7 @@ namespace FaultLocalization
                 string AllTestsResultsPath = tests.AllTestsResultsFile(testDllPath);
                 string projectName = Path.GetFileNameWithoutExtension(testDllPath); 
                 if (testDllsToRun[testDllPath] && File.Exists(AllTestsResultsPath))
-                {
-                    
+                {                    
                     Console.Out.WriteLine("Tests have changed for project " + projectName + ".  All tests must be re-run");
                     File.Delete(AllTestsResultsPath);
                 }
@@ -84,9 +82,8 @@ namespace FaultLocalization
                 ClearTestResultsDirectory(testDllPath);
                 RunIndividualTests(testDllPath);
             }
+			return tests.TestResults.Select<ExecutedTest, TestResult>(e => e);
         }
-
-
 
         private void ClearTestResultsDirectory(string testDllPath)
         {
@@ -197,8 +194,14 @@ namespace FaultLocalization
             return proc.ExitCode;
         }
 
+		public override TestResult RunTest(string TestName)
+		{
+			throw new NotImplementedException();
+		}
 
-
-
-    }
+		public override IEnumerable<string> TestNames
+		{
+			get { return tests.TestResults.Select(e => e.Name); }
+		}
+	}
 }
