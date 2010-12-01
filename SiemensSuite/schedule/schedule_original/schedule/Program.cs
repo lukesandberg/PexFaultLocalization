@@ -247,7 +247,7 @@ namespace schedule
 
         public static ArrayList readFile(string path)
         {
-            string line;
+            /*string line;
             StreamReader file = new StreamReader(path);
             ArrayList fileContents = new ArrayList();
             while ((line = file.ReadLine()) != null)
@@ -258,7 +258,9 @@ namespace schedule
                     fileContents.Add(line);
                 }
             }
-
+			*/
+			ArrayList fileContents = new ArrayList();
+			fileContents.AddRange(path.Split(new char[]{'\n', '\r'}, StringSplitOptions.RemoveEmptyEntries));
             return fileContents;
         }
         

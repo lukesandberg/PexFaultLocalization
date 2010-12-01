@@ -14,31 +14,135 @@ using Microsoft.Pex.Framework.Generated;
 
 namespace schedule
 {
-    public partial class ProgramTest
-    {
+	public partial class ProgramTest
+	{
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-[Ignore]
-[PexDescription("the test state was: path bounds exceeded")]
-public void Main885()
+[PexRaisedException(typeof(FormatException))]
+public void MainThrowsFormatException923()
 {
     string[] ss = new string[4];
-    ss[0] = "2";
-    ss[1] = "2";
-    ss[2] = "2";
-    ss[3] = "2";
+    ss[0] = "\0";
+    ss[1] = "\0";
+    ss[2] = "\0";
+    ss[3] = "\0";
     this.Main(ss);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void Main582()
+[PexRaisedException(typeof(FormatException))]
+public void MainThrowsFormatException638()
 {
     string[] ss = new string[4];
-    ss[0] = "2";
-    ss[1] = "2";
-    ss[2] = "2";
-    ss[3] = "input\\ad.1";
+    ss[0] = "\u0001";
+    ss[1] = "\u0001";
+    ss[2] = "\u0001";
+    ss[3] = "\u0001";
     this.Main(ss);
 }
-    }
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+[PexRaisedException(typeof(FormatException))]
+public void MainThrowsFormatException666()
+{
+    string[] ss = new string[4];
+    ss[0] = "-";
+    ss[1] = "-";
+    ss[2] = "-";
+    ss[3] = "-";
+    this.Main(ss);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+[PexRaisedException(typeof(FormatException))]
+public void MainThrowsFormatException900()
+{
+    string[] ss = new string[4];
+    ss[0] = ":";
+    ss[1] = ":";
+    ss[2] = ":";
+    ss[3] = ":";
+    this.Main(ss);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+[PexRaisedException(typeof(FormatException))]
+public void MainThrowsFormatException498()
+{
+    string[] ss = new string[4];
+    ss[0] = "-\0";
+    ss[1] = "-";
+    ss[2] = "-";
+    ss[3] = "-";
+    this.Main(ss);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+[PexRaisedException(typeof(FormatException))]
+public void MainThrowsFormatException682()
+{
+    string[] ss = new string[4];
+    ss[0] = "-0";
+    ss[1] = "-";
+    ss[2] = "-";
+    ss[3] = "-";
+    this.Main(ss);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+[PexRaisedException(typeof(FormatException))]
+public void MainThrowsFormatException385()
+{
+    string[] ss = new string[4];
+    ss[0] = "-0\0";
+    ss[1] = "-";
+    ss[2] = "-";
+    ss[3] = "-";
+    this.Main(ss);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void Main819()
+{
+    string[] ss = new string[4];
+    ss[0] = "1";
+    ss[1] = "1";
+    ss[2] = "1";
+    ss[3] = "3\r\n7";
+    this.Main(ss);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void Main749()
+{
+    string[] ss = new string[4];
+    ss[0] = "1";
+    ss[1] = "1";
+    ss[2] = "1";
+    ss[3] = "5\r\n7";
+    this.Main(ss);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void Main606()
+{
+    string[] ss = new string[4];
+    ss[0] = "1";
+    ss[1] = "1";
+    ss[2] = "1";
+    ss[3] = "6\r\n7";
+    this.Main(ss);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void Main107()
+{
+    string[] ss = new string[4];
+    ss[0] = "1";
+    ss[1] = "1";
+    ss[2] = "1";
+    ss[3] = "6\r\n1 3\r\n6\r\n7";
+    this.Main(ss);
+}
+	}
 }

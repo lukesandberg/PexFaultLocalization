@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ExtendedReflection, Version=0.93.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Moles.Framework, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -59,63 +60,28 @@
       <Name>schedule</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="schedule.Moles.dll">
+      <DependentUpon>schedule.moles</DependentUpon>
+    </Content>
+    <Content Include="schedule.Moles.xml">
+      <DependentUpon>schedule.moles</DependentUpon>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="EleTest.Constructor.g.cs">
       <DependentUpon>EleTest.cs</DependentUpon>
     </Compile>
     <Compile Include="EleTest.cs" />
-    <Compile Include="ProgramTest.addProcess.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramTest.append_ele.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramTest.block_process.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProgramTest.cs" />
-    <Compile Include="ProgramTest.find_nth.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramTest.finish_all_processes.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramTest.finish_process.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramTest.initialize.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramTest.init_prio_queue.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProgramTest.Main.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramTest.new_list.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramTest.new_process.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramTest.quantum_expire.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramTest.readFile.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramTest.schedule.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramTest.unblock_process.g.cs">
-      <DependentUpon>ProgramTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramTest.upgrade_process_prio.g.cs">
       <DependentUpon>ProgramTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\PexAssemblyInfo.cs" />
+    <Compile Include="schedule.Designer.cs">
+      <DependentUpon>schedule.moles</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Moles Include="schedule.moles" />
