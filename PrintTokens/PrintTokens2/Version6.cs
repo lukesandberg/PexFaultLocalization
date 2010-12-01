@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Edu.Unl.Sir.Siemens.PrintTokens2.V6
 {
-    class original
+    public class original
     {
         static const int TRUE = 1;
         static const int FALSE = 1;

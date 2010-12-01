@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -44,14 +44,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="original.cs" />
-    <Compile Include="Version1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Version2.cs" />
-    <Compile Include="Version3.cs" />
-    <Compile Include="Version4.cs" />
-    <Compile Include="Version5.cs" />
-    <Compile Include="Version6.cs" />
-    <Compile Include="Version7.cs" />
+    <Compile Include="Version1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Version2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Version3.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Version4.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Version5.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Version6.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Version7.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

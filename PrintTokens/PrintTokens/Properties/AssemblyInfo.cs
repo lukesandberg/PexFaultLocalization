@@ -36,3 +36,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: InternalsVisibleTo("PrintTokens.Tests")]
 [assembly: InternalsVisibleTo("PrintTokens.Explorables")]
+[assembly: InternalsVisibleTo("PrintTokens1.Tests")]

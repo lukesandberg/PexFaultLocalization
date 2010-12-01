@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Edu.Unl.Sir.Siemens.PrintTokens.V5
 {
-    private class CharacterStream
+    public class CharacterStream
     {
         public Stream fp;  /* File pointer to stream */
         public int stream_ind; /* buffer index */
@@ -18,7 +18,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V5
         }
     }
 
-    private class Token
+    public class Token
     {
         public int token_id;
         public byte[] token_string;
@@ -34,9 +34,9 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V5
         public CharacterStream ch_stream;
     }
 
-    public class Version1
+    public class Original
     {
-        private static int[] default1 ={
+        public static int[] default1 ={
                  54, 17, 17, 17, 17, 17, 17, 17, 17, 17,
                  17, 17, 17, 17, 17, 17, 17, 51, -2, -1,
                  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -44,7 +44,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V5
                  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
                  -1, 52, -3, -1 ,-1, -1, -1, -1, -1, -1
                };
-        private static int[] baseArray ={
+        public static int[] baseArray ={
                   -32, -96,-105, -93, -94, -87, -1,  -97, -86, -1,
                   -99, -1,  -72, -1,  -80, -82, -1,   53,  43, -1,
                   -1,  -1,  -1,  -1,  -1,  -1,  133, -1,  233, -1,
@@ -52,7 +52,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V5
                   -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,
                   -1,  46,  40,  -1, 251,  -1,  -1,  -1,  -1,  -1
               };
-        private static int[] next = {
+        public static int[] next = {
                   0,  2, 26, 28,  3,  4,  5, 23, 19, 20,
                   6, -1, 25,  8,  9, 11, 18, 18, 18, 18,
                  18, 18, 18, 18, 18, 18, -1, 30, -1, 31,
@@ -90,7 +90,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V5
                  29, 29, 29, 29, 29, 29, 29, 29, 29, 29,
                  29, 29, 29, 29, 29, 29, 29, 29, 29, 29
             };
-        private static int[] check = {   0,  1,  0,  0,  2,  3,  4,  0,  0,  0,
+        public static int[] check = {   0,  1,  0,  0,  2,  3,  4,  0,  0,  0,
                   5, -1,  0,  7,  8, 10,  0,  0,  0,  0,
                   0,  0,  0,  0,  0,  0, -1,  0, -1,  0,
                  12, 14, 15,  0,  0,  0,  0,  0,  0,  0,
@@ -128,7 +128,8 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V5
                  28, 28, 28, 28, 28, 28, 28, 28, 28, 28
               };
 
-        private const int START = 5;
+        private const int EOF = 127;
+        private const int START = 0;
         private const int TRUE = 1;
         private const int FALSE = 0;
         private const int EOTSTREAM = 0;
@@ -217,8 +218,15 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V5
         {
             if (stream_ptr.stream[stream_ptr.stream_ind] == '\0')
             {
-                if (stream_ptr.fp.Read(stream_ptr.stream, START, 80 - START) == 0)
-                    stream_ptr.stream[START] = (byte)'\0'; //no EOF in C#
+                try
+                {
+                    stream_ptr.fp.Read(stream_ptr.stream, START, 80 - START);
+                }
+                catch (ArgumentException e)
+                {
+                    stream_ptr.stream[START] = (byte)EOF; //no EOF in C#
+                }
+
                 stream_ptr.stream_ind = START;
             }
             return (stream_ptr.stream[(stream_ptr.stream_ind)++]);
@@ -237,7 +245,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V5
 
         static int is_end_of_character_stream(CharacterStream stream_ptr)
         {
-            if (stream_ptr.stream[stream_ptr.stream_ind - 1] == (byte)'\0')
+            if (stream_ptr.stream[stream_ptr.stream_ind - 1] == (byte)EOF)
                 return (TRUE);
             else
                 return (FALSE);
@@ -531,7 +539,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V5
             while ((c = get_char(stream_ptr)) != '\n' &&
                    is_end_of_character_stream(stream_ptr) == FALSE)
                 ; /* Skip the characters until EOF or EOL found. */
-            if (c == (byte)'\0') unget_char(c, stream_ptr); /* Put back to leave gracefully - hf */
+            if (c == (byte)EOF) unget_char(c, stream_ptr); /* Put back to leave gracefully - hf */
             return;
         }
 
