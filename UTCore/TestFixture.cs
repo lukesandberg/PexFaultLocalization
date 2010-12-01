@@ -8,10 +8,10 @@ namespace UTCore
 {
 	public class TestFixture
 	{
-		private TestFixtureAttribute tfa=null;		// one per TF
-		private SetUpAttribute sua=null;			// one per TF
-		private TearDownAttribute tda=null;			// one per TF
-		private List<TestAttribute> testList=null;			// many per TF
+		private TestFixtureAttribute tfa = null;		// one per TF
+		private SetUpAttribute sua = null;			// one per TF
+		private TearDownAttribute tda = null;			// one per TF
+		private List<TestAttribute> testList = null;			// many per TF
 
 		public bool HasTestFixture
 		{
@@ -60,14 +60,14 @@ namespace UTCore
 
 		public void AddTestFixtureAttribute(TestFixtureAttribute tfa)
 		{
-			this.tfa=tfa;
+			this.tfa = tfa;
 		}
 
 		public void AddSetUpAttribute(SetUpAttribute sua)
 		{
-			if (this.sua==null)
+			if(this.sua == null)
 			{
-				this.sua=sua;
+				this.sua = sua;
 			}
 			else
 			{
@@ -77,9 +77,9 @@ namespace UTCore
 
 		public void AddTearDownAttribute(TearDownAttribute tda)
 		{
-			if (this.tda==null)
+			if(this.tda == null)
 			{
-				this.tda=tda;
+				this.tda = tda;
 			}
 			else
 			{
@@ -95,62 +95,64 @@ namespace UTCore
 		// *****
 		public void RunTests(TestNotificationDelegate testNotificationEvent)
 		{
-			object instance=tfa.CreateClass();
-			foreach (TestAttribute ta in testList)
+			object instance = tfa.CreateClass();
+			foreach(TestAttribute ta in testList)
 			{
-				if (!ta.IgnoreTest())
+				if(!ta.IgnoreTest())
 				{
 					try
 					{
-						if (sua != null) sua.Invoke(instance);
+						if(sua != null)
+							sua.Invoke(instance);
 						ta.Invoke(instance);
 						// If we get here, the test did not throw an exception.
 						// Was it supposed too?
-						if (ta.ExpectedExceptionType != null)
+						if(ta.ExpectedExceptionType != null)
 						{
-							Trace.WriteLine("***Fail***: "+ta.TestMethod.ToString()+" Expected exception not encountered");
-							ta.State=TestAttribute.TestState.Fail;
+							Trace.WriteLine("***Fail***: " + ta.TestMethod.ToString() + " Expected exception not encountered");
+							ta.State = TestAttribute.TestState.Fail;
 						}
 						else
 						{
-							Trace.WriteLine("***Pass***: "+ta.TestMethod.ToString());
-							ta.State=TestAttribute.TestState.Pass;
+							Trace.WriteLine("***Pass***: " + ta.TestMethod.ToString());
+							ta.State = TestAttribute.TestState.Pass;
 						}
 					}
 
 					catch(AssertFailedException e)
 					{
-						Trace.WriteLine("***Fail***: "+ta.TestMethod.ToString()+" Exception="+e.Message);
-						ta.State=TestAttribute.TestState.Fail;
+						Trace.WriteLine("***Fail***: " + ta.TestMethod.ToString() + " Exception=" + e.Message);
+						ta.State = TestAttribute.TestState.Fail;
 					}
 
 					catch(Exception e)
 					{
-						if (e.GetType() != ta.ExpectedExceptionType)
+						if(e.GetType() != ta.ExpectedExceptionType)
 						{
-							Trace.WriteLine("***Fail***: "+ta.TestMethod.ToString()+" Exception="+e.Message);
-							ta.State=TestAttribute.TestState.Fail;
+							Trace.WriteLine("***Fail***: " + ta.TestMethod.ToString() + " Exception=" + e.Message);
+							ta.State = TestAttribute.TestState.Fail;
 						}
 						else
 						{
-							Trace.WriteLine("***Pass***: "+ta.TestMethod.ToString()+" Exception="+e.Message);
-							ta.State=TestAttribute.TestState.Pass;
+							Trace.WriteLine("***Pass***: " + ta.TestMethod.ToString() + " Exception=" + e.Message);
+							ta.State = TestAttribute.TestState.Pass;
 						}
 					}
 					finally
 					{
-						if (tda != null) tda.Invoke(instance);
+						if(tda != null)
+							tda.Invoke(instance);
 					}
 				}
 				else
 				{
-					Trace.WriteLine("***Ignore***: "+ta.TestMethod.ToString());
-					ta.State=TestAttribute.TestState.Ignore;
+					//Trace.WriteLine("***Ignore***: " + ta.TestMethod.ToString());
+					ta.State = TestAttribute.TestState.Ignore;
 				}
-                if (testNotificationEvent != null)
-                {
-                    testNotificationEvent(ta);
-                }
+				if(testNotificationEvent != null)
+				{
+					testNotificationEvent(ta);
+				}
 			}
 		}
 	}

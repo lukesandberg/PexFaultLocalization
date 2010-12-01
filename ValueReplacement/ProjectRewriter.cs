@@ -8,11 +8,12 @@ using System.IO;
 using System.Reflection;
 using Mono.Cecil.Cil;
 using FaultLocalization.Util;
-
+using Mono.Cecil.Rocks;
 namespace ValueReplacement
 {
 	class ProjectRewriter
 	{
+		private const int HiddenLineNumber = 0xfeefee;
 		private const String BackupExtension = ".prw_bak";
 		private static byte[] _id;
 		private static byte[] RewriterID
@@ -34,7 +35,7 @@ namespace ValueReplacement
 
 
 		private readonly CSProject _proj;
-		public CSProject Proj {get { return _proj;}}
+		public CSProject Proj { get { return _proj; } }
 
 		private AssemblyDefinition Assembly;
 		private readonly MethodReference instrumentMethod;
@@ -46,6 +47,15 @@ namespace ValueReplacement
 			var resolver = new DefaultAssemblyResolver();
 			resolver.AddSearchDirectory(Path.GetDirectoryName(proj.AssemblyLocation));
 			_params.AssemblyResolver = resolver;
+			return _params;
+		}
+		private static WriterParameters GetWriterParameters(CSProject proj)
+		{
+			WriterParameters _params = new WriterParameters()
+			{
+				WriteSymbols = true,
+				SymbolWriterProvider = new PdbWriterProvider(),
+			};
 			return _params;
 		}
 		public ProjectRewriter(CSProject proj)
@@ -63,7 +73,7 @@ namespace ValueReplacement
 			{
 				throw new Exception("Unable to open target assembly... has it been built? : " + proj.AssemblyLocation, e);
 			}
-			
+
 			MethodInfo instrumentMethodInfo = typeof(ValueInjector.Instrumenter).GetMethod("Instrument", new Type[] { typeof(object), typeof(String), typeof(int), typeof(int), typeof(int), typeof(int), typeof(int) });
 			instrumentMethod = Assembly.MainModule.Import(instrumentMethodInfo);
 		}
@@ -142,7 +152,7 @@ namespace ValueReplacement
 			if(!RewritePrepare())
 				return;
 			MarkAssembly();
-			
+
 			var methods = Assembly.Modules
 				.SelectMany(m => m.Types)
 				.SelectMany(t => t.Methods)
@@ -161,121 +171,141 @@ namespace ValueReplacement
 			String old_file = Proj.AssemblyLocation;
 			String backup = old_file + BackupExtension;
 			File.Copy(old_file, backup, true);
-			Assembly.Write(old_file);
+			Assembly.Write(old_file, GetWriterParameters(Proj));
 		}
 
 		private void RewriteMethod(MethodDefinition method)
 		{
 			int id = 0;
+			method.Body.SimplifyMacros();
 			var proc = method.Body.GetILProcessor();
 			//we do a ToList here in order to get a copy of the list, that way we don't accidentally 
 			//hook the same instructions twice
-			foreach(var inst in method.Body.Instructions.ToList())
-			{
-				bool should_box;
-				TypeReference type;
-				if(inst.SequencePoint != null && CanHookInstruction(method, inst, out should_box, out type))
+			var toHook = method.Body.Instructions.Where(i => i.SequencePoint != null && !IsHiddenLine(i.SequencePoint)).Select(i =>
 				{
-					List<Instruction> sequence = new List<Instruction>();
-					var location = inst.SequencePoint;
-					var varId = id;
-					id++;
-					//conditionally box the targeted value
-					if(should_box)
-					{
-						sequence.Add(proc.Create(OpCodes.Box, type));
-					}
-					//add all the remaining operands
-					sequence.Add(proc.Create(OpCodes.Ldstr, location.Document.Url));
-					sequence.Add(proc.Create(OpCodes.Ldc_I4, location.StartLine));
-					sequence.Add(proc.Create(OpCodes.Ldc_I4, location.EndLine));
-					sequence.Add(proc.Create(OpCodes.Ldc_I4, location.StartColumn));
-					sequence.Add(proc.Create(OpCodes.Ldc_I4, location.EndColumn));
-					sequence.Add(proc.Create(OpCodes.Ldc_I4, varId));
-					//call our method
-					sequence.Add(proc.Create(OpCodes.Call, instrumentMethod));
-					//if we boxed before we should unbox now
-					if(should_box)
-					{
-						sequence.Add(proc.Create(OpCodes.Unbox, type));
-					}
+					TypeReference tr;
+					var b = CanHookInstruction(method, i, out tr);
+					return new { b, tr, i };
+				}).Where(a => a.b)
+				.ToList();
 
-					//now insert the instructions at the appropriate location
-					var pi = inst;
-					foreach(var ni in sequence)
-					{
-						proc.InsertAfter(pi, ni);
-						pi = ni;
-					}
+			foreach(var a in toHook)
+			{
+				bool should_box = a.tr.IsValueType;
+				List<Instruction> sequence = new List<Instruction>();
+				var location = a.i.SequencePoint;
+				var varId = id;
+				id++;
+				//conditionally box the targeted value
+				if(should_box)
+				{
+					sequence.Add(proc.Create(OpCodes.Box, a.tr));
 				}
+				//add all the remaining operands
+
+				sequence.Add(proc.Create(OpCodes.Castclass, GetTypeReference(typeof(object))));
+				sequence.Add(proc.Create(OpCodes.Ldstr, location.Document.Url));
+				sequence.Add(proc.Create(OpCodes.Ldc_I4, location.StartLine));
+				sequence.Add(proc.Create(OpCodes.Ldc_I4, location.EndLine));
+				sequence.Add(proc.Create(OpCodes.Ldc_I4, location.StartColumn));
+				sequence.Add(proc.Create(OpCodes.Ldc_I4, location.EndColumn));
+				sequence.Add(proc.Create(OpCodes.Ldc_I4, varId));
+				//call our method
+				sequence.Add(proc.Create(OpCodes.Call, instrumentMethod));
+				sequence.Add(proc.Create(OpCodes.Castclass, a.tr));
+
+				//if we boxed before we should unbox now
+				if(should_box)
+				{
+					sequence.Add(proc.Create(OpCodes.Unbox_Any, a.tr));
+				}
+
+				//now insert the instructions at the appropriate location
+				var pi = a.i;
+				foreach(var ni in sequence)
+				{
+					ni.SequencePoint = MakeHiddenLine(location);
+					proc.InsertAfter(pi, ni);
+					pi = ni;
+				}
+
 			}
+			//method.Body.OptimizeMacros();
 		}
 
-		private bool CanHookInstruction(MethodDefinition method, Instruction i, out bool should_box, out TypeReference ValueType)
+		private static bool IsHiddenLine(SequencePoint pt)
 		{
-			should_box = false;
+			return pt.StartLine == HiddenLineNumber && pt.EndLine == HiddenLineNumber;
+		}
+
+		private static SequencePoint MakeHiddenLine(SequencePoint pt)
+		{
+			return new SequencePoint(pt.Document) { EndColumn = 0, StartColumn = 0, EndLine = HiddenLineNumber, StartLine = HiddenLineNumber };
+		}
+
+		private bool CanHookInstruction(MethodDefinition method, Instruction i, out TypeReference ValueType)
+		{
 			ValueType = null;
 			switch(i.OpCode.Code)
 			{
 				#region Load Commands
-				case Code.Ldarg:
-					throw new NotImplementedException();
-				case Code.Ldarg_0:
-					ValueType = method.Parameters[0].ParameterType;
-					should_box = method.Parameters[0].ParameterType.IsValueType;
+				#region locals
+				case Code.Ldloc:
+					var vd = (VariableDefinition) i.Operand;
+					ValueType = vd.VariableType;
 					return true;
+				case Code.Ldloc_0:
+				case Code.Ldloc_1:
+				case Code.Ldloc_2:
+				case Code.Ldloc_3:
+				case Code.Ldloc_S:
+				case Code.Ldloca:
+				case Code.Ldloca_S:
+					throw new NotSupportedException();//we shouldnt see this
+				#endregion
+				#region fields
+				case Code.Ldfld:
+				case Code.Ldflda:
+					throw new NotImplementedException();
+				case Code.Ldsfld:
+				case Code.Ldsflda:
+					throw new NotImplementedException();
+				#endregion
+				#region arguments
+				case Code.Ldarg:
+					var pr = (ParameterReference) i.Operand;
+					ValueType = method.Parameters[pr.Index].ParameterType;
+					return true;
+				case Code.Ldarg_0:
 				case Code.Ldarg_1:
-					ValueType = method.Parameters[1].ParameterType;
-					should_box = method.Parameters[1].ParameterType.IsValueType;
-					return false;
 				case Code.Ldarg_2:
-					ValueType = method.Parameters[2].ParameterType;
-					should_box = method.Parameters[2].ParameterType.IsValueType;
-					return false;
 				case Code.Ldarg_3:
-					ValueType = method.Parameters[3].ParameterType;
-					should_box = method.Parameters[3].ParameterType.IsValueType;
-					return false;
 				case Code.Ldarg_S:
-					throw new NotImplementedException();
+					throw new NotSupportedException();//we shouldnt see this
 				case Code.Ldarga:
-					throw new NotImplementedException();
+					throw new NotImplementedException();//not sure how to do this yet
 				case Code.Ldarga_S:
-					throw new NotImplementedException();
+					throw new NotSupportedException();//we shouldnt see this
+				#endregion
+				#region elements
 				case Code.Ldelem_Any:
-					throw new NotImplementedException();
 				case Code.Ldelem_I:
-					should_box = true;
-					ValueType = GetTypeReference(typeof(int));
-					return false;
 				case Code.Ldelem_I1:
 				case Code.Ldelem_I2:
 				case Code.Ldelem_I4:
-					should_box = true;
-					ValueType = GetTypeReference(typeof(Int32));
-					return false;
 				case Code.Ldelem_I8:
-					should_box = false;
-					ValueType = GetTypeReference(typeof(Int64));
-					return false;
 				case Code.Ldelem_R4:
-					should_box = true;
-					ValueType = GetTypeReference(typeof(float));
-					return false;
 				case Code.Ldelem_R8:
-					should_box = true;
-					ValueType = GetTypeReference(typeof(double));
-					return false;
 				case Code.Ldelem_Ref:
-					should_box = false;
-					return false;
 				case Code.Ldelem_U1:
 				case Code.Ldelem_U2:
 				case Code.Ldelem_U4:
 				case Code.Ldelema:
-				case Code.Ldfld:
-				case Code.Ldflda:
+					throw new NotImplementedException();
+				#endregion
+
 				case Code.Ldftn:
+					return false;//we don't handle method pointers
 				case Code.Ldind_I:
 				case Code.Ldind_I1:
 				case Code.Ldind_I2:
@@ -288,18 +318,11 @@ namespace ValueReplacement
 				case Code.Ldind_U2:
 				case Code.Ldind_U4:
 				case Code.Ldlen:
-				case Code.Ldloc:
-				case Code.Ldloc_0:
-				case Code.Ldloc_1:
-				case Code.Ldloc_2:
-				case Code.Ldloc_3:
-				case Code.Ldloc_S:
-				case Code.Ldloca:
-				case Code.Ldloca_S:
-				case Code.Ldobj:
-				case Code.Ldsfld:
-				case Code.Ldsflda:
 					return false;
+
+				case Code.Ldobj://loads an object
+					throw new NotImplementedException();
+
 				case Code.Ldtoken:
 				case Code.Ldvirtftn:
 					return false;//not sure how to handle these yet
@@ -482,6 +505,12 @@ namespace ValueReplacement
 					return false;
 				#endregion
 			}
+		}
+
+		private VariableDefinition GetLocal(MethodDefinition method, int index)
+		{
+			var scope = method.Body.Scope;
+			return scope.Variables[index];
 		}
 	}
 }

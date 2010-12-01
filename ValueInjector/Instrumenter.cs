@@ -69,13 +69,13 @@ namespace ValueInjector
 				profile = new ValueProfile();
 				profiles[stmt] = profile;
 			}
-
 			profile.AddValue(CurrentTestName, key, new Value{Type = t, Val = value});
 		}
 
 		public static object Instrument(object value, String FileName, int lineStart, int lineEnd, int colStart, int colEnd, int id)
 		{
 			SourceCodeLocation location = new SourceCodeLocation(FileName, lineStart, lineEnd, colStart, colEnd);
+			//Console.WriteLine(location + "id: " + id + " value: " + value);
 			try
 			{
 				if(IsSaving || !CurrentStatement.Contains(location))

@@ -20,10 +20,8 @@ namespace ValueReplacement
 			TestSuite tests = new TestSuite(Path.GetDirectoryName(sln));
 			ReflectionTestRunner runner = new ReflectionTestRunner(tests);
 			RunFaultLocalization(runner);
-			Console.ReadLine();
 		}
 
-		
 		static void RunFaultLocalization(ReflectionTestRunner runner)
 		{
 			var Tests = runner.TestNames.ToList();
@@ -42,27 +40,27 @@ namespace ValueReplacement
 			List<IVMP> ivmps = new List<IVMP>();
 			foreach(var f in FailingTests)
 			{
-				Instrumenter.CurrentTestName = f;
-				foreach(var statement in Instrumenter.CurrentTestStatements)
-				{
-					var alternatives = Instrumenter.GetAlternateMappings(statement).ToList();
-					foreach(var alt in alternatives)
-					{
-						Instrumenter.ApplyMapping(statement, alt);
-						if(runner.RunTest(f).Passed)
-						{
-							//we have found an IVMP
-							ivmps.Add(new IVMP(statement, alt, Instrumenter.GetCurrentMapping(statement)));
-							break;
-						}
-					}
-				}
+			    Instrumenter.CurrentTestName = f;
+			    foreach(var statement in Instrumenter.CurrentTestStatements)
+			    {
+			        foreach(var alt in Instrumenter.GetAlternateMappings(statement))
+			        {
+			            Instrumenter.ApplyMapping(statement, alt);
+			            if(runner.RunTest(f).Passed)
+			            {
+			                //we have found an ivmp
+			                ivmps.Add(new IVMP(statement, alt, Instrumenter.GetCurrentMapping(statement)));
+			                break;
+			            }
+			        }
+			    }
 			}
 
 			foreach(var stmt in ivmps.GroupBy(i => i.Location).OrderByDescending(g => g.Count()).Select(g => g.Key))
 			{
-				Console.Out.WriteLine(stmt.ToString());
+			    Console.Out.WriteLine(stmt);
 			}
+			Console.Read();
 		}
 	}
 }

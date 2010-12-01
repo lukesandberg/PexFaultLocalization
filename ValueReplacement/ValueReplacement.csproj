@@ -44,6 +44,10 @@
     <Reference Include="Mono.Cecil.Pdb">
       <HintPath>lib\Mono.Cecil.Pdb.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Cecil.Rocks, Version=0.9.4.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -75,6 +79,12 @@
       <Project>{572DE8E6-DAE7-4541-81B6-AB0422ACBC6D}</Project>
       <Name>ValueInjector</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\Mono.Cecil.dll" />
+    <Content Include="lib\Mono.Cecil.Mdb.dll" />
+    <Content Include="lib\Mono.Cecil.Pdb.dll" />
+    <Content Include="lib\Mono.Cecil.Rocks.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

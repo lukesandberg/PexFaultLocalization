@@ -33,10 +33,10 @@ namespace FaultLocalization
                 return;
             }
 
-            try
+			try
             {
 				var testRunner = new ReflectionTestRunner(tests);
-				testRunner.RunTests();   
+				testRunner.RunTests();
             }
             catch (Exception ex)
             {
