@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "schedule", "schedule\schedule.csproj", "{2350A2E2-EF80-4ABB-AAD1-0B9B452AE05A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "schedulePUT.Tests", "schedulePUT.Tests\schedulePUT.Tests.csproj", "{6F637466-148E-4753-8D41-39784DA4ED69}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E0FA55DC-D5CA-426F-8E34-61DB3DABA1D4}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		schedule.vsmdi = schedule.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = schedule.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2350A2E2-EF80-4ABB-AAD1-0B9B452AE05A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2350A2E2-EF80-4ABB-AAD1-0B9B452AE05A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2350A2E2-EF80-4ABB-AAD1-0B9B452AE05A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2350A2E2-EF80-4ABB-AAD1-0B9B452AE05A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F637466-148E-4753-8D41-39784DA4ED69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F637466-148E-4753-8D41-39784DA4ED69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F637466-148E-4753-8D41-39784DA4ED69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F637466-148E-4753-8D41-39784DA4ED69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

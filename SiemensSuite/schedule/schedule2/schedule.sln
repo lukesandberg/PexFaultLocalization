@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "schedule", "schedule\schedule.csproj", "{2350A2E2-EF80-4ABB-AAD1-0B9B452AE05A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2350A2E2-EF80-4ABB-AAD1-0B9B452AE05A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2350A2E2-EF80-4ABB-AAD1-0B9B452AE05A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2350A2E2-EF80-4ABB-AAD1-0B9B452AE05A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2350A2E2-EF80-4ABB-AAD1-0B9B452AE05A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
