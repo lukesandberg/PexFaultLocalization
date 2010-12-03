@@ -1,5 +1,6 @@
 using System;
-using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -11,7 +12,7 @@ namespace UTCore
 		private TestFixtureAttribute tfa=null;		// one per TF
 		private SetUpAttribute sua=null;			// one per TF
 		private TearDownAttribute tda=null;			// one per TF
-		private ArrayList testList=null;			// many per TF
+		private IList<TestAttribute> testList=null;			// many per TF
 
 		public bool HasTestFixture
 		{
@@ -37,7 +38,7 @@ namespace UTCore
 			}
 		}
 
-		public ArrayList Tests
+		public IEnumerable<TestAttribute> Tests
 		{
 			get
 			{
@@ -55,7 +56,7 @@ namespace UTCore
 
 		public TestFixture()
 		{
-			testList=new ArrayList();
+			testList=new List<TestAttribute>();
 		}
 
 		public void AddTestFixtureAttribute(TestFixtureAttribute tfa)
@@ -97,61 +98,64 @@ namespace UTCore
 		{
 			object instance=tfa.CreateClass();
 			foreach (TestAttribute ta in testList)
-			{
-				if (!ta.IgnoreTest())
-				{
-					try
-					{
-						if (sua != null) sua.Invoke(instance);
-						ta.Invoke(instance);
-						// If we get here, the test did not throw an exception.
-						// Was it supposed too?
-						if (ta.ExpectedExceptionType != null)
-						{
-							Trace.WriteLine("***Fail***: "+ta.TestMethod.ToString()+" Expected exception not encountered");
-							ta.State=TestAttribute.TestState.Fail;
-						}
-						else
-						{
-							Trace.WriteLine("***Pass***: "+ta.TestMethod.ToString());
-							ta.State=TestAttribute.TestState.Pass;
-						}
-					}
-
-					catch(AssertFailedException e)
-					{
-						Trace.WriteLine("***Fail***: "+ta.TestMethod.ToString()+" Exception="+e.Message);
-						ta.State=TestAttribute.TestState.Fail;
-					}
-
-					catch(Exception e)
-					{
-						if (e.GetType() != ta.ExpectedExceptionType)
-						{
-							Trace.WriteLine("***Fail***: "+ta.TestMethod.ToString()+" Exception="+e.Message);
-							ta.State=TestAttribute.TestState.Fail;
-						}
-						else
-						{
-							Trace.WriteLine("***Pass***: "+ta.TestMethod.ToString()+" Exception="+e.Message);
-							ta.State=TestAttribute.TestState.Pass;
-						}
-					}
-					finally
-					{
-						if (tda != null) tda.Invoke(instance);
-					}
-				}
-				else
-				{
-					Trace.WriteLine("***Ignore***: "+ta.TestMethod.ToString());
-					ta.State=TestAttribute.TestState.Ignore;
-				}
-                if (testNotificationEvent != null)
-                {
-                    testNotificationEvent(ta);
-                }
-			}
+                RunTest(testNotificationEvent, instance, ta);
 		}
+
+        private void RunTest(TestNotificationDelegate testNotificationEvent, object instance, TestAttribute ta)
+        {
+            if (!ta.IgnoreTest())
+            {
+                try
+                {
+                    if (sua != null) sua.Invoke(instance);
+                    ta.Invoke(instance);
+                    // If we get here, the test did not throw an exception.
+                    // Was it supposed too?
+                    if (ta.ExpectedExceptionType != null)
+                    {
+                        Trace.WriteLine("***Fail***: " + ta.TestMethod.ToString() + " Expected exception not encountered");
+                        ta.State = TestAttribute.TestState.Fail;
+                    }
+                    else
+                    {
+                        Trace.WriteLine("***Pass***: " + ta.TestMethod.ToString());
+                        ta.State = TestAttribute.TestState.Pass;
+                    }
+                }
+
+                catch (AssertFailedException e)
+                {
+                    Trace.WriteLine("***Fail***: " + ta.TestMethod.ToString() + " Exception=" + e.Message);
+                    ta.State = TestAttribute.TestState.Fail;
+                }
+
+                catch (Exception e)
+                {
+                    if (e.GetType() != ta.ExpectedExceptionType)
+                    {
+                        Trace.WriteLine("***Fail***: " + ta.TestMethod.ToString() + " Exception=" + e.Message);
+                        ta.State = TestAttribute.TestState.Fail;
+                    }
+                    else
+                    {
+                        Trace.WriteLine("***Pass***: " + ta.TestMethod.ToString() + " Exception=" + e.Message);
+                        ta.State = TestAttribute.TestState.Pass;
+                    }
+                }
+                finally
+                {
+                    if (tda != null) tda.Invoke(instance);
+                }
+            }
+            else
+            {
+                Trace.WriteLine("***Ignore***: " + ta.TestMethod.ToString());
+                ta.State = TestAttribute.TestState.Ignore;
+            }
+            if (testNotificationEvent != null)
+            {
+                testNotificationEvent(ta);
+            }
+        }
 	}
 }

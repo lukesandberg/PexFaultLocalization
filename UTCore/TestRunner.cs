@@ -1,5 +1,6 @@
 using System;
-using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Pex.Framework.Generated;
 
@@ -13,7 +14,7 @@ namespace UTCore
 	public class TestRunner
 	{
 		private AssemblyCollection assemblyCollection;
-		private ArrayList testFixtureList;
+		private IList<TestFixture> testFixtureList;
 		public event TestNotificationDelegate testNotificationEvent;
 		private int numTests;
 
@@ -25,7 +26,7 @@ namespace UTCore
 			}
 		}
 
-		public ArrayList TestFixtures
+		public IEnumerable<TestFixture> TestFixtures
 		{
 			get
 			{
@@ -44,7 +45,7 @@ namespace UTCore
 		public TestRunner()
 		{
 			assemblyCollection=new AssemblyCollection();
-			testFixtureList=new ArrayList();
+			testFixtureList=new List<TestFixture>();
 		}
 
 		public void LoadAssembly(string file)
@@ -140,5 +141,21 @@ namespace UTCore
 				tf.RunTests(testNotificationEvent);
 			}
 		}
+
+        public void RunTests(IEnumerable<string> TestNamePatterns)
+        {
+            var tests = from tf in TestFixtures
+                    select tf.Tests.Where(t => TestNames.Contains(t.TestMethod.MethodName));
+            foreach (var test in tests)
+            {
+                
+
+            }
+        }
+
+        public void RunTest(string TestName)
+        {
+
+        }
 	}
 }

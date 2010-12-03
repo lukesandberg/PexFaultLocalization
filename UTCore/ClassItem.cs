@@ -96,7 +96,7 @@ namespace UTCore
 						if (className==this.className)
 						{
 							string methodName=methodInfo.Name;
-							methodCollection.Add(methodName, new MethodItem(assembly, namespaceName, className, methodName, methodInfo));
+							methodCollection.Add(methodName, new MethodItem(assembly, namespaceName, className, methodInfo));
 						}
 					}
 				}

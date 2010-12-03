@@ -10,7 +10,7 @@ using FaultLocalization;
 
 namespace FaultLocalization
 {
-    class CoverageTestRunner : AbstractTestRunner
+    public class CoverageTestRunner : AbstractTestRunner
     {
         private const string visualStudioKey = "\\SOFTWARE\\Microsoft\\VisualStudio";
         private static string[] visualStudioVersions = { "10.0", "9.0", "8.0", "7.1" };
