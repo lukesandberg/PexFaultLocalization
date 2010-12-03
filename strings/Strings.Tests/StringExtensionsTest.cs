@@ -27,4 +27,18 @@ namespace Strings
 			return result;
 		}
 	}
+	[TestClass]
+	[PexClass(typeof(TestObject))]
+	public partial class TestObjectTest
+	{
+		[PexMethod]
+		public string Do(int i, String s)
+		{
+			var obj = new TestObject(i, s);
+			PexAssume.IsNotNull(obj);
+			string result = obj.Do();
+			PexAssert.IsNotNull(result);
+			return result;
+		}
+	}
 }

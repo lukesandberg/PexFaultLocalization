@@ -24,5 +24,55 @@
             <summary>Sets the mole of <see cref="M:Strings.StringExtensions.Capitalize(T:System.String)"/>
             </summary>
         </member>
+        <member name="T:Strings.Moles.MTestObject">
+            <summary>Mole type of <see cref="T:Strings.TestObject"/>
+            .</summary>
+        </member>
+        <member name="M:Strings.Moles.MTestObject.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Strings.Moles.MTestObject.#ctor(Strings.TestObject)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Strings.Moles.MTestObject.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Strings.Moles.MTestObject.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Strings.Moles.MTestObject.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Strings.Moles.MTestObject.ConstructorInt32String">
+            <summary>Sets the mole of <see cref="M:Strings.TestObject.#ctor(T:System.Int32,T:System.String)"/>
+            </summary>
+        </member>
+        <member name="P:Strings.Moles.MTestObject.Do">
+            <summary>Sets the mole of <see cref="M:Strings.TestObject.Do"/>
+            </summary>
+        </member>
+        <member name="T:Strings.Moles.MTestObject.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Strings.Moles.MTestObject.AllInstances.Do">
+            <summary>Sets the mole of <see cref="M:Strings.TestObject.Do"/>
+            </summary>
+        </member>
+        <member name="T:Strings.Moles.STestObject">
+            <summary>Stub type of <see cref="T:Strings.TestObject"/>
+            .</summary>
+        </member>
+        <member name="M:Strings.Moles.STestObject.#ctor(System.Int32,System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Strings.Moles.STestObject.InitializeStub">
+            <summary>Initializes a new instance of type STestObject</summary>
+        </member>
+        <member name="P:Strings.Moles.STestObject.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:Strings.Moles.STestObject.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
     </members>
 </doc>

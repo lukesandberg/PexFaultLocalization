@@ -67,11 +67,18 @@ namespace ValueReplacement
 			}
 			try
 			{
-				Assembly = AssemblyDefinition.ReadAssembly(proj.AssemblyLocation, GetReaderParameters(proj));
+				try
+				{
+					Assembly = AssemblyDefinition.ReadAssembly(proj.AssemblyLocation, GetReaderParameters(proj));
+				}
+				catch(InvalidOperationException e)//this gets 
+				{
+					RestoreBackup();
+				}
 			}
 			catch(Exception e)
 			{
-				throw new Exception("Unable to open target assembly... has it been built? : " + proj.AssemblyLocation, e);
+				throw new Exception("Unable to open target assembly... try rebuilding : " + proj.AssemblyLocation, e);
 			}
 
 			MethodInfo instrumentMethodInfo = typeof(ValueInjector.Instrumenter).GetMethod("Instrument", new Type[] { typeof(object), typeof(String), typeof(int), typeof(int), typeof(int), typeof(int), typeof(int) });
@@ -129,15 +136,6 @@ namespace ValueReplacement
 			return true;
 		}
 
-		private void RestoreBackup()
-		{
-			String old_file = Proj.AssemblyLocation;
-			String backup = old_file + BackupExtension;
-			File.Copy(backup, old_file, true);
-			File.Delete(backup);
-			Assembly = AssemblyDefinition.ReadAssembly(Proj.AssemblyLocation, GetReaderParameters(Proj));
-		}
-
 		private void MarkAssembly()
 		{
 			var constructorInfo = typeof(ValueInjector.ValueInjectedAttribute).GetConstructor(new Type[] { typeof(byte[]) });
@@ -165,28 +163,54 @@ namespace ValueReplacement
 			SaveModifications();
 		}
 
-		private void SaveModifications()
+		private void BackupFile(String fn)
 		{
-			String directory = Path.GetDirectoryName(Proj.AssemblyLocation);
-			String old_file = Proj.AssemblyLocation;
-			String backup = old_file + BackupExtension;
-			File.Copy(old_file, backup, true);
-			Assembly.Write(old_file, GetWriterParameters(Proj));
+			String backup = fn + BackupExtension;
+			File.Copy(fn, backup, true);
 		}
 
+		private void SaveModifications()
+		{
+			BackupFile(Proj.AssemblyLocation);
+			BackupFile(Path.ChangeExtension(Proj.AssemblyLocation, "pdb"));
+			Assembly.Write(Proj.AssemblyLocation, GetWriterParameters(Proj));
+		}
+		private void UnbackupFile(String fn)
+		{
+			String backup = fn + BackupExtension;
+			if(File.Exists(backup))
+			{
+				File.Copy(backup, fn, true);
+				File.Delete(backup);
+			}
+			throw new Exception("Cannot find backup for " + fn);
+		}
+		private void RestoreBackup()
+		{
+			UnbackupFile(Proj.AssemblyLocation);
+			UnbackupFile(Path.ChangeExtension(Proj.AssemblyLocation, "pdb"));
+			Assembly = AssemblyDefinition.ReadAssembly(Proj.AssemblyLocation, GetReaderParameters(Proj));
+		}
 		private void RewriteMethod(MethodDefinition method)
 		{
 			int id = 0;
 			method.Body.SimplifyMacros();
 			var proc = method.Body.GetILProcessor();
+			//ldfld instructions seem not to have sequence points set... which sucks
+			//however ldfld seems is definetly preceeded by an object reference going onto the stack and hopefully that will have a 
+			//sequence point... so we'll just steal it :)
+			foreach(var ldfld in method.Body.Instructions.Where(i => i.OpCode.Code == Code.Ldfld && i.SequencePoint == null))
+				ldfld.SequencePoint = ldfld.Previous.SequencePoint;
 			//we do a ToList here in order to get a copy of the list, that way we don't accidentally 
 			//hook the same instructions twice
-			var toHook = method.Body.Instructions.Where(i => i.SequencePoint != null && !IsHiddenLine(i.SequencePoint)).Select(i =>
-				{
-					TypeReference tr;
-					var b = CanHookInstruction(method, i, out tr);
-					return new { b, tr, i };
-				}).Where(a => a.b)
+			var toHook = method.Body.Instructions.Where(i => i.SequencePoint != null && !IsHiddenLine(i.SequencePoint))
+				.Select(i =>
+					{
+						TypeReference tr;
+						var b = CanHookInstruction(method, i, out tr);
+						return new { b, tr, i };
+					})
+				.Where(a => a.b)
 				.ToList();
 
 			foreach(var a in toHook)
@@ -264,9 +288,12 @@ namespace ValueReplacement
 					throw new NotSupportedException();//we shouldnt see this
 				#endregion
 				#region fields
-				case Code.Ldfld:
 				case Code.Ldflda:
 					throw new NotImplementedException();
+				case Code.Ldfld:				
+					var fr = (FieldReference) i.Operand;
+					ValueType = fr.FieldType;
+					return true;
 				case Code.Ldsfld:
 				case Code.Ldsflda:
 					throw new NotImplementedException();
@@ -274,6 +301,11 @@ namespace ValueReplacement
 				#region arguments
 				case Code.Ldarg:
 					var pr = (ParameterReference) i.Operand;
+					if(method.HasThis && pr.Equals(method.Body.ThisParameter))
+					{
+						ValueType = method.Body.ThisParameter.ParameterType;
+						return false;//doing value replacement on this is (based on a small amount of observation) a bad idea
+					}
 					ValueType = method.Parameters[pr.Index].ParameterType;
 					return true;
 				case Code.Ldarg_0:
