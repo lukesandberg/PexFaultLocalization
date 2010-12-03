@@ -27,14 +27,6 @@ public void Do522()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(TestObjectTest))]
-public void Do245()
-{
-    string s;
-    s = this.Do(1, (string)null);
-    Assert.AreEqual<string>("null1", s);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(TestObjectTest))]
 [PexRaisedException(typeof(PexAssertFailedException))]
 public void DoThrowsPexAssertFailedException857()
 {
@@ -43,11 +35,43 @@ public void DoThrowsPexAssertFailedException857()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(TestObjectTest))]
-public void Do809()
+[PexRaisedException(typeof(PexAssertFailedException))]
+public void DoThrowsPexAssertFailedException471()
+{
+    string s;
+    s = this.Do(1, (string)null);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(TestObjectTest))]
+public void Do337()
 {
     string s;
     s = this.Do(0, "\0");
-    Assert.AreEqual<string>("\00", s);
+    Assert.AreEqual<string>("\0", s);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(TestObjectTest))]
+public void Do412()
+{
+    string s;
+    s = this.Do(11, (string)null);
+    Assert.AreEqual<string>("null11", s);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(TestObjectTest))]
+public void Do583()
+{
+    string s;
+    s = this.Do(int.MaxValue, (string)null);
+    Assert.AreEqual<string>("null2147483647", s);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(TestObjectTest))]
+public void Do354()
+{
+    string s;
+    s = this.Do(11, "\0");
+    Assert.AreEqual<string>("\011", s);
 }
 	}
 }

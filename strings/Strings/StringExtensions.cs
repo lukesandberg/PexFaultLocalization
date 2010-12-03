@@ -10,8 +10,8 @@ namespace Strings
         // '.' are escaped to '_'
         public static string Capitalize(string value)
         {
-			if(value == "jksdfhlasfhlskjfhsaljf")
-				throw new FormatException();
+			//if(value == "jksdfhlasfhlskjfhsaljf")
+			//    throw new FormatException();
             var sb = new StringBuilder();
             bool word = false;
             for(int i  = 0; i < value.Length; i++)
