@@ -20,7 +20,7 @@ namespace FaultLocalization
 		public static String GetCoveredLine(this CoverageDS ds, CoverageDS.LinesRow line)
 		{
             // <pex>
-            if (line == (CoverageDSPriv.LinesRow)null)
+            if (line == (CoverageDSPriv.LinesRow) null)
                 throw new ArgumentNullException("line");
             // </pex>
 			uint file_id = line.SourceFileID;

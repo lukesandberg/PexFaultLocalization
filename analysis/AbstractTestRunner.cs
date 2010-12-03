@@ -7,7 +7,7 @@ using System.IO;
 
 namespace FaultLocalization
 {
-    abstract class AbstractTestRunner : ITestRunner
+    public abstract class AbstractTestRunner : ITestRunner
     {
         protected TestSuite tests;
 
@@ -19,8 +19,8 @@ namespace FaultLocalization
             tests = testSuite;
         }
 
-       
-
-        public abstract void RunTests();
-    }
+		public abstract IEnumerable<TestResult> RunTests();
+		public abstract TestResult RunTest(string TestName);
+		public abstract IEnumerable<string> TestNames { get; }
+	}
 }

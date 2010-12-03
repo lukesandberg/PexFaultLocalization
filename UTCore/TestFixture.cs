@@ -9,9 +9,9 @@ namespace UTCore
 {
 	public class TestFixture
 	{
-		private TestFixtureAttribute tfa=null;		// one per TF
-		private SetUpAttribute sua=null;			// one per TF
-		private TearDownAttribute tda=null;			// one per TF
+		private TestFixtureAttribute tfa = null;		// one per TF
+		private SetUpAttribute sua = null;			// one per TF
+		private TearDownAttribute tda = null;			// one per TF
 		private IList<TestAttribute> testList=null;			// many per TF
 
 		public bool HasTestFixture
@@ -61,14 +61,14 @@ namespace UTCore
 
 		public void AddTestFixtureAttribute(TestFixtureAttribute tfa)
 		{
-			this.tfa=tfa;
+			this.tfa = tfa;
 		}
 
 		public void AddSetUpAttribute(SetUpAttribute sua)
 		{
-			if (this.sua==null)
+			if(this.sua == null)
 			{
-				this.sua=sua;
+				this.sua = sua;
 			}
 			else
 			{
@@ -78,9 +78,9 @@ namespace UTCore
 
 		public void AddTearDownAttribute(TearDownAttribute tda)
 		{
-			if (this.tda==null)
+			if(this.tda == null)
 			{
-				this.tda=tda;
+				this.tda = tda;
 			}
 			else
 			{
@@ -96,8 +96,8 @@ namespace UTCore
 		// *****
 		public void RunTests(TestNotificationDelegate testNotificationEvent)
 		{
-			object instance=tfa.CreateClass();
-			foreach (TestAttribute ta in testList)
+			object instance = tfa.CreateClass();
+			foreach(TestAttribute ta in testList)
                 RunTest(testNotificationEvent, instance, ta);
 		}
 
@@ -108,6 +108,7 @@ namespace UTCore
                 try
                 {
                     if (sua != null) sua.Invoke(instance);
+							sua.Invoke(instance);
                     ta.Invoke(instance);
                     // If we get here, the test did not throw an exception.
                     // Was it supposed too?
@@ -145,6 +146,7 @@ namespace UTCore
                 finally
                 {
                     if (tda != null) tda.Invoke(instance);
+							tda.Invoke(instance);
                 }
             }
             else

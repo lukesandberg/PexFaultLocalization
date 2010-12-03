@@ -53,6 +53,7 @@ namespace ValueInjector
 				_hash_code = prime * _hash_code + EndLine;
 				_hash_code = prime * _hash_code + StartColumn;
 				_hash_code = prime * _hash_code + EndColumn;
+				calcHashCode = false;
 			}
 			return _hash_code;
 		}
@@ -64,6 +65,11 @@ namespace ValueInjector
 			var startsBefore = (StartLine < other.StartLine || (StartLine == other.StartLine && StartColumn <= other.StartColumn));
 			var endsAfter = (EndLine > other.EndLine || (EndLine == other.EndLine && EndColumn >= other.EndColumn));
 			return startsBefore && endsAfter;
+		}
+
+		public override string ToString()
+		{
+			return FileName + "(" + StartLine + ", " + StartColumn + ") -> (" + EndLine + ", " + EndColumn + ")"; 
 		}
 	}
 	public class Statement

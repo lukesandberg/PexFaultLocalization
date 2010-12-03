@@ -14,7 +14,7 @@ using System.Security;
 
 // System.Runtime.InteropServices
 [assembly: ComVisible(false)]
-[assembly: Guid("c59344a8-a257-4c9d-9e07-a6de3634a0c9")]
+[assembly: Guid("89dcb9c5-9803-40c0-8183-ac3954040911")]
 
 // System
 [assembly: CLSCompliant(false)]

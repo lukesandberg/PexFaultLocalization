@@ -34,6 +34,14 @@ namespace UTCore
 			}
 		}
 
+		public IEnumerable<TestAttribute> Tests
+		{
+			get
+			{
+				return testFixtureList.SelectMany(tf => tf.Tests);
+			}
+		}
+
 		public int NumTests
 		{
 			get

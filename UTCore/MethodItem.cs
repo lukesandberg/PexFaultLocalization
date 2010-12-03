@@ -80,15 +80,8 @@ namespace UTCore
 
 			Type utdType=typeof(UnitTestDelegate);
 			UnitTestDelegate utd=Delegate.CreateDelegate(utdType, classInstance, methodName) as UnitTestDelegate;
-			try
-			{
-				utd();
-			}
-			catch(Exception e)
-			{
-				throw(e);
-			}
-
+			utd();
+			
 // The invoke function allows us to call functions with different parameter lists, and ones that are not public.
 // However, this changes how we handle exceptions
 

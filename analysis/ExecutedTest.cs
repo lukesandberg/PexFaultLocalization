@@ -13,6 +13,10 @@ namespace FaultLocalization
 {
 	public class ExecutedTest
 	{
+		public static implicit operator TestResult(ExecutedTest et)
+		{
+			return new TestResult(et.Name, et.Result);
+		}
 		public static ExecutedTest CreateTest(String trxFileLocation)
 		{
 			var trx_doc = XDocument.Load(trxFileLocation);

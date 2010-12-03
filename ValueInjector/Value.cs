@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ValueInjector
 {
-	internal class Value
+	public class Value
 	{
 		private Type _type;
 
@@ -20,6 +20,10 @@ namespace ValueInjector
 		{
 			get { return _value; }
 			set { _value = value; }
+		}
+		public override string ToString()
+		{
+			return "{" + Type + ": " + Val + "}";
 		}
 	}
 }
