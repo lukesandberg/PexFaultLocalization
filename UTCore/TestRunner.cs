@@ -87,7 +87,7 @@ namespace UTCore
                             
 							try
 							{
-                                if (attr.GetType() ==typeof(TestClassAttribute))
+                                if (attr.GetType() == typeof(TestClassAttribute))
                                 {
                                     TestUnitAttribute tua = new TestFixtureAttribute();
                                     tua.Initialize(ci, null, attr);
