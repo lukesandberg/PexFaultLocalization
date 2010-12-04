@@ -7,7 +7,7 @@ using System.IO;
 
 namespace schedule2
 {   
-    class Program
+    public class Program
     {
         public const int MAXPRIO = 3;
         private const int MAXLOPRIO = 2;
