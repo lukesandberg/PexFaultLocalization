@@ -72,34 +72,4 @@ namespace ValueInjector
 			return FileName + "(" + StartLine + ", " + StartColumn + ") -> (" + EndLine + ", " + EndColumn + ")"; 
 		}
 	}
-	public class Statement
-	{
-		private readonly uint LineNo;
-		private readonly String FileName;
-
-		public Statement(String s, uint l)
-		{
-			FileName = s;
-			LineNo = l;
-		}
-
-		public override bool Equals(object obj)
-		{
-			if(obj == null)
-				return false;
-			if(!(obj is Statement))
-				return false;
-			Statement other = (Statement) obj;
-			return LineNo == other.LineNo && String.Equals(FileName, other.FileName);
-		}
-		public override int GetHashCode()
-		{
-			return (int) (FileName.GetHashCode() * 1021 ^ LineNo);
-
-		}
-		public override string ToString()
-		{
-			return FileName + ":" + LineNo;
-		}
-	}
 }

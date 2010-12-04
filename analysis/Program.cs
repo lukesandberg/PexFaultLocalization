@@ -6,242 +6,208 @@ using Microsoft.VisualStudio.Coverage.Analysis;
 using System.IO;
 using System.Xml.Linq;
 using System.Diagnostics;
+using ValueInjector;
 
 namespace FaultLocalization
 {
-    public class Program
-    {
-        public static void Main(string[] args)
+	public class Program
+	{
+		public static void Main(string[] args)
 		{
-			if(args == (string[])null || args.Length < 1)
+			if(args == (string[]) null || args.Length < 1)
 			{
 				Console.WriteLine("Usage: FaultLocalization.exe <SolutionDir>");
-                Console.WriteLine("<SolutionDir> = full path to solution folder containing the .testconfig file");
+				Console.WriteLine("<SolutionDir> = full path to solution folder containing the .testconfig file");
 				return;
 			}
 
 			String TestResultsPath = args[0];
 			Console.WriteLine("Searching " + TestResultsPath + "...");
-            TestSuite tests;
-            try
-            {
-               tests = new TestSuite(TestResultsPath);
-            }
-            catch (Exception ex)
-            {
-                Die(ex);
-                return;
-            }
+			TestSuite tests;
+			try
+			{
+				tests = new TestSuite(TestResultsPath);
+			}
+			catch(Exception ex)
+			{
+				Die(ex);
+				return;
+			}
 
-            String exePath = Path.Combine(TestResultsPath, "exes");
+			String exePath = Path.Combine(TestResultsPath, "exes");
 
-            foreach (String exe in Directory.GetFiles(exePath))
-            {
-                
-                String projectName = Path.GetFileNameWithoutExtension(TestResultsPath);
-                String solutionOutput = Path.Combine(TestResultsPath, projectName, "bin", "Debug", projectName + ".exe");
+			foreach(String exe in Directory.GetFiles(exePath))
+			{
 
-                Console.WriteLine("Copying " + exe + " to " + solutionOutput);
-                File.Copy(exe, solutionOutput, true);
+				String projectName = Path.GetFileNameWithoutExtension(TestResultsPath);
+				String solutionOutput = Path.Combine(TestResultsPath, projectName, "bin", "Debug", projectName + ".exe");
 
-                try
-                {
-                    var testRunner = new ReflectionTestRunner(tests);
-                    testRunner.RunTests();
-                }
-                catch (Exception ex)
-                {
-                    Die(ex);
-                    return;
-                }
+				Console.WriteLine("Copying " + exe + " to " + solutionOutput);
+				File.Copy(exe, solutionOutput, true);
 
-                var testResults = tests.TestResults;
+				try
+				{
+					var testRunner = new ReflectionTestRunner(tests);
+					testRunner.RunTests();
+				}
+				catch(Exception ex)
+				{
+					Die(ex);
+					return;
+				}
 
-                var ratedLines = BuildDiagnosisMatrix(testResults);
+				var testResults = tests.TestResults;
 
-                var dbbs = GetDynamicBasicBlocks(ratedLines);
+				var ratedLines = BuildDiagnosisMatrix(testResults);
 
-                foreach (Type SuspicousnessRaterType in typeof(ISuspiciousnessRater).TypesImplementingInterface(true))
-                {
-                    ISuspiciousnessRater rater = (ISuspiciousnessRater)SuspicousnessRaterType.GetConstructor(Type.EmptyTypes).Invoke(new object[0]);
-                    rater.RateLines(ratedLines, testResults);
-                }
-                OutputResults(ratedLines);
-            }
-            Console.Read();
+				var dbbs = GetDynamicBasicBlocks(ratedLines);
+
+				foreach(Type SuspicousnessRaterType in typeof(ISuspiciousnessRater).TypesImplementingInterface(true))
+				{
+					ISuspiciousnessRater rater = (ISuspiciousnessRater) SuspicousnessRaterType.GetConstructor(Type.EmptyTypes).Invoke(new object[0]);
+					rater.RateLines(ratedLines, testResults);
+				}
+				OutputResults(ratedLines);
+			}
+			Console.Read();
 		}
 
-        private static IEnumerable<DynamicBasicBlock> GetDynamicBasicBlocks(IEnumerable<Line> ratedLines)
-        {
-            var TestComparer = new EqualityComparer<ExecutedTest>(
-                (left, right) => left.Name == right.Name, 
-                test => test.Name.GetHashCode());
+		private static IEnumerable<DynamicBasicBlock> GetDynamicBasicBlocks(IEnumerable<StatementSuspiciousnessInfo> ratedLines)
+		{
+			var TestComparer = new EqualityComparer<ExecutedTest>(
+				(left, right) => left.Name == right.Name,
+				test => test.Name.GetHashCode());
 
-            var comparer = new EqualityComparer<IEnumerable<ExecutedTest>>(
-                (left, right) => left.SequenceEqual(right, TestComparer),
-                e => e.SumNoOverflow(t => TestComparer.GetHashCode(t)));
+			var comparer = new EqualityComparer<IEnumerable<ExecutedTest>>(
+				(left, right) => left.SequenceEqual(right, TestComparer),
+				e => e.SumNoOverflow(t => TestComparer.GetHashCode(t)));
 
-            IDictionary<IEnumerable<ExecutedTest>, DynamicBasicBlock> dbbs = new Dictionary<IEnumerable<ExecutedTest>, DynamicBasicBlock>(comparer);
-            foreach (Line ratedLine in ratedLines)
-            {
-                DynamicBasicBlock block;
-                if (!dbbs.TryGetValue(ratedLine.Tests, out block))
-                {
-                    block = new DynamicBasicBlock(ratedLine.Tests);
-                    dbbs.Add(ratedLine.Tests, block);
-                }
+			IDictionary<IEnumerable<ExecutedTest>, DynamicBasicBlock> dbbs = new Dictionary<IEnumerable<ExecutedTest>, DynamicBasicBlock>(comparer);
+			foreach(StatementSuspiciousnessInfo ratedLine in ratedLines)
+			{
+				DynamicBasicBlock block;
+				if(!dbbs.TryGetValue(ratedLine.Tests, out block))
+				{
+					block = new DynamicBasicBlock(ratedLine.Tests);
+					dbbs.Add(ratedLine.Tests, block);
+				}
 
-                block.Lines.Add(ratedLine);
-                ratedLine.DBB = block;
-            }
-            return dbbs.Values;
-        }
+				block.Lines.Add(ratedLine);
+				ratedLine.DBB = block;
+			}
+			return dbbs.Values;
+		}
 
-        public static IEnumerable<Line> BuildDiagnosisMatrix(IEnumerable<ExecutedTest> tests)
-        {
-            var testedLines = new Dictionary<LineIdentifier, Line>();
-            uint passed = 0;
-            uint failed = 0;
-            foreach (var test in tests)
-            {
-                Console.WriteLine(test);
+		public static IEnumerable<StatementSuspiciousnessInfo> BuildDiagnosisMatrix(IEnumerable<ExecutedTest> tests)
+		{
+			var testedLines = new Dictionary<SourceCodeLocation, StatementSuspiciousnessInfo>();
+			uint passed = 0;
+			uint failed = 0;
+			foreach(var test in tests)
+			{
+				Console.WriteLine(test);
 
-                if (test.Result)
-                    passed++;
-                else
-                    failed++;
+				if(test.Result)
+					passed++;
+				else
+					failed++;
 
-                CoverageDS data = test.CoverageData;
-                foreach (var line in test.Lines)
-                {
-                    for (uint i = line.LnStart; i <= line.LnEnd; i++)
-                    {
-                        LineIdentifier id = new LineIdentifier(data.SourceFileNames.Where(s => s.SourceFileID == line.SourceFileID).Select(s => s.SourceFileName).First(), i);
-                        Line currentLine;
-                        if (!testedLines.TryGetValue(id, out currentLine))
-                        {
-                            currentLine = new Line(id);
-                            testedLines.Add(id, currentLine);
-                        }
-                        currentLine.Tests.Add(test);
-                    }
-                }
-            }
+				CoverageDS data = test.CoverageData;
+				foreach(var line in test.Lines)
+				{
+					var location = new SourceCodeLocation(data.SourceFileNames.Where(s => s.SourceFileID == line.SourceFileID).Select(s => s.SourceFileName).First(), (int) line.LnStart, (int) line.LnEnd, (int) line.ColStart, (int) line.ColEnd);
+					StatementSuspiciousnessInfo currentLine;
+					if(!testedLines.TryGetValue(location, out currentLine))
+					{
+						currentLine = new StatementSuspiciousnessInfo(location);
+						testedLines.Add(location, currentLine);
+					}
+					currentLine.Tests.Add(test);
+				}
 
-            return testedLines.Values;
-        }
+			}
 
-        public static void OutputResults(IEnumerable<Line> ratedLines)
-        {
-            Debug.Assert(ratedLines.Count() != 0);
+			return testedLines.Values;
+		}
 
-            string output = "results.csv";
-            string delim = ",";
+		public static void OutputResults(IEnumerable<StatementSuspiciousnessInfo> ratedLines)
+		{
+			Debug.Assert(ratedLines.Count() != 0);
 
-            StringBuilder sb = new StringBuilder();
-            sb.Append("File" + delim + "Line #" + delim);
-            foreach (ISuspiciousnessRater rater in ratedLines.First().SuspiciousnessRatings.Keys)
-            {
-                sb.Append(rater.GetType().Name + delim);
-            }
-            sb.AppendLine("DBB Size");
+			string output = "results.csv";
+			string delim = ",";
 
-            //TODO: what's our expected output for value replacement?
-            foreach (var line in ratedLines)
-            {
-                sb.Append(line.Id.FileName + delim);
-                sb.Append(line.Id.LineNo + delim);
-                foreach (var rating in line.SuspiciousnessRatings)
-                {
-                    sb.Append(rating.Value + delim);
-                }
-                sb.Append(line.DBB.Lines.Count);
-                sb.AppendLine();
-                File.WriteAllText(output, sb.ToString());
-            }
-            Console.WriteLine("Results stored in " + Path.GetFullPath(output));
-        }
+			StringBuilder sb = new StringBuilder();
+			sb.Append("File" + delim + "Line #" + delim);
+			foreach(ISuspiciousnessRater rater in ratedLines.First().SuspiciousnessRatings.Keys)
+			{
+				sb.Append(rater.GetType().Name + delim);
+			}
+			sb.AppendLine("DBB Size");
 
-        private static void Die(Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-            Console.Read();
-            Environment.Exit(1);
-        }
-    }
+			//TODO: what's our expected output for value replacement?
+			foreach(var line in ratedLines)
+			{
+				sb.Append(line.Id.FileName + delim);
+				sb.Append(line.Id.LineNo + delim);
+				foreach(var rating in line.SuspiciousnessRatings)
+				{
+					sb.Append(rating.Value + delim);
+				}
+				sb.Append(line.DBB.Lines.Count);
+				sb.AppendLine();
+				File.WriteAllText(output, sb.ToString());
+			}
+			Console.WriteLine("Results stored in " + Path.GetFullPath(output));
+		}
 
-    public class LineIdentifier
-    {
+		private static void Die(Exception ex)
+		{
+			Console.WriteLine(ex.Message);
+			Console.Read();
+			Environment.Exit(1);
+		}
+	}
 
-       public uint LineNo { get; private set; }
-       public String FileName { get; private set; }
+	public class SastatementSuspiciousnessInfo
+	{
+		public SourceCodeLocation Id { get; private set; }
 
-        public LineIdentifier(String s, uint l)
-        {
-            FileName = s;
-            LineNo = l;
-        }
+		public int Passed
+		{
+			get
+			{
+				return Tests.Where(t => t.Result).Count();
+			}
+		}
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            if (!(obj is LineIdentifier)) return false;
-            LineIdentifier other = (LineIdentifier)obj;
-            return LineNo == other.LineNo && String.Equals(FileName, other.FileName);
-        }
-        public override int GetHashCode()
-        {
-            // <pex>
-            Debug.Assert(this.FileName != (string)null, "this.FileName");
-            // </pex>
-            return (int)(FileName.GetHashCode() * 1021 ^ LineNo);
+		public int Failed
+		{
+			get
+			{
+				return Tests.Where(t => !t.Result).Count();
+			}
 
-        }
-        public override string ToString()
-        {
-            return FileName + ":" + LineNo;
-        }
-    }
+		}
 
-    public class Line
-    {
-        public LineIdentifier Id { get; private set; }
+		public IList<ExecutedTest> Tests { get; private set; }
 
-        public int Passed
-        {
-            get
-            {
-                return Tests.Where(t => t.Result).Count();
-            }
-        }
+		public IDictionary<ISuspiciousnessRater, float> SuspiciousnessRatings
+		{
+			get;
+			private set;
+		}
 
-        public int Failed
-        {
-            get
-            {
-                return Tests.Where(t => !t.Result).Count();
-            }
+		public DynamicBasicBlock DBB { get; set; }
 
-        }
-
-        public IList<ExecutedTest> Tests { get; private set; }
-
-        public IDictionary<ISuspiciousnessRater, float> SuspiciousnessRatings
-        {
-            get;
-            private set;
-        }
-
-        public DynamicBasicBlock DBB { get; set; }
-
-        public Line(LineIdentifier id)
-        {
-            this.Id = id;
-            Tests = new List<ExecutedTest>();
-            SuspiciousnessRatings = new Dictionary<ISuspiciousnessRater, float>();
-        }
+		public StatementSuspiciousnessInfo(SourceCodeLocation id)
+		{
+			this.Id = id;
+			Tests = new List<ExecutedTest>();
+			SuspiciousnessRatings = new Dictionary<ISuspiciousnessRater, float>();
+		}
 
 
-        
-    }
+
+	}
 }
