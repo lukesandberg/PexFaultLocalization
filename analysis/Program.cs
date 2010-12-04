@@ -67,7 +67,7 @@ namespace FaultLocalization
 					ISuspiciousnessRater rater = (ISuspiciousnessRater) SuspicousnessRaterType.GetConstructor(Type.EmptyTypes).Invoke(new object[0]);
 					rater.RateLines(ratedLines, testResults);
 				}
-				OutputResults(ratedLines);
+				OutputResults(ratedLines, Path.GetFileNameWithoutExtension(exePath));
 			}
 			Console.Read();
 		}
@@ -130,11 +130,11 @@ namespace FaultLocalization
 			return testedLines.Values;
 		}
 
-		public static void OutputResults(IEnumerable<StatementSuspiciousnessInfo> ratedLines)
+		public static void OutputResults(IEnumerable<StatementSuspiciousnessInfo> ratedLines, String prefix)
 		{
 			Debug.Assert(ratedLines.Count() != 0);
 
-			string output = "results.csv";
+			string output = prefix + "results.csv";
 			string delim = ",";
 
 			StringBuilder sb = new StringBuilder();

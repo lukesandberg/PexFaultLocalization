@@ -56,11 +56,21 @@ namespace ValueReplacement
 			    }
 			}
 
-			foreach(var stmt in ivmps.GroupBy(i => i.Location).OrderByDescending(g => g.Count()).Select(g => g.Key))
+			using(var writer = new StreamWriter(File.OpenWrite("result.csv")))
 			{
-			    Console.Out.WriteLine(stmt);
+				writer.WriteLine("FileName, Start Line, End Line, Start Column, End Column, #IVMPs");
+				var groups = ivmps.Select(i => i.Location).Union(Instrumenter.AllStatements).GroupBy(i => i).OrderByDescending(g => g.Count());
+				foreach(var g in groups)
+				{
+					var line = g.Key;
+					writer.Write(line.FileName + ",");
+					writer.Write(line.StartLine + ",");
+					writer.Write(line.EndLine + ",");
+					writer.Write(line.StartColumn+ ",");
+					writer.Write(line.EndColumn + ",");
+					writer.WriteLine(g.Count() -1);
+				}
 			}
-			Console.Read();
 		}
 	}
 }
