@@ -57,6 +57,7 @@
     <Compile Include="ReflectionTestRunner.cs" />
     <Compile Include="CoverageTestRunner.cs" />
     <Compile Include="StackTraceElement.cs" />
+    <Compile Include="StatementSuspiciousnessInfo.cs" />
     <Compile Include="SuspiciousnessRater.cs" />
     <Compile Include="TestSuite.cs" />
   </ItemGroup>
@@ -78,6 +79,10 @@
     <ProjectReference Include="..\Util\FaultLocalization.Util.csproj">
       <Project>{E3F74663-FC5A-4E92-B47C-C5B882B63D3B}</Project>
       <Name>FaultLocalization.Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ValueInjector\ValueInjector.csproj">
+      <Project>{572DE8E6-DAE7-4541-81B6-AB0422ACBC6D}</Project>
+      <Name>ValueInjector</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

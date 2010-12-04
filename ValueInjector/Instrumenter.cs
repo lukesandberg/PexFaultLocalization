@@ -17,6 +17,14 @@ namespace ValueInjector
 		private static SourceCodeLocation CurrentStatement;
 		private static ValueMapping AlternateMapping;
 
+		public static IEnumerable<SourceCodeLocation> AllStatements
+		{
+			get
+			{
+				return profiles.Select(kvp => kvp.Key);
+			}
+		}
+
 		public static IEnumerable<SourceCodeLocation> CurrentTestStatements
 		{
 			get
