@@ -33,29 +33,41 @@ namespace FaultLocalization
                 return;
             }
 
-			try
-            {
-				var testRunner = new ReflectionTestRunner(tests);
-				testRunner.RunTests();
-            }
-            catch (Exception ex)
-            {
-                Die(ex);
-                return;
-            }
+            String exePath = Path.Combine(TestResultsPath, "exes");
 
-            var testResults = tests.TestResults;
-             
-            var ratedLines = BuildDiagnosisMatrix(testResults);
-
-            var dbbs = GetDynamicBasicBlocks(ratedLines);
-
-            foreach (Type SuspicousnessRaterType in typeof(ISuspiciousnessRater).TypesImplementingInterface(true))
+            foreach (String exe in Directory.GetFiles(exePath))
             {
-                ISuspiciousnessRater rater = (ISuspiciousnessRater)SuspicousnessRaterType.GetConstructor(Type.EmptyTypes).Invoke(new object[0]);
-                rater.RateLines(ratedLines, testResults);
+                
+                String projectName = Path.GetFileNameWithoutExtension(TestResultsPath);
+                String solutionOutput = Path.Combine(TestResultsPath, projectName, "bin", "Debug", projectName + ".exe");
+
+                Console.WriteLine("Copying " + exe + " to " + solutionOutput);
+                File.Copy(exe, solutionOutput, true);
+
+                try
+                {
+                    var testRunner = new ReflectionTestRunner(tests);
+                    testRunner.RunTests();
+                }
+                catch (Exception ex)
+                {
+                    Die(ex);
+                    return;
+                }
+
+                var testResults = tests.TestResults;
+
+                var ratedLines = BuildDiagnosisMatrix(testResults);
+
+                var dbbs = GetDynamicBasicBlocks(ratedLines);
+
+                foreach (Type SuspicousnessRaterType in typeof(ISuspiciousnessRater).TypesImplementingInterface(true))
+                {
+                    ISuspiciousnessRater rater = (ISuspiciousnessRater)SuspicousnessRaterType.GetConstructor(Type.EmptyTypes).Invoke(new object[0]);
+                    rater.RateLines(ratedLines, testResults);
+                }
+                OutputResults(ratedLines);
             }
-            OutputResults(ratedLines);
             Console.Read();
 		}
 
