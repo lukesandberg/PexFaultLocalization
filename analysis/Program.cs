@@ -138,7 +138,7 @@ namespace FaultLocalization
 			string delim = ",";
 
 			StringBuilder sb = new StringBuilder();
-			sb.Append("File" + delim + "Line #" + delim);
+			sb.Append("File" + delim + "Start Line #" + delim + "End Line #" + delim + "Start Column #" + delim + "End Column #" + delim);
 			foreach(ISuspiciousnessRater rater in ratedLines.First().SuspiciousnessRatings.Keys)
 			{
 				sb.Append(rater.GetType().Name + delim);
@@ -149,7 +149,10 @@ namespace FaultLocalization
 			foreach(var line in ratedLines)
 			{
 				sb.Append(line.Id.FileName + delim);
-				sb.Append(line.Id.LineNo + delim);
+				sb.Append(line.Id.StartLine + delim);
+				sb.Append(line.Id.EndLine + delim);
+				sb.Append(line.Id.StartColumn+ delim);
+				sb.Append(line.Id.EndColumn + delim);
 				foreach(var rating in line.SuspiciousnessRatings)
 				{
 					sb.Append(rating.Value + delim);
