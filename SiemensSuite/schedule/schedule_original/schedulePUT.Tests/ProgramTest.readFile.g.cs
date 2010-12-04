@@ -9,23 +9,29 @@
 // compile anymore, you may delete this file and invoke Pex again.
 // </auto-generated>
 using System;
+using System.Collections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Pex.Framework.Generated;
 
-namespace schedule2
+namespace schedule
 {
     public partial class ProgramTest
     {
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void enqueue674()
+public void readFile563()
 {
-    int i;
-    Process s0 = new Process();
-    s0.pid = 0;
-    s0.priority = 0;
-    i = this.enqueue(0, s0);
-    Assert.AreEqual<int>(0, i);
+    ArrayList arrayList;
+    arrayList = this.readFile("\u0f20\n");
+    Assert.IsNotNull((object)arrayList);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void readFile494()
+{
+    ArrayList arrayList;
+    arrayList = this.readFile("\u1040\n\0");
+    Assert.IsNotNull((object)arrayList);
 }
     }
 }

@@ -7,18 +7,18 @@ using System.IO;
 
 namespace schedule2
 {   
-    class Program
+    public class Program
     {
-        private const int MAXPRIO = 3;
+        public const int MAXPRIO = 3;
         private const int MAXLOPRIO = 2;
         private const int BLOCKPRIO = 0;
         private const int CMDSIZE = 20; /* size of command buffer */
 
         /* Scheduling commands */
-        private const int NEW_JOB = 1;
+        private const int NEW_JOB = 1; 
         private const int UPGRADE_PRIO = 2;
         private const int BLOCK = 3;
-        private const int UNBLOCK = 4;
+        private const int UNBLOCK = 4; 
         private const int QUANTUM_EXPIRE = 5;
         private const int FINISH = 6;
         private const int FLUSH = 7;
@@ -36,7 +36,7 @@ namespace schedule2
 
         static Process current_job;
         static int next_pid = 0;
-        static LinkedList<Process>[] prio_queue = new LinkedList<Process>[MAXPRIO + 1]; /* blocked queue is [0] */
+        public static LinkedList<Process>[] prio_queue = new LinkedList<Process>[MAXPRIO + 1]; /* blocked queue is [0] */
         
         public static int enqueue(int prio, Process new_process)
         {
@@ -66,11 +66,11 @@ namespace schedule2
 	            put_end(current_job.priority, current_job);
 	            current_job = null;
             }
-            get_current(); /* Reschedule */
+            getCurrent(); /* Reschedule */
             return(OK);
         }
 
-        public static Process get_current() /* If no current process, get it. Return it */
+        public static Process getCurrent() /* If no current process, get it. Return it */
         {
             int prio;
             if(current_job == null)
@@ -160,7 +160,7 @@ namespace schedule2
         public static int block() /* Put current job in blocked queue */
         {
             Process job;
-            job = get_current();
+            job = getCurrent();
             if(job != null)
             {
 	            current_job = null; /* remove it */
@@ -183,7 +183,7 @@ namespace schedule2
         public static int quantum_expire() /* put current job at end of its queue */
         {
             Process job;
-            job = get_current();
+            job = getCurrent();
             if(job != null)
             {
 	            current_job = null; /* remove it */
@@ -197,7 +197,7 @@ namespace schedule2
         public static int finish() /* Get current job, print it, and zap it. */
         {
             Process job;
-            job = get_current();
+            job = getCurrent();
             if(job != null)
             {
 	            current_job = null;
@@ -318,15 +318,20 @@ namespace schedule2
 
         public static ArrayList readFile(string path)
         {
-            string line;
+            /*string line;
             StreamReader file = new StreamReader(path);
             ArrayList fileContents = new ArrayList();
             while ((line = file.ReadLine()) != null)
             {
                 line = line.Trim();
-                fileContents.Add(line);
+                if (!line.Equals(""))
+                {
+                    fileContents.Add(line);
+                }
             }
-
+			*/
+            ArrayList fileContents = new ArrayList();
+            fileContents.AddRange(path.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries));
             return fileContents;
         }
         
@@ -334,7 +339,7 @@ namespace schedule2
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int command, prio;
             float ratio;

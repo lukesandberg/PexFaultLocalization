@@ -5,7 +5,7 @@ using System.Text;
 
 namespace schedule2
 {
-    class Process
+    public class Process
     {
         public int pid;
         public int priority;

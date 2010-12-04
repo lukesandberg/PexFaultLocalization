@@ -9,23 +9,24 @@
 // compile anymore, you may delete this file and invoke Pex again.
 // </auto-generated>
 using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Pex.Framework.Generated;
 
-namespace schedule2
+namespace schedule
 {
     public partial class ProgramTest
     {
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void enqueue674()
+public void new_list936()
 {
-    int i;
-    Process s0 = new Process();
-    s0.pid = 0;
-    s0.priority = 0;
-    i = this.enqueue(0, s0);
-    Assert.AreEqual<int>(0, i);
+    LinkedList<Ele> linkedList;
+    linkedList = this.new_list();
+    Assert.IsNotNull((object)linkedList);
+    Assert.AreEqual<int>(0, linkedList.Count);
+    Assert.IsNull(linkedList.First);
+    Assert.IsNull(linkedList.Last);
 }
     }
 }

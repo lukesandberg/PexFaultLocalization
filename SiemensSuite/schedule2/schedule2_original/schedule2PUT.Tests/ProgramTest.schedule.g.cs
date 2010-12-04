@@ -128,13 +128,5 @@ public void schedule287()
     i = this.schedule(1, 0, (float)0);
     Assert.AreEqual<int>(0, i);
 }
-[TestMethod]
-[PexGeneratedBy(typeof(ProgramTest))]
-public void schedule220()
-{
-    int i;
-    i = this.schedule(1, 3, (float)0);
-    Assert.AreEqual<int>(0, i);
-}
     }
 }

@@ -18,11 +18,11 @@ namespace schedule2
     {
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-[PexRaisedException(typeof(NullReferenceException))]
-public void blockThrowsNullReferenceException875()
+public void block742()
 {
     int i;
     i = this.block();
+    Assert.AreEqual<int>(0, i);
 }
     }
 }

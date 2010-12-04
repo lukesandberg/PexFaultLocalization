@@ -67,14 +67,20 @@ namespace schedule
         [PexMethod]
         public LinkedList<Ele> del_ele(LinkedList<Ele> d_list, LinkedListNode<Ele> d_ele)
         {
-            PexAssume.IsNotNullOrEmpty(d_list);
-            PexAssume.IsNotNull(d_ele);
-            PexAssume.IsFalse(d_list.Contains(null));
-            PexAssume.IsTrue(d_list.Contains(d_ele.Value));
-            PexAssume.IsNotNull(d_ele.List);
-            if (d_ele.List != null)
+            //PexAssume.IsNotNullOrEmpty(d_list);
+            //PexAssume.IsNotNull(d_ele);
+            if (d_list != null)
             {
-                PexAssume.IsTrue(d_ele.List.Equals(d_list));
+                PexAssume.IsFalse(d_list.Contains(null));
+                if (d_ele != null)
+                {
+                    PexAssume.IsTrue(d_list.Contains(d_ele.Value));
+                    PexAssume.IsNotNull(d_ele.List);
+                    if (d_ele.List != null)
+                    {
+                        PexAssume.IsTrue(d_ele.List.Equals(d_list));
+                    }
+                }                
             }
 
             LinkedList<Ele> result = Program.del_ele(d_list, d_ele);

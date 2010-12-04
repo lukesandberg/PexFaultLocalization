@@ -34,14 +34,6 @@ public void upgrade_prio774()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void upgrade_prio521()
-{
-    int i;
-    i = this.upgrade_prio(2, (float)0);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ProgramTest))]
 public void upgrade_prio751()
 {
     int i;
