@@ -12,20 +12,33 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Pex.Framework.Generated;
 
-namespace schedule2
+namespace schedule
 {
     public partial class ProgramTest
     {
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void enqueue674()
+public void unblock_process567()
 {
-    int i;
-    Process s0 = new Process();
-    s0.pid = 0;
-    s0.priority = 0;
-    i = this.enqueue(0, s0);
-    Assert.AreEqual<int>(0, i);
+    this.unblock_process((float)0);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void unblock_process56701()
+{
+    this.unblock_process((float)0);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void unblock_process57()
+{
+    this.unblock_process((float)0.090000003576278687);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void unblock_process474()
+{
+    this.unblock_process((float)0.18999999761581421);
 }
     }
 }

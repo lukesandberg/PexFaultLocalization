@@ -8,7 +8,7 @@ using System.IO;
 
 namespace schedule
 {
-    class Program
+    public class Program
     {
         private const int NULL = 0;
         private const int NEW_JOB = 1;
@@ -19,12 +19,12 @@ namespace schedule
         private const int FINISH = 6;
         private const int FLUSH = 7;
 
-        private const int MAXPRIO = 3;
+        public const int MAXPRIO = 3;
 
         private static int alloc_proc_num;
         private static int num_processes;
         private static LinkedListNode<Ele> cur_proc;
-        private static LinkedList<Ele>[] prio_queue = new LinkedList<Ele>[MAXPRIO + 1]; 	/* 0th element unused */
+        public static LinkedList<Ele>[] prio_queue = new LinkedList<Ele>[MAXPRIO + 1]; 	/* 0th element unused */
         private static LinkedList<Ele> block_queue;
 
         /*-----------------------------------------------------------------------------
@@ -217,7 +217,7 @@ namespace schedule
             return proc;
         }
 
-        public static void add_process(int prio)
+        public static void addProcess(int prio)
         {
             Ele proc;
             proc = new_process(prio);
@@ -247,15 +247,20 @@ namespace schedule
 
         public static ArrayList readFile(string path)
         {
-            string line;
+            /*string line;
             StreamReader file = new StreamReader(path);
             ArrayList fileContents = new ArrayList();
             while ((line = file.ReadLine()) != null)
             {
                 line = line.Trim();
-                fileContents.Add(line);
+                if (!line.Equals(""))
+                {
+                    fileContents.Add(line);
+                }
             }
-
+			*/
+            ArrayList fileContents = new ArrayList();
+            fileContents.AddRange(path.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries));
             return fileContents;
         }
         
@@ -264,7 +269,7 @@ namespace schedule
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int command;
             int prio;
@@ -347,7 +352,7 @@ namespace schedule
                             return;
                         }
                         else
-                            add_process(prio);
+                            addProcess(prio);
                         break;
                     case FLUSH:
                         finish_all_processes();

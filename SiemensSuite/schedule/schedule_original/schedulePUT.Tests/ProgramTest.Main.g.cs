@@ -14,168 +14,73 @@ using Microsoft.Pex.Framework.Generated;
 
 namespace schedule
 {
-	public partial class ProgramTest
-	{
+    public partial class ProgramTest
+    {
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-[PexRaisedException(typeof(FormatException))]
-public void MainThrowsFormatException396()
-{
-    string[] ss = new string[4];
-    ss[0] = "\0";
-    ss[1] = "\0";
-    ss[2] = "\0";
-    ss[3] = "\0";
-    this.Main(ss);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ProgramTest))]
-[PexRaisedException(typeof(FormatException))]
-public void MainThrowsFormatException988()
-{
-    string[] ss = new string[4];
-    ss[0] = "\u0001";
-    ss[1] = "\u0001";
-    ss[2] = "\u0001";
-    ss[3] = "\u0001";
-    this.Main(ss);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ProgramTest))]
-[PexRaisedException(typeof(FormatException))]
-public void MainThrowsFormatException996()
-{
-    string[] ss = new string[4];
-    ss[0] = "-";
-    ss[1] = "-";
-    ss[2] = "-";
-    ss[3] = "-";
-    this.Main(ss);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ProgramTest))]
-[PexRaisedException(typeof(FormatException))]
-public void MainThrowsFormatException179()
-{
-    string[] ss = new string[4];
-    ss[0] = ":";
-    ss[1] = ":";
-    ss[2] = ":";
-    ss[3] = ":";
-    this.Main(ss);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ProgramTest))]
-[PexRaisedException(typeof(FormatException))]
-public void MainThrowsFormatException960()
-{
-    string[] ss = new string[4];
-    ss[0] = "-\0";
-    ss[1] = "-";
-    ss[2] = "-";
-    ss[3] = "-";
-    this.Main(ss);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ProgramTest))]
-[PexRaisedException(typeof(FormatException))]
-public void MainThrowsFormatException946()
-{
-    string[] ss = new string[4];
-    ss[0] = "-0";
-    ss[1] = "-";
-    ss[2] = "-";
-    ss[3] = "-";
-    this.Main(ss);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ProgramTest))]
-[PexRaisedException(typeof(FormatException))]
-public void MainThrowsFormatException990()
-{
-    string[] ss = new string[4];
-    ss[0] = "-0\0";
-    ss[1] = "-";
-    ss[2] = "-";
-    ss[3] = "-";
-    this.Main(ss);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ProgramTest))]
-public void Main980()
+public void Main819()
 {
     string[] ss = new string[4];
     ss[0] = "1";
     ss[1] = "1";
     ss[2] = "1";
-    ss[3] = "5\r\n6";
+    ss[3] = "3\r\n7";
     this.Main(ss);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void Main199()
+public void Main749()
 {
     string[] ss = new string[4];
     ss[0] = "1";
     ss[1] = "1";
     ss[2] = "1";
-    ss[3] = "3\r\n6";
+    ss[3] = "5\r\n7";
     this.Main(ss);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void Main175()
+public void Main606()
 {
     string[] ss = new string[4];
     ss[0] = "1";
     ss[1] = "1";
     ss[2] = "1";
-    ss[3] = "7\r\n6";
+    ss[3] = "6\r\n7";
     this.Main(ss);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void Main481()
+public void Main986()
 {
     string[] ss = new string[4];
     ss[0] = "1";
     ss[1] = "1";
     ss[2] = "1";
-    ss[3] = "5\r\n5\r\n4 0.11\r\n6";
+    ss[3] = "1 2\r\n1 2\r\n5\r\n7";
     this.Main(ss);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void Main80()
+public void Main914()
 {
     string[] ss = new string[4];
     ss[0] = "1";
     ss[1] = "1";
     ss[2] = "1";
-    ss[3] = "7\r\n7\r\n4 0.11\r\n6";
+    ss[3] = "6\r\n6\r\n1 2\r\n7";
     this.Main(ss);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void Main609()
+public void Main87()
 {
     string[] ss = new string[4];
     ss[0] = "1";
     ss[1] = "1";
     ss[2] = "1";
-    ss[3] = "7\r\n3\r\n4 0.11\r\n6";
+    ss[3] = "5\r\n5\r\n7";
     this.Main(ss);
 }
-[TestMethod]
-[PexGeneratedBy(typeof(ProgramTest))]
-public void Main186()
-{
-    string[] ss = new string[4];
-    ss[0] = "1";
-    ss[1] = "1";
-    ss[2] = "1";
-    ss[3] = "1 1\r\n1 2\r\n1 2\r\n6";
-    this.Main(ss);
-}
-	}
+    }
 }

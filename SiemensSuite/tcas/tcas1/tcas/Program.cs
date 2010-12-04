@@ -172,7 +172,7 @@ namespace tcas
             Own_Tracked_Alt = Int32.Parse(args[3]); // atoi(argv[4]);
             Own_Tracked_Alt_Rate = Int32.Parse(args[4]); // atoi(argv[5]);
             Other_Tracked_Alt = Int32.Parse(args[5]); // atoi(argv[6]);
-            Alt_Layer_Value = Int32.Parse(args[6]); // atoi(argv[7]);
+            Alt_Layer_Value = Int32.Parse(args[6]); // atoi(argv[7]); 
             Up_Separation = Int32.Parse(args[7]); // atoi(argv[8]);
             Down_Separation = Int32.Parse(args[8]); // atoi(argv[9]);
             Other_RAC = Int32.Parse(args[9]); // atoi(argv[10]);

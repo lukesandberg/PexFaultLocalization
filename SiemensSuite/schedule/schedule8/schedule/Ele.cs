@@ -5,7 +5,7 @@ using System.Text;
 
 namespace schedule
 {
-    class Ele
+    public class Ele
     {
         public int val;
         public int priority;

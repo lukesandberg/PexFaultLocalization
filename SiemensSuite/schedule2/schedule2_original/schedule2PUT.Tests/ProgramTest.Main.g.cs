@@ -18,15 +18,68 @@ namespace schedule2
     {
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-[Ignore]
-[PexDescription("the test state was: path bounds exceeded")]
-public void Main885()
+public void Main819()
 {
     string[] ss = new string[4];
-    ss[0] = "2";
-    ss[1] = "2";
-    ss[2] = "2";
-    ss[3] = "2";
+    ss[0] = "1";
+    ss[1] = "1";
+    ss[2] = "1";
+    ss[3] = "3\r\n7";
+    this.Main(ss);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void Main606()
+{
+    string[] ss = new string[4];
+    ss[0] = "1";
+    ss[1] = "1";
+    ss[2] = "1";
+    ss[3] = "6\r\n7";
+    this.Main(ss);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void Main749()
+{
+    string[] ss = new string[4];
+    ss[0] = "1";
+    ss[1] = "1";
+    ss[2] = "1";
+    ss[3] = "5\r\n7";
+    this.Main(ss);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void Main143()
+{
+    string[] ss = new string[4];
+    ss[0] = "1";
+    ss[1] = "1";
+    ss[2] = "1";
+    ss[3] = "5\r\n6\r\n7";
+    this.Main(ss);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void Main87()
+{
+    string[] ss = new string[4];
+    ss[0] = "1";
+    ss[1] = "1";
+    ss[2] = "1";
+    ss[3] = "5\r\n5\r\n7";
+    this.Main(ss);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void Main63()
+{
+    string[] ss = new string[4];
+    ss[0] = "1";
+    ss[1] = "1";
+    ss[2] = "1";
+    ss[3] = "6\r\n6\r\n7";
     this.Main(ss);
 }
     }

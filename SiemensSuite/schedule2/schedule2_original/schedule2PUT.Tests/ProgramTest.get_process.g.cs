@@ -18,15 +18,15 @@ namespace schedule2
     {
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void get_process338()
+public void get_process610()
 {
     int i;
     Process process = (Process)null;
     i = this.get_process(0, (float)0, ref process);
     Assert.AreEqual<int>(1, i);
     Assert.IsNotNull((object)process);
-    Assert.AreEqual<int>(0, process.pid);
-    Assert.AreEqual<int>(0, process.priority);
+    Assert.AreEqual<int>(68, process.pid);
+    Assert.AreEqual<int>(3, process.priority);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]

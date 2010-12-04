@@ -6,6 +6,7 @@ using Microsoft.Pex.Framework;
 using Microsoft.Pex.Framework.Validation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using schedule2;
+using System.Text.RegularExpressions;
 
 namespace schedule2
 {
@@ -17,28 +18,18 @@ namespace schedule2
     public partial class ProgramTest
     {
         /// <summary>Test stub for Main(String[])</summary>
-        [PexMethod]
+        [PexMethod(MaxRuns = 10000, MaxConditions = 10000, MaxRunsWithoutNewTests = 1000000000, MaxConstraintSolverTime = 1000000000)]
         public void Main(string[] args)
         {
-            short x;
-            string[] filePaths = Directory.GetFiles(@"input");
-            ArrayList fp = new ArrayList(filePaths);
             PexAssume.IsNotNullOrEmpty(args);
             PexAssume.IsTrue(args.Length == 4);
-            for (int i = 0; i < args.Length; i++)
-            {
-                PexAssume.IsNotNullOrEmpty(args[i]);
-                if (i != 3)
-                {
-                    PexAssume.IsTrue(Int16.TryParse(args[i], out x));
-                    PexAssume.IsTrue(Int16.Parse(args[i]) > 0);
-                    PexAssume.IsFalse(args[i].Contains("\0"));
-                }
-                else
-                {
-                    PexAssume.IsTrue(fp.Contains(args[3]));
-                }
-            }
+            PexAssume.TrueForAll(0, 4, i => !String.IsNullOrEmpty(args[i]));
+            PexAssume.TrueForAll(0, 3, i => int.Parse(args[i]) > 0 && int.Parse(args[i]) < 100);
+            PexAssume.IsNotNull(args[3]);
+            PexAssume.IsFalse(args[3].Contains("\0"));
+            String re = @"^(((1 [123])|(2 [12] \.[0-9]{2})|3|(4 \.[0-9]{2})|5|6)
+)+7$";
+            PexAssume.IsTrue(Regex.IsMatch(args[3], re, RegexOptions.Multiline | RegexOptions.Compiled));
 
             Program.Main(args);
             // TODO: add assertions to method ProgramTest.Main(String[])
@@ -147,12 +138,15 @@ namespace schedule2
         [PexMethod]
         public ArrayList readFile(string path)
         {
-            PexAssume.IsNotNullOrEmpty(path);            
-            string[] filePaths = Directory.GetFiles(@"input");
+            PexAssume.IsNotNullOrEmpty(path);
+            /*string[] filePaths = Directory.GetFiles(@"input");
             ArrayList fp = new ArrayList(filePaths);
-            PexAssume.IsTrue(fp.Contains(path) && !path.Contains("\0"));            
-
+            PexAssume.IsTrue(fp.Contains(path));
+			*/
+            PexAssume.IsTrue(Regex.IsMatch(path, @"(\d+(\s+\d+)*)\n+", RegexOptions.Multiline));
             ArrayList result = Program.readFile(path);
+            PexAssert.IsNotNull(result);           
+
             return result;
             // TODO: add assertions to method ProgramTest.readFile(String)
         }
