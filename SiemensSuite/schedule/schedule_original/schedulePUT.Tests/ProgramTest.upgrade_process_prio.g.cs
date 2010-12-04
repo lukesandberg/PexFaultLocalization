@@ -24,21 +24,15 @@ public void upgrade_process_prio321()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void upgrade_process_prio196()
+public void upgrade_process_prio732()
 {
-    this.upgrade_process_prio(2, (float)0);
+    this.upgrade_process_prio(1, (float)3.1415927410125732);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
 public void upgrade_process_prio668()
 {
     this.upgrade_process_prio(3, (float)0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ProgramTest))]
-public void upgrade_process_prio732()
-{
-    this.upgrade_process_prio(1, (float)3.1415927410125732);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
@@ -51,6 +45,12 @@ public void upgrade_process_prio73201()
 public void upgrade_process_prio73202()
 {
     this.upgrade_process_prio(1, (float)3.1415927410125732);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ProgramTest))]
+public void upgrade_process_prio32101()
+{
+    this.upgrade_process_prio(0, (float)0);
 }
     }
 }

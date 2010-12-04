@@ -30,9 +30,9 @@ public void addProcess539()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void addProcess258()
+public void addProcess5201()
 {
-    this.addProcess(1);
+    this.addProcess(0);
 }
     }
 }

@@ -73,24 +73,13 @@ public void Main914()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void Main275()
+public void Main87()
 {
     string[] ss = new string[4];
     ss[0] = "1";
     ss[1] = "1";
     ss[2] = "1";
-    ss[3] = "4 .01\r\n5\r\n5\r\n7";
-    this.Main(ss);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ProgramTest))]
-public void Main365()
-{
-    string[] ss = new string[4];
-    ss[0] = "1";
-    ss[1] = "1";
-    ss[2] = "1";
-    ss[3] = "4 .01\r\n3\r\n3\r\n7";
+    ss[3] = "5\r\n5\r\n7";
     this.Main(ss);
 }
     }

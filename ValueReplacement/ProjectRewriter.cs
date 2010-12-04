@@ -191,19 +191,23 @@ namespace ValueReplacement
 			UnbackupFile(Path.ChangeExtension(Proj.AssemblyLocation, "pdb"));
 			Assembly = AssemblyDefinition.ReadAssembly(Proj.AssemblyLocation, GetReaderParameters(Proj));
 		}
+		private IEnumerable<Instruction> PreviousIterator(Instruction i)
+		{
+			while(i.Previous != null)
+			{
+				i = i.Previous;
+				yield return i;
+			}
+		}
 		private void RewriteMethod(MethodDefinition method)
 		{
 			int id = 0;
 			method.Body.SimplifyMacros();
 			var proc = method.Body.GetILProcessor();
-			//ldfld instructions seem not to have sequence points set... which sucks
-			//however ldfld seems is definetly preceeded by an object reference going onto the stack and hopefully that will have a 
-			//sequence point... so we'll just steal it :)
-			foreach(var ldfld in method.Body.Instructions.Where(i => i.OpCode.Code == Code.Ldfld && i.SequencePoint == null))
-				ldfld.SequencePoint = ldfld.Previous.SequencePoint;
+			
 			//we do a ToList here in order to get a copy of the list, that way we don't accidentally 
 			//hook the same instructions twice
-			var toHook = method.Body.Instructions.Where(i => i.SequencePoint != null && !IsHiddenLine(i.SequencePoint))
+			var toHook = method.Body.Instructions.Where(i => !IsHiddenLine(i.SequencePoint))
 				.Select(i =>
 					{
 						TypeReference tr;
@@ -217,7 +221,8 @@ namespace ValueReplacement
 			{
 				bool should_box = a.tr.IsValueType;
 				List<Instruction> sequence = new List<Instruction>();
-				var location = a.i.SequencePoint;
+				//some instructions randomly don't have
+				var location = a.i.SequencePoint ?? PreviousIterator(a.i).Where(i => i.SequencePoint != null && !IsHiddenLine(i.SequencePoint)).First().SequencePoint;
 				var varId = id;
 				id++;
 				//conditionally box the targeted value
@@ -227,7 +232,7 @@ namespace ValueReplacement
 				}
 				//add all the remaining operands
 
-				sequence.Add(proc.Create(OpCodes.Castclass, GetTypeReference(typeof(object))));
+				//sequence.Add(proc.Create(OpCodes.Castclass, GetTypeReference(typeof(object))));
 				sequence.Add(proc.Create(OpCodes.Ldstr, location.Document.Url));
 				sequence.Add(proc.Create(OpCodes.Ldc_I4, location.StartLine));
 				sequence.Add(proc.Create(OpCodes.Ldc_I4, location.EndLine));
@@ -236,7 +241,7 @@ namespace ValueReplacement
 				sequence.Add(proc.Create(OpCodes.Ldc_I4, varId));
 				//call our method
 				sequence.Add(proc.Create(OpCodes.Call, instrumentMethod));
-				sequence.Add(proc.Create(OpCodes.Castclass, a.tr));
+				//sequence.Add(proc.Create(OpCodes.Castclass, a.tr));
 
 				//if we boxed before we should unbox now
 				if(should_box)
@@ -259,7 +264,7 @@ namespace ValueReplacement
 
 		private static bool IsHiddenLine(SequencePoint pt)
 		{
-			return pt.StartLine == HiddenLineNumber && pt.EndLine == HiddenLineNumber;
+			return pt!= null && pt.StartLine == HiddenLineNumber && pt.EndLine == HiddenLineNumber;
 		}
 
 		private static SequencePoint MakeHiddenLine(SequencePoint pt)
@@ -289,14 +294,13 @@ namespace ValueReplacement
 				#endregion
 				#region fields
 				case Code.Ldflda:
+				case Code.Ldsflda:
 					throw new NotImplementedException();
-				case Code.Ldfld:				
+				case Code.Ldfld:
+				case Code.Ldsfld:
 					var fr = (FieldReference) i.Operand;
 					ValueType = fr.FieldType;
 					return true;
-				case Code.Ldsfld:
-				case Code.Ldsflda:
-					throw new NotImplementedException();
 				#endregion
 				#region arguments
 				case Code.Ldarg:
@@ -304,7 +308,7 @@ namespace ValueReplacement
 					if(method.HasThis && pr.Equals(method.Body.ThisParameter))
 					{
 						ValueType = method.Body.ThisParameter.ParameterType;
-						return false;//doing value replacement on this is (based on a small amount of observation) a bad idea
+						return false;//doing value replacement on 'this' is (based on a small amount of observation) a bad idea
 					}
 					ValueType = method.Parameters[pr.Index].ParameterType;
 					return true;

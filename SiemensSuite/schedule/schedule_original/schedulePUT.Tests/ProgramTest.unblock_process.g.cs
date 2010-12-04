@@ -30,15 +30,15 @@ public void unblock_process56701()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void unblock_process7()
+public void unblock_process57()
 {
-    this.unblock_process((float)0.10000000149011612);
+    this.unblock_process((float)0.090000003576278687);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ProgramTest))]
-public void unblock_process723()
+public void unblock_process474()
 {
-    this.unblock_process((float)double.NegativeInfinity);
+    this.unblock_process((float)0.18999999761581421);
 }
     }
 }
