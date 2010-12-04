@@ -8,12 +8,12 @@ namespace FaultLocalization
     public class DynamicBasicBlock
     {
         public IEnumerable<ExecutedTest> Tests { get; private set; }
-        public ISet<Line> Lines { get; private set; }
+        public ISet<StatementSuspiciousnessInfo> Lines { get; private set; }
 
         public DynamicBasicBlock(IEnumerable<ExecutedTest> tests) 
         {
             Tests = tests;
-            Lines = new HashSet<Line>();
+            Lines = new HashSet<StatementSuspiciousnessInfo>();
         }
     }
 }
