@@ -28,8 +28,8 @@ namespace schedule
 			PexAssume.TrueForAll(0, 3, i => int.Parse(args[i]) > 0 && int.Parse(args[i]) < 100);
 			PexAssume.IsNotNull(args[3]);
 			PexAssume.IsFalse(args[3].Contains("\0"));
-			String re = @"^(((1 [123])|(2 [12] \.[0-9]{2})|3|(4 \.[0-9]{2})|5|6)
-)+7$";
+			String re = @"^(((1 [123])|(2 [12] 0\.[0-9]{2})|3|(4 0\.[0-9]{2})|5|7)
+)+6$";
 			PexAssume.IsTrue(Regex.IsMatch(args[3], re, RegexOptions.Multiline | RegexOptions.Compiled));
 			Program.Main(args);
             // TODO: add assertions to method ProgramTest.Main(String[])
