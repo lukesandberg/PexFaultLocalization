@@ -23,21 +23,21 @@ namespace FaultLocalization
 
 			String TestResultsPath = args[0];
 			Console.WriteLine("Searching " + TestResultsPath + "...");
-			TestSuite tests;
-			try
-			{
-				tests = new TestSuite(TestResultsPath);
-			}
-			catch(Exception ex)
-			{
-				Die(ex);
-				return;
-			}
 
 			String exePath = Path.Combine(TestResultsPath, "exes");
 
 			foreach(String exe in Directory.GetFiles(exePath))
 			{
+                TestSuite tests;
+                try
+                {
+                    tests = new TestSuite(TestResultsPath);
+                }
+                catch (Exception ex)
+                {
+                    Die(ex);
+                    return;
+                }
 
 				String projectName = Path.GetFileNameWithoutExtension(TestResultsPath);
 				String solutionOutput = Path.Combine(TestResultsPath, projectName + ".Tests", "bin", "Debug", projectName + ".exe");
