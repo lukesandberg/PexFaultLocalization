@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
+namespace Edu.Unl.Sir.Siemens.PrintTokens2
 {
     public class original
     {
+<<<<<<< HEAD
         const int TRUE = 1;
         const int FALSE = 1;
 
@@ -24,6 +25,24 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         const int end = 6;
 
         static void main(string[] args)
+=======
+        private const int TRUE = 1;
+        private const int FALSE = 0;
+
+        private const int SUCCEED = 1;
+        private const int FAIL = 0;
+        private const int error = 0;
+        private const int keyword = 1;
+        private const int spec_symbol = 2;
+        private const int identifier = 3;
+        private const int num_constant = 41;
+        private const int str_constant = 42;
+        private const int char_constant = 43;
+        private const int comment = 5;
+        private const int end = 6;
+
+        static void Main(string[] args)
+>>>>>>> PexFaultLocalization/master
         {
             string fname;
             string tok;
@@ -61,7 +80,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /*              open stdin,otherwise open      */
         /*              the existed file               */
         /***********************************************/
-        static Stream open_character_stream(string fname)
+        public static Stream open_character_stream(string fname)
         {
 
             Stream fp;
@@ -80,7 +99,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* INPUT:       a pointer to char_stream      */
         /* OUTPUT:      a character                   */
         /**********************************************/
-        static char get_char(Stream fp)
+        public static char get_char(Stream fp)
         {
             char ch;
             ch = (char)fp.ReadByte();
@@ -93,7 +112,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* OUTPUT:    a character                          */
         /* DESCRIPTION:when unable to put back,return '\0'  */
         /***************************************************/
-        static char unget_char(char ch, Stream fp)
+        public static char unget_char(char ch, Stream fp)
         {
             fp.WriteByte((byte)ch);
             return ch;
@@ -111,7 +130,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* DESCRIPTION: when filename is EMPTY,choice standard  */
         /*              input device as input source            */
         /********************************************************/
-        static Stream open_token_stream(string fname)
+        public static Stream open_token_stream(string fname)
         {
             Stream fp;
             if (fname.Equals(""))
@@ -128,7 +147,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* DESCRIPTION: according the syntax of tokens,dealing  */
         /*              with different case  and get one token  */
         /********************************************************/
-        static string get_token(Stream tp)
+        public static string get_token(Stream tp)
         {
             int i = 0, j;
             int id = 0;
@@ -191,7 +210,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* INPUT:       a character,a token status             */
         /* OUTPUT:	a int value                        */
         /*******************************************************/
-        static int is_token_end(int str_com_id, char ch)
+        public static int is_token_end(int str_com_id, char ch)
         {
             char[] ch1 = new char[2];  /* fixed array declaration MONI */
             ch1[0] = ch;
@@ -226,7 +245,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* DESCRIPTION: the integer value is corresponding  */
         /*              to the different token type         */
         /****************************************************/
-        static int token_type(string tok)
+        public static int token_type(string tok)
         {
             if (is_keyword(tok) == TRUE) return (keyword);
             if (is_spec_symbol(tok) == TRUE) return (spec_symbol);
@@ -245,7 +264,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* OUTPUT:      a int value,print out the token */
         /*              according the forms required        */
         /****************************************************/
-        static int print_token(string tok)
+        public static int print_token(string tok)
         {
             int type;
             type = token_type(tok);
@@ -287,7 +306,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* INPUT: 	a pointer to a token */
         /* OUTPUT:      a int value      */
         /*************************************/
-        static int is_eof_token(string tok)
+        public static int is_eof_token(string tok)
         {
             if (tok.ToCharArray()[0] == '\0')
                 return (TRUE);
@@ -300,7 +319,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* INPUT: 	a pointer to a token */
         /* OUTPUT:      a int value      */
         /*************************************/
-        static int is_comment(string ident)
+        public static int is_comment(string ident)
         {
             if ((ident.ToCharArray()[0]) == 59)   /* the char is 59   */
                 return (TRUE);
@@ -313,7 +332,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* INPUT: 	a pointer to a token */
         /* OUTPUT:      a int value      */
         /*************************************/
-        static int is_keyword(string str)
+        public static int is_keyword(string str)
         {
             if (str.Equals("and") || str.Equals("or") || str.Equals("if") ||
                str.Equals("xor") || str.Equals("lambda") || str.Equals("=>"))
@@ -327,7 +346,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* INPUT: 	a pointer to a token */
         /* OUTPUT:      a int value      */
         /*************************************/
-        static int is_char_constant(string str)
+        public static int is_char_constant(string str)
         {
             if ((str.ToCharArray()[0]) == '#' && Char.IsLetter(str.ToCharArray()[1]))
                 return (TRUE);
@@ -340,7 +359,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* INPUT: 	a pointer to a token */
         /* OUTPUT:      a int value      */
         /*************************************/
-        static int is_num_constant(string str)
+        public static int is_num_constant(string str)
         {
             int i = 1;
 
@@ -364,7 +383,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* INPUT: 	a pointer to a token */
         /* OUTPUT:      a int value      */
         /*************************************/
-        static int is_str_constant(string str)
+        public static int is_str_constant(string str)
         {
             int i = 1;
 
@@ -387,7 +406,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* INPUT: 	a pointer to a token */
         /* OUTPUT:      a int value      */
         /*************************************/
-        static int is_identifier(string str)
+        public static int is_identifier(string str)
         {
             int i = 1;
 
@@ -422,7 +441,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* OUTPUT :     print out the spec_symbol token  */
         /*              according to the form required   */
         /*************************************************/
-        static void print_spec_symbol(string str)
+        public static void print_spec_symbol(string str)
         {
             if (str.Equals("("))
             {
@@ -464,7 +483,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         /* INPUT:       a pointer to a token */
         /* OUTPUT:      a int value      */
         /*************************************/
-        static int is_spec_symbol(string str)
+        public static int is_spec_symbol(string str)
         {
             if (str.Equals("("))
             {
@@ -498,4 +517,3 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V2
         }
     }
 }
-

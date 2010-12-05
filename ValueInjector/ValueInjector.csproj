@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Statement.cs" />
+    <Compile Include="SourceCodeLocation.cs" />
     <Compile Include="Value.cs" />
     <Compile Include="ValueInjectedAttribute.cs" />
     <Compile Include="Instrumenter.cs" />

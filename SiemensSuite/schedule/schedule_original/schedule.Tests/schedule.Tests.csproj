@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6F637466-148E-4753-8D41-39784DA4ED69}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>schedulePUT.Tests</RootNamespace>
+    <AssemblyName>schedulePUT.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ExtendedReflection, Version=0.93.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Moles.Framework, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.Pex.Framework, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="schedule.Moles, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\schedule\schedule.csproj">
+      <Project>{2350A2E2-EF80-4ABB-AAD1-0B9B452AE05A}</Project>
+      <Name>schedule</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="schedule.Moles.dll">
+      <DependentUpon>schedule.moles</DependentUpon>
+    </Content>
+    <Content Include="schedule.Moles.xml">
+      <DependentUpon>schedule.moles</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EleTest.Constructor.g.cs">
+      <DependentUpon>EleTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EleTest.cs" />
+    <Compile Include="ProgramTest.addProcess.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.append_ele.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.block_process.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.cs" />
+    <Compile Include="ProgramTest.del_ele.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.find_nth.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.finish_all_processes.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.finish_process.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.initialize.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.init_prio_queue.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.Main.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.new_list.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.new_process.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.quantum_expire.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.readFile.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.schedule.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.unblock_process.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramTest.upgrade_process_prio.g.cs">
+      <DependentUpon>ProgramTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\PexAssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Moles Include="schedule.moles" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

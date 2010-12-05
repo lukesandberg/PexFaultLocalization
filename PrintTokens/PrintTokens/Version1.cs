@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace Edu.Unl.Sir.Siemens.PrintTokens.V1
+namespace Edu.Unl.Sir.Siemens.PrintTokens
 {
     public class CharacterStream
     {
@@ -327,7 +327,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V1
             {
                 if (token_ind < 80) /* ADDED ERROR CHECK - hf */
                 {
-                    token_str[token_ind++] = ch;
+                    token_str[token_ind] = ch;
                     next_st = next_state(cu_state, ch);
                 }
                 else
@@ -371,7 +371,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens.V1
                             token_ptr.token_string[0] = (byte)'\0';
                             return (token_ptr);
                         }
-                        unget_char(ch, tstream_ptr.ch_stream);
+                        unget_char(ch, null);
                         break;
                     case 19: /* These are all special SPECIAL character */
                     case 20: /* cases */

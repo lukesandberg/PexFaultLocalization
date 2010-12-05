@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8AA686CD-E306-4E95-94B3-9DB66CA0A279}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PrintTokens.Tests</RootNamespace>
+    <AssemblyName>PrintTokens.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ExtendedReflection, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Pex.Framework, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Microsoft Moles\PublicAssembliesSilverlight\Microsoft.Pex.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PrintTokens\PrintTokens.csproj">
+      <Project>{EA34B02B-C984-4917-8987-3A129FE19E21}</Project>
+      <Name>PrintTokens</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\CharacterStreamTest.Constructor.g.cs">
+      <DependentUpon>CharacterStreamTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\CharacterStreamTest.cs" />
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.check_delimiter.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.constant.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.cs" />
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.error_or_eof_case.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.get_actual_token.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.get_char.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.get_token.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.is_eof_token.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.keyword.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.next_state.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.numeric_case.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.open_character_stream.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.open_token_stream.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.print_token.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.skip.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.special.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\OriginalTest.unget_char.g.cs">
+      <DependentUpon>OriginalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\TokenStreamTest.cs" />
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\TokenTest.Constructor.g.cs">
+      <DependentUpon>TokenTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens\TokenTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\PexAssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
