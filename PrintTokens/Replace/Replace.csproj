@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseVersion.cs" />
+    <Compile Include="IReplace.cs" />
     <Compile Include="Version32.cs" />
     <Compile Include="Verion11.cs" />
     <Compile Include="Version12.cs" />

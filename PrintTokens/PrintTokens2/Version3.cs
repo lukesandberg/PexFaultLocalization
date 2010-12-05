@@ -8,20 +8,20 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2.V3
 {
     public class original
     {
-        static const int TRUE = 1;
-        static const int FALSE = 1;
+        const int TRUE = 1;
+        const int FALSE = 1;
 
-        static const int SUCCEED = 1;
-        static const int FAIL = 0;
-        static const int error = 0;
-        static const int keyword = 1;
-        static const int spec_symbol = 2;
-        static const int identifier = 3;
-        static const int num_constant = 41;
-        static const int str_constant = 42;
-        static const int char_constant = 43;
-        static const int comment = 5;
-        static const int end = 6;
+        const int SUCCEED = 1;
+        const int FAIL = 0;
+        const int error = 0;
+        const int keyword = 1;
+        const int spec_symbol = 2;
+        const int identifier = 3;
+        const int num_constant = 41;
+        const int str_constant = 42;
+        const int char_constant = 43;
+        const int comment = 5;
+        const int end = 6;
 
         static void main(string[] args)
         {

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseVersion.cs" />
+    <Compile Include="ITotInfo.cs" />
     <Compile Include="Version23.cs" />
     <Compile Include="Version22.cs" />
     <Compile Include="Version10.cs" />

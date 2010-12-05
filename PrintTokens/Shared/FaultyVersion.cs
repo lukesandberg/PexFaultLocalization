@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace Edu.Unl.Sir.Seimens.Shared
+namespace Edu.Nlu.Sir.Siemens.Shared
 {
     public enum FaultType
     {
@@ -26,7 +26,7 @@ namespace Edu.Unl.Sir.Seimens.Shared
         FaultType FaultType { get; }
     }
 
-    public static class Extensions {
+    public static partial class Extensions {
         public static bool ReadLine(this TextReader reader, out string result, int maxsize)
         {
             StringBuilder s = new StringBuilder();

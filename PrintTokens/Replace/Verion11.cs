@@ -2,51 +2,51 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Edu.Unl.Sir.Seimens.Shared;
+using Edu.Nlu.Sir.Siemens.Shared;
 
 namespace Edu.Nlu.Sir.Siemens.Replace
 {
-    public class Version11: FaultyVersion
+    public class Version11: FaultyVersion, IReplace
     {
         public int[] FaultLines { get { return new int[] { 115 }; } }
         public FaultType FaultType { get { return FaultType.IF_OPERATOR_CHANGE; } }
 
-        private const int NULL = 0;
+        public const int NULL = 0;
 
-        private const int MAXSTR = 100;
-        private const int MAXPAT = MAXSTR;
+        public const int MAXSTR = 100;
+        public const int MAXPAT = MAXSTR;
 
-        private const char ENDSTR = '\0';
-        private const char ESCAPE = '@';
-        private const char CLOSURE = '*';
-        private const char BOL = '%';
-        private const char EOL = '$';
-        private const char ANY = '?';
-        private const char CCL = '[';
-        private const char CCLEND = ']';
-        private const char NEGATE = '^';
-        private const char NCCL = '!';
-        private const char LITCHAR = 'c';
-        private const char DITTO = unchecked((char)-1);
-        private const char DASH = '-';
+        public const char ENDSTR = '\0';
+        public const char ESCAPE = '@';
+        public const char CLOSURE = '*';
+        public const char BOL = '%';
+        public const char EOL = '$';
+        public const char ANY = '?';
+        public const char CCL = '[';
+        public const char CCLEND = ']';
+        public const char NEGATE = '^';
+        public const char NCCL = '!';
+        public const char LITCHAR = 'c';
+        public const char DITTO = unchecked((char)-1);
+        public const char DASH = '-';
 
-        private const char TAB = (char)9;
-        private const char NEWLINE = (char)10;
+        public const char TAB = (char)9;
+        public const char NEWLINE = (char)10;
 
-        private const int CLOSIZE = 1;
+        public const int CLOSIZE = 1;
 
 
-        public static bool
+        public bool
         getline(out string s,
         int maxsize)
         {
-            string result;
-            result = Console.ReadLine();
-            s = result;
-            return (result != null);
+            
+            Console.In.ReadLine(out s, maxsize);
+            
+            return (s != null);
         }
 
-        public static bool
+        public bool
         addstr(char c,
         ref string outset,
         ref int j,
@@ -57,14 +57,14 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                 result = false;
             else
             {
-                outset = outset.Substring(0, j) + c + outset.Substring(j + 1);
+                outset = outset.Substring(0, j) + c + (j+1<outset.Length ? outset.Substring(j + 1) : "");
                 j = j + 1;
                 result = true;
             }
             return result;
         }
 
-        public static char
+        public char
         esc(string s, ref int i)
         {
             char result;
@@ -87,7 +87,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public static void
+        public void
         dodash(char delim,
         string src,
         ref int i,
@@ -126,7 +126,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public static bool
+        public bool
         getccl(string arg,
         ref int i,
         string pat,
@@ -146,11 +146,11 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             jstart = j;
             junk = addstr((char)0, ref pat, ref j, MAXPAT);
             dodash(CCLEND, arg, ref i, pat, ref j, MAXPAT);
-            pat = pat.Substring(0,jstart) + (char)(j - jstart - 1) + pat.Substring(jstart+1);
+            pat = pat.Substring(0,jstart) + (char)(j - jstart - 1) + (jstart + 1 < pat.Length ? pat.Substring(jstart+1) : "");
             return (arg[i] == CCLEND);
         }
 
-        public static void
+        public void
         stclose(string pat,
         ref int j,
         int lastj)
@@ -169,18 +169,18 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             pat = pat.Substring(0,lastj) + CLOSURE + pat.Substring(lastj+1);
         }
 
-        public static bool in_set_2(char c)
+        public bool in_set_2(char c)
         {
             return (c == BOL || c == EOL || c == CLOSURE);
         }
 
-        public static bool in_pat_set(char c)
+        public bool in_pat_set(char c)
         {
             return (c == LITCHAR || c == BOL || c == EOL || c == ANY
             || c == CCL || c == NCCL || c == CLOSURE);
         }
 
-        public static int
+        public int
         makepat(string arg,
          int start,
         char delim,
@@ -240,7 +240,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public static bool
+        public bool
         getpat(string arg,
         out string pat)
         {
@@ -250,7 +250,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return (makeres > 0);
         }
 
-        public static int
+        public int
         makesub(string arg,
             int from,
             char delim,
@@ -287,7 +287,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public static bool
+        public bool
         getsub(string arg,
             out string sub)
         {
@@ -297,7 +297,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return (makeres > 0);
         }
 
-        public static bool
+        public bool
         locate(char c,
             string pat,
             int offset)
@@ -320,7 +320,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return flag;
         }
 
-        public static bool
+        public bool
         omatch(string lin,
             ref int i,
             string pat,
@@ -383,7 +383,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public static int
+        public int
         patsize(string pat,
             int n)
         {
@@ -417,7 +417,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return size;
         }
 
-        public static int
+        public int
         amatch(string lin,
             int offset,
             string pat,
@@ -464,7 +464,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return offset;
         }
 
-        public static void
+        public void
         putsub(string lin,
          int s1, int s2,
          string sub)
@@ -488,7 +488,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public static void
+        public void
         subline(string lin,
          string pat,
          string sub)
@@ -515,7 +515,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public static void
+        public void
         change(string pat, string sub)
         {
             string line;
@@ -529,7 +529,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public static void Main(string[] args)
+        public void Main(string[] args)
         {
             string pat, sub;
             bool result;
@@ -565,7 +565,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return;
         }
 
-        public static void
+        public void
         Caseerror(int n)
         {
             Console.Write("Missing case limb: line %d\n", n);

@@ -153,7 +153,7 @@ namespace UTCore
         public void RunTests(IEnumerable<string> TestNamePatterns)
         {
             var tests = from tf in TestFixtures
-                    select tf.Tests.Where(t => TestNames.Contains(t.TestMethod.MethodName));
+                        select tf.Tests.Where(t => TestNamePatterns.Contains(t.TestMethod.MethodName));
             foreach (var test in tests)
             {
                 

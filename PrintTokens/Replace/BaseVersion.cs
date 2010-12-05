@@ -2,81 +2,69 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Edu.Nlu.Sir.Siemens.Replace;
+using Edu.Nlu.Sir.Siemens.Shared;
 
 namespace Edu.Nlu.Sir.Siemens.Replace
 {
     /// <summary>
     /// /* -*- Last-Edit: Mon Dec 7 10:31:51 1992 by Tarak S. Goradia; -*- */
     /// </summary>
-    public class BaseVersion
+    public partial class BaseVersion : IReplace
     {
-        private const int NULL = 0;
+        public const int NULL = 0;
 
-        private const int MAXSTR = 100;
-        private const int MAXPAT = MAXSTR;
+        public const int MAXSTR = 100;
+        public const int MAXPAT = MAXSTR;
 
-        private const char ENDSTR = '\0';
-        private const char ESCAPE = '@';
-        private const char CLOSURE = '*';
-        private const char BOL = '%';
-        private const char EOL = '$';
-        private const char ANY = '?';
-        private const char CCL = '[';
-        private const char CCLEND = ']';
-        private const char NEGATE = '^';
-        private const char NCCL = '!';
-        private const char LITCHAR = 'c';
-        private const char DITTO = unchecked((char)-1);
-        private const char DASH = '-';
+        public const char ENDSTR = '\0';
+        public const char ESCAPE = '@';
+        public const char CLOSURE = '*';
+        public const char BOL = '%';
+        public const char EOL = '$';
+        public const char ANY = '?';
+        public const char CCL = '[';
+        public const char CCLEND = ']';
+        public const char NEGATE = '^';
+        public const char NCCL = '!';
+        public const char LITCHAR = 'c';
+        public const char DITTO = unchecked((char)-1);
+        public const char DASH = '-';
 
-        private const char TAB = (char)9;
-        private const char NEWLINE = (char)10;
+        public const char TAB = (char)9;
+        public const char NEWLINE = (char)10;
 
-        private const int CLOSIZE = 1;
+        public const int CLOSIZE = 1;
 
 
-        public static bool
+        public bool
         getline(out string s,
         int maxsize)
         {
-            string result;
-            result = Console.ReadLine();
-            s = result;
-            return (result != null);
+            Console.In.ReadLine(out s, maxsize);
+            return (s != null);
         }
 
-        public static bool
+        public bool
         addstr(char c,
         ref string outset,
         ref int j,
         int maxset)
         {
-            // <pex>
-            if (0 < maxset)
-                throw new ArgumentException("0 < maxset", "maxset");
-            // </pex>
             bool result;
             if (j >= maxset)
                 result = false;
             else
             {
-                outset = outset.Substring(0, j) + c + outset.Substring(j + 1);
+                outset = outset.Substring(0, j) + c + (j+1<outset.Length ? outset.Substring(j + 1) : "");
                 j = j + 1;
                 result = true;
             }
             return result;
         }
 
-        public static char
+        public char
         esc(string s, ref int i)
         {
-            // <pex>
-            if (s.Length < 2)
-                throw new ArgumentException("s.Length < 2", "s");
-            if (s == (string)null)
-                throw new ArgumentNullException("s");
-            // </pex>
 
             char result;
             if (s[i] != ESCAPE)
@@ -98,7 +86,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public static void
+        public void
         dodash(char delim,
         string src,
         ref int i,
@@ -106,13 +94,6 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         ref int j,
         int maxset)
         {
-            // <pex>
-            if (dest == (string)null)
-                throw new ArgumentNullException("dest");
-            if (src == (string)null)
-                throw new ArgumentNullException("src");
-            // </pex>
-
             int k;
             bool junk;
             char escjunk;
@@ -144,22 +125,12 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public static bool
+        public bool
         getccl(string arg,
         ref int i,
         string pat,
         ref int j)
         {
-            // <pex>
-            if (arg.Length < 2)
-                throw new ArgumentException("arg.Length < 2", "arg");
-            if (pat.Length < 1)
-                throw new ArgumentException("pat.Length < 1", "pat");
-            if (arg == (string)null)
-                throw new ArgumentNullException("arg");
-            if (pat == (string)null)
-                throw new ArgumentNullException("pat");
-            // </pex>
             int jstart;
             bool junk;
 
@@ -174,23 +145,15 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             jstart = j;
             junk = addstr((char)0, ref pat, ref j, MAXPAT);
             dodash(CCLEND, arg, ref i, pat, ref j, MAXPAT);
-            pat = pat.Substring(0,jstart) + (char)(j - jstart - 1) + pat.Substring(jstart+1);
+            pat = pat.Substring(0,jstart) + (char)(j - jstart - 1) + (jstart + 1 < pat.Length ? pat.Substring(jstart+1) : "");
             return (arg[i] == CCLEND);
         }
 
-        public static void
+        public void
         stclose(string pat,
         ref int j,
         int lastj)
         {
-            // <pex>
-            if (pat == (string)null)
-                throw new ArgumentNullException("pat");
-            if (1 + lastj < 0 || pat.Length < 1 + lastj)
-                throw new ArgumentException("1 + lastj < 0 || pat.Length < 1 + lastj");
-            if (lastj < 0 || pat.Length < lastj)
-                throw new ArgumentException("lastj < 0 || pat.Length < lastj");
-            // </pex>
             int jt;
             int jp;
             bool junk;
@@ -202,35 +165,26 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                 junk = addstr(pat[jp], ref pat, ref jt, MAXPAT);
             }
             j = j + CLOSIZE;
-            pat = pat.Substring(0,lastj) + CLOSURE + pat.Substring(lastj+1);
+            pat = pat.Substring(0,lastj) + CLOSURE + (lastj + 1 < pat.Length ? pat.Substring(lastj+1): "");
         }
 
-        public static bool in_set_2(char c)
+        public bool in_set_2(char c)
         {
             return (c == BOL || c == EOL || c == CLOSURE);
         }
 
-        public static bool in_pat_set(char c)
+        public bool in_pat_set(char c)
         {
             return (c == LITCHAR || c == BOL || c == EOL || c == ANY
             || c == CCL || c == NCCL || c == CLOSURE);
         }
 
-        public static int
+        public int
         makepat(string arg,
          int start,
         char delim,
         out string pat)
         {
-            // <pex>
-            if (arg[1 + start] == delim)
-                throw new ArgumentException("arg[1 + start] == delim");
-            if (arg[start] == '%')
-                throw new ArgumentException("arg[start] == \'%\'");
-            if (arg[start] == '*')
-                throw new ArgumentException("arg[start] == \'*\'");
-            // </pex>
-            
             int result;
             int i, j, lastj, lj;
             bool done, junk;
@@ -285,60 +239,22 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public static bool
+        public bool
         getpat(string arg,
         out string pat)
         {
-            // <pex>
-            if (arg.Length == 0)
-                throw new ArgumentException("arg.Length == 0", "arg");
-            if (arg[1] == '\0')
-                throw new ArgumentException("arg[1] == \'\\0\'", "arg");
-            if (arg[0] == '?')
-                throw new ArgumentException("arg[0] == \'?\'", "arg");
-            // </pex>
-            if (arg[0] == '\0')
-                throw new ArgumentException("arg[0] == \'\\0\'", "arg");
-            if (arg[0] != '*')
-                throw new ArgumentException("arg[0] != \'*\'", "arg");
-            if (arg[0] == '%')
-                throw new ArgumentException("arg[0] == \'%\'", "arg");
-            if (arg[0] == '*')
-                throw new ArgumentException("arg[0] == \'*\'", "arg");
             int makeres;
 
             makeres = makepat(arg, 0, ENDSTR, out pat);
             return (makeres > 0);
         }
 
-        public static int
+        public int
         makesub(string arg,
             int from,
             char delim,
             out string sub)
         {
-            // <pex>
-            if (arg[from] != '&')
-                throw new ArgumentException("arg[from] != \'&\'");
-            if (arg[from] == '&')
-                throw new ArgumentException("arg[from] == \'&\'");
-            if (arg[from] == delim)
-                throw new ArgumentException("arg[from] == delim");
-            // </pex>
-            if (arg == (string)null)
-                throw new ArgumentNullException("arg");
-            if ((uint)from >= (uint)(arg.Length))
-                throw new ArgumentException("(uint)from >= (uint)(arg.Length)");
-            if (arg[from] == delim)
-                throw new ArgumentException("arg[from] == delim");
-            if (arg[from] == '&')
-                throw new ArgumentException("arg[from] == \'&\'");
-            if (arg[from] != '&')
-                throw new ArgumentException("arg[from] != \'&\'");
-            if (arg == (string)null)
-                throw new ArgumentNullException("arg");
-            if ((uint)from >= (uint)(arg.Length))
-                throw new ArgumentException("(uint)from >= (uint)(arg.Length)");
             int result;
             int i, j;
             bool junk;
@@ -370,47 +286,21 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public static bool
+        public bool
         getsub(string arg,
             out string sub)
         {
-            // <pex>
-            if (arg[0] != '&')
-                throw new ArgumentException("arg[0] != \'&\'", "arg");
-            if (arg[0] == '&')
-                throw new ArgumentException("arg[0] == \'&\'", "arg");
-            if (arg[0] == '\0')
-                throw new ArgumentException("arg[0] == \'\\0\'", "arg");
-            // </pex>
             int makeres;
 
             makeres = makesub(arg, 0, ENDSTR, out sub);
             return (makeres > 0);
         }
 
-        public static bool
+        public bool
         locate(char c,
             string pat,
             int offset)
         {
-            // <pex>
-            if ((uint)offset >= (uint)(pat.Length))
-                throw new ArgumentException("(uint)offset >= (uint)(pat.Length)");
-            if ((uint)((int)((ushort)(pat[offset])) + offset) >= (uint)(pat.Length))
-                throw new ArgumentException("complex reason");
-            if ((uint)(offset + (int)((ushort)(pat[offset]))) >= (uint)(pat.Length))
-                throw new ArgumentException("complex reason");
-            // </pex>
-            if (pat == (string)null)
-                throw new ArgumentNullException("pat");
-            if ((uint)(offset + (int)((ushort)(pat[offset]))) >= (uint)(pat.Length))
-                throw new ArgumentException("complex reason");
-            if ((uint)((int)((ushort)(pat[offset])) + offset) >= (uint)(pat.Length))
-                throw new ArgumentException("complex reason");
-            if ((uint)offset >= (uint)(pat.Length))
-                throw new ArgumentException("(uint)offset >= (uint)(pat.Length)");
-            if (pat == (string)null)
-                throw new ArgumentNullException("pat");
             int i;
             bool flag;
 
@@ -429,24 +319,12 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return flag;
         }
 
-        public static bool
+        public bool
         omatch(string lin,
             ref int i,
             string pat,
             int j)
         {
-            // <pex>
-            if ((uint)j >= (uint)(pat.Length))
-                throw new ArgumentException("(uint)j >= (uint)(pat.Length)");
-            if (pat == (string)null)
-                throw new ArgumentNullException("pat");
-            if (lin == (string)null)
-                throw new ArgumentNullException("lin");
-            // </pex>
-            if (pat == (string)null)
-                throw new ArgumentNullException("pat");
-            if ((uint)(1 + j) >= (uint)(pat.Length))
-                throw new ArgumentException("(uint)(1 + j) >= (uint)(pat.Length)");
             sbyte advance;
             bool result;
 
@@ -504,22 +382,10 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public static int
+        public int
         patsize(string pat,
             int n)
         {
-            // <pex>
-            if ((uint)(1 + n) >= (uint)(pat.Length))
-                throw new ArgumentException("(uint)(1 + n) >= (uint)(pat.Length)");
-            if ((uint)n >= (uint)(pat.Length))
-                throw new ArgumentException("(uint)n >= (uint)(pat.Length)");
-            if (pat == (string)null)
-                throw new ArgumentNullException("pat");
-            // </pex>
-            if (pat == (string)null)
-                throw new ArgumentNullException("pat");
-            if (pat == (string)null)
-                throw new ArgumentNullException("pat");
             int size = -1;
             if (!in_pat_set(pat[n]))
             {
@@ -550,34 +416,16 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return size;
         }
 
-        public static int
+        public int
         amatch(string lin,
             int offset,
             string pat,
             int j)
         {
             // <pex>
-            if ((uint)j >= (uint)(pat.Length))
-                throw new ArgumentException("(uint)j >= (uint)(pat.Length)");
-            if (pat == (string)null)
-                throw new ArgumentNullException("pat");
-            if ((uint)(2 + offset) >= (uint)(lin.Length))
-                throw new ArgumentException("(uint)(2 + offset) >= (uint)(lin.Length)");
+            if (j >= pat.Length)
+                throw new ArgumentException();
             // </pex>
-            if ((uint)(j + BaseVersion.patsize(pat, j)) >= (uint)(pat.Length))
-                throw new ArgumentException("complex reason");
-            if ((uint)(3 + offset) >= (uint)(lin.Length))
-                throw new ArgumentException("(uint)(3 + offset) >= (uint)(lin.Length)");
-            if ((uint)(2 + offset) >= (uint)(lin.Length))
-                throw new ArgumentException("(uint)(2 + offset) >= (uint)(lin.Length)");
-            if (pat == (string)null)
-                throw new ArgumentNullException("pat");
-            if (lin == (string)null)
-                throw new ArgumentNullException("lin");
-            if ((uint)(j + BaseVersion.patsize(pat, j)) >= (uint)(pat.Length))
-                throw new ArgumentException("complex reason");
-            if ((uint)(3 + offset) >= (uint)(lin.Length))
-                throw new ArgumentException("(uint)(3 + offset) >= (uint)(lin.Length)");
             int i = 0, k = 0;
             bool result, done;
 
@@ -619,49 +467,11 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return offset;
         }
 
-        public static void
+        public void
         putsub(string lin,
          int s1, int s2,
          string sub)
-        {
-            // <pex>
-            if (sub.Length < 2)
-                throw new ArgumentException("sub.Length < 2", "sub");
-            if (sub == (string)null)
-                throw new ArgumentNullException("sub");
-            if (sub.Length < 5)
-                throw new ArgumentException("sub.Length < 5", "sub");
-            // </pex>
-            if (sub.Length < 7)
-                throw new ArgumentException("sub.Length < 7", "sub");
-            if ((uint)s1 >= (uint)(lin.Length))
-                throw new ArgumentException("(uint)s1 >= (uint)(lin.Length)");
-            if (sub.Length < 6)
-                throw new ArgumentException("sub.Length < 6", "sub");
-            if (sub == (string)null)
-                throw new ArgumentNullException("sub");
-            if (sub.Length < 6)
-                throw new ArgumentException("sub.Length < 6", "sub");
-            if (sub == (string)null)
-                throw new ArgumentNullException("sub");
-            if (sub.Length < 7)
-                throw new ArgumentException("sub.Length < 7", "sub");
-            if ((uint)s1 >= (uint)(lin.Length))
-                throw new ArgumentException("(uint)s1 >= (uint)(lin.Length)");
-            if (sub == (string)null)
-                throw new ArgumentNullException("sub");
-            if (sub.Length == 0)
-                throw new ArgumentException("sub.Length == 0", "sub");
-            if (lin == (string)null)
-                throw new ArgumentNullException("lin");
-            if (sub.Length < 4)
-                throw new ArgumentException("sub.Length < 4", "sub");
-            if (sub.Length < 3)
-                throw new ArgumentException("sub.Length < 3", "sub");
-            if ((uint)(1 + s1) >= (uint)(lin.Length))
-                throw new ArgumentException("(uint)(1 + s1) >= (uint)(lin.Length)");
-            if ((uint)(2 + s1) >= (uint)(lin.Length))
-                throw new ArgumentException("(uint)(2 + s1) >= (uint)(lin.Length)");
+        {            
             int i;
             int j;
 
@@ -681,81 +491,11 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public static void
+        public void
         subline(string lin,
          string pat,
          string sub)
         {
-            // <pex>
-            if ((uint)(BaseVersion.amatch(lin, 0, pat, 0)) >= (uint)(lin.Length))
-                throw new ArgumentException("complex reason");
-            if (lin.Length < 9)
-                throw new ArgumentException("lin.Length < 9", "lin");
-            if (lin.Length < 3)
-                throw new ArgumentException("lin.Length < 3", "lin");
-            // </pex>
-            if (lin.Length < 4)
-                throw new ArgumentException("lin.Length < 4", "lin");
-            if (lin.Length < 15)
-                throw new ArgumentException("lin.Length < 15", "lin");
-            if ((uint)(9 + BaseVersion.amatch(lin, 0, pat, 0)) >= (uint)(lin.Length))
-                throw new ArgumentException("complex reason");
-            if (lin.Length < 5)
-                throw new ArgumentException("lin.Length < 5", "lin");
-            if (lin == (string)null)
-                throw new ArgumentNullException("lin");
-            if (1u + (ushort)(pat[1]) >= (uint)(pat.Length))
-                throw new ArgumentException("complex reason", "pat");
-            if (pat.Length < 2)
-                throw new ArgumentException("pat.Length < 2", "pat");
-            if ((uint)(BaseVersion.patsize(pat, 0)) >= (uint)(pat.Length))
-                throw new ArgumentException("complex reason", "pat");
-            if ((uint)(8 + BaseVersion.amatch(lin, 0, pat, 0)) >= (uint)(lin.Length))
-                throw new ArgumentException("complex reason");
-            if (lin.Length < 10)
-                throw new ArgumentException("lin.Length < 10", "lin");
-            if (lin.Length < 3)
-                throw new ArgumentException("lin.Length < 3", "lin");
-            if (1u + (ushort)(pat[1]) >= (uint)(pat.Length))
-                throw new ArgumentException("complex reason", "pat");
-            if (pat.Length < 2)
-                throw new ArgumentException("pat.Length < 2", "pat");
-            if ((uint)(BaseVersion.patsize(pat, 0)) >= (uint)(pat.Length))
-                throw new ArgumentException("complex reason", "pat");
-            if ((uint)(8 + BaseVersion.amatch(lin, 0, pat, 0)) >= (uint)(lin.Length))
-                throw new ArgumentException("complex reason");
-            if (lin.Length < 10)
-                throw new ArgumentException("lin.Length < 10", "lin");
-            if (lin.Length < 3)
-                throw new ArgumentException("lin.Length < 3", "lin");
-            if (lin.Length < 4)
-                throw new ArgumentException("lin.Length < 4", "lin");
-            if (lin.Length < 15)
-                throw new ArgumentException("lin.Length < 15", "lin");
-            if ((uint)(9 + BaseVersion.amatch(lin, 0, pat, 0)) >= (uint)(lin.Length))
-                throw new ArgumentException("complex reason");
-            if (lin.Length < 5)
-                throw new ArgumentException("lin.Length < 5", "lin");
-            if (lin.Length < 3)
-                throw new ArgumentException("lin.Length < 3", "lin");
-            if (lin.Length < 9)
-                throw new ArgumentException("lin.Length < 9", "lin");
-            if ((uint)(BaseVersion.amatch(lin, 0, pat, 0)) >= (uint)(lin.Length))
-                throw new ArgumentException("complex reason");
-            if (lin == (string)null)
-                throw new ArgumentNullException("lin");
-            if (lin.Length == 0)
-                throw new ArgumentException("lin.Length == 0", "lin");
-            if (1u + (ushort)(pat[1]) >= (uint)(pat.Length))
-                throw new ArgumentException("complex reason", "pat");
-            if ((uint)(BaseVersion.patsize(pat, 0)) >= (uint)(pat.Length))
-                throw new ArgumentException("complex reason", "pat");
-            if ((uint)(1 + BaseVersion.patsize(pat, 0)) >= (uint)(pat.Length))
-                throw new ArgumentException("complex reason", "pat");
-            if (lin.Length < 2)
-                throw new ArgumentException("lin.Length < 2", "lin");
-            if (pat.Length < 2)
-                throw new ArgumentException("pat.Length < 2", "pat");
             int i, lastm, m;
 
             lastm = -1;
@@ -778,7 +518,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public static void
+        public void
         change(string pat, string sub)
         {
             string line;
@@ -792,14 +532,8 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public static void Main(string[] args)
+        public void Main(string[] args)
         {
-            // <pex>
-            if (args == (string[])null)
-                throw new ArgumentNullException("args");
-            if (args == (string[])null)
-                throw new ArgumentNullException("args");
-            // </pex>
             string pat, sub;
             bool result;
 
@@ -834,7 +568,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return;
         }
 
-        public static void
+        public void
         Caseerror(int n)
         {
             Console.Write("Missing case limb: line %d\n", n);
