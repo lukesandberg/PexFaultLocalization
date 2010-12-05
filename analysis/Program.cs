@@ -47,7 +47,7 @@ namespace FaultLocalization
 
 				try
 				{
-					var testRunner = new ReflectionTestRunner(tests);
+					var testRunner = new CoverageTestRunner(tests);
 					testRunner.RunTests();
 				}
 				catch(Exception ex)
@@ -67,7 +67,7 @@ namespace FaultLocalization
 					ISuspiciousnessRater rater = (ISuspiciousnessRater) SuspicousnessRaterType.GetConstructor(Type.EmptyTypes).Invoke(new object[0]);
 					rater.RateLines(ratedLines, testResults);
 				}
-				OutputResults(ratedLines, Path.GetFileNameWithoutExtension(exePath));
+				OutputResults(ratedLines, Path.Combine(TestResultsPath, Path.GetFileNameWithoutExtension(exe)));
 			}
 			Console.Read();
 		}
