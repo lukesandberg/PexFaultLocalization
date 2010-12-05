@@ -40,14 +40,14 @@ namespace FaultLocalization
 			{
 
 				String projectName = Path.GetFileNameWithoutExtension(TestResultsPath);
-				String solutionOutput = Path.Combine(TestResultsPath, projectName, "bin", "Debug", projectName + ".exe");
+				String solutionOutput = Path.Combine(TestResultsPath, projectName + ".Tests", "bin", "Debug", projectName + ".exe");
 
 				Console.WriteLine("Copying " + exe + " to " + solutionOutput);
 				File.Copy(exe, solutionOutput, true);
 
 				try
 				{
-					var testRunner = new ReflectionTestRunner(tests);
+					var testRunner = new CoverageTestRunner(tests);
 					testRunner.RunTests();
 				}
 				catch(Exception ex)
@@ -67,7 +67,7 @@ namespace FaultLocalization
 					ISuspiciousnessRater rater = (ISuspiciousnessRater) SuspicousnessRaterType.GetConstructor(Type.EmptyTypes).Invoke(new object[0]);
 					rater.RateLines(ratedLines, testResults);
 				}
-				OutputResults(ratedLines, Path.GetFileNameWithoutExtension(exePath));
+				OutputResults(ratedLines, Path.Combine(TestResultsPath, Path.GetFileNameWithoutExtension(exe)));
 			}
 			Console.Read();
 		}

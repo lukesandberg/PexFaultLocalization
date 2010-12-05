@@ -38,7 +38,7 @@ namespace FaultLocalization
 			{
 				if(testRunConfigPath == null)
 				{
-					testRunConfigPath = GetPathToFileType("testrunconfig");
+					testRunConfigPath = GetPathToFileType("testsettings");
 					Console.Out.WriteLine("Using " + TestRunConfigPath + " for test run configuration");
 				}
 
@@ -204,7 +204,7 @@ namespace FaultLocalization
 		public String TestResultsBase(string testDllPath)
 		{
 			string testDllFileName = Path.GetFileNameWithoutExtension(testDllPath);
-			return Path.Combine(SolutionDirectory, "TestResults-" + testDllFileName);
+			return SolutionDirectory;
 		}
 
 		public String TestResultsDirectory(string testDllPath)
