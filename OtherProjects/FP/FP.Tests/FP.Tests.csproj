@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AC37FA16-E3C9-4335-9A0F-069F20E6D0F3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FP.Tests</RootNamespace>
+    <AssemblyName>FP.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FP.Moles, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ExtendedReflection, Version=0.93.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Moles.Framework, Version=0.93.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Pex.Framework, Version=0.93.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Pex.Linq, Version=0.93.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FP.Validation\FP.Validation.csproj">
+      <Project>{68D038C8-5F0A-4DE5-931C-7BE476A4EA37}</Project>
+      <Name>FP.Validation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FP\FP.csproj">
+      <Project>{891E86F6-A992-4B42-B88A-F1F46EA0FCE1}</Project>
+      <Name>FP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XunitExtensions\XunitExtensions.csproj">
+      <Project>{8729126E-E1DD-413E-8051-2007E5FCDBA7}</Project>
+      <Name>XunitExtensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FP.Moles.dll">
+      <DependentUpon>FP.moles</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FP.Moles.xml">
+      <DependentUpon>FP.moles</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EnumerableTests.cs" />
+    <Compile Include="EnumerableTests.SortAscendingTest.g.cs">
+      <DependentUpon>EnumerableTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnumerableTests.SortDescendingTest.g.cs">
+      <DependentUpon>EnumerableTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Factories.cs" />
+    <Compile Include="FP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>FP.moles</DependentUpon>
+    </Compile>
+    <Compile Include="LazyListTests.cs" />
+    <Compile Include="LazyListTests.Test_Enumeration.g.cs">
+      <DependentUpon>LazyListTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaybeTests.cs" />
+    <Compile Include="MaybeTests.Maybe_DefaultOperatorCausesConversions.g.cs">
+      <DependentUpon>MaybeTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaybeTests.Maybe_DefaultOperatorIgnoresNothingAsFirstArgument.g.cs">
+      <DependentUpon>MaybeTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaybeTests.Maybe_DefaultOperatorReturnsTheFirstFoundValue.g.cs">
+      <DependentUpon>MaybeTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaybeTests.Maybe_NothingShouldPropagateInQueries.g.cs">
+      <DependentUpon>MaybeTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaybeTests.Maybe_QueriesShouldWork.g.cs">
+      <DependentUpon>MaybeTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaybeTests.Maybe_ValueShouldConvertToSomething.g.cs">
+      <DependentUpon>MaybeTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrdSequenceTests.cs" />
+    <Compile Include="OrdSequenceTests.Test_ContainsNegative.g.cs">
+      <DependentUpon>OrdSequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrdSequenceTests.Test_ContainsPositive.g.cs">
+      <DependentUpon>OrdSequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrdSequenceTests.Test_ExtractAll.g.cs">
+      <DependentUpon>OrdSequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrdSequenceTests.Test_Insert.g.cs">
+      <DependentUpon>OrdSequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrdSequenceTests.Test_Intersect.g.cs">
+      <DependentUpon>OrdSequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrdSequenceTests.Test_MinMax.g.cs">
+      <DependentUpon>OrdSequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrdSequenceTests.Test_Ordering.g.cs">
+      <DependentUpon>OrdSequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrdSequenceTests.Test_Split.g.cs">
+      <DependentUpon>OrdSequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrdSequenceTests.Test_Union.g.cs">
+      <DependentUpon>OrdSequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\PexAssemblyInfo.cs" />
+    <Compile Include="RASequenceTests.cs" />
+    <Compile Include="RASequenceTests.Test_Append.g.cs">
+      <DependentUpon>RASequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RASequenceTests.Test_Concat.g.cs">
+      <DependentUpon>RASequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RASequenceTests.Test_ConcatWithEmpty.g.cs">
+      <DependentUpon>RASequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RASequenceTests.Test_Enumerate.g.cs">
+      <DependentUpon>RASequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RASequenceTests.Test_HeadAndTailOfNonEmptySequence.g.cs">
+      <DependentUpon>RASequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RASequenceTests.Test_Indexing.g.cs">
+      <DependentUpon>RASequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RASequenceTests.Test_InsertAt.g.cs">
+      <DependentUpon>RASequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RASequenceTests.Test_IsEmptyWorksCorrectly.g.cs">
+      <DependentUpon>RASequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RASequenceTests.Test_Prepend.g.cs">
+      <DependentUpon>RASequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RASequenceTests.Test_Reverse.g.cs">
+      <DependentUpon>RASequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RASequenceTests.Test_SetAt.g.cs">
+      <DependentUpon>RASequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RASequenceTests.Test_SplitAt.g.cs">
+      <DependentUpon>RASequenceTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RefTests.cs" />
+    <Compile Include="StringTests.cs" />
+    <Compile Include="SwitchTests.cs" />
+    <Compile Include="TreeDictionaryTests.cs" />
+    <Compile Include="TreeDictionaryTests.Test_Enumeration.g.cs">
+      <DependentUpon>TreeDictionaryTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeDictionaryTests.Test_Lookup.g.cs">
+      <DependentUpon>TreeDictionaryTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeDictionaryTests.Test_Map.g.cs">
+      <DependentUpon>TreeDictionaryTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeDictionaryTests.Test_MapPartial.g.cs">
+      <DependentUpon>TreeDictionaryTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeDictionaryTests.Test_Remove.g.cs">
+      <DependentUpon>TreeDictionaryTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeDictionaryTests.Test_Update.g.cs">
+      <DependentUpon>TreeDictionaryTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ValidationTests.cs" />
+    <Compile Include="VectorTests.cs" />
+    <Compile Include="VectorTests.Test_Append.g.cs">
+      <DependentUpon>VectorTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VectorTests.Test_InfiniteBounds.g.cs">
+      <DependentUpon>VectorTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VectorTests.Test_ReplaceSingleElement.g.cs">
+      <DependentUpon>VectorTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VectorTests.Test_SingleElementVector.g.cs">
+      <DependentUpon>VectorTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VectorTests.Test_StoreManyElements.g.cs">
+      <DependentUpon>VectorTests.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FP.moles">
+      <Generator>MolesGenerator</Generator>
+      <LastGenOutput>FP.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

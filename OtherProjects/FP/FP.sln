@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{0C945040-68D8-4D9C-903B-07A45321D95B}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\MiniBench.dll = Lib\MiniBench.dll
+		Lib\MiniBench.xml = Lib\MiniBench.xml
+		Lib\xunit.dll = Lib\xunit.dll
+		Lib\xunit.xml = Lib\xunit.xml
+		Lib\xunitext.dll = Lib\xunitext.dll
+		Lib\xunitext.xml = Lib\xunitext.xml
+		Lib\xunitext35.dll = Lib\xunitext35.dll
+		Lib\xunitext35.xml = Lib\xunitext35.xml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FP", "FP\FP.csproj", "{891E86F6-A992-4B42-B88A-F1F46EA0FCE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XunitExtensions", "XunitExtensions\XunitExtensions.csproj", "{8729126E-E1DD-413E-8051-2007E5FCDBA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FP.Validation", "FP.Validation\FP.Validation.csproj", "{68D038C8-5F0A-4DE5-931C-7BE476A4EA37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarks", "Benchmarks\Benchmarks.csproj", "{855EFFB9-A634-45E4-85D6-E7E42E7D77E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{03FF1761-36E7-4E05-A4DB-8A3499E8CB66}"
+	ProjectSection(SolutionItems) = preProject
+		FP.testsettings = FP.testsettings
+		FP1.vsmdi = FP1.vsmdi
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FP.Tests", "FP.Tests\FP.Tests.csproj", "{AC37FA16-E3C9-4335-9A0F-069F20E6D0F3}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = FP1.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{891E86F6-A992-4B42-B88A-F1F46EA0FCE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{891E86F6-A992-4B42-B88A-F1F46EA0FCE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{891E86F6-A992-4B42-B88A-F1F46EA0FCE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{891E86F6-A992-4B42-B88A-F1F46EA0FCE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8729126E-E1DD-413E-8051-2007E5FCDBA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8729126E-E1DD-413E-8051-2007E5FCDBA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8729126E-E1DD-413E-8051-2007E5FCDBA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8729126E-E1DD-413E-8051-2007E5FCDBA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68D038C8-5F0A-4DE5-931C-7BE476A4EA37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D038C8-5F0A-4DE5-931C-7BE476A4EA37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D038C8-5F0A-4DE5-931C-7BE476A4EA37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D038C8-5F0A-4DE5-931C-7BE476A4EA37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{855EFFB9-A634-45E4-85D6-E7E42E7D77E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{855EFFB9-A634-45E4-85D6-E7E42E7D77E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{855EFFB9-A634-45E4-85D6-E7E42E7D77E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{855EFFB9-A634-45E4-85D6-E7E42E7D77E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC37FA16-E3C9-4335-9A0F-069F20E6D0F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC37FA16-E3C9-4335-9A0F-069F20E6D0F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC37FA16-E3C9-4335-9A0F-069F20E6D0F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC37FA16-E3C9-4335-9A0F-069F20E6D0F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		AddHeaderCommentSolution = True
+		HeaderCommentSolution = /*$LineBreak$* %file% is part of functional-dotnet project$LineBreak$* $LineBreak$* Copyright (c) %years% Alexey Romanov$LineBreak$* All rights reserved.$LineBreak$*$LineBreak$* This source file is available under The New BSD License.$LineBreak$* See license.txt file for more information.$LineBreak$* $LineBreak$* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND $LineBreak$* CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, $LineBreak$* INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF $LineBreak$* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.$LineBreak$*/
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal

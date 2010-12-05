@@ -1,0 +1,286 @@
+<#@ template language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+/*
+* Switch.cs is part of functional-dotnet project
+* 
+* Copyright (c) 2008 Alexey Romanov
+* All rights reserved.
+*
+* This source file is available under The New BSD License.
+* See license.txt file for more information.
+* 
+* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+* CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+* INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+*/
+
+// Author of the template: _FRED_
+// Modified by Alexey Romanov
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+
+namespace <#= NamespaceName #>
+{
+    <# for(var types = MinParametersCount; types <= MaxParametersCount; types++) { #>
+    <# string typesList = Join(TypeName, types); #>
+    <# string typeName = TupleClassName + "<" + typesList + ">"; #>
+    <# bool isValueType = types <= MaxValueParametersCount; #>
+    #region <# if(isValueType) { #>struct<# } else { #>class<# }//if #> <#= typeName #>
+    /// <summary> An immutable tuple with <#= types #> fields. </summary>
+    [Serializable]
+    [DebuggerDisplay("{ToString()}")]
+    [DebuggerStepThrough]
+    public <# if(isValueType) { #>struct<# } else { #>sealed class<# }//if #> <#= typeName #> : IEquatable<<#= typeName #>>
+    {
+    #region Fields
+    <# for(var index = 0; index < types; index++) { #>
+    private readonly <#= TypeName(index) #> <#= FieldName(index) #>;
+    <# }//for #>
+    #endregion Fields
+
+    #region Constructors\Finalizer
+    public <#= TupleClassName #>(<#= Join(ParameterDeclaration, types) #>) {
+      <# for(var index = 0; index < types; index++) { #>
+      this.<#= FieldName(index) #> = <#= ParameterName(index) #>;
+      <# }//for #>
+    }
+    #endregion Constructors\Finalizer
+
+    #region Properties
+
+    <# for(var index = 0; index < types; index++) { #>
+    public <#= TypeName(index) #> <#= PropertyName(index) #> {
+      [DebuggerStepThrough]
+      get { return <#= FieldName(index) #>; }
+    }<#= NewLine(index < types - 1) #>
+    <# }//for #>
+
+    #endregion Properties
+    
+    #region Methods
+
+    public string ToString(IFormatProvider provider) {
+      return <#= TupleClassName #>.ToString(provider, <#= Join(PropertyName, types) #>);
+    }
+
+    public R Match<R>(Func<<#= Join(TypeName, types) #>, R> func) {
+      return func(<#= Join(PropertyName, types) #>);
+    }
+
+    public void Match(Action<<#= Join(TypeName, types) #>> action) {
+      action(<#= Join(PropertyName, types) #>);
+    }
+    #endregion Methods
+
+    #region Overrides
+
+    public override bool Equals(object obj) {
+      <# if(isValueType) { #>
+      return obj is <#= typeName #> && Equals((<#= typeName #>)obj);
+      <# } else { #>
+      return Equals(obj as <#= typeName #>);
+      <# }//if #>
+    }
+
+    public override int GetHashCode() {
+      <# for(var index = 0; index < types; index++) { #>
+        <# if(index == 0) { #>
+      return EqualityComparer<<#= TypeName(index) #>>.Default.GetHashCode(<#= PropertyName(index) #>)
+        <# } else { #>
+        ^ <#= TupleClassName #>.RotateRight(EqualityComparer<<#= TypeName(index) #>>.Default.GetHashCode(<#= PropertyName(index) #>), <#= index #>)<# if(index == types - 1) { #>; <# } else { #><#= Environment.NewLine #><# }//if #>
+        <# }//if #>
+      <# }//for #>
+    }
+
+    public override string ToString() {
+      return ToString(null);
+    }
+
+    #endregion Overrides
+    
+    #region Operators
+
+    public static bool operator ==(<#= typeName #> left, <#= typeName #> right) {
+      <# if(isValueType) { #>
+      return left.Equals(right);
+      <# } else { #>
+      return Equals(left, right);
+      <# }//if #>
+    }
+
+    public static bool operator !=(<#= typeName #> left, <#= typeName #> right) {
+      return !(left == right);
+    }
+
+    #endregion Operators
+
+    #region IEquatable<<#= typeName #>> Members
+
+    public bool Equals(<#= typeName #> other) {
+      return <# if(!isValueType) { #> other != null <#}//if #> <# for(var index = 0; index < types; index++) { #>
+        <# if(index > 0 || !isValueType) { #> && <#}//if #> EqualityComparer<<#= TypeName(index) #>>.Default.Equals(<#= PropertyName(index) #>, other.<#= PropertyName(index) #>) <# if(index == types - 1) { #>; <# } else { #><#= Environment.NewLine #><# }//if #>
+      <# }//for #>
+    }
+
+    #endregion IEquatable<<#= typeName #>> Members
+    
+    
+  }
+
+  #endregion <# if(isValueType) { #>struct<# } else { #>sealed class<# }//if #> <#= typeName #>
+  
+  <# }//for #>
+  #region class <#= TupleClassName #>
+
+  public static class <#= TupleClassName #>
+  {
+    #region Methods
+    
+    #region Helpers
+
+    internal static int RotateRight(int value, int places) {
+      if((places &= 0x1F) == 0) {
+        return value;
+      }//if
+
+      var mask = ~0x7FFFFFFF >> (places - 1);
+      return ((value >> places) & ~mask) | ((value << (32 - places)) & mask);
+    }
+
+    internal static string ToString(IFormatProvider provider, params object[] values) {
+      if(values != null) {
+        const char start = '(';
+        const char end = ')';
+        const string separator = ", ";
+
+        return start + String.Join(separator, Array.ConvertAll(values, value => Convert.ToString(value, provider))) + end;
+      }//if
+      return String.Empty;
+    }
+
+    #endregion Helpers
+
+    #region New(…)
+
+    <# for(var types = MinParametersCount; types <= MaxParametersCount; types++) { #>
+	    <# var typesList = Join(TypeName, types); #>
+      <# var typeName = TupleClassName + "<" + typesList + ">"; #>
+    public static <#= typeName #> New<<#= typesList #>>(<#= Join(ParameterDeclaration, types) #>) {
+      return new <#= typeName #>(<#= Join(ParameterName, types) #>);
+    }<#= NewLine(types < MaxParametersCount) #>
+    <# }//for #>
+
+    #endregion New(…)
+
+    #endregion Methods
+  }
+  
+  #endregion class <#= TupleClassName #>
+}
+<#+ 
+  private const string TupleClassName = "Tuple";
+  private const int MinParametersCount = 2;
+  private const int MaxParametersCount = 5;
+  private const int MaxValueParametersCount = 3;
+  private const string NamespaceName = "FP.Core";
+  private const string TypeNamePrefix = "T";
+  private const string PropertyNamePrefix = "Item";
+  private const TupleSymbolKind TupleSymbol = TupleSymbolKind.DigitFromOne;
+
+  private enum TupleSymbolKind
+  {
+    Letter,
+    DigitFromZero,
+    DigitFromOne,
+  }
+
+  private static string Letter(int index) {
+    const char First = 'A';
+    const char Last = 'Z';
+    const int Count = Last - First + 1;
+
+    Func<int, char> letter = x => (char)(First + x);
+    if(index < Count) {
+      return letter(index).ToString();
+    }//if
+    return Letter(index / Count - 1) + letter(index % Count);
+  }
+
+  private static string Digit(int index) {
+    return index.ToString(); 
+  }
+  
+  private static string Symbol(int index) {
+    #pragma warning disable 0162 // <Unreachable code detected>
+
+    switch(TupleSymbol) {
+    case TupleSymbolKind.Letter:
+      return Letter(index); 
+    case TupleSymbolKind.DigitFromZero:
+      return Digit(index); 
+    case TupleSymbolKind.DigitFromOne:
+      return Digit(index + 1); 
+    }//switch
+    Debug.Fail("TupleSymbol = " + TupleSymbol);
+    throw new InvalidOperationException("TupleSymbol = " + TupleSymbol);
+
+    #pragma warning restore 0162 // <Unreachable code detected>
+  }
+
+  private static string TypeName(int index) {
+    return TypeNamePrefix + Symbol(index);
+  }
+
+  private static string PropertyName(int index) {
+    return PropertyNamePrefix + Symbol(index);
+  }
+
+  private static string FieldName(int index) { 
+    var parameter = ParameterName(index);
+    if(Char.IsLetter(parameter[0]))
+      return "_" + parameter;
+    else
+      return parameter;
+  }
+
+  private static string ParameterName(int index) { 
+    var property = PropertyName(index);
+    if(Char.IsLetter(property[0]) && Char.IsUpper(property[0])) { // Make first letter lower
+      return Char.ToLowerInvariant(property[0]) + property.Substring(1, property.Length - 1);
+    } else {
+      return "_" + property;
+    }//if
+  }
+
+  private static string ParameterDeclaration(int index) { 
+    return TypeName(index) + " " + ParameterName(index);
+  }
+
+  private static string Join(Func<int, string> converter, int count) { 
+    const string DefaultSeparator = ", ";
+    return Join(converter, count, DefaultSeparator); 
+  }
+
+  private static string Join(Func<int, string> converter, int count, string separator) { 
+    var builder = new StringBuilder();
+    for(var i = 0; i < count; i++) {
+      if(builder.Length > 0) {
+        builder.Append(separator);
+      }//if
+      builder.Append(converter(i));
+    }//for
+    return builder.ToString(); 
+  }
+
+  private static string NewLine(bool condition) {
+    return condition ? Environment.NewLine : String.Empty;
+  }
+#>
