@@ -40,7 +40,7 @@ namespace FaultLocalization
                 }
 
 				String projectName = Path.GetFileNameWithoutExtension(TestResultsPath);
-				String solutionOutput = Path.Combine(TestResultsPath, projectName + ".Tests", "bin", "Debug", projectName + ".exe");
+				String solutionOutput = Path.Combine(TestResultsPath, projectName, "bin", "Debug", projectName + ".exe");
 
 				Console.WriteLine("Copying " + exe + " to " + solutionOutput);
 				File.Copy(exe, solutionOutput, true);

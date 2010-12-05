@@ -25,7 +25,7 @@
           <Configuration>
             <CodeCoverage xmlns="">
               <Regular>
-                <CodeCoverageItem binaryFile="PrintTokens2.Tests\bin\Debug\PrintTokens2.Tests.dll" pdbFile="PrintTokens2.Tests\bin\Debug\PrintTokens2.Tests.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="PrintTokens2\bin\Debug\PrintTokens2.exe" pdbFile="PrintTokens2\bin\Debug\PrintTokens2.pdb" instrumentInPlace="true" />
               </Regular>
             </CodeCoverage>
           </Configuration>
