@@ -1,28 +1,29 @@
 ﻿using System;
+using System.Text;
 namespace Edu.Nlu.Sir.Siemens.Replace
 {
     public interface IReplace
     {
-        bool addstr(char c, ref string outset, ref int j, int maxset);
-        int amatch(string lin, int offset, string pat, int j);
+        bool addstr(char c, ref char[] outset, ref int j, int maxset);
+        int amatch(char[] lin, int offset, char[] pat, int j);
         void Caseerror(int n);
-        void change(string pat, string sub);
-        void dodash(char delim, string src, ref int i, string dest, ref int j, int maxset);
-        char esc(string s, ref int i);
-        bool getccl(string arg, ref int i, string pat, ref int j);
-        bool getline(out string s, int maxsize);
-        bool getpat(string arg, out string pat);
-        bool getsub(string arg, out string sub);
+        void change(char[] pat, char[] sub);
+        void dodash(char delim, char[] src, ref int i, char[] dest, ref int j, int maxset);
+        char esc(char[] s, ref int i);
+        bool getccl(char[] arg, ref int i, char[] pat, ref int j);
+        bool getline(out char[] s, int maxsize);
+        bool getpat(char[] arg, out char[] pat);
+        bool getsub(char[] arg, out char[] sub);
         bool in_pat_set(char c);
         bool in_set_2(char c);
-        bool locate(char c, string pat, int offset);
-        void Main(string[] args);
-        int makepat(string arg, int start, char delim, out string pat);
-        int makesub(string arg, int from, char delim, out string sub);
-        bool omatch(string lin, ref int i, string pat, int j);
-        int patsize(string pat, int n);
-        void putsub(string lin, int s1, int s2, string sub);
-        void stclose(string pat, ref int j, int lastj);
-        void subline(string lin, string pat, string sub);
+        bool locate(char c, char[] pat, int offset);
+        void Main(char[][] args);
+        int makepat(char[] arg, int start, char delim, out char[] pat);
+        int makesub(char[] arg, int from, char delim, out char[] sub);
+        bool omatch(char[] lin, ref int i, char[] pat, int j);
+        int patsize(char[] pat, int n);
+        void putsub(char[] lin, int s1, int s2, char[] sub);
+        void stclose(char[] pat, ref int j, int lastj);
+        void subline(char[] lin, char[] pat, char[] sub);
     }
 }

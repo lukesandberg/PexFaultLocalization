@@ -18,553 +18,489 @@ namespace Edu.Nlu.Sir.Siemens.Replace
     {
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException816()
+public void getccl400()
 {
     bool b;
-    int i = 1021;
+    char[] cs = new char[100];
+    int i = 1;
+    char[] cs1 = new char[100];
     int i1 = 0;
-    b = this.getccl("\0\0", ref i, "\0", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException271()
-{
-    bool b;
-    int i = 0;
-    int i1 = 0;
-    b = this.getccl("^^", ref i, "^", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl971()
-{
-    bool b;
-    int i = 0;
-    int i1 = 0;
-    b = this.getccl("\0\0", ref i, "\0\0", ref i1);
+    b = this.getccl(cs, ref i, cs1, ref i1);
     Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(1, i);
+    Assert.AreEqual<int>(2, i);
     Assert.AreEqual<int>(2, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException488()
+public void getccl710()
 {
     bool b;
-    int i = 0;
+    char[] cs = new char[100];
+    int i = 68;
+    char[] cs1 = new char[100];
     int i1 = 0;
-    b = this.getccl("^^^", ref i, "^", ref i1);
+    cs[69] = '\u8000';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(70, i);
+    Assert.AreEqual<int>(3, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException723()
+public void getccl815()
 {
     bool b;
-    int i = 0;
+    char[] cs = new char[100];
+    int i = 2;
+    char[] cs1 = new char[100];
     int i1 = 0;
-    b = this.getccl("-^-", ref i, "^", ref i1);
+    cs[3] = '^';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(4, i);
+    Assert.AreEqual<int>(2, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(ArgumentOutOfRangeException))]
-public void getcclThrowsArgumentOutOfRangeException235()
+public void getccl531()
 {
     bool b;
-    int i = 0;
+    char[] cs = new char[100];
+    int i = 64;
+    char[] cs1 = new char[100];
+    int i1 = 0;
+    cs[64] = '@';
+    cs[65] = '\u0001';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(66, i);
+    Assert.AreEqual<int>(3, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl120()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 67;
+    char[] cs1 = new char[100];
     int i1 = 2;
-    b = this.getccl("^^", ref i, "^", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl548()
-{
-    bool b;
-    int i = 0;
-    int i1 = 0;
-    b = this.getccl("\0]", ref i, "\0", ref i1);
-    Assert.AreEqual<bool>(true, b);
-    Assert.AreEqual<int>(1, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException878()
-{
-    bool b;
-    int i = 0;
-    int i1 = 1;
-    b = this.getccl("^^", ref i, "^", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException220()
-{
-    bool b;
-    int i = 0;
-    int i1 = 0;
-    b = this.getccl("@@", ref i, "\0", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl216()
-{
-    bool b;
-    int i = 0;
-    int i1 = 0;
-    b = this.getccl("@@\0", ref i, "\0", ref i1);
+    cs[67] = '@';
+    cs[68] = '@';
+    b = this.getccl(cs, ref i, cs1, ref i1);
     Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(3, i1);
+    Assert.AreEqual<int>(69, i);
+    Assert.AreEqual<int>(5, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException951()
+public void getccl98()
 {
     bool b;
-    int i = 0;
-    int i1 = 0;
-    b = this.getccl("@@\u0001", ref i, "\0", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException453()
-{
-    bool b;
-    int i = 0;
-    int i1 = 0;
-    b = this.getccl("@@n", ref i, "\0", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException585()
-{
-    bool b;
-    int i = -1;
-    int i1 = 100;
-    b = this.getccl("^--", ref i, "^", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException588()
-{
-    bool b;
-    int i = 0;
-    int i1 = 1;
-    b = this.getccl("^^", ref i, "^^", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException908()
-{
-    bool b;
-    int i = 0;
-    int i1 = 100;
-    b = this.getccl("^^--^", ref i, "^", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException384()
-{
-    bool b;
-    int i = 0;
-    int i1 = 0;
-    b = this.getccl("@\u0001@@", ref i, "@\u0001@@", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException187()
-{
-    bool b;
-    int i = 0;
-    int i1 = 0;
-    b = this.getccl("@\u0001@@@", ref i, "@\u0001@@", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException295()
-{
-    bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl("@@\u0001@\u0001", ref i, "@@\u0001@", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException555()
-{
-    bool b;
-    int i = 0;
-    int i1 = 1;
-    b = this.getccl("^^", ref i, "^^^", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException904()
-{
-    bool b;
-    int i = 1;
-    int i1 = 99;
-    b = this.getccl("-\01-\u0001----", ref i, 
-                    "-\01-\u0001-----------------------------------------------------------------------------------------------", 
-                    ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException739()
-{
-    bool b;
-    int i = 5;
-    int i1 = 99;
-    b = this.getccl("-----\01-1--", ref i, 
-                    "-----\01-1-------------------------------------------------------------------------------------------", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException191()
-{
-    bool b;
-    int i = 1;
-    int i1 = 99;
-    b = this.getccl("-\06-p---", ref i, 
-                    "-\06-p-----------------------------------------------------------------------------------------------", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException844()
-{
-    bool b;
-    int i = 0;
-    int i1 = 99;
-    b = this.getccl("\09-s-1", ref i, 
-                    "\09-s-1----------------------------------------------------------------------------------------------", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException743()
-{
-    bool b;
-    int i = 1;
-    int i1 = 99;
-    b = this.getccl("-\09-s-x", ref i, 
-                    "-\09-s-x---------------------------------------------------------------------------------------------", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException888()
-{
-    bool b;
-    int i = 3;
-    int i1 = 99;
-    b = this.getccl("---\01--1-\u0001", ref i, 
-                    "---\01--1-\u0001------------------------------------------------------------------------------------------", 
-                    ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void getcclThrowsIndexOutOfRangeException902()
-{
-    bool b;
-    int i = 1;
-    int i1 = 99;
-    b = this.getccl("-\01-@@@@---", ref i, 
-                    "-\01-@@@@--------------------------------------------------------------------------------------------", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl396()
-{
-    bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl("\u4000\b\0", ref i, "\u4000", ref i1);
+    char[] cs = new char[100];
+    int i = 35;
+    char[] cs1 = new char[100];
+    int i1 = 2;
+    cs[36] = '-';
+    b = this.getccl(cs, ref i, cs1, ref i1);
     Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(2, i1);
+    Assert.AreEqual<int>(37, i);
+    Assert.AreEqual<int>(5, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl920()
+public void getccl680()
 {
     bool b;
-    int i = 2;
-    int i1 = 0;
-    b = this.getccl("\u0002\u0001@^\0^", ref i, "\0", ref i1);
+    char[] cs = new char[100];
+    int i = 64;
+    char[] cs1 = new char[100];
+    int i1 = 2;
+    cs[65] = '-';
+    cs[66] = '\u8000';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(67, i);
+    Assert.AreEqual<int>(6, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl203()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 1;
+    char[] cs1 = new char[100];
+    int i1 = 2;
+    cs[1] = '1';
+    cs[2] = '-';
+    cs[3] = '\u0001';
+    b = this.getccl(cs, ref i, cs1, ref i1);
     Assert.AreEqual<bool>(false, b);
     Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl257()
-{
-    bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl("\u0004\u0010\u0001\0\0", ref i, "\u0004", ref i1);
-    Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(3, i);
-    Assert.AreEqual<int>(3, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl72()
-{
-    bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl("\u0001@\u0080\0\0\0\0", ref i, "\0", ref i1);
-    Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(3, i);
-    Assert.AreEqual<int>(3, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl213()
-{
-    bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl("\u8000\u8000]\u4000\0]]", ref i, "\0", ref i1);
-    Assert.AreEqual<bool>(true, b);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl270()
-{
-    bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl("\u4000\u0800-\u0001\0-", ref i, "\0", ref i1);
-    Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(4, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: path bounds exceeded")]
-public void getccl914()
-{
-    bool b;
-    int i = 2;
-    int i1 = 0;
-    b = this.getccl("\u0200\b4-\u1000\0", ref i, "\0", ref i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl121()
-{
-    bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl(" @@\0@", ref i, "\0", ref i1);
-    Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(3, i);
-    Assert.AreEqual<int>(3, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl12101()
-{
-    bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl("\u0010@@\u8000\0\0\0\0", ref i, "\0", ref i1);
-    Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(3, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl159()
-{
-    bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl("\u4000l-l\0", ref i, "\0", ref i1);
-    Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl206()
-{
-    bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl("\u2000@@n\0nn", ref i, "\0", ref i1);
-    Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(3, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl490()
-{
-    bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl("\u2000@@t\0tt", ref i, "\0", ref i1);
-    Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(3, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(ArgumentOutOfRangeException))]
-public void getcclThrowsArgumentOutOfRangeException561()
-{
-    bool b;
-    int i = 1;
-    int i1 = 99;
-    b = this.getccl("\u0004\u0100\0", ref i, 
-                    "\u0004\u0100\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 
-                    ref i1);
+    Assert.AreEqual<int>(6, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 public void getccl481()
 {
     bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl("\u0001\u0080\0", ref i, "\u0001\u0080", ref i1);
+    char[] cs = new char[100];
+    int i = 96;
+    char[] cs1 = new char[100];
+    int i1 = 2;
+    cs[96] = '@';
+    cs[97] = '@';
+    cs[98] = '\u0001';
+    b = this.getccl(cs, ref i, cs1, ref i1);
     Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(2, i);
+    Assert.AreEqual<int>(99, i);
+    Assert.AreEqual<int>(5, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl278()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 65;
+    char[] cs1 = new char[100];
+    int i1 = 0;
+    cs[65] = '@';
+    cs[66] = '@';
+    cs[67] = 't';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(68, i);
+    Assert.AreEqual<int>(3, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl562()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 32;
+    int i1 = 0;
+    cs[32] = '1';
+    cs[33] = '-';
+    cs[34] = '1';
+    b = this.getccl(cs, ref i, cs, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(35, i);
     Assert.AreEqual<int>(2, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl922()
+public void getccl505()
 {
     bool b;
+    char[] cs = new char[100];
     int i = 1;
-    int i1 = 0;
-    b = this.getccl("\u2000\u0800\u0001\u0800\0\0", ref i, "\u2000\u0800", ref i1);
+    char[] cs1 = new char[100];
+    int i1 = 2;
+    cs[1] = '9';
+    cs[2] = '-';
+    cs[3] = 'x';
+    b = this.getccl(cs, ref i, cs1, ref i1);
     Assert.AreEqual<bool>(false, b);
     Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(4, i1);
+    Assert.AreEqual<int>(67, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl591()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 17;
+    char[] cs1 = new char[100];
+    int i1 = 36;
+    cs[18] = ']';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(true, b);
+    Assert.AreEqual<int>(18, i);
+    Assert.AreEqual<int>(38, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl478()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 65;
+    char[] cs1 = new char[100];
+    int i1 = 0;
+    cs[65] = '@';
+    cs[66] = '@';
+    cs[67] = 'n';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(68, i);
+    Assert.AreEqual<int>(3, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl90()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 9;
+    char[] cs1 = new char[100];
+    int i1 = 32;
+    cs[9] = '4';
+    cs[10] = '-';
+    cs[11] = 's';
+    cs[12] = '\u0001';
+    cs[13] = '\u0001';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(14, i);
+    Assert.AreEqual<int>(99, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl143()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 1;
+    char[] cs1 = new char[100];
+    int i1 = 98;
+    cs[1] = '6';
+    cs[2] = '-';
+    cs[3] = 'p';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(4, i);
+    Assert.AreEqual<int>(100, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl617()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 32;
+    char[] cs1 = new char[100];
+    int i1 = 60;
+    cs[32] = '\u8031';
+    cs[33] = '-';
+    cs[34] = '-';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(35, i);
+    Assert.AreEqual<int>(64, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl330()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 24;
+    char[] cs1 = new char[100];
+    int i1 = 56;
+    cs[24] = '@';
+    cs[25] = '@';
+    cs[26] = '@';
+    cs[27] = '\u0001';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(28, i);
+    Assert.AreEqual<int>(60, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl809()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 30;
+    int i1 = 98;
+    cs[30] = 'w';
+    cs[31] = '-';
+    cs[32] = 'z';
+    cs[33] = '\u0001';
+    cs[34] = '-';
+    cs[35] = '\u0001';
+    b = this.getccl(cs, ref i, cs, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(36, i);
+    Assert.AreEqual<int>(100, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl379()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 27;
+    char[] cs1 = new char[100];
+    int i1 = 98;
+    cs[27] = 'w';
+    cs[28] = '-';
+    cs[29] = 'z';
+    cs[30] = '1';
+    cs[31] = '-';
+    cs[32] = '\u0001';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(33, i);
+    Assert.AreEqual<int>(100, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 public void getccl223()
 {
     bool b;
-    int i = 2;
-    int i1 = 0;
-    b = this.getccl("\u0400\u0400\u8011--\0-", ref i, "\0", ref i1);
+    char[] cs = new char[100];
+    int i = 27;
+    int i1 = 98;
+    cs[27] = 'w';
+    cs[28] = '-';
+    cs[29] = 'z';
+    cs[30] = '\u0001';
+    cs[31] = '2';
+    cs[32] = '-';
+    cs[33] = '\u0200';
+    b = this.getccl(cs, ref i, cs, ref i1);
     Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(5, i);
+    Assert.AreEqual<int>(34, i);
+    Assert.AreEqual<int>(100, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl642()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 28;
+    char[] cs1 = new char[100];
+    int i1 = 98;
+    cs[28] = 'w';
+    cs[29] = '-';
+    cs[30] = 'z';
+    cs[31] = '\u0001';
+    cs[32] = '1';
+    cs[33] = '-';
+    cs[34] = '-';
+    cs[35] = '\u0001';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(36, i);
+    Assert.AreEqual<int>(100, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl635()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 25;
+    char[] cs1 = new char[100];
+    int i1 = 98;
+    cs[25] = 'w';
+    cs[26] = '-';
+    cs[27] = 'z';
+    cs[28] = '\u0001';
+    cs[29] = '\u0001';
+    cs[30] = '@';
+    cs[31] = '1';
+    cs[32] = '-';
+    cs[33] = '-';
+    cs[34] = '@';
+    cs[35] = '\u0001';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(36, i);
+    Assert.AreEqual<int>(100, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void getccl887()
+{
+    bool b;
+    char[] cs = new char[100];
+    int i = 32;
+    char[] cs1 = new char[100];
+    int i1 = 0;
+    cs[32] = '@';
+    cs[33] = '@';
+    cs[34] = '@';
+    cs[35] = '@';
+    b = this.getccl(cs, ref i, cs1, ref i1);
+    Assert.AreEqual<bool>(false, b);
+    Assert.AreEqual<int>(36, i);
     Assert.AreEqual<int>(4, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl264()
+public void getccl614()
 {
     bool b;
-    int i = 2;
+    char[] cs = new char[100];
+    int i = 28;
+    char[] cs1 = new char[100];
     int i1 = 0;
-    b = this.getccl("\u0001@0--\u0001\0", ref i, "\0", ref i1);
+    cs[28] = '@';
+    cs[29] = '@';
+    cs[30] = '@';
+    cs[31] = '@';
+    cs[32] = '\u0001';
+    b = this.getccl(cs, ref i, cs1, ref i1);
     Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(6, i);
-    Assert.AreEqual<int>(5, i1);
+    Assert.AreEqual<int>(33, i);
+    Assert.AreEqual<int>(4, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl731()
+public void getccl835()
 {
     bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl(" A---\u0001\0", ref i, "\0", ref i1);
+    char[] cs = new char[100];
+    int i = 8;
+    int i1 = 98;
+    cs[8] = 'w';
+    cs[9] = '-';
+    cs[10] = 'z';
+    cs[11] = '\u0001';
+    cs[12] = '\u0001';
+    cs[13] = '@';
+    cs[14] = 'P';
+    cs[15] = '-';
+    cs[16] = '-';
+    cs[17] = '-';
+    cs[18] = '\u0001';
+    b = this.getccl(cs, ref i, cs, ref i1);
     Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(6, i);
-    Assert.AreEqual<int>(6, i1);
+    Assert.AreEqual<int>(19, i);
+    Assert.AreEqual<int>(100, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl417()
+public void getccl331()
 {
     bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl("\u0004\u0001^--\u0001@@\u0001\u0001@@\u0001\0", ref i, "\0\0\0", ref i1);
+    char[] cs = new char[100];
+    int i = 25;
+    char[] cs1 = new char[100];
+    int i1 = 98;
+    cs[25] = 'w';
+    cs[26] = '-';
+    cs[27] = 'z';
+    cs[28] = '\u0001';
+    cs[29] = '\u0001';
+    cs[30] = '1';
+    cs[31] = '-';
+    cs[32] = '@';
+    cs[33] = '1';
+    cs[34] = '-';
+    cs[35] = '\u0001';
+    b = this.getccl(cs, ref i, cs1, ref i1);
     Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(13, i);
-    Assert.AreEqual<int>(10, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl894()
-{
-    bool b;
-    int i = 2;
-    int i1 = 0;
-    b = this.getccl("\u0010\u0800\u2000-\0\0", ref i, "\0", ref i1);
-    Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(3, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl801()
-{
-    bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl(" @\0", ref i, "\0\0\0", ref i1);
-    Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl208()
-{
-    bool b;
-    int i = 1;
-    int i1 = 0;
-    b = this.getccl(" \b]\u0800\0]", ref i, "\0\0\0", ref i1);
-    Assert.AreEqual<bool>(true, b);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void getccl981()
-{
-    bool b;
-    int i = 2;
-    int i1 = 0;
-    b = this.getccl("\u8000\u0400\u8011-]\u4000\0", ref i, "\0", ref i1);
-    Assert.AreEqual<bool>(true, b);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(3, i1);
+    Assert.AreEqual<int>(36, i);
+    Assert.AreEqual<int>(100, i1);
 }
     }
 }

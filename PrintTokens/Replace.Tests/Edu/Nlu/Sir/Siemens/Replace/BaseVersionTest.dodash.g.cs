@@ -18,1715 +18,376 @@ namespace Edu.Nlu.Sir.Siemens.Replace
     {
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash547()
+public void dodash971()
 {
-    int i = 0;
+    char[] cs = new char[100];
+    int i = 1;
+    char[] cs1 = new char[100];
     int i1 = 0;
-    this.dodash(' ', "\0", ref i, "\0", ref i1, 0);
-    Assert.AreEqual<int>(0, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash419()
-{
-    int i = 0;
-    int i1 = 0;
-    this.dodash(' ', " ", ref i, " ", ref i1, 0);
-    Assert.AreEqual<int>(0, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException645()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "\0\0-", ref i, "\0\0-", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException716()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "@@!", ref i, "@@!", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException335()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@", ref i, "@@", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException957()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@t", ref i, "@@t", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException833()
-{
-    int i = 2;
-    int i1 = 2;
-    this.dodash(' ', "\0\0-", ref i, "\0\0-", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException902()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "\0--", ref i, "\0--", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException963()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "1-\u0001", ref i, "1-\u0001", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException856()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0--", ref i, "\0--", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException889()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "@@!@!", ref i, "@@!@!", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException903()
-{
-    int i = 2;
-    int i1 = 2;
-    this.dodash(' ', "-\u0131-----", ref i, "-\u0131-----", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException759()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@n!@@@", ref i, "@@n!@@@", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException784()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@t!@@@", ref i, "@@t!@@@", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException694()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@t!@@t", ref i, "@@t!@@t", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException424()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@n!@@n", ref i, "@@n!@@n", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException770()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@@@@@", ref i, "@@@@@@", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException663()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash('@', "n-n----", ref i, "n-n----", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException535()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "n-n-1", ref i, "n-n-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException761()
-{
-    int i = 0;
-    int i1 = 0;
-    this.dodash(' ', "@@\0", ref i, "@@\0", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException90201()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0!", ref i, "\0!", ref i1, 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException785()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "\0\0!", ref i, "\0", ref i1, 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException414()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "@@@", ref i, "@@@", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException327()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "\0\0!", ref i, "", ref i1, 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException538()
-{
-    int i = 1;
-    int i1 = 1023;
-    this.dodash(' ', "\0!!", ref i, "\0!!", ref i1, 1023);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException569()
-{
-    int i = 1;
-    int i1 = 1;
-    this.dodash(' ', "@!", ref i, "@!@", ref i1, 1022);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException879()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "9-8", ref i, "9-8", ref i1, 6);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException659()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0!!", ref i, "\0!", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException733()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "-\0-", ref i, "-", ref i1, 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException909()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0@!", ref i, "\0@!", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException884()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0-", ref i, "\0-", ref i1, 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException786()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0--", ref i, "\0", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException844()
-{
-    int i = 4;
-    int i1 = 1023;
-    this.dodash(' ', "@@@@@@@", ref i, "@@@@@@@", ref i1, 1023);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException438()
-{
-    int i = 2;
-    int i1 = 1017;
-    this.dodash(' ', "@@@@@@", ref i, "@@@@@@", ref i1, 1017);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException805()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash('9', "9-8-", ref i, "9-8-", ref i1, 1023);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException357()
-{
-    int i = 4;
-    int i1 = 1023;
-    this.dodash(' ', "@@@@!@!", ref i, "@@@@!@!", ref i1, 1023);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException530()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0--", ref i, "\0--", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException556()
-{
-    int i = 1;
-    int i1 = 1;
-    this.dodash(' ', "\0@@n@@n", ref i, "\0@", ref i1, 58);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException524()
-{
-    int i = 1;
-    int i1 = 1;
-    this.dodash(' ', "\0@@t@@t", ref i, "\0@", ref i1, 58);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException502()
-{
-    int i = 2;
-    int i1 = 2;
-    this.dodash('@', "-A-e---", ref i, "-A-e", ref i1, 11);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException949()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "A-e-1-", ref i, "A-e-", ref i1, 11);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException450()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "2-V-q--", ref i, "2-V-", ref i1, 11);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException627()
-{
-    int i = 2;
-    int i1 = 46;
-    this.dodash(' ', "-\0\u1020----", ref i, "-\0\u1020----", ref i1, 46);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException539()
-{
-    int i = 4;
-    int i1 = 0;
-    this.dodash(' ', "@@@@!-@", ref i, "@@@", ref i1, 3);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException378()
-{
-    int i = 0;
-    int i1 = 0;
-    this.dodash(' ', "1-1", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException815()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "!-1", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException812()
-{
-    int i = 2;
-    int i1 = 1;
-    this.dodash(' ', "\0\0!", ref i, "\0\0", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException454()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "!-1", ref i, "", ref i1, 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException672()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "@@!", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException421()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@\u0001", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException754()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@t", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException90901()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@n", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException918()
-{
-    int i = 2;
-    int i1 = 2;
-    this.dodash(' ', "\0\0-", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException944()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "\0\0-", ref i, "1", ref i1, 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException319()
-{
-    int i = 2;
-    int i1 = 1;
-    this.dodash(' ', "@@\u0001", ref i, "@@\u0001", ref i1, 514);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException912()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "\0-\u0001", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException33501()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "1-\u0001", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException523()
-{
-    int i = 1;
-    int i1 = 659;
-    this.dodash(' ', "5-p", ref i, "5-p", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException484()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@!!", ref i, "@!!", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException8701()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@!@", ref i, "1", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException590()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "4-p", ref i, "4-p", ref i1, 6);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException836()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0--", ref i, "\0-", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException676()
-{
-    int i = 4;
-    int i1 = 0;
-    this.dodash(' ', "@@@@!@!", ref i, "@@", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException62701()
-{
-    int i = 4;
-    int i1 = 772;
-    this.dodash(' ', "---9-z-", ref i, "---9-z-", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException778()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash('9', "9-8", ref i, "9-8-", ref i1, 1023);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException489()
-{
-    int i = 4;
-    int i1 = 0;
-    this.dodash(' ', "nnn@!@@n@@n", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException841()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "3-P--", ref i, "3-P-", ref i1, 14);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException629()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "E-b-1--", ref i, "E-b-", ref i1, 14);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException927()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "E-b-q-", ref i, "E-b-", ref i1, 14);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException402()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0-!", ref i, "1", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException612()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0--", ref i, "1", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException811()
-{
-    int i = 4;
-    int i1 = 0;
-    this.dodash(' ', "@@@@!@!", ref i, "@@@", ref i1, 3);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException595()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash('A', "E-b\u2000---", ref i, "E-b\u2000", ref i1, 14);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException481()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash('0', "S-p@@@@n---@1-\u0001", ref i, "S-p@", ref i1, 14);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash302()
-{
-    int i = 0;
-    int i1 = 0;
-    this.dodash(' ', "\0\0!", ref i, "\0\0!", ref i1, 1);
-    Assert.AreEqual<int>(0, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash764()
-{
-    int i = 0;
-    int i1 = 0;
-    this.dodash('9', "9-8", ref i, "9-", ref i1, 7);
-    Assert.AreEqual<int>(0, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash956()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "!@\0", ref i, "1", ref i1, 1);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(1, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash203()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0-\0", ref i, "1-1", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException894()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@!@", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash682()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "\0-\0", ref i, "1-1", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException712()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "1-1", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException87901()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@!@", ref i, "", ref i1, 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException33502()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0!!", ref i, "\0!", ref i1, 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException744()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "0-1", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException857()
-{
-    int i = 1;
-    int i1 = 259;
-    this.dodash(' ', "6-p", ref i, "6-p", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: path bounds exceeded")]
-public void dodash315()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "1-\u8031", ref i, "1-\u8031", ref i1, 6);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException338()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@\u0001@@@", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash513()
-{
-    int i = 0;
-    int i1 = 0;
-    this.dodash(' ', "\0!\0", ref i, "\0!\0", ref i1, 1022);
-    Assert.AreEqual<int>(0, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException396()
-{
-    int i = 0;
-    int i1 = 0;
-    this.dodash(' ', "!@\0", ref i, "1-1", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash829()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash('!', "\0\u0010\0", ref i, "\0\u0010\0", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash37()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "\u0100-\0", ref i, "\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash435()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash('!', "@\u8000\0", ref i, "\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException570()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "\0-@", ref i, "\0\0\0", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash483()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash('@', "\0@\0", ref i, "\0@\0", ref i1, 0);
+    this.dodash(' ', cs, ref i, cs1, ref i1, 0);
     Assert.AreEqual<int>(1, i);
     Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash887()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0\u0001\0", ref i, "\0", ref i1, 1);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(1, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash112()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@\0", ref i, "\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException39601()
-{
-    int i = 4;
-    int i1 = 0;
-    this.dodash(' ', "\0@@@@\u0002", ref i, "\0\0\0\0\0\0", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash43()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0\u0001\0", ref i, "\0\u0001", ref i1, 1);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(1, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException358()
-{
-    int i = 3;
-    int i1 = 0;
-    this.dodash(' ', "\0@@@n", ref i, "\0\0\0\0\0", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException80501()
-{
-    int i = 3;
-    int i1 = 0;
-    this.dodash(' ', "\0@@@t", ref i, "\0\0\0\0\0", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: path bounds exceeded")]
-public void dodash196()
-{
-    int i = 4;
-    int i1 = 2;
-    this.dodash(' ', "--\0r-\u1008", ref i, "\0\0\0\0\0\0", ref i1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException703()
-{
-    int i = 1;
-    int i1 = 1022;
-    this.dodash(' ', "\0--", ref i, "\0\0\0", ref i1, 1022);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException919()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0--", ref i, "\0", ref i1, 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException726()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0--", ref i, "", ref i1, 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash249()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@\u0001\u4000@\0@@", ref i, "\0\0", ref i1, 2);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException442()
-{
-    int i = 4;
-    int i1 = 0;
-    this.dodash(' ', "\0@@@\u0001\u0001\u1000", ref i, "\0\0", ref i1, 3);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException334()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash('!', "\0@\u0002@ ", ref i, "\0\0", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException972()
-{
-    int i = 4;
-    int i1 = 0;
-    this.dodash(' ', "\0@@@\u0200\u0001", ref i, "\0\0\0", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash660()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash('!', "@ @@@@\0", ref i, "\0\0", ref i1, 2);
-    Assert.AreEqual<int>(6, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException310()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "\0@\u0001@@\u0004\u0002", ref i, "\0\0", ref i1, 7);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash758()
-{
-    int i = 4;
-    int i1 = 0;
-    this.dodash(' ', "@@@@\u0001@@n\u4000@@n@\0", ref i, "\0\0", ref i1, 5);
-    Assert.AreEqual<int>(13, i);
-    Assert.AreEqual<int>(5, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException542()
-{
-    int i = 1;
-    int i1 = 1;
-    this.dodash('!', "\0\u0001\u0800", ref i, "\0\u0001", ref i1, 512);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash883()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@\u0001@@n\u0001@@@@@@\u0001\0", ref i, "\0\0", ref i1, 7);
-    Assert.AreEqual<int>(13, i);
-    Assert.AreEqual<int>(7, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash208()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash('@', "0-h-\u0800\0-", ref i, "\0\0\0", ref i1, 6);
-    Assert.AreEqual<int>(5, i);
-    Assert.AreEqual<int>(6, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash22()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "0-h-0\0", ref i, "\0\0\0", ref i1, 6);
-    Assert.AreEqual<int>(5, i);
-    Assert.AreEqual<int>(6, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash613()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "B-z-z\0", ref i, "\0\0\0", ref i1, 6);
-    Assert.AreEqual<int>(5, i);
-    Assert.AreEqual<int>(6, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash450()
-{
-    int i = 4;
-    int i1 = 0;
-    this.dodash('H', "@@@@P@@n\u0001\u0004--\u0001\0", ref i, "\0\0", ref i1, 4);
-    Assert.AreEqual<int>(13, i);
-    Assert.AreEqual<int>(4, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException478()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0--", ref i, "\0\0", ref i1, 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException291()
-{
-    int i = 4;
-    int i1 = 1;
-    this.dodash(' ', "@@\0@!!", ref i, "\0\0\0", ref i1, 775);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException89401()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0--", ref i, "\0\0\0", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException727()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\0--", ref i, "\0\0", ref i1, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException301()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "\0-\u0200", ref i, "\0\0\0", ref i1, 6);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash789()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@\u0001@@\b@@@@@@@@\0", ref i, "\0\0", ref i1, 3);
-    Assert.AreEqual<int>(13, i);
-    Assert.AreEqual<int>(3, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash368()
-{
-    int i = 4;
-    int i1 = 0;
-    this.dodash(' ', "@@@@\u0001@@t\u4000@@t@\0", ref i, "\0\0", ref i1, 5);
-    Assert.AreEqual<int>(13, i);
-    Assert.AreEqual<int>(5, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash387()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash('!', "@ @@\u0001@@@@@@@@n@@@@@@@@@@@@@@n\0", ref i, "\0\0", ref i1, 3);
-    Assert.AreEqual<int>(29, i);
-    Assert.AreEqual<int>(3, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException873()
-{
-    int i = 4;
-    int i1 = 1022;
-    this.dodash(' ', "---\0--\u8000", ref i, "\0\0\0\0\0\0\0", ref i1, 1022);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void dodashThrowsIndexOutOfRangeException834()
-{
-    int i = 4;
-    int i1 = 2;
-    this.dodash('9', "--\09-0-", ref i, "\0\0\0\0", ref i1, 967);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash724()
-{
-    int i = 24;
-    int i1 = 0;
-    this.dodash('C', "@@@@@@@@@@@@@@@@@@@@@@@@\u0001@@t\u0001-@\u0800\u403c-@@@@@@@2-\u2000@@@@@@@@@@\0@@@@@@@@", ref i, 
-                "\0\0", ref i1, 4);
-    Assert.AreEqual<int>(54, i);
-    Assert.AreEqual<int>(4, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash714()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\u0004\b\0", ref i, "\u0004\b\0", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash526()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\u0010!\0", ref i, "\u0010", ref i1, 1);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(1, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash928()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\u0004-\0", ref i, "\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash578()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\b \0", ref i, "\b \0", ref i1, 0);
-    Assert.AreEqual<int>(1, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash642()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "\u0002-\0", ref i, "\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash159()
-{
-    int i = 4;
-    int i1 = 2;
-    this.dodash(' ', "\u0100\u0080\u0004\u2000-\u4000\0", ref i, "\0\0\0\0\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(6, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash762()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "1-0\u0001\0-", ref i, "\0\0\0\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash33()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "9-9\0--", ref i, "\0\0\0\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(3, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash339()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@\u0420\0", ref i, "\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash151()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "0-@\u0001\u4000\0-", ref i, "\0\0\0\0\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(5, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash174()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@\u0001\0@@@", ref i, "\0\0\0\0\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(3, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash577()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@t\0ttt", ref i, "\0\0\0\0\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(3, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash167()
-{
-    int i = 1;
-    int i1 = 1;
-    this.dodash('!', "@ \0", ref i, "\0\0\0", ref i1, 1022);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash710()
-{
-    int i = 4;
-    int i1 = 0;
-    this.dodash('!', "@\u0010\u2000\u1000 \u0001\0", ref i, "@\u0010", ref i1, 2);
-    Assert.AreEqual<int>(6, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash793()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash('A', "\u0001@\u0001@\0@@", ref i, "\0\0", ref i1, 3);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(3, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash350()
-{
-    int i = 2;
-    int i1 = 827;
-    this.dodash(' ', " a-b\0-", ref i, "\0\0\0\0\0\0", ref i1, 827);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(827, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash780()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\u0100!-\u0010\0", ref i, "\0\0\0", ref i1, 2);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash106()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "\u0001!!-\u0001-\0", ref i, "\0\0\0", ref i1, 3);
-    Assert.AreEqual<int>(6, i);
-    Assert.AreEqual<int>(3, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash252()
-{
-    int i = 2;
-    int i1 = 2;
-    this.dodash(' ', "\u00040-2\0-", ref i, "\0\0\0", ref i1, 7);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(4, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash417()
-{
-    int i = 4;
-    int i1 = 0;
-    this.dodash(' ', "\u4000\u0800\u0004\u2000@@n@@\u8000@\u0001\u0080\0", ref i, "\0\0", ref i1, 2);
-    Assert.AreEqual<int>(13, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash268()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\u8000@@n@@n\u0400\u4000\u0001\0nnnn", ref i, "\0\0", ref i1, 2);
-    Assert.AreEqual<int>(10, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash892()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash('A', "\u8000@@n@@\u0001@@\u0400\0@@@@", ref i, "\0\0", ref i1, 2);
-    Assert.AreEqual<int>(10, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash374()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "0--\u0001\u0800\u0200\0", ref i, "\0\0", ref i1, 3);
-    Assert.AreEqual<int>(6, i);
-    Assert.AreEqual<int>(3, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash163()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\u0080@@n@@t@@t\u0200\0tt", ref i, "\0\0", ref i1, 2);
-    Assert.AreEqual<int>(11, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash187()
-{
-    int i = 1;
-    int i1 = 1023;
-    this.dodash(' ', "A---\r\0", ref i, "\0\0\0\0\0\0", ref i1, 1023);
-    Assert.AreEqual<int>(5, i);
-    Assert.AreEqual<int>(1023, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash538()
-{
-    int i = 2;
-    int i1 = 1;
-    this.dodash(' ', " @!-@!\0", ref i, "\0\0\0\0\0\0\0", ref i1, 1);
-    Assert.AreEqual<int>(6, i);
-    Assert.AreEqual<int>(1, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash97()
-{
-    int i = 3;
-    int i1 = 0;
-    this.dodash('5', "\u8000\u4000\u10000-8-4-t\0--", ref i, "\0\0\0", ref i1, 5);
-    Assert.AreEqual<int>(10, i);
-    Assert.AreEqual<int>(5, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash304()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash('@', "\u0001\u2000\0", ref i, "\u0001", ref i1, 1);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(1, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash621()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash('@', "\u0800@\0", ref i, "\u0800@", ref i1, 0);
-    Assert.AreEqual<int>(1, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash470()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "\u0010-\0", ref i, "\0", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash480()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@!\0", ref i, "\0\0", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash869()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@@\0", ref i, "\0", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash222()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "\u4000-\0", ref i, "\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash164()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "\u0002-\u0001\0---", ref i, "\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(3, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash672()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "\u1000@@\u0001\0@", ref i, "\0\0", ref i1, 0);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash805()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "\u1000@@n\0n", ref i, "\0", ref i1, 0);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash176()
-{
-    int i = 2;
-    int i1 = 0;
-    this.dodash(' ', "\u1000@@t\0t", ref i, "\0", ref i1, 0);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(0, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash995()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "A- \u0004\u0001\0-", ref i, "\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(2, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 public void dodash783()
 {
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "k-k\0", ref i, "\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(3, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash443()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "8-1\u0010\0--", ref i, "\0\0\0", ref i1, 0);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash91()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash('@', "\b\u0001\0", ref i, "\b\u0001", ref i1, 1);
-    Assert.AreEqual<int>(2, i);
-    Assert.AreEqual<int>(1, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash207()
-{
-    int i = 1;
-    int i1 = 0;
-    this.dodash('$', "\u0010- \0", ref i, "\0", ref i1, 2);
-    Assert.AreEqual<int>(3, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash429()
-{
-    int i = 4;
-    int i1 = 2;
-    this.dodash(' ', "\u4000\u0004\u0001A-B\0", ref i, "\0\0\0", ref i1, 35);
-    Assert.AreEqual<int>(6, i);
-    Assert.AreEqual<int>(3, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash87()
-{
+    char[] cs = new char[100];
     int i = 2;
+    char[] cs1 = new char[100];
     int i1 = 0;
-    this.dodash(' ', "\u0200@\u0001@\u2020\0@", ref i, "\0", ref i1, 0);
-    Assert.AreEqual<int>(5, i);
+    cs[2] = '\u0001';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 0);
+    Assert.AreEqual<int>(3, i);
     Assert.AreEqual<int>(0, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash46()
+public void dodash140()
 {
-    int i = 1;
+    char[] cs = new char[100];
+    int i = 2;
+    char[] cs1 = new char[100];
     int i1 = 0;
-    this.dodash(' ', "\u4000--\0", ref i, "\0", ref i1, 1);
+    cs[2] = '\u0001';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 1);
     Assert.AreEqual<int>(3, i);
     Assert.AreEqual<int>(1, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash286()
+public void dodash294()
 {
-    int i = 2;
-    int i1 = 0;
-    this.dodash('!', "@\u0080- \0", ref i, "\0\0", ref i1, 2);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash868()
-{
+    char[] cs = new char[100];
     int i = 1;
+    char[] cs1 = new char[100];
     int i1 = 0;
-    this.dodash('(', "\u0001- \u1000\0-", ref i, "\0\0\0", ref i1, 2);
-    Assert.AreEqual<int>(4, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash223()
-{
-    int i = 1;
-    int i1 = 2;
-    this.dodash(' ', "a-c\0", ref i, "\0\0\0", ref i1, 3);
-    Assert.AreEqual<int>(3, i);
-    Assert.AreEqual<int>(3, i1);
+    cs[0] = '@';
+    cs[1] = '\u0001';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 0);
+    Assert.AreEqual<int>(2, i);
+    Assert.AreEqual<int>(0, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 public void dodash373()
 {
-    int i = 1;
+    char[] cs = new char[100];
+    int i = 4;
+    char[] cs1 = new char[100];
     int i1 = 0;
-    this.dodash(' ', " ----\0-", ref i, "\0", ref i1, 2);
+    cs[4] = '-';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 0);
+    Assert.AreEqual<int>(5, i);
+    Assert.AreEqual<int>(0, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash286()
+{
+    char[] cs = new char[100];
+    int i = 1;
+    char[] cs1 = new char[100];
+    int i1 = 0;
+    cs[0] = '@';
+    cs[1] = '@';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 0);
+    Assert.AreEqual<int>(2, i);
+    Assert.AreEqual<int>(0, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash613()
+{
+    char[] cs = new char[100];
+    int i = 1;
+    char[] cs1 = new char[100];
+    int i1 = 0;
+    cs[0] = '@';
+    cs[1] = '@';
+    cs[2] = '\u0001';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 0);
+    Assert.AreEqual<int>(3, i);
+    Assert.AreEqual<int>(0, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash218()
+{
+    char[] cs = new char[100];
+    int i = 2;
+    char[] cs1 = new char[100];
+    int i1 = 0;
+    cs[1] = '@';
+    cs[2] = '@';
+    cs[3] = 'n';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 0);
+    Assert.AreEqual<int>(4, i);
+    Assert.AreEqual<int>(0, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash457()
+{
+    char[] cs = new char[100];
+    int i = 2;
+    char[] cs1 = new char[100];
+    int i1 = 0;
+    cs[1] = '@';
+    cs[2] = '@';
+    cs[3] = 't';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 0);
+    Assert.AreEqual<int>(4, i);
+    Assert.AreEqual<int>(0, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash452()
+{
+    char[] cs = new char[100];
+    int i = 4;
+    char[] cs1 = new char[100];
+    int i1 = 2;
+    cs[4] = '-';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 0);
     Assert.AreEqual<int>(5, i);
     Assert.AreEqual<int>(2, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash194()
+public void dodash673()
 {
-    int i = 1;
-    int i1 = 0;
-    this.dodash(' ', " ----\u0001\0-", ref i, "\0", ref i1, 2);
-    Assert.AreEqual<int>(6, i);
-    Assert.AreEqual<int>(2, i1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash82()
-{
-    int i = 2;
+    char[] cs = new char[100];
+    int i = 4;
+    char[] cs1 = new char[100];
     int i1 = 2;
-    this.dodash('(', "\u0800e-d9-1\u0010\0---", ref i, "\0\0\0", ref i1, 1);
-    Assert.AreEqual<int>(8, i);
+    cs[4] = '-';
+    cs[5] = '\u0001';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 0);
+    Assert.AreEqual<int>(6, i);
     Assert.AreEqual<int>(2, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash896()
+public void dodash869()
 {
+    char[] cs = new char[100];
     int i = 1;
-    int i1 = 0;
-    this.dodash(' ', "@!@@@@\0", ref i, "\0", ref i1, 1);
-    Assert.AreEqual<int>(6, i);
-    Assert.AreEqual<int>(1, i1);
+    char[] cs1 = new char[100];
+    int i1 = 2;
+    cs[0] = '1';
+    cs[1] = '-';
+    cs[2] = '\u0001';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 0);
+    Assert.AreEqual<int>(3, i);
+    Assert.AreEqual<int>(2, i1);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void dodash516()
+public void dodash133()
 {
+    char[] cs = new char[100];
+    int i = 4;
+    char[] cs1 = new char[100];
+    int i1 = 2;
+    cs[3] = '1';
+    cs[4] = '-';
+    cs[5] = '1';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 0);
+    Assert.AreEqual<int>(6, i);
+    Assert.AreEqual<int>(2, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash379()
+{
+    char[] cs = new char[100];
+    int i = 2;
+    char[] cs1 = new char[100];
+    int i1 = 4;
+    cs[1] = '5';
+    cs[2] = '-';
+    cs[3] = 'p';
+    this.dodash('\0', cs, ref i, cs1, ref i1, -2147483640);
+    Assert.AreEqual<int>(4, i);
+    Assert.AreEqual<int>(4, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash145()
+{
+    char[] cs = new char[100];
+    int i = 32;
+    int i1 = 2;
+    cs[31] = 'i';
+    cs[32] = '-';
+    cs[33] = 't';
+    cs[34] = '-';
+    this.dodash('\0', cs, ref i, cs, ref i1, 3);
+    Assert.AreEqual<int>(35, i);
+    Assert.AreEqual<int>(3, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash435()
+{
+    char[] cs = new char[100];
+    int i = 12;
+    int i1 = 2;
+    cs[11] = 'H';
+    cs[12] = '-';
+    cs[13] = 'S';
+    cs[14] = '-';
+    cs[15] = '\u0001';
+    this.dodash('\0', cs, ref i, cs, ref i1, 3);
+    Assert.AreEqual<int>(16, i);
+    Assert.AreEqual<int>(3, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash702()
+{
+    char[] cs = new char[100];
+    int i = 25;
+    char[] cs1 = new char[100];
+    int i1 = 2;
+    cs[24] = 'b';
+    cs[25] = '-';
+    cs[26] = 'm';
+    cs[27] = '\u0001';
+    cs[28] = '\u0001';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 3);
+    Assert.AreEqual<int>(29, i);
+    Assert.AreEqual<int>(3, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash73()
+{
+    char[] cs = new char[100];
+    int i = 4;
+    char[] cs1 = new char[100];
+    int i1 = 2;
+    cs[3] = '9';
+    cs[4] = '-';
+    cs[5] = 'D';
+    cs[6] = '-';
+    cs[7] = 'R';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 3);
+    Assert.AreEqual<int>(8, i);
+    Assert.AreEqual<int>(3, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash164()
+{
+    char[] cs = new char[100];
+    int i = 75;
+    char[] cs1 = new char[100];
+    int i1 = 3;
+    cs[74] = 'I';
+    cs[75] = '-';
+    cs[76] = 'h';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 5);
+    Assert.AreEqual<int>(77, i);
+    Assert.AreEqual<int>(5, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash439()
+{
+    char[] cs = new char[100];
+    int i = 4;
+    int i1 = 2;
+    cs[3] = 'g';
+    cs[4] = '-';
+    cs[5] = 'p';
+    cs[6] = '@';
+    cs[7] = '@';
+    cs[8] = '@';
+    cs[9] = '\u0001';
+    this.dodash('\0', cs, ref i, cs, ref i1, 3);
+    Assert.AreEqual<int>(10, i);
+    Assert.AreEqual<int>(3, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash214()
+{
+    char[] cs = new char[100];
+    int i = 15;
+    int i1 = 2;
+    cs[14] = 'a';
+    cs[15] = '-';
+    cs[16] = 'j';
+    cs[17] = '@';
+    cs[18] = '@';
+    cs[19] = '@';
+    cs[20] = '@';
+    this.dodash('\0', cs, ref i, cs, ref i1, 3);
+    Assert.AreEqual<int>(21, i);
+    Assert.AreEqual<int>(3, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash654()
+{
+    char[] cs = new char[100];
     int i = 1;
-    int i1 = 0;
-    this.dodash('R', "@\u0010@@@@\u0081\0@@@@@@@", ref i, "\0", ref i1, 1);
-    Assert.AreEqual<int>(7, i);
-    Assert.AreEqual<int>(1, i1);
+    char[] cs1 = new char[100];
+    int i1 = 2;
+    cs[0] = 'i';
+    cs[1] = '-';
+    cs[2] = 'r';
+    cs[3] = '@';
+    cs[4] = '@';
+    cs[5] = '@';
+    cs[6] = '@';
+    cs[7] = '\u0001';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 3);
+    Assert.AreEqual<int>(8, i);
+    Assert.AreEqual<int>(3, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash309()
+{
+    char[] cs = new char[100];
+    int i = 28;
+    char[] cs1 = new char[100];
+    int i1 = 2;
+    cs[27] = '0';
+    cs[28] = '-';
+    cs[29] = '9';
+    cs[30] = '@';
+    cs[31] = '@';
+    cs[32] = '\u0001';
+    cs[33] = '@';
+    cs[34] = '\u0001';
+    cs[35] = '@';
+    cs[36] = '\u0001';
+    this.dodash('\0', cs, ref i, cs1, ref i1, 3);
+    Assert.AreEqual<int>(37, i);
+    Assert.AreEqual<int>(3, i1);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void dodash263()
+{
+    char[] cs = new char[100];
+    int i = 14;
+    char[] cs1 = new char[100];
+    int i1 = 8;
+    cs[13] = '3';
+    cs[14] = '-';
+    cs[15] = '8';
+    cs[16] = '-';
+    cs[17] = '-';
+    cs[18] = '-';
+    cs[19] = '\u0001';
+    this.dodash(',', cs, ref i, cs1, ref i1, 15);
+    Assert.AreEqual<int>(20, i);
+    Assert.AreEqual<int>(15, i1);
 }
     }
 }

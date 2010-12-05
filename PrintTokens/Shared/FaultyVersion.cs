@@ -27,7 +27,7 @@ namespace Edu.Nlu.Sir.Siemens.Shared
     }
 
     public static partial class Extensions {
-        public static bool ReadLine(this TextReader reader, out string result, int maxsize)
+        public static bool ReadLine(this TextReader reader, out char[] result, int maxsize)
         {
             StringBuilder s = new StringBuilder();
             while (s.Length < maxsize && reader.Peek() != -1 && reader.Peek() != '\n')
@@ -44,7 +44,7 @@ namespace Edu.Nlu.Sir.Siemens.Shared
             }
             else
             {
-                result = s.ToString();
+                result = s.ToString().ToCharArray();
                 return true;
             }
         }

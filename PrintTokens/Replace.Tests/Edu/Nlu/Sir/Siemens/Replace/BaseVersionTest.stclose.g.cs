@@ -18,51 +18,12 @@ namespace Edu.Nlu.Sir.Siemens.Replace
     {
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void stclose200()
+public void stclose628()
 {
-    int i = 0;
-    this.stclose("\0\0", ref i, 0);
-    Assert.AreEqual<int>(1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void stclose159()
-{
-    int i = 3;
-    this.stclose("\0\0\0\0", ref i, 3);
-    Assert.AreEqual<int>(4, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void stclose16()
-{
-    int i = 2;
-    this.stclose("\0\0\0\0", ref i, 2);
-    Assert.AreEqual<int>(3, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void stclose157()
-{
-    int i = 4;
-    this.stclose("\0\0\0\0", ref i, 3);
-    Assert.AreEqual<int>(5, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void stclose141()
-{
-    int i = 2;
-    this.stclose("\0\0\0\0", ref i, 1);
-    Assert.AreEqual<int>(3, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void stclose75()
-{
-    int i = 4;
-    this.stclose("\0\0\0\0\0", ref i, 1);
-    Assert.AreEqual<int>(5, i);
+    char[] cs = new char[100];
+    int i = 64;
+    this.stclose(cs, ref i, 1);
+    Assert.AreEqual<int>(65, i);
 }
     }
 }

@@ -18,136 +18,230 @@ namespace Edu.Nlu.Sir.Siemens.Replace
     {
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void addstr411()
+public void addstr67()
 {
     bool b;
-    string s = (string)null;
-    int i = 0;
-    b = this.addstr(' ', ref s, ref i, 0);
+    char[] cs1 = new char[100];
+    char[] cs = cs1;
+    int i = 97;
+    b = this.addstr(' ', ref cs, ref i, 0);
     Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<string>((string)null, s);
-    Assert.AreEqual<int>(0, i);
+    Assert.IsNotNull((object)cs);
+    Assert.AreEqual<int>(100, cs.Length);
+    Assert.AreEqual<char>('\0', cs[0]);
+    Assert.AreEqual<char>('\0', cs[1]);
+    Assert.AreEqual<char>('\0', cs[2]);
+    Assert.AreEqual<char>('\0', cs[3]);
+    Assert.AreEqual<char>('\0', cs[4]);
+    Assert.AreEqual<char>('\0', cs[5]);
+    Assert.AreEqual<char>('\0', cs[6]);
+    Assert.AreEqual<char>('\0', cs[7]);
+    Assert.AreEqual<char>('\0', cs[8]);
+    Assert.AreEqual<char>('\0', cs[9]);
+    Assert.AreEqual<char>('\0', cs[10]);
+    Assert.AreEqual<char>('\0', cs[11]);
+    Assert.AreEqual<char>('\0', cs[12]);
+    Assert.AreEqual<char>('\0', cs[13]);
+    Assert.AreEqual<char>('\0', cs[14]);
+    Assert.AreEqual<char>('\0', cs[15]);
+    Assert.AreEqual<char>('\0', cs[16]);
+    Assert.AreEqual<char>('\0', cs[17]);
+    Assert.AreEqual<char>('\0', cs[18]);
+    Assert.AreEqual<char>('\0', cs[19]);
+    Assert.AreEqual<char>('\0', cs[20]);
+    Assert.AreEqual<char>('\0', cs[21]);
+    Assert.AreEqual<char>('\0', cs[22]);
+    Assert.AreEqual<char>('\0', cs[23]);
+    Assert.AreEqual<char>('\0', cs[24]);
+    Assert.AreEqual<char>('\0', cs[25]);
+    Assert.AreEqual<char>('\0', cs[26]);
+    Assert.AreEqual<char>('\0', cs[27]);
+    Assert.AreEqual<char>('\0', cs[28]);
+    Assert.AreEqual<char>('\0', cs[29]);
+    Assert.AreEqual<char>('\0', cs[30]);
+    Assert.AreEqual<char>('\0', cs[31]);
+    Assert.AreEqual<char>('\0', cs[32]);
+    Assert.AreEqual<char>('\0', cs[33]);
+    Assert.AreEqual<char>('\0', cs[34]);
+    Assert.AreEqual<char>('\0', cs[35]);
+    Assert.AreEqual<char>('\0', cs[36]);
+    Assert.AreEqual<char>('\0', cs[37]);
+    Assert.AreEqual<char>('\0', cs[38]);
+    Assert.AreEqual<char>('\0', cs[39]);
+    Assert.AreEqual<char>('\0', cs[40]);
+    Assert.AreEqual<char>('\0', cs[41]);
+    Assert.AreEqual<char>('\0', cs[42]);
+    Assert.AreEqual<char>('\0', cs[43]);
+    Assert.AreEqual<char>('\0', cs[44]);
+    Assert.AreEqual<char>('\0', cs[45]);
+    Assert.AreEqual<char>('\0', cs[46]);
+    Assert.AreEqual<char>('\0', cs[47]);
+    Assert.AreEqual<char>('\0', cs[48]);
+    Assert.AreEqual<char>('\0', cs[49]);
+    Assert.AreEqual<char>('\0', cs[50]);
+    Assert.AreEqual<char>('\0', cs[51]);
+    Assert.AreEqual<char>('\0', cs[52]);
+    Assert.AreEqual<char>('\0', cs[53]);
+    Assert.AreEqual<char>('\0', cs[54]);
+    Assert.AreEqual<char>('\0', cs[55]);
+    Assert.AreEqual<char>('\0', cs[56]);
+    Assert.AreEqual<char>('\0', cs[57]);
+    Assert.AreEqual<char>('\0', cs[58]);
+    Assert.AreEqual<char>('\0', cs[59]);
+    Assert.AreEqual<char>('\0', cs[60]);
+    Assert.AreEqual<char>('\0', cs[61]);
+    Assert.AreEqual<char>('\0', cs[62]);
+    Assert.AreEqual<char>('\0', cs[63]);
+    Assert.AreEqual<char>('\0', cs[64]);
+    Assert.AreEqual<char>('\0', cs[65]);
+    Assert.AreEqual<char>('\0', cs[66]);
+    Assert.AreEqual<char>('\0', cs[67]);
+    Assert.AreEqual<char>('\0', cs[68]);
+    Assert.AreEqual<char>('\0', cs[69]);
+    Assert.AreEqual<char>('\0', cs[70]);
+    Assert.AreEqual<char>('\0', cs[71]);
+    Assert.AreEqual<char>('\0', cs[72]);
+    Assert.AreEqual<char>('\0', cs[73]);
+    Assert.AreEqual<char>('\0', cs[74]);
+    Assert.AreEqual<char>('\0', cs[75]);
+    Assert.AreEqual<char>('\0', cs[76]);
+    Assert.AreEqual<char>('\0', cs[77]);
+    Assert.AreEqual<char>('\0', cs[78]);
+    Assert.AreEqual<char>('\0', cs[79]);
+    Assert.AreEqual<char>('\0', cs[80]);
+    Assert.AreEqual<char>('\0', cs[81]);
+    Assert.AreEqual<char>('\0', cs[82]);
+    Assert.AreEqual<char>('\0', cs[83]);
+    Assert.AreEqual<char>('\0', cs[84]);
+    Assert.AreEqual<char>('\0', cs[85]);
+    Assert.AreEqual<char>('\0', cs[86]);
+    Assert.AreEqual<char>('\0', cs[87]);
+    Assert.AreEqual<char>('\0', cs[88]);
+    Assert.AreEqual<char>('\0', cs[89]);
+    Assert.AreEqual<char>('\0', cs[90]);
+    Assert.AreEqual<char>('\0', cs[91]);
+    Assert.AreEqual<char>('\0', cs[92]);
+    Assert.AreEqual<char>('\0', cs[93]);
+    Assert.AreEqual<char>('\0', cs[94]);
+    Assert.AreEqual<char>('\0', cs[95]);
+    Assert.AreEqual<char>('\0', cs[96]);
+    Assert.AreEqual<char>('\0', cs[97]);
+    Assert.AreEqual<char>('\0', cs[98]);
+    Assert.AreEqual<char>('\0', cs[99]);
+    Assert.AreEqual<int>(97, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(NullReferenceException))]
-public void addstrThrowsNullReferenceException338()
+public void addstr909()
 {
     bool b;
-    string s = (string)null;
-    int i = int.MinValue;
-    b = this.addstr(' ', ref s, ref i, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(ArgumentOutOfRangeException))]
-public void addstrThrowsArgumentOutOfRangeException398()
-{
-    bool b;
-    string s = "";
-    int i = int.MinValue;
-    b = this.addstr('\0', ref s, ref i, -2147483647);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void addstr895()
-{
-    bool b;
-    string s = "";
+    char[] cs1 = new char[100];
+    char[] cs = cs1;
     int i = 0;
-    b = this.addstr(' ', ref s, ref i, 0);
-    Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<string>("", s);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(ArgumentOutOfRangeException))]
-public void addstrThrowsArgumentOutOfRangeException470()
-{
-    bool b;
-    string s = "";
-    int i = int.MinValue;
-    b = this.addstr(' ', ref s, ref i, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void addstrThrowsArgumentException777()
-{
-    bool b;
-    string s = "";
-    int i = 0;
-    b = this.addstr(' ', ref s, ref i, 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void addstr927()
-{
-    bool b;
-    string s = "";
-    int i = 0;
-    b = this.addstr(' ', ref s, ref i, 1);
+    b = this.addstr(' ', ref cs, ref i, 1);
     Assert.AreEqual<bool>(true, b);
-    Assert.AreEqual<string>(" ", s);
-    Assert.AreEqual<int>(1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(ArgumentOutOfRangeException))]
-public void addstrThrowsArgumentOutOfRangeException265()
-{
-    bool b;
-    string s = "";
-    int i = 1;
-    b = this.addstr(' ', ref s, ref i, 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void addstr416()
-{
-    bool b;
-    string s = "\0\0\0";
-    int i = 1;
-    b = this.addstr(' ', ref s, ref i, 2);
-    Assert.AreEqual<bool>(true, b);
-    Assert.AreEqual<string>("\0 \0", s);
-    Assert.AreEqual<int>(2, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void addstr546()
-{
-    bool b;
-    string s = "\0";
-    int i = 0;
-    b = this.addstr(' ', ref s, ref i, 0);
-    Assert.AreEqual<bool>(false, b);
-    Assert.AreEqual<string>("\0", s);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void addstr954()
-{
-    bool b;
-    string s = "\0";
-    int i = 0;
-    b = this.addstr(' ', ref s, ref i, 1);
-    Assert.AreEqual<bool>(true, b);
-    Assert.AreEqual<string>(" ", s);
-    Assert.AreEqual<int>(1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void addstr790()
-{
-    bool b;
-    string s = "\0\0";
-    int i = 0;
-    b = this.addstr(' ', ref s, ref i, 1);
-    Assert.AreEqual<bool>(true, b);
-    Assert.AreEqual<string>(" \0", s);
+    Assert.IsNotNull((object)cs);
+    Assert.AreEqual<int>(100, cs.Length);
+    Assert.AreEqual<char>(' ', cs[0]);
+    Assert.AreEqual<char>('\0', cs[1]);
+    Assert.AreEqual<char>('\0', cs[2]);
+    Assert.AreEqual<char>('\0', cs[3]);
+    Assert.AreEqual<char>('\0', cs[4]);
+    Assert.AreEqual<char>('\0', cs[5]);
+    Assert.AreEqual<char>('\0', cs[6]);
+    Assert.AreEqual<char>('\0', cs[7]);
+    Assert.AreEqual<char>('\0', cs[8]);
+    Assert.AreEqual<char>('\0', cs[9]);
+    Assert.AreEqual<char>('\0', cs[10]);
+    Assert.AreEqual<char>('\0', cs[11]);
+    Assert.AreEqual<char>('\0', cs[12]);
+    Assert.AreEqual<char>('\0', cs[13]);
+    Assert.AreEqual<char>('\0', cs[14]);
+    Assert.AreEqual<char>('\0', cs[15]);
+    Assert.AreEqual<char>('\0', cs[16]);
+    Assert.AreEqual<char>('\0', cs[17]);
+    Assert.AreEqual<char>('\0', cs[18]);
+    Assert.AreEqual<char>('\0', cs[19]);
+    Assert.AreEqual<char>('\0', cs[20]);
+    Assert.AreEqual<char>('\0', cs[21]);
+    Assert.AreEqual<char>('\0', cs[22]);
+    Assert.AreEqual<char>('\0', cs[23]);
+    Assert.AreEqual<char>('\0', cs[24]);
+    Assert.AreEqual<char>('\0', cs[25]);
+    Assert.AreEqual<char>('\0', cs[26]);
+    Assert.AreEqual<char>('\0', cs[27]);
+    Assert.AreEqual<char>('\0', cs[28]);
+    Assert.AreEqual<char>('\0', cs[29]);
+    Assert.AreEqual<char>('\0', cs[30]);
+    Assert.AreEqual<char>('\0', cs[31]);
+    Assert.AreEqual<char>('\0', cs[32]);
+    Assert.AreEqual<char>('\0', cs[33]);
+    Assert.AreEqual<char>('\0', cs[34]);
+    Assert.AreEqual<char>('\0', cs[35]);
+    Assert.AreEqual<char>('\0', cs[36]);
+    Assert.AreEqual<char>('\0', cs[37]);
+    Assert.AreEqual<char>('\0', cs[38]);
+    Assert.AreEqual<char>('\0', cs[39]);
+    Assert.AreEqual<char>('\0', cs[40]);
+    Assert.AreEqual<char>('\0', cs[41]);
+    Assert.AreEqual<char>('\0', cs[42]);
+    Assert.AreEqual<char>('\0', cs[43]);
+    Assert.AreEqual<char>('\0', cs[44]);
+    Assert.AreEqual<char>('\0', cs[45]);
+    Assert.AreEqual<char>('\0', cs[46]);
+    Assert.AreEqual<char>('\0', cs[47]);
+    Assert.AreEqual<char>('\0', cs[48]);
+    Assert.AreEqual<char>('\0', cs[49]);
+    Assert.AreEqual<char>('\0', cs[50]);
+    Assert.AreEqual<char>('\0', cs[51]);
+    Assert.AreEqual<char>('\0', cs[52]);
+    Assert.AreEqual<char>('\0', cs[53]);
+    Assert.AreEqual<char>('\0', cs[54]);
+    Assert.AreEqual<char>('\0', cs[55]);
+    Assert.AreEqual<char>('\0', cs[56]);
+    Assert.AreEqual<char>('\0', cs[57]);
+    Assert.AreEqual<char>('\0', cs[58]);
+    Assert.AreEqual<char>('\0', cs[59]);
+    Assert.AreEqual<char>('\0', cs[60]);
+    Assert.AreEqual<char>('\0', cs[61]);
+    Assert.AreEqual<char>('\0', cs[62]);
+    Assert.AreEqual<char>('\0', cs[63]);
+    Assert.AreEqual<char>('\0', cs[64]);
+    Assert.AreEqual<char>('\0', cs[65]);
+    Assert.AreEqual<char>('\0', cs[66]);
+    Assert.AreEqual<char>('\0', cs[67]);
+    Assert.AreEqual<char>('\0', cs[68]);
+    Assert.AreEqual<char>('\0', cs[69]);
+    Assert.AreEqual<char>('\0', cs[70]);
+    Assert.AreEqual<char>('\0', cs[71]);
+    Assert.AreEqual<char>('\0', cs[72]);
+    Assert.AreEqual<char>('\0', cs[73]);
+    Assert.AreEqual<char>('\0', cs[74]);
+    Assert.AreEqual<char>('\0', cs[75]);
+    Assert.AreEqual<char>('\0', cs[76]);
+    Assert.AreEqual<char>('\0', cs[77]);
+    Assert.AreEqual<char>('\0', cs[78]);
+    Assert.AreEqual<char>('\0', cs[79]);
+    Assert.AreEqual<char>('\0', cs[80]);
+    Assert.AreEqual<char>('\0', cs[81]);
+    Assert.AreEqual<char>('\0', cs[82]);
+    Assert.AreEqual<char>('\0', cs[83]);
+    Assert.AreEqual<char>('\0', cs[84]);
+    Assert.AreEqual<char>('\0', cs[85]);
+    Assert.AreEqual<char>('\0', cs[86]);
+    Assert.AreEqual<char>('\0', cs[87]);
+    Assert.AreEqual<char>('\0', cs[88]);
+    Assert.AreEqual<char>('\0', cs[89]);
+    Assert.AreEqual<char>('\0', cs[90]);
+    Assert.AreEqual<char>('\0', cs[91]);
+    Assert.AreEqual<char>('\0', cs[92]);
+    Assert.AreEqual<char>('\0', cs[93]);
+    Assert.AreEqual<char>('\0', cs[94]);
+    Assert.AreEqual<char>('\0', cs[95]);
+    Assert.AreEqual<char>('\0', cs[96]);
+    Assert.AreEqual<char>('\0', cs[97]);
+    Assert.AreEqual<char>('\0', cs[98]);
+    Assert.AreEqual<char>('\0', cs[99]);
     Assert.AreEqual<int>(1, i);
 }
     }

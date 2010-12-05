@@ -53,7 +53,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
         }
 
         /// <summary>Test stub for QGamma(Double, Double)</summary>
-        [PexMethod(MaxWorkingSet = 700)]
+        [PexMethod(MaxWorkingSet = 900)]
         public double QGamma(double a, double x)
         {
             double result = TotInfoVersionFactory.getTotInfoVersion().QGamma(a, x);
@@ -71,7 +71,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
         }
 
         /// <summary>Test stub for gser(Double, Double)</summary>
-        [PexMethod]
+        [PexMethod(MaxConstraintSolverTime = 1000000000)]
         public double gser(double a, double x)
         {
             double result = TotInfoVersionFactory.getTotInfoVersion().gser(a, x);

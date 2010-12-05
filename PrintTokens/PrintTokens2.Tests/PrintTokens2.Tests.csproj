@@ -53,12 +53,6 @@
       <Visible>False</Visible>
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PrintTokens2\PrintTokens2.csproj">
-      <Project>{113206ED-C844-4BD8-BF3E-67994D7AD448}</Project>
-      <Name>PrintTokens2</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Compile Include="Edu\Unl\Sir\Siemens\PrintTokens2\originalTest.cs" />

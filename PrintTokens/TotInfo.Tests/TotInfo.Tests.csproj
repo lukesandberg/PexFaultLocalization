@@ -76,6 +76,9 @@
     <Compile Include="Edu\Nlu\Sir\Siemens\TotInfo\BaseVersionTest.gcf.g.cs">
       <DependentUpon>BaseVersionTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Edu\Nlu\Sir\Siemens\TotInfo\BaseVersionTest.gser.g.cs">
+      <DependentUpon>BaseVersionTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Edu\Nlu\Sir\Siemens\TotInfo\BaseVersionTest.InfoTbl.g.cs">
       <DependentUpon>BaseVersionTest.cs</DependentUpon>
     </Compile>

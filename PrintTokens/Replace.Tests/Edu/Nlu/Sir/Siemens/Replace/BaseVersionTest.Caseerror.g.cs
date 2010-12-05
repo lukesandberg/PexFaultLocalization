@@ -20,7 +20,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
 [PexGeneratedBy(typeof(BaseVersionTest))]
 [Ignore]
 [PexDescription("the test state was: system environment exit")]
-public void CaseerrorThrowsExitException230()
+public void CaseerrorThrowsExitException916()
 {
     this.Caseerror(0);
 }

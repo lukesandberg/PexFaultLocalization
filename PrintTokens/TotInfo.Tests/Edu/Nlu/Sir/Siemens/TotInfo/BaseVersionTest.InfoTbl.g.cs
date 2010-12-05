@@ -18,201 +18,100 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
     {
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void InfoTbl780()
-{
-    double d;
-    int i = 0;
-    d = this.InfoTbl(0, 0, (long[])null, out i);
-    Assert.AreEqual<double>(-3, d);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void InfoTbl40()
-{
-    double d;
-    int i = 0;
-    d = this.InfoTbl(2, 0, (long[])null, out i);
-    Assert.AreEqual<double>(-3, d);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(OverflowException))]
-public void InfoTblThrowsOverflowException334()
-{
-    double d;
-    int i = 0;
-    d = this.InfoTbl(int.MinValue, 704, (long[])null, out i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(OverflowException))]
-public void InfoTblThrowsOverflowException144()
-{
-    double d;
-    int i = 0;
-    d = this.InfoTbl(2, int.MinValue, (long[])null, out i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(NullReferenceException))]
-public void InfoTblThrowsNullReferenceException47()
-{
-    double d;
-    int i = 0;
-    d = this.InfoTbl(2, 3, (long[])null, out i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void InfoTblThrowsIndexOutOfRangeException585()
+public void InfoTbl120()
 {
     double d;
     long[] ls = new long[0];
     int i = 0;
-    d = this.InfoTbl(2, 3, ls, out i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void InfoTblThrowsIndexOutOfRangeException541()
-{
-    double d;
-    long[] ls = new long[1];
-    int i = 0;
-    d = this.InfoTbl(2, 3, ls, out i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void InfoTbl318()
-{
-    double d;
-    long[] ls = new long[1];
-    int i = 0;
-    ls[0] = long.MinValue;
-    d = this.InfoTbl(2, 3, ls, out i);
-    Assert.AreEqual<double>(-2, d);
-    Assert.AreEqual<int>(2, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void InfoTblThrowsIndexOutOfRangeException640()
-{
-    double d;
-    long[] ls = new long[2];
-    int i = 0;
-    d = this.InfoTbl(2, 3, ls, out i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void InfoTblThrowsIndexOutOfRangeException277()
-{
-    double d;
-    long[] ls = new long[3];
-    int i = 0;
-    d = this.InfoTbl(2, 3, ls, out i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void InfoTbl787()
-{
-    double d;
-    long[] ls = new long[6];
-    int i = 0;
-    d = this.InfoTbl(2, 3, ls, out i);
-    Assert.AreEqual<double>(-1, d);
-    Assert.AreEqual<int>(2, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void InfoTbl635()
-{
-    double d;
-    long[] ls = new long[1];
-    int i = 0;
-    ls[0] = long.MinValue;
-    d = this.InfoTbl(1, 3, ls, out i);
+    d = this.InfoTbl(0, 0, ls, out i);
     Assert.AreEqual<double>(-3, d);
     Assert.AreEqual<int>(0, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(OverflowException))]
-public void InfoTblThrowsOverflowException611()
-{
-    double d;
-    long[] ls = new long[1];
-    int i = 0;
-    ls[0] = long.MinValue;
-    d = this.InfoTbl(2, int.MinValue, ls, out i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(OverflowException))]
-public void InfoTblThrowsOverflowException426()
-{
-    double d;
-    long[] ls = new long[1];
-    int i = 0;
-    ls[0] = long.MinValue;
-    d = this.InfoTbl(int.MinValue, 3, ls, out i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void InfoTbl447()
-{
-    double d;
-    long[] ls = new long[6];
-    int i = 0;
-    ls[0] = long.MinValue;
-    d = this.InfoTbl(2, 3, ls, out i);
-    Assert.AreEqual<double>(-2, d);
-    Assert.AreEqual<int>(2, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(OverflowException))]
-public void InfoTblThrowsOverflowException715()
+public void InfoTbl667()
 {
     double d;
     long[] ls = new long[0];
     int i = 0;
-    d = this.InfoTbl(3, int.MinValue, ls, out i);
+    d = this.InfoTbl(2, 0, ls, out i);
+    Assert.AreEqual<double>(-3, d);
+    Assert.AreEqual<int>(0, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void InfoTblThrowsIndexOutOfRangeException238()
-{
-    double d;
-    long[] ls = new long[5];
-    int i = 0;
-    d = this.InfoTbl(2, 4, ls, out i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void InfoTbl446()
+public void InfoTbl36()
 {
     double d;
     long[] ls = new long[1];
     int i = 0;
-    ls[0] = long.MinValue;
+    ls[0] = 1L;
     d = this.InfoTbl(1, 1, ls, out i);
     Assert.AreEqual<double>(-3, d);
     Assert.AreEqual<int>(0, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(OverflowException))]
-public void InfoTblThrowsOverflowException410()
+public void InfoTbl22()
 {
     double d;
-    long[] ls = new long[0];
+    long[] ls = new long[3];
     int i = 0;
-    d = this.InfoTbl(int.MinValue, int.MinValue, ls, out i);
+    ls[0] = 1L;
+    ls[1] = 1L;
+    ls[2] = 1L;
+    d = this.InfoTbl(-2147483645, 3, ls, out i);
+    Assert.AreEqual<double>(-3, d);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void InfoTbl834()
+{
+    double d;
+    long[] ls = new long[7];
+    int i = 0;
+    ls[0] = 1L;
+    ls[1] = 1L;
+    ls[2] = 1L;
+    ls[3] = 1L;
+    ls[4] = 1L;
+    ls[5] = 1L;
+    ls[6] = 1L;
+    d = this.InfoTbl(2, 2, ls, out i);
+    Assert.AreEqual<double>(-8.8817841970012523E-16, d);
+    Assert.AreEqual<int>(1, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void InfoTbl456()
+{
+    double d;
+    long[] ls = new long[20];
+    int i = 0;
+    ls[0] = 1L;
+    ls[1] = 17592186044416L;
+    ls[2] = 1L;
+    ls[3] = 16L;
+    ls[4] = 1L;
+    ls[5] = 8L;
+    ls[6] = 8L;
+    ls[7] = 2L;
+    ls[8] = 2L;
+    ls[9] = 2L;
+    ls[10] = 1L;
+    ls[11] = 1L;
+    ls[12] = 4L;
+    ls[13] = 1L;
+    ls[14] = 2L;
+    ls[15] = 1L;
+    ls[16] = 1L;
+    ls[17] = 1L;
+    ls[18] = 1L;
+    ls[19] = 2L;
+    d = this.InfoTbl(2, 2, ls, out i);
+    Assert.AreEqual<double>(-1, d);
+    Assert.AreEqual<int>(1, i);
 }
     }
 }

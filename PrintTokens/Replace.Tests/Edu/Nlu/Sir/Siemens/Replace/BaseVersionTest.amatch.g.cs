@@ -18,688 +18,603 @@ namespace Edu.Nlu.Sir.Siemens.Replace
     {
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(NullReferenceException))]
-public void amatchThrowsNullReferenceException206()
+public void amatch438()
 {
     int i;
-    i = this.amatch((string)null, 0, (string)null, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(NullReferenceException))]
-public void amatchThrowsNullReferenceException389()
-{
-    int i;
-    i = this.amatch((string)null, 0, "\0", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch6()
-{
-    int i;
-    i = this.amatch("\0", -2, "\0", 0);
-    Assert.AreEqual<int>(-2, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException11()
-{
-    int i;
-    i = this.amatch("\u0001", -2, "\u0001", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException909()
-{
-    int i;
-    i = this.amatch("\u0001cc", 0, "c", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void amatchThrowsArgumentException929()
-{
-    int i;
-    i = this.amatch("\u0001%%", 0, "%", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch937()
-{
-    int i;
-    i = this.amatch("%%%%\u0001%%", 4, "%", 0);
-    Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void amatchThrowsArgumentException673()
-{
-    int i;
-    i = this.amatch("\u0001??", 0, "?", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch886()
-{
-    int i;
-    i = this.amatch("\u0001\0\0", 0, "$", 0);
-    Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void amatchThrowsArgumentException640()
-{
-    int i;
-    i = this.amatch("\u0001!!", 0, "!", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void amatchThrowsArgumentException65()
-{
-    int i;
-    i = this.amatch("*", -2, "*", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void amatchThrowsArgumentException787()
-{
-    int i;
-    i = this.amatch("\u0001[[", 0, "[", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch783()
-{
-    int i;
-    i = this.amatch("\n!!", 0, "!", 0);
-    Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch181()
-{
-    int i;
-    i = this.amatch("\n??", 0, "?", 0);
-    Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch945()
-{
-    int i;
-    i = this.amatch("\0\0\0", 0, "\u0001", 0);
-    Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch742()
-{
-    int i;
-    i = this.amatch("\u0001[[", 0, "[\0\0", 0);
-    Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch923()
-{
-    int i;
-    i = this.amatch("\0\0\0", 0, "**\0", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    i = this.amatch(cs, 0, cs1, 0);
     Assert.AreEqual<int>(0, i);
 }
+
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch869()
+public void amatch44()
 {
     int i;
-    i = this.amatch("\u0001[[", 0, "[\u0001\0", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs1[0] = '\u0001';
+    i = this.amatch(cs, 0, cs1, 0);
     Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException547()
-{
-    int i;
-    i = this.amatch("\u0001[[", 0, "[\u0001\u0001", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void amatchThrowsArgumentException600()
-{
-    int i;
-    i = this.amatch("\u0001[[", 0, "\0[\u8041", 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void amatchThrowsArgumentException958()
-{
-    int i;
-    i = this.amatch("\n$$", 0, "$", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException380()
-{
-    int i;
-    i = this.amatch("\u0001\u0001!", 0, "*!\0", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch909()
-{
-    int i;
-    i = this.amatch("\u0001cc", 0, "c\0\0", 0);
-    Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch689()
-{
-    int i;
-    i = this.amatch("\u0001cc", 0, "c\u0001\0", 0);
-    Assert.AreEqual<int>(1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch75()
-{
-    int i;
-    i = this.amatch("\n\0\0", 0, "$\0\0", 0);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch244()
-{
-    int i;
-    i = this.amatch("\0\0\0", 0, "*?\0", 0);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException730()
-{
-    int i;
-    i = this.amatch("\u0001**", 0, "*?\0", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void amatchThrowsArgumentException735()
-{
-    int i;
-    i = this.amatch("\u0002\u0003*", 0, "*c\u0002", 0);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 [Ignore]
 [PexDescription("the test state was: system environment exit")]
-public void amatchThrowsExitException819()
+public void amatchThrowsExitException631()
 {
     int i;
-    i = this.amatch("\u0001cc", 0, "c\u0001\u0001", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs1[0] = '*';
+    i = this.amatch(cs, 0, cs1, 0);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void amatch232()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs1[0] = '*';
+    cs1[1] = '*';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void amatch163()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs1[0] = '*';
+    cs1[1] = '!';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void amatch38()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs1[0] = '*';
+    cs1[1] = '$';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+[Ignore]
+[PexDescription("the test state was: system environment exit")]
+public void amatchThrowsExitException566()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    i = this.amatch(cs, 0, cs1, 0);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void amatch189()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs1[0] = '*';
+    cs1[1] = '[';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void amatch327()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '%';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void amatch469()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '?';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(1, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void amatch584()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\n';
+    cs1[0] = '?';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(-1, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void amatch119()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[1] = '\u0001';
+    cs1[0] = '%';
+    i = this.amatch(cs, 1, cs1, 0);
+    Assert.AreEqual<int>(-1, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void amatch572()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = 'c';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(-1, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void amatch922()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = 'c';
+    cs1[1] = '\u0001';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(1, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void amatch849()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '$';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(-1, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 public void amatch700()
 {
     int i;
-    i = this.amatch("\0\0\0", 0, "*c\0\u0001\0\0\0", 0);
-    Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: path bounds exceeded")]
-public void amatch505()
-{
-    int i;
-    i = this.amatch("\u0001\0\0", 0, "*%", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch88()
-{
-    int i;
-    i = this.amatch("\u0001\u0001%", 0, "c\u0001%", 0);
-    Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch295()
-{
-    int i;
-    i = this.amatch("\u0001%%", 0, "%\0", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\n';
+    cs1[0] = '$';
+    i = this.amatch(cs, 0, cs1, 0);
     Assert.AreEqual<int>(0, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: path bounds exceeded")]
-public void amatch186()
+public void amatch406()
 {
     int i;
-    i = this.amatch("\n**", 0, "*$", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '!';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(1, i);
 }
+
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch953()
+public void amatch650()
 {
     int i;
-    i = this.amatch("\u0001$$", 0, "*$$", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\n';
+    cs1[0] = '!';
+    i = this.amatch(cs, 0, cs1, 0);
     Assert.AreEqual<int>(-1, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch902()
+public void amatch305()
 {
     int i;
-    i = this.amatch("****\u0001**", 4, "*%%", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[33] = '!';
+    cs1[34] = '\u0001';
+    cs1[35] = '\u0001';
+    i = this.amatch(cs, 0, cs1, 33);
     Assert.AreEqual<int>(-1, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch50501()
+public void amatch198()
 {
     int i;
-    i = this.amatch("\n\0\0", 0, "%$\0", 0);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void amatchThrowsArgumentException212()
-{
-    int i;
-    i = this.amatch("\n\0\0", 0, "*?*", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch754()
-{
-    int i;
-    i = this.amatch("****\n**", 4, "*?*%\0", 0);
-    Assert.AreEqual<int>(4, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch992()
-{
-    int i;
-    i = this.amatch("\u0001%%", 0, "%%\0", 0);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch624()
-{
-    int i;
-    i = this.amatch("****\n**", 4, "*?*%%", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '[';
+    i = this.amatch(cs, 0, cs1, 0);
     Assert.AreEqual<int>(-1, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void amatchThrowsArgumentException57()
+public void amatch834()
 {
     int i;
-    i = this.amatch("\n**", 0, "\0*?*?", 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch69()
-{
-    int i;
-    i = this.amatch("\0\n\0\0\0\0\0\0\0\0", 1, "*?*%*[\0$*[\0\0", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[33] = '[';
+    cs1[34] = '\u0001';
+    cs1[35] = '\u0001';
+    i = this.amatch(cs, 0, cs1, 33);
     Assert.AreEqual<int>(1, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch408()
+public void amatch951()
 {
     int i;
-    i = this.amatch("*\n*****", 1, "*?*%*?\0", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '!';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(1, i);
+}
+
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+[Ignore]
+[PexDescription("the test state was: path bounds exceeded")]
+public void amatch126()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '%';
+    i = this.amatch(cs, 0, cs1, 0);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void amatch871()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '!';
+    cs1[2] = '\a';
+    i = this.amatch(cs, 0, cs1, 0);
     Assert.AreEqual<int>(1, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void amatchThrowsExitException80301()
+public void amatch254()
 {
     int i;
-    i = this.amatch("\n\0\0", 0, "*?*\0\0\0\0", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\n';
+    cs1[0] = '*';
+    cs1[1] = '!';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(0, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch870()
+public void amatch22()
 {
     int i;
-    i = this.amatch("\u0200\u0001\0", 0, "\0\0*!\u0001\0\0", 2);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs1[3] = '*';
+    cs1[4] = '!';
+    i = this.amatch(cs, 0, cs1, 3);
     Assert.AreEqual<int>(2, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException796()
+[Ignore]
+[PexDescription("the test state was: system environment exit")]
+public void amatchThrowsExitException508()
 {
     int i;
-    i = this.amatch("\u0002\u0002\u0003", 0, "*c\u0002", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[63] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '?';
+    cs1[2] = '\u0002';
+    i = this.amatch(cs, 63, cs1, 0);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException929()
+public void amatch812()
 {
     int i;
-    i = this.amatch("\0\0\0\0", 0, "*c\0*c\0", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[63] = '\u0001';
+    cs[64] = '\u0001';
+    cs1[62] = '*';
+    cs1[63] = '!';
+    cs1[65] = '!';
+    i = this.amatch(cs, 63, cs1, 62);
+    Assert.AreEqual<int>(65, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException409()
+public void amatch588()
 {
     int i;
-    i = this.amatch("\u0001\0\0", 0, "\0*!\u0003\0\0\u0001", 1);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[63] = '\u0001';
+    cs[64] = '\u0001';
+    cs1[63] = '*';
+    cs1[64] = '!';
+    cs1[66] = '*';
+    cs1[67] = '!';
+    i = this.amatch(cs, 63, cs1, 63);
+    Assert.AreEqual<int>(65, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException449()
+public void amatch47()
 {
     int i;
-    i = this.amatch("\u0001\u0001[", 0, "\0\0\0*[\u0001\u0001", 3);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[63] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '?';
+    cs1[2] = '?';
+    i = this.amatch(cs, 63, cs1, 0);
+    Assert.AreEqual<int>(64, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 [Ignore]
 [PexDescription("the test state was: system environment exit")]
-public void amatchThrowsExitException810()
+public void amatchThrowsExitException447()
 {
     int i;
-    i = this.amatch("\u0001\0\0", 0, "\u0001", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[62] = '\u0001';
+    cs[63] = '\u0001';
+    cs1[2] = '*';
+    cs1[3] = '!';
+    cs1[5] = '\u0001';
+    i = this.amatch(cs, 62, cs1, 2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 [Ignore]
 [PexDescription("the test state was: system environment exit")]
-public void amatchThrowsExitException356()
+public void amatchThrowsExitException340()
 {
     int i;
-    i = this.amatch("*\n****", 1, "*?*%*[\0$$******", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[63] = ' ';
+    cs[64] = '@';
+    cs1[8] = '*';
+    cs1[9] = '!';
+    cs1[11] = '!';
+    cs1[13] = '\u0080';
+    i = this.amatch(cs, 63, cs1, 8);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException744()
+[Ignore]
+[PexDescription("the test state was: system environment exit")]
+public void amatchThrowsExitException899()
 {
     int i;
-    i = this.amatch("\0**", 0, "*[\0", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[63] = '\u0001';
+    cs[64] = '\u0001';
+    cs1[63] = '*';
+    cs1[64] = '!';
+    cs1[66] = '*';
+    i = this.amatch(cs, 63, cs1, 63);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch258()
+[Ignore]
+[PexDescription("the test state was: system environment exit")]
+public void amatchThrowsExitException241()
 {
     int i;
-    i = this.amatch("\u0004$$$$\0$", 0, "\0$\0\0", 1);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '*';
+    i = this.amatch(cs, 0, cs1, 0);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+[Ignore]
+[PexDescription("the test state was: system environment exit")]
+public void amatchThrowsExitException541()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[62] = '\u0001';
+    cs[63] = '\u0004';
+    cs1[0] = '*';
+    cs1[1] = '!';
+    cs1[3] = '*';
+    cs1[4] = '[';
+    cs1[6] = '\u0001';
+    i = this.amatch(cs, 62, cs1, 0);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void amatch289()
+{
+    int i;
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[63] = '\u0001';
+    cs[64] = '\u0001';
+    cs1[6] = '*';
+    cs1[7] = '!';
+    cs1[9] = '*';
+    cs1[10] = '[';
+    cs1[12] = '[';
+    i = this.amatch(cs, 63, cs1, 6);
     Assert.AreEqual<int>(-1, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch300()
+[Ignore]
+[PexDescription("the test state was: system environment exit")]
+public void amatchThrowsExitException247()
 {
     int i;
-    i = this.amatch("\u0004\0\0\0\0\0\0", 0, "\0?\0\0", 1);
-    Assert.AreEqual<int>(1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException94()
-{
-    int i;
-    i = this.amatch("\n\0*", 0, "*!\0", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch417()
-{
-    int i;
-    i = this.amatch("\u0004cccc\0c", 0, "\0c\0\0", 1);
-    Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch61()
-{
-    int i;
-    i = this.amatch("cc\u0100\0c", 2, "c\u0100\0\0", 0);
-    Assert.AreEqual<int>(3, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException971()
-{
-    int i;
-    i = this.amatch("\u4000\u0010\0", 0, "*[\u0004\0\0\0\u4000", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs[99] = '\u0001';
+    cs1[0] = '*';
+    i = this.amatch(cs, 0, cs1, 0);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 [Ignore]
 [PexDescription("the test state was: path bounds exceeded")]
-public void amatch373()
+public void amatch239()
 {
     int i;
-    i = this.amatch("\n*\0", 0, "\0*?*%", 1);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\n';
+    cs1[0] = '*';
+    cs1[1] = '$';
+    i = this.amatch(cs, 0, cs1, 0);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException999()
+public void amatch226()
 {
     int i;
-    i = this.amatch("\u0004\u0004\0", 0, "*[\u0004\0\0\0\u0004", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0001';
+    i = this.amatch(cs, 0, cs1, 0);
+    Assert.AreEqual<int>(2, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch962()
+public void amatch557()
 {
     int i;
-    i = this.amatch("????\n????????\0?", 4, "*?*%*?\0\0\0\0\0\0\0\0\0", 0);
-    Assert.AreEqual<int>(4, i);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[62] = '\u0001';
+    cs[63] = '\u0001';
+    cs1[4] = '*';
+    cs1[5] = '!';
+    cs1[7] = '*';
+    cs1[8] = '[';
+    cs1[9] = '*';
+    cs1[51] = '\u0001';
+    cs1[52] = '[';
+    i = this.amatch(cs, 62, cs1, 4);
+    Assert.AreEqual<int>(-1, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: path bounds exceeded")]
-public void amatch790()
+public void amatch879()
 {
     int i;
-    i = this.amatch("\n\0*", 0, "*$\0", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[63] = '\u0002';
+    cs[64] = '\u0003';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0002';
+    cs1[3] = 'c';
+    i = this.amatch(cs, 63, cs1, 0);
+    Assert.AreEqual<int>(-1, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch230()
+public void amatch455()
 {
     int i;
-    i = this.amatch("\u0001\0%", 0, "%%\0", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '$';
+    cs1[2] = '*';
+    cs1[3] = '$';
+    i = this.amatch(cs, 0, cs1, 0);
     Assert.AreEqual<int>(0, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch963()
+public void amatch501()
 {
     int i;
-    i = this.amatch("\n\u0001??\0?????????", 0, "*?*c\n\0", 0);
-    Assert.AreEqual<int>(1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch410()
-{
-    int i;
-    i = this.amatch("*\n*\0****", 1, "*?*%*[\0$*%\0\0\0\0\0", 0);
-    Assert.AreEqual<int>(1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch123()
-{
-    int i;
-    i = this.amatch("\n\n ??\0?", 0, "\0\0\0\0*?*c\n\0", 4);
-    Assert.AreEqual<int>(2, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch299()
-{
-    int i;
-    i = this.amatch("*\0**\n**", 4, "*?*%*[\0%***", 0);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    cs[62] = '@';
+    cs[63] = 'B';
+    cs1[1] = '*';
+    cs1[2] = '!';
+    cs1[4] = '*';
+    cs1[5] = '[';
+    cs1[6] = '\u0006';
+    cs1[8] = 'B';
+    cs1[9] = '\u0002';
+    cs1[10] = '\u0003';
+    cs1[11] = '\u00c0';
+    cs1[12] = '\u0001';
+    cs1[13] = '%';
+    i = this.amatch(cs, 62, cs1, 1);
     Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch29901()
-{
-    int i;
-    i = this.amatch("\u0001\u0001\0", 0, "*?\0", 0);
-    Assert.AreEqual<int>(2, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch517()
-{
-    int i;
-    i = this.amatch("???\0\n?????", 4, "**?*%*[\0*!\u0002**!", 1);
-    Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException511()
-{
-    int i;
-    i = this.amatch("?\n?\0", 1, "*?*%*[\0*!\u0002\0\0*!\0", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void amatch268()
-{
-    int i;
-    i = this.amatch("????\n\0?", 4, "\0*?*%*c\u0001c******", 1);
-    Assert.AreEqual<int>(-1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException173()
-{
-    int i;
-    i = this.amatch("\n\0\0", 0, "*?*[\0", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException326()
-{
-    int i;
-    i = this.amatch("\u4000\0**", 0, "\0\0*[\ud7f8", 2);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException515()
-{
-    int i;
-    i = this.amatch("\n?\0", 0, "\0*?*?", 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException603()
-{
-    int i;
-    i = this.amatch("*\0******", 1, "\0\0\0\0\0\0\0\0*", 8);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException340()
-{
-    int i;
-    i = this.amatch("\u0001*\0**", 0, "\0*[", 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException166()
-{
-    int i;
-    i = this.amatch("\0***", 0, "*c\0*[\0", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void amatchThrowsExitException815()
-{
-    int i;
-    i = this.amatch("\n?\0", 0, "\0*?**", 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void amatchThrowsIndexOutOfRangeException195()
-{
-    int i;
-    i = this.amatch("\0\0\0\0\n\0\0", 4, "\0*?*%", 1);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void amatchThrowsExitException49()
-{
-    int i;
-    i = this.amatch("\u0001\0\0", 0, "**\0", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void amatchThrowsExitException985()
-{
-    int i;
-    i = this.amatch("\0**", 0, "*\0\0", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void amatchThrowsExitException478()
-{
-    int i;
-    i = this.amatch("*\0\0", 0, "*\0", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void amatchThrowsExitException408()
-{
-    int i;
-    i = this.amatch("***\0****\n**", 8, "*?*%*[\0$*[\0$**", 0);
 }
     }
 }

@@ -37,7 +37,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
 
 
         public bool
-        getline(out string s,
+        getline(out char[] s,
         int maxsize)
         {
             
@@ -48,7 +48,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
 
         public bool
         addstr(char c,
-        ref string outset,
+        ref char[] outset,
         ref int j,
         int maxset)
         {
@@ -57,7 +57,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                 result = false;
             else
             {
-                outset = outset.Substring(0, j) + c + (j+1<outset.Length ? outset.Substring(j + 1) : "");
+                outset[j] = c;
                 j = j + 1;
                 result = true;
             }
@@ -65,7 +65,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         }
 
         public char
-        esc(string s, ref int i)
+        esc(char[] s, ref int i)
         {
             char result;
             if (s[i] != ESCAPE)
@@ -89,9 +89,9 @@ namespace Edu.Nlu.Sir.Siemens.Replace
 
         public void
         dodash(char delim,
-        string src,
+        char[] src,
         ref int i,
-        string dest,
+        char[] dest,
         ref int j,
         int maxset)
         {
@@ -127,9 +127,9 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         }
 
         public bool
-        getccl(string arg,
+        getccl(char[] arg,
         ref int i,
-        string pat,
+        char[] pat,
         ref int j)
         {
             int jstart;
@@ -147,12 +147,12 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             jstart = j;
             junk = addstr((char)0, ref pat, ref j, MAXPAT);
             dodash(CCLEND, arg, ref i, pat, ref j, MAXPAT);
-            pat = pat.Substring(0,jstart) + (char)(j - jstart - 1) + (jstart + 1 < pat.Length ? pat.Substring(jstart+1) : "");
+            pat[jstart] = (char)(j - jstart - 1);
             return (arg[i] == CCLEND);
         }
 
         public void
-        stclose(string pat,
+        stclose(char[] pat,
         ref int j,
         int lastj)
         {
@@ -167,7 +167,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                 junk = addstr(pat[jp], ref pat, ref jt, MAXPAT);
             }
             j = j + CLOSIZE;
-            pat = pat.Substring(0,lastj) + CLOSURE + pat.Substring(lastj+1);
+            pat[lastj] = CLOSURE;
         }
 
         public bool in_set_2(char c)
@@ -182,10 +182,10 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         }
 
         public int
-        makepat(string arg,
+        makepat(char[] arg,
          int start,
         char delim,
-        out string pat)
+        out char[] pat)
         {
             int result;
             int i, j, lastj, lj;
@@ -197,7 +197,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             i = start;
             lastj = 0;
             done = false;
-            pat = "";
+            pat = new char[MAXSTR];
             while ((!done) && (arg[i] != delim) && (arg[i] != ENDSTR))
             {
                 lj = j;
@@ -242,8 +242,8 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         }
 
         public bool
-        getpat(string arg,
-        out string pat)
+        getpat(char[] arg,
+        out char[] pat)
         {
             int makeres;
 
@@ -252,16 +252,16 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         }
 
         public int
-        makesub(string arg,
+        makesub(char[] arg,
             int from,
             char delim,
-            out string sub)
+            out char[] sub)
         {
             int result;
             int i, j;
             bool junk;
             char escjunk;
-            sub = "";
+            sub = new char[MAXSTR];
             j = 0;
             i = from;
             while ((arg[i] != delim) && (arg[i] != ENDSTR))
@@ -289,8 +289,8 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         }
 
         public bool
-        getsub(string arg,
-            out string sub)
+        getsub(char[] arg,
+            out char[] sub)
         {
             int makeres;
 
@@ -300,7 +300,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
 
         public bool
         locate(char c,
-            string pat,
+            char[] pat,
             int offset)
         {
             int i;
@@ -322,9 +322,9 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         }
 
         public bool
-        omatch(string lin,
+        omatch(char[] lin,
             ref int i,
-            string pat,
+            char[] pat,
             int j)
         {
             sbyte advance;
@@ -385,7 +385,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         }
 
         public int
-        patsize(string pat,
+        patsize(char[] pat,
             int n)
         {
             int size = -1;
@@ -419,9 +419,9 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         }
 
         public int
-        amatch(string lin,
+        amatch(char[] lin,
             int offset,
-            string pat,
+            char[] pat,
             int j)
         {
             int i = 0, k = 0;
@@ -466,9 +466,9 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         }
 
         public void
-        putsub(string lin,
+        putsub(char[] lin,
          int s1, int s2,
-         string sub)
+         char[] sub)
         {
             int i;
             int j;
@@ -490,9 +490,9 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         }
 
         public void
-        subline(string lin,
-         string pat,
-         string sub)
+        subline(char[] lin,
+         char[] pat,
+         char[] sub)
         {
             int i, lastm, m;
 
@@ -517,9 +517,9 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         }
 
         public void
-        change(string pat, string sub)
+        change(char[] pat, char[] sub)
         {
-            string line;
+            char[] line = new char[MAXSTR];
             bool result;
 
             result = getline(out line, MAXSTR);
@@ -530,9 +530,9 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public void Main(string[] args)
+        public void Main(char[][] args)
         {
-            string pat, sub;
+            char[] pat = new char[MAXSTR], sub = new char[MAXSTR];
             bool result;
 
             if (args.Length < 2)
@@ -553,13 +553,13 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                 result = getsub(args[2], out sub);
                 if (!result)
                 {
-                    Console.Write("change: illegal \"to\" string\n");
+                    Console.Write("change: illegal \"to\" char[]\n");
                     Environment.Exit(3);
                 }
             }
             else
             {
-                sub = '\0'.ToString();
+                sub = new char[]{'\0'};
             }
 
             change(pat, sub);

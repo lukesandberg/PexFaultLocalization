@@ -18,836 +18,766 @@ namespace Edu.Nlu.Sir.Siemens.Replace
     {
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void sublineThrowsArgumentException753()
+public void subline990()
 {
-    this.subline("\0", "\0", (string)null);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline373()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 [Ignore]
 [PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException832()
+public void sublineThrowsExitException589()
 {
-    this.subline("\u0001\0\0", "\u0001", (string)null);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '\u0001';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException553()
+public void subline133()
 {
-    this.subline("\u0001\0\0", "c", (string)null);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '!';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException158()
+public void subline364()
 {
-    this.subline("\u0001\0\0", "!\0", (string)null);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '[';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void sublineThrowsArgumentException829()
+public void subline989()
 {
-    this.subline("*\0\0", "*", (string)null);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = 'c';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException226()
+public void subline856()
 {
-    this.subline("\u0001\0\0", "c\u0001", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException504()
-{
-    this.subline("\u0001!!", "!\u0001\0", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException713()
-{
-    this.subline("*\0\0", "*\0", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException629()
-{
-    this.subline("\u0001\0\0", "[\u0001\u0001", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException417()
-{
-    this.subline("\u0001\0\0\0\0\0\0\0\0", "\0", "\u0001\u0001");
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\n';
+    cs1[0] = '!';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 [Ignore]
 [PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException762()
+public void sublineThrowsExitException146()
 {
-    this.subline("\u0001\0\0", "%\u0001", (string)null);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 [Ignore]
 [PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException492()
+public void sublineThrowsExitException520()
 {
-    this.subline("\0\0\0", "*\0\0", (string)null);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '*';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException174()
+public void subline881()
 {
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "\0", "\uffff\u0001\uffff");
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '!';
+    cs1[1] = 'a';
+    cs1[98] = '\u0001';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(NullReferenceException))]
-public void sublineThrowsNullReferenceException155()
+public void subline211()
 {
-    this.subline("\u0001[[[[[[[[[", "[\u0001\u0001\0\0\0\0", (string)null);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '$';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException651()
+public void subline381()
 {
-    this.subline("\u0001!!", "!\u0002\0\0", (string)null);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\n';
+    cs1[0] = '$';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void sublineThrowsArgumentException931()
+public void subline806()
 {
-    this.subline("\u0001**", "*c\0", (string)null);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '?';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(NullReferenceException))]
-public void sublineThrowsNullReferenceException233()
+public void subline635()
 {
-    this.subline("\u0001\0\0\0\0\0\0\0\0", "%\0", (string)null);
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs2[0] = '\u0001';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(NullReferenceException))]
-public void sublineThrowsNullReferenceException170()
+public void subline553()
 {
-    this.subline("\u0001********", "*c\0\0", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException433()
-{
-    this.subline("\u0001**", "*?", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException595()
-{
-    this.subline("\u0001\0\0", "!", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException192()
-{
-    this.subline("\n$$", "$", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException567()
-{
-    this.subline("\u0001**", "*c\u0001", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException608()
-{
-    this.subline("\u0001%%", "%", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException199()
-{
-    this.subline("\u0001[[", "[", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException242()
-{
-    this.subline("\u0001??", "?", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException61()
-{
-    this.subline("\n**", "*?", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException907()
-{
-    this.subline("\u0001\0\0", "!\uffff", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException488()
-{
-    this.subline("\u0001\u0001\0", "*c\u0001", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void subline815()
-{
-    this.subline("\0\0\0", "*\0", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException920()
-{
-    this.subline("\u0001\0\0\0\0\0\0\0\0", "\0", "");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException917()
-{
-    this.subline("\n**", "*!", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException555()
-{
-    this.subline("\u0001\u0001!!", "!\u0002\0\0!", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(NullReferenceException))]
-public void sublineThrowsNullReferenceException792()
-{
-    this.subline((string)null, "", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException737()
-{
-    this.subline("\u0001\u0001*", "!\u0001\0*%", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException563()
-{
-    this.subline("\u0001**", "*$", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException519()
-{
-    this.subline("\u0001\u0001\0", "?\u0001", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException627()
-{
-    this.subline("\u0001\0\0", "**", (string)null);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException257()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "\0", "\0\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException169()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "\u0001", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException76()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "$", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException954()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "[", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException152()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "*", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException935()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "!", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void subline246()
-{
-    this.subline("\0\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "\0", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException259()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "**", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException531()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "%", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException59501()
-{
-    this.subline("\n\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "!", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException231()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "[[", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException64()
-{
-    this.subline
-        ("\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001", "[\0", "\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException796()
-{
-    this.subline("\n\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "$", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException516()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "?", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException643()
-{
-    this.subline("\n\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "?", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException187()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "c", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException248()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "[\u0001\u0001", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException291()
-{
-    this.subline("\u0001\u0001\u0001\u0001", "[\u0001\0", "\u0001\u0001\u0001\u0001");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException234()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "cc", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException868()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "c\u0001", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException240()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "%%", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException607()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "c\u0001\0", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException72()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "!\u0001\0", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException224()
-{
-    this.subline("\n\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "$$", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException327()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "*?", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException975()
-{
-    this.subline("\u0001\0\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "*?", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException883()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "*$", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException817()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "*c\0\0", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException941()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "*c\0$", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException385()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "??", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException969()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "*c\0\0", "\0\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException700()
-{
-    this.subline("\n\n\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "!", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException767()
-{
-    this.subline("\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "!\u0001\u0001", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException48()
-{
-    this.subline("\n\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "*!", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException116()
-{
-    this.subline
-        ("\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001", "*!\0", "\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException669()
-{
-    this.subline("\n\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "?%", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException800()
-{
-    this.subline("\n\n\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "?", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException206()
-{
-    this.subline("\u0001\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "*[\u0001\u0001\0\0\0", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException78()
-{
-    this.subline("\u0001\u0001\uffff\uffff\uffff\uffff\uffff\uffff\uffff", "*c\0*c\u0001", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException400()
-{
-    this.subline("\u0001", "[\u0001\u0001\0\0\0\0", "\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException641()
-{
-    this.subline("\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001", 
-                 "*c\0*$*[\0*$$\0", "\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException869()
-{
-    this.subline("\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001", "*c\0*$*[\0!\0\0\0", "\uffff\u0001\0**");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException518()
-{
-    this.subline("\n\uffff\0\uffff\uffff\uffff\uffff\uffff\uffff", "?*\0", "\uffff\u0001\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException306()
-{
-    this.subline("\n\u0001\0", "?*", "\0\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException966()
-{
-    this.subline("\n\u0001\0", "?*!", "\0\0\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException20601()
-{
-    this.subline("\n\u0001\0", "?*[", "\0\0\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void subline252()
-{
-    this.subline("\u0001$\0", "$", "\u0001");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException30601()
-{
-    this.subline("\n\0\0", "$", "\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException203()
-{
-    this.subline("\u0001\u0001\0\0\0\0", "c\u0001\u0001", "\u0001\u0001\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException828()
-{
-    this.subline("\u0001\0\0", "\0", "\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException42()
-{
-    this.subline("\u0001\0\0", "%", "\u0001");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException371()
-{
-    this.subline("\n\u0001\0", "?**", "\0\0\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException732()
-{
-    this.subline("\u0001\u0001\0\0\0\0", "*?", "\u0001\u0001");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException964()
-{
-    this.subline("\u0001\0\0", "*", "\u0001");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException819()
-{
-    this.subline("\u0001\0\0", "[", "\u0001");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException214()
-{
-    this.subline("\u0001\0\0\0\0\0", "[\ubfff", "\u0001\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException143()
-{
-    this.subline("\u0001!\0", "!", "\u0001");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void subline474()
-{
-    this.subline("\n\0\0", "!", "\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException403()
-{
-    this.subline("\u0001[\0[[[", "[\u0001\u0001", "\u0001[\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void subline585()
-{
-    this.subline("\u0001\u0001\u0001\u0001\0\0\0\0\0\0\0\0\0\0", "[\u0001\0", "\u0001\u0001\u0001");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException734()
-{
-    this.subline("\u0001!!!!\0", "!\0", "\u0001!");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException147()
-{
-    this.subline("\n\0\0\0\0\0", "*?", "\0\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException831()
-{
-    this.subline("\u0001\0\0\0\0\0", "\0", "\uffff\uffff");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException350()
-{
-    this.subline("\u0001\u0001*********\0", "c\u0001**", "\u0001\u0001**");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException18()
-{
-    this.subline("\u0001\0", "c\u0001*c", "\0\0\0\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException175()
-{
-    this.subline("\u0001\u0001\0\0\0\0\0\0\0\0\0\0", "c\u0001!\0", "\u0001\u0001\0\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException976()
-{
-    this.subline("\u0001cccc\0", "*c\u0001", "\u0001cc");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: path bounds exceeded")]
-public void subline6()
-{
-    this.subline("\u0001****\0", "*%", "\u0001*");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException742()
-{
-    this.subline("\ncccccccccc\0", "*c\0!", "\0\0\0\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void subline173()
-{
-    this.subline("\u0001$$$$\0", "%$", "\u0001$");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void subline720()
-{
-    this.subline("\u0001$$$$$$$$$$\0", "*c\0$", "\u0001$$$");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException304()
-{
-    this.subline("\u0001\0\0\0\0\0", "%%", "\u0001\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException19()
-{
-    this.subline("\u0001\0\0", "\0", "\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void sublineThrowsIndexOutOfRangeException426()
-{
-    this.subline("\u0001\0\0\0\0\0", "c\0", "\u0001\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[Ignore]
-[PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException634()
-{
-    this.subline("\u0001**********\0", "*c\0\0", "\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void subline27()
-{
-    this.subline("\u0001\u0001\0", "*?\0", "\0\0\0");
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void subline193()
-{
-    this.subline("\u0001\0\0\0\0\0", "[\0", "\u0001\0");
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = 'c';
+    cs1[1] = '\u0001';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 public void subline380()
 {
-    this.subline("\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\0\0", "*c\0*!\0c\0", "\0\0\0\0\0\0\0\0");
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '%';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void subline840()
+public void subline754()
 {
-    this.subline("\n\u0001\u0001\n\0\0\0\0\0\0\0\0\0\0", "$\0", "\0");
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs2[0] = '\uffff';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[ExpectedException(typeof(ArgumentException))]
-public void sublineThrowsArgumentException720()
+public void subline936()
 {
-    this.subline("\u0001\u0001\u0001\0\0\0\0\0\0\0\0\0", "c\u0001*!\0", "\u0001\u0001\u0001\0\0");
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\n';
+    cs1[0] = '?';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline317()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '$';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline768()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '?';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline913()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '?';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline460()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '!';
+    cs1[1] = '\a';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+[Ignore]
+[PexDescription("the test state was: path bounds exceeded")]
+public void subline977()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '%';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline436()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '[';
+    cs1[1] = 'a';
+    cs1[98] = '\u0001';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+[Ignore]
+[PexDescription("the test state was: path bounds exceeded")]
+public void subline207()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\n';
+    cs1[0] = '*';
+    cs1[1] = '$';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline922()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0001';
+    this.subline(cs, cs1, cs2);
+}
+
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+[Ignore]
+[PexDescription("the test state was: system environment exit")]
+public void sublineThrowsExitException217()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs[2] = '\u0001';
+    cs[3] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0001';
+    cs1[3] = '\u0001';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline993()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs[2] = '\u0001';
+    cs[3] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0001';
+    cs1[3] = 'c';
+    this.subline(cs, cs1, cs2);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
 [Ignore]
 [PexDescription("the test state was: system environment exit")]
-public void sublineThrowsExitException965()
+public void sublineThrowsExitException168()
 {
-    this.subline("\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\0", "*c\0*!\0\u0001", "\0\0\0\0\0\0\0");
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs[2] = '\u0001';
+    cs[3] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0001';
+    cs1[3] = '*';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline527()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs[2] = '\u0001';
+    cs[3] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0001';
+    cs1[3] = '*';
+    cs1[4] = '*';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+[Ignore]
+[PexDescription("the test state was: system environment exit")]
+public void sublineThrowsExitException371()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '?';
+    cs1[2] = '\u0001';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline63()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0002';
+    cs[1] = '\u0002';
+    cs[2] = '\u0002';
+    cs[3] = '\u0002';
+    cs[4] = '\u0002';
+    cs[5] = '\u0002';
+    cs[6] = '\u0002';
+    cs[7] = '\u0002';
+    cs[8] = '\u0002';
+    cs[9] = '\u0002';
+    cs[10] = '\u0002';
+    cs[11] = '\u0002';
+    cs[12] = '\u0002';
+    cs[13] = '\u0002';
+    cs[14] = '\u0002';
+    cs[15] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0002';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline838()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0002';
+    cs[1] = '\u0002';
+    cs[2] = '\u0002';
+    cs[3] = '\u0002';
+    cs[4] = '\u0002';
+    cs[5] = '\u0002';
+    cs[6] = '\u0002';
+    cs[7] = '\u0002';
+    cs[8] = '\u0002';
+    cs[9] = '\u0002';
+    cs[10] = '\u0002';
+    cs[11] = '\u0002';
+    cs[12] = '\u0002';
+    cs[13] = '\u0002';
+    cs[14] = '\u0002';
+    cs[15] = '\u0003';
+    cs[16] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0002';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline612()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs1[0] = 'c';
+    cs1[1] = '\u0001';
+    cs1[2] = 'c';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+[Ignore]
+[PexDescription("the test state was: system environment exit")]
+public void sublineThrowsExitException968()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '!';
+    cs1[3] = '\u0001';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+[Ignore]
+[PexDescription("the test state was: system environment exit")]
+public void sublineThrowsExitException751()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '[';
+    cs1[2] = '\u0004';
+    cs1[6] = '\u0001';
+    cs1[7] = '\u0001';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline611()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '[';
+    cs1[3] = '!';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline241()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '!';
+    cs1[3] = '!';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline277()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\n';
+    cs1[0] = '*';
+    cs1[1] = '!';
+    cs1[3] = '!';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline640()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '[';
+    cs1[2] = '`';
+    cs1[98] = '\u0001';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline155()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = '[';
+    cs1[2] = '^';
+    cs1[96] = '\u0001';
+    cs1[97] = '*';
+    cs1[98] = '*';
+    cs2[0] = '\uffff';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline179()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0002';
+    cs[1] = '\u0002';
+    cs[2] = '\u0002';
+    cs[3] = '\u0002';
+    cs[4] = '\u0002';
+    cs[5] = '\u0002';
+    cs[6] = '\u0002';
+    cs[7] = '\u0002';
+    cs[8] = '\u0002';
+    cs[9] = '\u0002';
+    cs[10] = '\u0002';
+    cs[11] = '\u0002';
+    cs[12] = '\u0002';
+    cs[13] = '\u0002';
+    cs[14] = '\u0002';
+    cs[15] = '\u0003';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0002';
+    cs1[3] = '*';
+    cs1[4] = 'c';
+    cs1[5] = '\u0002';
+    cs1[6] = '*';
+    cs1[7] = '[';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline01()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs2[0] = '\u0001';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline424()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs[2] = '\u0001';
+    cs[3] = '\u0001';
+    cs[4] = '\u0001';
+    cs[5] = '\u0001';
+    cs[6] = '\u0001';
+    cs[7] = '\u0001';
+    cs[8] = '\u0001';
+    cs[9] = '\u0001';
+    cs[10] = '\u0001';
+    cs[11] = '\u0001';
+    cs[12] = '\u0001';
+    cs[13] = '\u0001';
+    cs[14] = '\u0001';
+    cs[15] = '\n';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0001';
+    cs1[3] = '*';
+    cs1[4] = 'c';
+    cs1[6] = '*';
+    cs1[7] = '?';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline169()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0002';
+    cs[1] = '\u0002';
+    cs[2] = '\u0002';
+    cs[3] = '\u0002';
+    cs[4] = '\u0002';
+    cs[5] = '\u0002';
+    cs[6] = '\u0002';
+    cs[7] = '\u0002';
+    cs[8] = '\u0002';
+    cs[9] = '\u0002';
+    cs[10] = '\u0002';
+    cs[11] = '\u0002';
+    cs[12] = '\u0002';
+    cs[13] = '\u0002';
+    cs[14] = '\u0002';
+    cs[15] = '\u0003';
+    cs[16] = '\u0001';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0002';
+    cs1[3] = '*';
+    cs1[4] = 'c';
+    cs1[5] = '\u0002';
+    cs1[6] = '!';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline52()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0002';
+    cs[1] = '\u0002';
+    cs[2] = '\u0002';
+    cs[3] = '\u0002';
+    cs[4] = '\u0002';
+    cs[5] = '\u0002';
+    cs[6] = '\u0002';
+    cs[7] = '\u0002';
+    cs[8] = '\u0002';
+    cs[9] = '\u0002';
+    cs[10] = '\u0002';
+    cs[11] = '\u0002';
+    cs[12] = '\u0002';
+    cs[13] = '\u0002';
+    cs[14] = '\u0002';
+    cs[15] = '\u0003';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0002';
+    cs1[3] = '*';
+    cs1[4] = 'c';
+    cs1[5] = '\u0002';
+    cs1[6] = '%';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline127()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0001';
+    cs[1] = '\u0001';
+    cs2[0] = '\uffff';
+    this.subline(cs, cs1, cs2);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void subline59()
+{
+    char[] cs = new char[100];
+    char[] cs1 = new char[100];
+    char[] cs2 = new char[100];
+    cs[0] = '\u0002';
+    cs[1] = '\u0002';
+    cs[2] = '\u0002';
+    cs[3] = '\u0002';
+    cs[4] = '\u0002';
+    cs[5] = '\u0002';
+    cs[6] = '\u0002';
+    cs[7] = '\u0002';
+    cs[8] = '\u0002';
+    cs[9] = '\u0002';
+    cs[10] = '\u0002';
+    cs[11] = '\u0002';
+    cs[12] = '\u0002';
+    cs[13] = '\u0002';
+    cs[14] = '\u0002';
+    cs[15] = '\u0003';
+    cs1[0] = '*';
+    cs1[1] = 'c';
+    cs1[2] = '\u0002';
+    cs1[3] = '*';
+    cs1[4] = 'c';
+    cs1[5] = '\u0002';
+    cs1[6] = '*';
+    cs1[7] = 'c';
+    cs1[8] = '\u0002';
+    cs1[9] = '*';
+    cs1[10] = '$';
+    this.subline(cs, cs1, cs2);
 }
     }
 }

@@ -26,14 +26,6 @@ public void QGamma223()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(ApplicationException))]
-public void QGammaThrowsApplicationException292()
-{
-    double d;
-    d = this.QGamma(0, 0.5);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
 public void QGamma760()
 {
     double d;
@@ -47,14 +39,6 @@ public void QGamma233()
     double d;
     d = this.QGamma(0.33333333333333331, double.Epsilon);
     Assert.AreEqual<double>(1, d);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(ApplicationException))]
-public void QGammaThrowsApplicationException390()
-{
-    double d;
-    d = this.QGamma(0.5, double.PositiveInfinity);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]

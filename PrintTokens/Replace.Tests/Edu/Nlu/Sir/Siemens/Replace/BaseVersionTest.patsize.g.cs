@@ -18,108 +18,83 @@ namespace Edu.Nlu.Sir.Siemens.Replace
     {
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(NullReferenceException))]
-public void patsizeThrowsNullReferenceException905()
-{
-    int i;
-    i = this.patsize((string)null, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void patsize716()
-{
-    int i;
-    i = this.patsize("%\0", 0);
-    Assert.AreEqual<int>(1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void patsize174()
-{
-    int i;
-    i = this.patsize("?\0", 0);
-    Assert.AreEqual<int>(1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void patsize708()
-{
-    int i;
-    i = this.patsize("*\0", 0);
-    Assert.AreEqual<int>(1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void patsize328()
-{
-    int i;
-    i = this.patsize("[\0", 0);
-    Assert.AreEqual<int>(2, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void patsize56()
-{
-    int i;
-    i = this.patsize("!\0", 0);
-    Assert.AreEqual<int>(2, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void patsize366()
-{
-    int i;
-    i = this.patsize("c\0", 0);
-    Assert.AreEqual<int>(2, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void patsize547()
-{
-    int i;
-    i = this.patsize("$\0", 0);
-    Assert.AreEqual<int>(1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void patsizeThrowsIndexOutOfRangeException656()
-{
-    int i;
-    i = this.patsize("", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void patsizeThrowsIndexOutOfRangeException46()
-{
-    int i;
-    i = this.patsize("", int.MinValue);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void patsizeThrowsIndexOutOfRangeException209()
-{
-    int i;
-    i = this.patsize("[", 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void patsizeThrowsIndexOutOfRangeException967()
-{
-    int i;
-    i = this.patsize("", int.MaxValue);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
 [Ignore]
 [PexDescription("the test state was: system environment exit")]
-public void patsizeThrowsExitException752()
+public void patsizeThrowsExitException422()
 {
     int i;
-    i = this.patsize("\0\0", 0);
+    char[] cs = new char[100];
+    i = this.patsize(cs, 0);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void patsize50()
+{
+    int i;
+    char[] cs = new char[100];
+    cs[0] = '[';
+    i = this.patsize(cs, 0);
+    Assert.AreEqual<int>(2, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void patsize719()
+{
+    int i;
+    char[] cs = new char[100];
+    cs[0] = '!';
+    i = this.patsize(cs, 0);
+    Assert.AreEqual<int>(2, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void patsize4()
+{
+    int i;
+    char[] cs = new char[100];
+    cs[0] = '$';
+    i = this.patsize(cs, 0);
+    Assert.AreEqual<int>(1, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void patsize788()
+{
+    int i;
+    char[] cs = new char[100];
+    cs[0] = '?';
+    i = this.patsize(cs, 0);
+    Assert.AreEqual<int>(1, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void patsize997()
+{
+    int i;
+    char[] cs = new char[100];
+    cs[0] = '*';
+    i = this.patsize(cs, 0);
+    Assert.AreEqual<int>(1, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void patsize95()
+{
+    int i;
+    char[] cs = new char[100];
+    cs[0] = '%';
+    i = this.patsize(cs, 0);
+    Assert.AreEqual<int>(1, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(BaseVersionTest))]
+public void patsize876()
+{
+    int i;
+    char[] cs = new char[100];
+    cs[0] = 'c';
+    i = this.patsize(cs, 0);
+    Assert.AreEqual<int>(2, i);
 }
     }
 }

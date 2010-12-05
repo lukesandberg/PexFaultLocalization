@@ -18,98 +18,359 @@ namespace Edu.Nlu.Sir.Siemens.Replace
     {
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void esc474()
+public void esc603()
 {
     char c;
+    char[] cs = new char[100];
     int i = 0;
-    c = this.esc("\0\0", ref i);
+    c = this.esc(cs, ref i);
     Assert.AreEqual<char>('\0', c);
     Assert.AreEqual<int>(0, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void esc661()
+public void esc523()
 {
     char c;
+    char[] cs = new char[100];
     int i = 0;
-    c = this.esc("@\0", ref i);
+    cs[0] = '@';
+    c = this.esc(cs, ref i);
     Assert.AreEqual<char>('@', c);
     Assert.AreEqual<int>(0, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void esc133()
+public void esc2()
 {
     char c;
+    char[] cs = new char[100];
     int i = 0;
-    c = this.esc("@\u0001", ref i);
-    Assert.AreEqual<char>('\u0001', c);
+    cs[0] = '@';
+    cs[1] = '!';
+    cs[2] = ' ';
+    cs[3] = ' ';
+    cs[4] = ' ';
+    cs[5] = ' ';
+    cs[6] = ' ';
+    cs[7] = ' ';
+    cs[8] = ' ';
+    cs[9] = ' ';
+    cs[10] = ' ';
+    cs[11] = ' ';
+    cs[12] = ' ';
+    cs[13] = ' ';
+    cs[14] = ' ';
+    cs[15] = ' ';
+    cs[16] = ' ';
+    cs[17] = ' ';
+    cs[18] = ' ';
+    cs[19] = ' ';
+    cs[20] = ' ';
+    cs[21] = ' ';
+    cs[22] = ' ';
+    cs[23] = ' ';
+    cs[24] = ' ';
+    cs[25] = ' ';
+    cs[26] = ' ';
+    cs[27] = ' ';
+    cs[28] = ' ';
+    cs[29] = ' ';
+    cs[30] = ' ';
+    cs[31] = ' ';
+    cs[32] = ' ';
+    cs[33] = ' ';
+    cs[34] = ' ';
+    cs[35] = ' ';
+    cs[36] = ' ';
+    cs[37] = ' ';
+    cs[38] = ' ';
+    cs[39] = ' ';
+    cs[40] = ' ';
+    cs[41] = ' ';
+    cs[42] = ' ';
+    cs[43] = ' ';
+    cs[44] = ' ';
+    cs[45] = ' ';
+    cs[46] = ' ';
+    cs[47] = ' ';
+    cs[48] = ' ';
+    cs[49] = ' ';
+    cs[50] = ' ';
+    cs[51] = ' ';
+    cs[52] = ' ';
+    cs[53] = ' ';
+    cs[54] = ' ';
+    cs[55] = ' ';
+    cs[56] = ' ';
+    cs[57] = ' ';
+    cs[58] = ' ';
+    cs[59] = ' ';
+    cs[60] = ' ';
+    cs[61] = ' ';
+    cs[62] = ' ';
+    cs[63] = ' ';
+    cs[64] = ' ';
+    cs[65] = ' ';
+    cs[66] = ' ';
+    cs[67] = ' ';
+    cs[68] = ' ';
+    cs[69] = ' ';
+    cs[70] = ' ';
+    cs[71] = ' ';
+    cs[72] = ' ';
+    cs[73] = ' ';
+    cs[74] = ' ';
+    cs[75] = ' ';
+    cs[76] = ' ';
+    cs[77] = ' ';
+    cs[78] = ' ';
+    cs[79] = ' ';
+    cs[80] = ' ';
+    cs[81] = ' ';
+    cs[82] = ' ';
+    cs[83] = ' ';
+    cs[84] = ' ';
+    cs[85] = ' ';
+    cs[86] = ' ';
+    cs[87] = ' ';
+    cs[88] = ' ';
+    cs[89] = ' ';
+    cs[90] = ' ';
+    cs[91] = ' ';
+    cs[92] = ' ';
+    cs[93] = ' ';
+    cs[94] = ' ';
+    cs[95] = ' ';
+    cs[96] = ' ';
+    cs[97] = ' ';
+    cs[98] = ' ';
+    cs[99] = ' ';
+    c = this.esc(cs, ref i);
+    Assert.AreEqual<char>('!', c);
     Assert.AreEqual<int>(1, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-public void esc917()
+public void esc854()
 {
     char c;
+    char[] cs = new char[100];
     int i = 0;
-    c = this.esc("@t", ref i);
-    Assert.AreEqual<char>('\t', c);
-    Assert.AreEqual<int>(1, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-public void esc967()
-{
-    char c;
-    int i = 0;
-    c = this.esc("@n", ref i);
+    cs[0] = '@';
+    cs[1] = 'n';
+    cs[2] = ' ';
+    cs[3] = ' ';
+    cs[4] = ' ';
+    cs[5] = ' ';
+    cs[6] = ' ';
+    cs[7] = ' ';
+    cs[8] = ' ';
+    cs[9] = ' ';
+    cs[10] = ' ';
+    cs[11] = ' ';
+    cs[12] = ' ';
+    cs[13] = ' ';
+    cs[14] = ' ';
+    cs[15] = ' ';
+    cs[16] = ' ';
+    cs[17] = ' ';
+    cs[18] = ' ';
+    cs[19] = ' ';
+    cs[20] = ' ';
+    cs[21] = ' ';
+    cs[22] = ' ';
+    cs[23] = ' ';
+    cs[24] = ' ';
+    cs[25] = ' ';
+    cs[26] = ' ';
+    cs[27] = ' ';
+    cs[28] = ' ';
+    cs[29] = ' ';
+    cs[30] = ' ';
+    cs[31] = ' ';
+    cs[32] = ' ';
+    cs[33] = ' ';
+    cs[34] = ' ';
+    cs[35] = ' ';
+    cs[36] = ' ';
+    cs[37] = ' ';
+    cs[38] = ' ';
+    cs[39] = ' ';
+    cs[40] = ' ';
+    cs[41] = ' ';
+    cs[42] = ' ';
+    cs[43] = ' ';
+    cs[44] = ' ';
+    cs[45] = ' ';
+    cs[46] = ' ';
+    cs[47] = ' ';
+    cs[48] = ' ';
+    cs[49] = ' ';
+    cs[50] = ' ';
+    cs[51] = ' ';
+    cs[52] = ' ';
+    cs[53] = ' ';
+    cs[54] = ' ';
+    cs[55] = ' ';
+    cs[56] = ' ';
+    cs[57] = ' ';
+    cs[58] = ' ';
+    cs[59] = ' ';
+    cs[60] = ' ';
+    cs[61] = ' ';
+    cs[62] = ' ';
+    cs[63] = ' ';
+    cs[64] = ' ';
+    cs[65] = ' ';
+    cs[66] = ' ';
+    cs[67] = ' ';
+    cs[68] = ' ';
+    cs[69] = ' ';
+    cs[70] = ' ';
+    cs[71] = ' ';
+    cs[72] = ' ';
+    cs[73] = ' ';
+    cs[74] = ' ';
+    cs[75] = ' ';
+    cs[76] = ' ';
+    cs[77] = ' ';
+    cs[78] = ' ';
+    cs[79] = ' ';
+    cs[80] = ' ';
+    cs[81] = ' ';
+    cs[82] = ' ';
+    cs[83] = ' ';
+    cs[84] = ' ';
+    cs[85] = ' ';
+    cs[86] = ' ';
+    cs[87] = ' ';
+    cs[88] = ' ';
+    cs[89] = ' ';
+    cs[90] = ' ';
+    cs[91] = ' ';
+    cs[92] = ' ';
+    cs[93] = ' ';
+    cs[94] = ' ';
+    cs[95] = ' ';
+    cs[96] = ' ';
+    cs[97] = ' ';
+    cs[98] = ' ';
+    cs[99] = ' ';
+    c = this.esc(cs, ref i);
     Assert.AreEqual<char>('\n', c);
     Assert.AreEqual<int>(1, i);
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void escThrowsIndexOutOfRangeException98()
+public void esc499()
 {
     char c;
-    int i = 2;
-    c = this.esc("\0\0", ref i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void escThrowsIndexOutOfRangeException821()
-{
-    char c;
-    int i = 2;
-    c = this.esc("@\u0001", ref i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void escThrowsIndexOutOfRangeException768()
-{
-    char c;
-    int i = int.MinValue;
-    c = this.esc("", ref i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void escThrowsIndexOutOfRangeException213()
-{
-    char c;
+    char[] cs = new char[100];
     int i = 0;
-    c = this.esc("@", ref i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(IndexOutOfRangeException))]
-public void escThrowsIndexOutOfRangeException791()
-{
-    char c;
-    int i = int.MaxValue;
-    c = this.esc("", ref i);
+    cs[0] = '@';
+    cs[1] = 't';
+    cs[2] = ' ';
+    cs[3] = ' ';
+    cs[4] = ' ';
+    cs[5] = ' ';
+    cs[6] = ' ';
+    cs[7] = ' ';
+    cs[8] = ' ';
+    cs[9] = ' ';
+    cs[10] = ' ';
+    cs[11] = ' ';
+    cs[12] = ' ';
+    cs[13] = ' ';
+    cs[14] = ' ';
+    cs[15] = ' ';
+    cs[16] = ' ';
+    cs[17] = ' ';
+    cs[18] = ' ';
+    cs[19] = ' ';
+    cs[20] = ' ';
+    cs[21] = ' ';
+    cs[22] = ' ';
+    cs[23] = ' ';
+    cs[24] = ' ';
+    cs[25] = ' ';
+    cs[26] = ' ';
+    cs[27] = ' ';
+    cs[28] = ' ';
+    cs[29] = ' ';
+    cs[30] = ' ';
+    cs[31] = ' ';
+    cs[32] = ' ';
+    cs[33] = ' ';
+    cs[34] = ' ';
+    cs[35] = ' ';
+    cs[36] = ' ';
+    cs[37] = ' ';
+    cs[38] = ' ';
+    cs[39] = ' ';
+    cs[40] = ' ';
+    cs[41] = ' ';
+    cs[42] = ' ';
+    cs[43] = ' ';
+    cs[44] = ' ';
+    cs[45] = ' ';
+    cs[46] = ' ';
+    cs[47] = ' ';
+    cs[48] = ' ';
+    cs[49] = ' ';
+    cs[50] = ' ';
+    cs[51] = ' ';
+    cs[52] = ' ';
+    cs[53] = ' ';
+    cs[54] = ' ';
+    cs[55] = ' ';
+    cs[56] = ' ';
+    cs[57] = ' ';
+    cs[58] = ' ';
+    cs[59] = ' ';
+    cs[60] = ' ';
+    cs[61] = ' ';
+    cs[62] = ' ';
+    cs[63] = ' ';
+    cs[64] = ' ';
+    cs[65] = ' ';
+    cs[66] = ' ';
+    cs[67] = ' ';
+    cs[68] = ' ';
+    cs[69] = ' ';
+    cs[70] = ' ';
+    cs[71] = ' ';
+    cs[72] = ' ';
+    cs[73] = ' ';
+    cs[74] = ' ';
+    cs[75] = ' ';
+    cs[76] = ' ';
+    cs[77] = ' ';
+    cs[78] = ' ';
+    cs[79] = ' ';
+    cs[80] = ' ';
+    cs[81] = ' ';
+    cs[82] = ' ';
+    cs[83] = ' ';
+    cs[84] = ' ';
+    cs[85] = ' ';
+    cs[86] = ' ';
+    cs[87] = ' ';
+    cs[88] = ' ';
+    cs[89] = ' ';
+    cs[90] = ' ';
+    cs[91] = ' ';
+    cs[92] = ' ';
+    cs[93] = ' ';
+    cs[94] = ' ';
+    cs[95] = ' ';
+    cs[96] = ' ';
+    cs[97] = ' ';
+    cs[98] = ' ';
+    cs[99] = ' ';
+    c = this.esc(cs, ref i);
+    Assert.AreEqual<char>('\t', c);
+    Assert.AreEqual<int>(1, i);
 }
     }
 }

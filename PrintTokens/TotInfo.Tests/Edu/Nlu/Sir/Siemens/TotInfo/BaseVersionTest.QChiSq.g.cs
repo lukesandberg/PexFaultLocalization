@@ -26,14 +26,6 @@ public void QChiSq936()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(ApplicationException))]
-public void QChiSqThrowsApplicationException926()
-{
-    double d;
-    d = this.QChiSq(1, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
 public void QChiSq817()
 {
     double d;
@@ -55,14 +47,6 @@ public void QChiSq884()
     double d;
     d = this.QChiSq(4.77326203309412E+90, -1459709771);
     Assert.AreEqual<double>(0, d);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(ApplicationException))]
-public void QChiSqThrowsApplicationException162()
-{
-    double d;
-    d = this.QChiSq(0, -1915989999);
 }
     }
 }

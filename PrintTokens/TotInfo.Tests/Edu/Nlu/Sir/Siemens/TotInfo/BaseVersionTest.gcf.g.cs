@@ -18,14 +18,6 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
     {
 [TestMethod]
 [PexGeneratedBy(typeof(BaseVersionTest))]
-[PexRaisedException(typeof(ApplicationException))]
-public void gcfThrowsApplicationException470()
-{
-    double d;
-    d = this.gcf(0, 0);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(BaseVersionTest))]
 public void gcf193()
 {
     double d;
