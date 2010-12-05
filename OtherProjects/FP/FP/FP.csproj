@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{891E86F6-A992-4B42-B88A-F1F46EA0FCE1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FP</RootNamespace>
+    <AssemblyName>FP</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/FP/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Collections\Persistent\Dictionaries.cs" />
+    <Compile Include="Collections\Persistent\FingerTreeOrdered.cs" />
+    <Compile Include="Collections\Persistent\FingerTreeSized.cs" />
+    <Compile Include="Collections\Persistent\ICatenable.cs" />
+    <Compile Include="Collections\Persistent\ICollection.cs" />
+    <Compile Include="Collections\Persistent\IInsertableRandomAccessSequence.cs" />
+    <Compile Include="Collections\Persistent\IAdjustableRandomAccessSequence.cs" />
+    <Compile Include="Collections\Persistent\ICombinableDictionary.cs" />
+    <Compile Include="Collections\Persistent\IRandomAccess.cs" />
+    <Compile Include="Collections\Persistent\IReversible.cs" />
+    <Compile Include="Collections\Persistent\ISortedDictionary.cs" />
+    <Compile Include="Collections\Persistent\PriorityQueue.cs" />
+    <Compile Include="Collections\Persistent\PriorityValuePair.cs" />
+    <Compile Include="Collections\Persistent\Split.cs" />
+    <Compile Include="Collections\Persistent\TreeDictionary.cs" />
+    <Compile Include="Collections\Persistent\Vector.cs" />
+    <Compile Include="Collections\Persistent\IReversibleEnumerable.cs" />
+    <Compile Include="Collections\Persistent\ISplittable.cs" />
+    <Compile Include="Core\Combinators\Combinators.cs" />
+    <Compile Include="Core\CPS\ActionCPS.cs" />
+    <Compile Include="Core\CPS\ActionFailureException.cs" />
+    <Compile Include="Core\CPS\Cont.cs" />
+    <Compile Include="Core\CPS\Actions.cs" />
+    <Compile Include="Core\IRef.cs" />
+    <Compile Include="Core\Lazy.cs" />
+    <Compile Include="Core\OptionalNotNull.cs" />
+    <Compile Include="Core\Ref.cs" />
+    <Compile Include="Core\RefBase.cs" />
+    <Compile Include="Core\RefBaseEx.cs" />
+    <Compile Include="Core\RefBool.cs" />
+    <Compile Include="Core\RefDouble.cs" />
+    <Compile Include="Core\RefInt.cs" />
+    <Compile Include="Core\RefIntPtr.cs" />
+    <Compile Include="Core\RefLocked.cs" />
+    <Compile Include="Core\RefLong.cs" />
+    <Compile Include="Core\RefObject.cs" />
+    <Compile Include="Core\RefFloat.cs" />
+    <Compile Include="Core\RefValidationException.cs" />
+    <Compile Include="Collections\Persistent\IDeque.cs" />
+    <Compile Include="Collections\Persistent\IRandomAccessSequence.cs" />
+    <Compile Include="Collections\Persistent\IEnumerableFrom.cs" />
+    <Compile Include="Core\Either.cs" />
+    <Compile Include="Collections\Persistent\FingerTreeHelpers.cs" />
+    <Compile Include="Collections\Persistent\FingerTree.cs" />
+    <Compile Include="Collections\Persistent\FingerTreeNode.cs" />
+    <Compile Include="Collections\Persistent\Grouping.cs" />
+    <Compile Include="Collections\Persistent\IFoldable.cs" />
+    <Compile Include="Collections\Persistent\IDictionary.cs" />
+    <Compile Include="Collections\Persistent\IList.cs" />
+    <Compile Include="Collections\Persistent\IMeasured.cs" />
+    <Compile Include="Collections\Persistent\LazyList.cs" />
+    <Compile Include="Collections\Persistent\Lists.cs" />
+    <Compile Include="Collections\Persistent\Monoid.cs" />
+    <Compile Include="Collections\Persistent\OrderedSequence.cs" />
+    <Compile Include="Core\Result.cs" />
+    <Compile Include="Collections\Persistent\RandomAccessSequence.cs" />
+    <Compile Include="Core\Tuple.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tuple.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Unit.cs" />
+    <Compile Include="Core\Comparers.cs" />
+    <Compile Include="Core\Continuations.cs" />
+    <Compile Include="Core\Enumerables.cs" />
+    <Compile Include="Core\Enumerables2.cs" />
+    <Compile Include="Core\Enumerators.cs" />
+    <Compile Include="Core\Functions.cs" />
+    <Compile Include="Core\Optional.cs" />
+    <Compile Include="Core\Ints.cs" />
+    <Compile Include="Linq\ContinuationMonad.cs" />
+    <Compile Include="Linq\OptionalMonad.cs" />
+    <Compile Include="Linq\ResultMonad.cs" />
+    <Compile Include="Core\NotFoundException.cs" />
+    <Compile Include="Core\Pair.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Text\Strings.cs" />
+    <Compile Include="Core\Switch.cs" />
+    <Compile Include="Core\Triple.cs" />
+    <Compile Include="Util\Arrays.cs" />
+    <Compile Include="Validation\FPValidationExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Core\Tuple.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Tuple.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="License.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FP.Validation\FP.Validation.csproj">
+      <Project>{68D038C8-5F0A-4DE5-931C-7BE476A4EA37}</Project>
+      <Name>FP.Validation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties HeaderCommentProject="// Author: %user name%$LineBreak$// Project: %project%$LineBreak$// Path: %path%$LineBreak$// Creation date: %creation date%$LineBreak$// Last modified: %last modified%$LineBreak$" AddHeaderCommentProject="False" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
