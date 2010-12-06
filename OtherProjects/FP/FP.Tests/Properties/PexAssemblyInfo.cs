@@ -14,7 +14,6 @@ using Microsoft.Pex.Linq;
 [assembly: PexAssemblyUnderTest("FP")]
 [assembly: PexInstrumentAssembly("System.Data")]
 [assembly: PexInstrumentAssembly("FP.Validation")]
-[assembly: PexInstrumentAssembly("XunitExtensions")]
 [assembly: PexInstrumentAssembly("System.Core")]
 
 // Microsoft.Pex.Framework.Creatable

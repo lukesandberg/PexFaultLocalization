@@ -63,9 +63,11 @@ namespace FP.Collections.Persistent {
         /// Do _not_ hold on to any other references to it!</param>
         /// <returns></returns>
         internal static LazyList<T> Create(IEnumerator<T> enumerator) {
-            return enumerator.MoveNext()
-                       ? new LazyList<T>(enumerator.Current, enumerator)
-                       : Empty;
+			enumerator.MoveNext();
+			return new LazyList<T>(enumerator.Current, enumerator);
+			//return enumerator.MoveNext()
+			//           ? new LazyList<T>(enumerator.Current, enumerator)
+			//           : Empty;
         }
 
         /// <summary>

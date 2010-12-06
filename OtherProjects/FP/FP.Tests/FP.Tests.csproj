@@ -60,10 +60,6 @@
       <Project>{891E86F6-A992-4B42-B88A-F1F46EA0FCE1}</Project>
       <Name>FP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XunitExtensions\XunitExtensions.csproj">
-      <Project>{8729126E-E1DD-413E-8051-2007E5FCDBA7}</Project>
-      <Name>XunitExtensions</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="FP.Moles.dll">
@@ -75,6 +71,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assert2.cs" />
+    <Compile Include="ComparerConversions.cs" />
     <Compile Include="EnumerableTests.cs" />
     <Compile Include="EnumerableTests.SortAscendingTest.g.cs">
       <DependentUpon>EnumerableTests.cs</DependentUpon>
@@ -82,6 +80,7 @@
     <Compile Include="EnumerableTests.SortDescendingTest.g.cs">
       <DependentUpon>EnumerableTests.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exceptions.cs" />
     <Compile Include="Factories.cs" />
     <Compile Include="FP.Designer.cs">
       <AutoGen>True</AutoGen>

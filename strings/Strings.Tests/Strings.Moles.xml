@@ -17,11 +17,23 @@
         <member name="M:Strings.Moles.MStringExtensions.BehaveAsNotImplemented">
             <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
         </member>
+        <member name="M:Strings.Moles.MStringExtensions.DoTActionOfT``1(Microsoft.Moles.Framework.MolesDelegates.Action{``0,System.Action{``0}})">
+            <summary>Sets the mole of <see cref="M:Strings.StringExtensions.Do``1(``0,System.Action`1{``0})"/>
+            </summary>
+        </member>
         <member name="P:Strings.Moles.MStringExtensions.Behavior">
             <summary>Assigns the behavior for all methods of the moled type</summary>
         </member>
         <member name="P:Strings.Moles.MStringExtensions.CapitalizeString">
             <summary>Sets the mole of <see cref="M:Strings.StringExtensions.Capitalize(T:System.String)"/>
+            </summary>
+        </member>
+        <member name="P:Strings.Moles.MStringExtensions.ConvObject">
+            <summary>Sets the mole of <see cref="M:Strings.StringExtensions.Conv(T:System.Object)"/>
+            </summary>
+        </member>
+        <member name="P:Strings.Moles.MStringExtensions.Test">
+            <summary>Sets the mole of <see cref="M:Strings.StringExtensions.Test"/>
             </summary>
         </member>
         <member name="T:Strings.Moles.MTestObject">

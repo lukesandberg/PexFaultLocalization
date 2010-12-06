@@ -28,6 +28,8 @@ namespace FP.Core {
         /// <param name="second">The second element of the tuple.</param>
         /// <returns></returns>
         public static Tuple<T1, T2> New<T1, T2>(T1 first, T2 second) {
+			//object o = first;
+			//System.Console.WriteLine(o.ToString());
             return new Tuple<T1, T2>(first, second);
         }
     } // class Pair
