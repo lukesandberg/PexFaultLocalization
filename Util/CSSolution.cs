@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EnvDTE80;
+using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace FaultLocalization.Util
 {
@@ -24,16 +26,37 @@ namespace FaultLocalization.Util
 			try
 			{
 				Solution.Open(solutionPath);
-				SolutionBuild2 build = (SolutionBuild2) Solution.SolutionBuild;
-				build.Build(true);
-				_projects = Solution.Projects.Cast<dynamic>().Select(d => d.FullName).Cast<String>()
-								.Where(n => !String.IsNullOrEmpty(n))
-								.Select(n => new CSProject(n)).ToList();
+				Thread.Sleep(500);
+				while(true)
+				{
+					try
+					{
+						//SolutionBuild2 build = (SolutionBuild2) Solution.SolutionBuild;
+						//build.Build(true);
+						_projects = Solution.Projects.Cast<dynamic>().Select(d => d.FullName).Cast<String>()
+										.Where(n => !String.IsNullOrEmpty(n))
+										.Select(n => new CSProject(n)).ToList();
+						break;
+					}
+					catch(COMException)
+					{ }
+				}
 			}
 			finally
 			{
-				Solution.Close();
-				dte2.Quit();
+				while(true)
+				{
+					try
+					{
+						Thread.Sleep(500);
+						Solution.Close();
+						Thread.Sleep(500);
+						dte2.Quit();
+						break;
+					}
+					catch(COMException)
+					{ }
+				}
 			}
 		}
 	}
