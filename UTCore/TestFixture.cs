@@ -107,7 +107,7 @@ namespace UTCore
             {
                 try
                 {
-                    if (sua != null) sua.Invoke(instance);
+                    if (sua != null) 
 							sua.Invoke(instance);
                     ta.Invoke(instance);
                     // If we get here, the test did not throw an exception.
@@ -146,12 +146,11 @@ namespace UTCore
                 finally
                 {
                     if (tda != null) tda.Invoke(instance);
-							tda.Invoke(instance);
                 }
             }
             else
             {
-                Trace.WriteLine("***Ignore***: " + ta.TestMethod.ToString());
+                //Trace.WriteLine("***Ignore***: " + ta.TestMethod.ToString());
                 ta.State = TestAttribute.TestState.Ignore;
             }
             if (testNotificationEvent != null)
