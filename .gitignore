@@ -1,7 +1,11 @@
 bin
 obj
-*user
-*suo
+*.user
+*.suo
 strings/String.Tests/Strings.Moles.xml
 *trx
 TestResults
+MolesAssemblies
+Out
+In
+*.orig
