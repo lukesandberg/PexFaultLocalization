@@ -70,7 +70,7 @@ namespace UTCore
 			this.className=className;
 			this.methodName=methodInfo.Name;
 			this.methodInfo=methodInfo;
-			attributes=(IEnumerable<Attribute>)methodInfo.GetCustomAttributes(true);
+			attributes=methodInfo.GetCustomAttributes(true).Cast<Attribute>();
 		}
 
 		public void Invoke(object classInstance)
