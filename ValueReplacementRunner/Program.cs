@@ -10,10 +10,10 @@ namespace ValueReplacementRunner
 {
 	class Program
 	{
-		static String exes = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\Replace\exes";
-		static String sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\Replace\Replace.sln";
-		static String tp_name = @"Replace.Tests";
-		static String p_name = @"Replace";
+		static String exes = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\TotInfo\exes";
+		static String sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\TotInfo\TotInfo.sln";
+		static String tp_name = @"TotInfo.Tests";
+		static String p_name = @"TotInfo";
 		static String vr_exe = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\ValueReplacement\bin\Debug\ValueReplacement.exe";
 
 		static void Main(string[] args)
@@ -23,35 +23,35 @@ namespace ValueReplacementRunner
 				.GroupBy(p => Path.GetFileNameWithoutExtension(p))
 				.Select(g => new { exe = g.FirstOrDefault(s => Path.GetExtension(s).Equals(".exe")), pdb = g.FirstOrDefault(s => Path.GetExtension(s).Equals(".pdb")) })
 				.Where(a => !String.IsNullOrEmpty(a.exe) && !String.IsNullOrEmpty(a.pdb));
-			//foreach(var run in runs)
-			//{
-			//    try
-			//    {
-			//        build_and_copy(Path.GetFileNameWithoutExtension(run.exe));
-			//    }
-			//    catch(Exception e)
-			//    {
-			//    }
-			//}
 			foreach(var run in runs)
 			{
-				String targetName = Path.GetFileNameWithoutExtension(sln);
-				String targetDir = Path.Combine(Path.GetDirectoryName(sln), targetName, "Bin", "Debug");
-				File.Copy(run.exe, Path.Combine(targetDir, targetName + ".exe"), true);
-				File.Copy(run.pdb, Path.Combine(targetDir, targetName + ".pdb"), true);
-				Process proc = new Process();
-				proc.StartInfo.FileName = vr_exe;
-				proc.StartInfo.Arguments = "\"" + sln + "\" \"" + tp_name + "\"";
-				//proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-				proc.StartInfo.UseShellExecute = false;
-
-				proc.Start();
-				proc.WaitForExit();
-				if(File.Exists("result.csv"))
-					File.Copy("result.csv", Path.GetFileNameWithoutExtension(run.exe) + "_results.csv", true);
-				else
-					Console.WriteLine("failed to gather results for " + run.exe);
+				try
+				{
+					build_and_copy(Path.GetFileNameWithoutExtension(run.exe));
+				}
+				catch(Exception e)
+				{
+				}
 			}
+			//foreach(var run in runs)
+			//{
+			//    String targetName = Path.GetFileNameWithoutExtension(sln);
+			//    String targetDir = Path.Combine(Path.GetDirectoryName(sln), targetName, "Bin", "Debug");
+			//    File.Copy(run.exe, Path.Combine(targetDir, targetName + ".exe"), true);
+			//    File.Copy(run.pdb, Path.Combine(targetDir, targetName + ".pdb"), true);
+			//    Process proc = new Process();
+			//    proc.StartInfo.FileName = vr_exe;
+			//    proc.StartInfo.Arguments = "\"" + sln + "\" \"" + tp_name + "\"";
+			//    //proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+			//    proc.StartInfo.UseShellExecute = false;
+
+			//    proc.Start();
+			//    proc.WaitForExit();
+			//    if(File.Exists("result.csv"))
+			//        File.Copy("result.csv", Path.GetFileNameWithoutExtension(run.exe) + "_results.csv", true);
+			//    else
+			//        Console.WriteLine("failed to gather results for " + run.exe);
+			//}
 		}
 
 		static void build_and_copy(String version)
