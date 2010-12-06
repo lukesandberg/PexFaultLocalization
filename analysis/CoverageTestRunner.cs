@@ -7,6 +7,7 @@ using System.IO;
 using System.Diagnostics;
 using Microsoft.Win32;
 using FaultLocalization;
+using System.Text.RegularExpressions;
 
 namespace FaultLocalization
 {
@@ -50,7 +51,7 @@ namespace FaultLocalization
                 {
                     needsToRun.Add(testDllPath, true);
                 }
-                else/* if (coveredDllModDates.Any(date => date > individualTestsModDate))*/
+                else /*if (coveredDllModDates.Any(date => date > individualTestsModDate))*/
                 {
                     needsToRun.Add(testDllPath, false);
                 }
@@ -152,7 +153,8 @@ namespace FaultLocalization
             string AllTestsResultPath = tests.AllTestsResultsFile(TestDllPath);
             String text = File.ReadAllText(AllTestsResultPath);
             text = Encoding.ASCII.GetString(Encoding.ASCII.GetBytes(text));
-            text = new string(text.Where(t => t != 4).ToArray());
+            text = Regex.Replace(text, "<Message>.*", "<Message />");
+            text = Regex.Replace(text, "<StdOut>.*", "<StdOut />");
             XDocument xDoc = XDocument.Parse(text);
             XNamespace ns = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010";
             var unitTests = from unitTest in xDoc.Descendants(ns + "UnitTest")

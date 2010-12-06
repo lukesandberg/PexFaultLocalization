@@ -19,7 +19,10 @@ namespace FaultLocalization
 		}
 		public static ExecutedTest CreateTest(String trxFileLocation)
 		{
-			var trx_doc = XDocument.Load(trxFileLocation);
+            String text = File.ReadAllText(trxFileLocation);
+            text = Regex.Replace(text, "<Message>.*", "<Message />");
+            text = Regex.Replace(text, "<StdOut>.*", "<StdOut />");
+            XDocument trx_doc = XDocument.Parse(text);
 			var xmlns = XNamespace.Get(trx_doc.Elements().First().Attribute("xmlns").Value);
 			var unitTestElement = trx_doc.Descendants(xmlns + "UnitTest").First();
 			var id = Guid.Parse(unitTestElement.Attribute("id").Value);
@@ -83,6 +86,13 @@ namespace FaultLocalization
 				return _data;
 			}
 		}
+
+        internal void ClearCoverageData()
+        {
+            _data.Dispose();
+            _data = null;
+        }
+
 		protected ExecutedTest() { }
 
 		public IEnumerable<CoverageDSPriv.ClassRow> Classes
