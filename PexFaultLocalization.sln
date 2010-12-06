@@ -8,12 +8,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaultLocalization", "analys
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8046851F-D2DC-4D36-8A31-6531142EAD2C}"
 	ProjectSection(SolutionItems) = preProject
-		Local.testsettings = Local.testsettings
 		PexFaultLocalization.vsmdi = PexFaultLocalization.vsmdi
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaultLocalization.Tests", "FaultLocalization.Tests\FaultLocalization.Tests.csproj", "{82838DB3-B77C-4AEE-AC7A-29CD3F816815}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UTCore", "UTCore\UTCore.csproj", "{BF8705CC-B976-453C-916B-04F1B67EA035}"
 EndProject
@@ -48,16 +45,6 @@ Global
 		{FAA3A0C5-8F50-4EFB-9D10-B7E114DA2040}.Release|Mixed Platforms.Build.0 = Release|x86
 		{FAA3A0C5-8F50-4EFB-9D10-B7E114DA2040}.Release|x86.ActiveCfg = Release|x86
 		{FAA3A0C5-8F50-4EFB-9D10-B7E114DA2040}.Release|x86.Build.0 = Release|x86
-		{82838DB3-B77C-4AEE-AC7A-29CD3F816815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82838DB3-B77C-4AEE-AC7A-29CD3F816815}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82838DB3-B77C-4AEE-AC7A-29CD3F816815}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{82838DB3-B77C-4AEE-AC7A-29CD3F816815}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{82838DB3-B77C-4AEE-AC7A-29CD3F816815}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{82838DB3-B77C-4AEE-AC7A-29CD3F816815}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82838DB3-B77C-4AEE-AC7A-29CD3F816815}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82838DB3-B77C-4AEE-AC7A-29CD3F816815}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{82838DB3-B77C-4AEE-AC7A-29CD3F816815}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{82838DB3-B77C-4AEE-AC7A-29CD3F816815}.Release|x86.ActiveCfg = Release|Any CPU
 		{BF8705CC-B976-453C-916B-04F1B67EA035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BF8705CC-B976-453C-916B-04F1B67EA035}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF8705CC-B976-453C-916B-04F1B67EA035}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

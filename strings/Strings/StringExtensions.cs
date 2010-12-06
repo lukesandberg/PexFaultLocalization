@@ -38,5 +38,18 @@ namespace Strings
 
             return sb.ToString();
         }
+		public static void Test()
+		{
+			int k;
+			Do(1, i => k = i);
+		}
+		public static void Do<T>(T i, Action<T> act)
+		{
+			act((T) Conv(i));
+		}
+		public static object Conv(object o)
+		{
+			return o;
+		}
     }
 }
