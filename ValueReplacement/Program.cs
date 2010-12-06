@@ -14,8 +14,8 @@ namespace ValueReplacement
 		{
 			//string sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\strings\Strings.sln";
 			//string test_proj_name = "Strings.Tests";
-			string sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\OtherProjects\FP\FP.sln";
-			string test_proj_name = "FP.Tests";
+			string sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\tcas\tcas\tcas.sln";
+			string test_proj_name = "tcas.Tests";
 			CodeRewriter rewriter = new CodeRewriter(sln, test_proj_name);
 			rewriter.Rewrite();
 
@@ -57,7 +57,8 @@ namespace ValueReplacement
 			        }
 			    }
 			}
-
+			if(File.Exists("results.csv"))
+				File.Delete("results.csv");
 			using(var writer = new StreamWriter(File.OpenWrite("result.csv")))
 			{
 				writer.WriteLine("FileName, Start Line, End Line, Start Column, End Column, #IVMPs");

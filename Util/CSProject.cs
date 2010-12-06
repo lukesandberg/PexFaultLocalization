@@ -22,12 +22,24 @@ namespace FaultLocalization.Util
 				return Path.GetDirectoryName(CSProj);
 			}
 		}
-
+		private string output_type;
+		public String OutputType
+		{
+			get
+			{
+				if(output_type == null)
+				{
+					output_type = ProjectFile.Descendants(XmlNs + "PropertyGroup")
+					.Where(n => !n.HasAttributes).Descendants(XmlNs + "OutputType").Single().Value;
+				}
+				return output_type;
+			}
+		}
 		public String AssemblyLocation
 		{
 			get
 			{
-				return Path.Combine(ProjDir, OutputDirectory, AssemblyName+".dll");
+				return Path.Combine(ProjDir, OutputDirectory, AssemblyName+ (OutputType.Equals("Library")? ".dll" : ".exe"));
 			}
 		}
 
