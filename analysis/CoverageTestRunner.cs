@@ -147,15 +147,22 @@ namespace FaultLocalization
             File.Delete(AllTestsPath);
         }
 
+        private static XDocument ParseTestResults(String trxFileLocation)
+        {
+            String text = File.ReadAllText(trxFileLocation);
+            text = Regex.Replace(text, "<Message>.*", "<Message />");
+            text = Regex.Replace(text, "<\\/Message>.*", "<Message />");
+            text = Regex.Replace(text, "<StdOut>.*", "<StdOut />");
+            text = Regex.Replace(text, "<\\/StdOut>.*", "<StdOut />");
+            XDocument trx_doc = XDocument.Parse(text);
+            return trx_doc;
+        }
+
         private void RunIndividualTests(string TestDllPath)
         {
             Console.Out.WriteLine("Generating individual test case coverage for tests in " + TestDllPath + "...");
             string AllTestsResultPath = tests.AllTestsResultsFile(TestDllPath);
-            String text = File.ReadAllText(AllTestsResultPath);
-            text = Encoding.ASCII.GetString(Encoding.ASCII.GetBytes(text));
-            text = Regex.Replace(text, "<Message>.*", "<Message />");
-            text = Regex.Replace(text, "<StdOut>.*", "<StdOut />");
-            XDocument xDoc = XDocument.Parse(text);
+            XDocument xDoc = ParseTestResults(AllTestsResultPath);
             XNamespace ns = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010";
             var unitTests = from unitTest in xDoc.Descendants(ns + "UnitTest")
                             select new
