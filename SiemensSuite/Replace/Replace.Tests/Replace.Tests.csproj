@@ -42,8 +42,12 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="mscorlib.Behaviors, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="mscorlib.Moles, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0ae41878053f6703, processorArchitecture=MSIL" />
+    <Reference Include="mscorlib.Behaviors, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Microsoft Moles\MolesAssemblies\mscorlib\4.0.0.0__B77A5C561934E089\mscorlib.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib.Moles, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0ae41878053f6703, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files\Microsoft Moles\MolesAssemblies\mscorlib\4.0.0.0__B77A5C561934E089\mscorlib.Moles.dll</HintPath>
+    </Reference>
     <Reference Include="Replace.Moles, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -123,14 +127,28 @@
     </Compile>
     <Compile Include="Edu\Nlu\Sir\Siemens\Replace\ReplaceVersionFactory.cs" />
     <Compile Include="Edu\Nlu\Sir\Siemens\Replace\TextReaderPreparation.cs" />
+    <Compile Include="mscorlib.Designer.cs">
+      <DependentUpon>mscorlib.moles</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\PexAssemblyInfo.cs" />
+    <Compile Include="Replace.Designer.cs">
+      <DependentUpon>Replace.moles</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Moles Include="Replace.moles" />
   </ItemGroup>
   <ItemGroup>
     <Moles Include="mscorlib.moles" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Replace.Moles.dll">
+      <DependentUpon>Replace.moles</DependentUpon>
+    </Content>
+    <Content Include="Replace.Moles.xml">
+      <DependentUpon>Replace.moles</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

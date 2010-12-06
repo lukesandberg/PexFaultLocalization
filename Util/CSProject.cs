@@ -29,8 +29,7 @@ namespace FaultLocalization.Util
 			{
 				if(output_type == null)
 				{
-					output_type = ProjectFile.Descendants(XmlNs + "PropertyGroup")
-					.Where(n => !n.HasAttributes).Descendants(XmlNs + "OutputType").Single().Value;
+					output_type = MainPropertyGroup.Descendants(XmlNs + "OutputType").Single().Value;
 				}
 				return output_type;
 			}
@@ -88,7 +87,7 @@ namespace FaultLocalization.Util
 			{
 				if(_mainPropertyGroup == null)
 				{
-					_mainPropertyGroup = ProjectFile.Descendants(XmlNs + "PropertyGroup").Where(n => !n.Attributes().Any()).Single();
+					_mainPropertyGroup = ProjectFile.Descendants(XmlNs + "PropertyGroup").Where(n => !n.Attributes().Any()).First();
 				}
 				return _mainPropertyGroup;
 			}

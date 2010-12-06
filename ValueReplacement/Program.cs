@@ -12,8 +12,8 @@ namespace ValueReplacement
 	{
 		static void Main(string[] args)
 		{
-			//string sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\strings\Strings.sln";
-			//string test_proj_name = "Strings.Tests";
+			//String sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\TotInfo\TotInfo.sln";
+			//string test_proj_name = "TotInfo.Tests";
 			string sln = args[0];
 			string test_proj_name = args[1];
 			CodeRewriter rewriter = new CodeRewriter(sln, test_proj_name);

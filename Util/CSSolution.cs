@@ -16,6 +16,29 @@ namespace FaultLocalization.Util
 		private List<CSProject> _projects;
 		public IEnumerable<CSProject> Projects { get { return _projects; } }
 
+		public static void Rebuild(String sln)
+		{
+			System.Type type = System.Type.GetTypeFromProgID("VisualStudio.DTE.10.0");
+			Object obj = System.Activator.CreateInstance(type, true);
+			DTE2 dte2 = (DTE2) obj;
+			var Solution = (Solution2) dte2.Solution;
+			Thread.Sleep(500);
+			try
+			{
+
+				Solution.Open(sln);
+				Thread.Sleep(500);
+				SolutionBuild2 build = (SolutionBuild2) Solution.SolutionBuild;
+				build.Build(true);
+				Thread.Sleep(500);
+			}
+			finally
+			{
+				Solution.Close();
+				dte2.Quit();
+			}
+		}
+
 		public CSSolution(String solutionPath)
 		{
 			SolutionPath = solutionPath;
@@ -31,8 +54,8 @@ namespace FaultLocalization.Util
 				{
 					try
 					{
-						//SolutionBuild2 build = (SolutionBuild2) Solution.SolutionBuild;
-						//build.Build(true);
+						SolutionBuild2 build = (SolutionBuild2) Solution.SolutionBuild;
+						build.Build(true);
 						_projects = Solution.Projects.Cast<dynamic>().Select(d => d.FullName).Cast<String>()
 										.Where(n => !String.IsNullOrEmpty(n))
 										.Select(n => new CSProject(n)).ToList();
