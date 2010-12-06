@@ -11,15 +11,16 @@ namespace ValueReplacementRunner
 	{
 		static void Main(string[] args)
 		{
-			String exes = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\tcas\tcas\exes";
-			String sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\tcas\tcas\tcas.sln";
-			String tp_name = @"tcas.Tests";
+			String exes = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\PrintTokens\exes";
+			String sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\PrintTokens\PrintTokens.sln";
+			String tp_name = @"PrintTokens.Tests";
 
 			String vr_exe = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\ValueReplacement\bin\Debug\ValueReplacement.exe";
 			
 			var runs = Directory.EnumerateFiles(exes)
 				.GroupBy(p => Path.GetFileNameWithoutExtension(p))
-				.Select(g => new { exe = g.First(s => Path.GetExtension(s).Equals(".exe")), pdb = g.First(s => Path.GetExtension(s).Equals(".pdb")) });
+				.Select(g => new { exe = g.FirstOrDefault(s => Path.GetExtension(s).Equals(".exe")), pdb = g.FirstOrDefault(s => Path.GetExtension(s).Equals(".pdb")) })
+				.Where(a => !String.IsNullOrEmpty(a.exe) && !String.IsNullOrEmpty(a.pdb)) ;
 			foreach(var run in runs)
 			{
 				String targetName = Path.GetFileNameWithoutExtension(sln);
@@ -34,8 +35,7 @@ namespace ValueReplacementRunner
 
 				proc.Start();
 				proc.WaitForExit();
-
-				File.Move("result.csv", Path.GetFileNameWithoutExtension(run.exe) + "_results.csv");
+				File.Copy("result.csv", Path.GetFileNameWithoutExtension(run.exe) + "_results.csv", true);
 			}
 		}
 	}

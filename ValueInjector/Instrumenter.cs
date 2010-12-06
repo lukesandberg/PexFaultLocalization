@@ -9,7 +9,7 @@ namespace ValueInjector
 	public static class Instrumenter
 	{
 		private static Dictionary<SourceCodeLocation, ValueProfile> profiles;
-
+		private static Dictionary<SourceCodeLocation, uint> counts;
 		public static String CurrentTestName { get; set; }
 		[DefaultValue(true)]
 		public static bool IsSaving { get; set; }
@@ -57,11 +57,13 @@ namespace ValueInjector
 			IsSaving = false;
 			CurrentStatement = stmt;
 			AlternateMapping = vm;
+			counts = new Dictionary<SourceCodeLocation, uint>();
 		}
 
 		static Instrumenter()
 		{
 			profiles = new Dictionary<SourceCodeLocation, ValueProfile>();
+			counts = new Dictionary<SourceCodeLocation, uint>();
 		}
 
 		public static void SetCurrentTestName(String testName)
@@ -83,12 +85,25 @@ namespace ValueInjector
 		public static object Instrument(object value, String FileName, int lineStart, int lineEnd, int colStart, int colEnd, int id)
 		{
 			SourceCodeLocation location = new SourceCodeLocation(FileName, lineStart, lineEnd, colStart, colEnd);
+			if(counts.ContainsKey(location))
+			{
+				counts[location]++;
+			}
+			else
+			{
+				counts[location] = 1;
+			}
+
+			if(counts[location] > 100000)
+			{
+				return value;
+			}
 			try
 			{
 				if(IsSaving || !CurrentStatement.Contains(location))
 				{
 					if(IsSaving)
-						SaveValue(location, id, value.GetType(), value);
+						SaveValue(location, id, value == null ? null : value.GetType(), value);
 					return value;
 				}
 				else

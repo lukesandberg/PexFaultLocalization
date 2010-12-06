@@ -327,7 +327,7 @@ namespace ValueReplacement
 						return false;//doing value replacement on 'this' is (based on a small amount of observation) a bad idea
 					}
 					ValueType = method.Parameters[pr.Index].ParameterType;
-					return true;
+					return !ValueType.IsByReference;
 				case Code.Ldarg_0:
 				case Code.Ldarg_1:
 				case Code.Ldarg_2:
@@ -342,7 +342,7 @@ namespace ValueReplacement
 					return true;
 				case Code.Ldelem_Ref:
 					ValueType = GetTypeReference(typeof(Object));//we know its a reference type.. so it doesn't really matter
-					return true;
+					return false;//TODO: figure out the correct array element type...
 				case Code.Ldlen:
 					ValueType = GetTypeReference(typeof(uint));
 					return true;
