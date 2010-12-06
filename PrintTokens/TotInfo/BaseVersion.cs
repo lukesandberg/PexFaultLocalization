@@ -5,39 +5,39 @@ using System.Text;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace Edu.Unl.Sir.Seimens.TotInfo
+namespace Edu.Nlu.Sir.Siemens.TotInfo
 {
-    public class BaseVersion
+    public class BaseVersion: ITotInfo
     {
-        private const int MAXLINE = 256;
-        private const int MAXTBL = 1000;
-        private const char COMMENT = '#';
-        private const int NULL = 0;
-        private const int EXIT_FAILURE = -1;
-        private const int EXIT_SUCCESS = 0;
+        public const int MAXLINE = 256;
+        public const int MAXTBL = 1000;
+        public const char COMMENT = '#';
+        public const int NULL = 0;
+        public const int EXIT_FAILURE = -1;
+        public const int EXIT_SUCCESS = 0;
 
-        private const int ITMAX = 100;
-        private const double EPS = 3.0e-7;
+        public const int ITMAX = 100;
+        public const double EPS = 3.0e-7;
 
         /// <summary>
         /// row/column header input line */
         /// </summary>
-        private static char[] line = new char[MAXLINE];
+        public char[] line = new char[MAXLINE];
         /// <summary>
         /// frequency tallies
         /// </summary>
-        private static long[] f = new long[MAXTBL];
+        public long[] f = new long[MAXTBL];
         /// <summary>
         /// # of rows
         /// </summary>
-        private static int r;
+        public int r;
         /// <summary>
         /// # of columns
         /// </summary>
-        private static int c;
+        public int c;
 
 
-        static void Main(string[] args)
+        void Main(string[] args)
         {
             char p;		/* input line scan location */
             int i;		/* row index */
@@ -139,7 +139,7 @@ namespace Edu.Unl.Sir.Seimens.TotInfo
             Environment.Exit(EXIT_SUCCESS);
         }
 
-        private static double LGamma(double x)
+        public double LGamma(double x)
         {
             double[] cof =
 	{
@@ -170,7 +170,7 @@ namespace Edu.Unl.Sir.Seimens.TotInfo
 
 
 
-        private static double
+        public double
             gser(double a, double x)
         {
             double ap, del, sum;
@@ -193,7 +193,7 @@ namespace Edu.Unl.Sir.Seimens.TotInfo
             throw new ApplicationException("Execution should not have reached this line");
         }
 
-        private static double
+        public double
             gcf(double a, double x)
         {
             int n;
@@ -227,14 +227,14 @@ namespace Edu.Unl.Sir.Seimens.TotInfo
             throw new ApplicationException("Execution should not have reached this line");
         }
 
-        private static double
+        public double
             QGamma(double a, double x)
         {
 
             return x < a + 1.0 ? 1.0 - gser(a, x) : gcf(a, x);
         }
 
-        private static double
+        public double
             QChiSq(double chisq, int df)
         {
             return QGamma((double)df / 2.0, chisq / 2.0);
@@ -258,7 +258,7 @@ namespace Edu.Unl.Sir.Seimens.TotInfo
         /// <param name="f">r*c frequency tallies</param>
         /// <param name="pdf">return # d.f. for chi-square</param>
         /// <returns></returns>
-        private static double
+        public double
             InfoTbl(int r, int c, long[] f, out int pdf)
         {
             int i;		/* row index */
@@ -318,8 +318,8 @@ namespace Edu.Unl.Sir.Seimens.TotInfo
 
                 N += xi[i] = sum;
             }
-
-            if (N <= 0.0)
+            int n = (int)N;
+            if (n <= 0)
             {
                 info = -1.0;
                 goto ret1;

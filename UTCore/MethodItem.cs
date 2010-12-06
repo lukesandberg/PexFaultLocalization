@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using System.Reflection;
 
 using KALib;
@@ -11,7 +13,7 @@ namespace UTCore
 		private string namespaceName;
 		private string className;
 		private string methodName;
-		private object[] attributes;
+		private IEnumerable<Attribute> attributes;
 		private MethodInfo methodInfo;
 		private delegate void UnitTestDelegate();
 
@@ -19,7 +21,7 @@ namespace UTCore
 		private bool ignore=false;
 		Attribute eea=null;
 
-		public object[] Attributes
+		public IEnumerable<Attribute> Attributes
 		{
 			get
 			{
@@ -51,19 +53,24 @@ namespace UTCore
 			}
 		}
 
+        public string MethodName
+        {
+            get { return methodName; } 
+        }
+
 		public override string ToString()
 		{
 			return methodName;
 		}
 
-		public MethodItem(Assembly assembly, string namespaceName, string className, string methodName, MethodInfo methodInfo)
+		public MethodItem(Assembly assembly, string namespaceName, string className, MethodInfo methodInfo)
 		{
 			this.assembly=assembly;
 			this.namespaceName=namespaceName;
 			this.className=className;
-			this.methodName=methodName;
+			this.methodName=methodInfo.Name;
 			this.methodInfo=methodInfo;
-			attributes=methodInfo.GetCustomAttributes(true);
+			attributes=(IEnumerable<Attribute>)methodInfo.GetCustomAttributes(true);
 		}
 
 		public void Invoke(object classInstance)

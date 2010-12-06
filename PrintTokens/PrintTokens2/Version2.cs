@@ -8,6 +8,24 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2
 {
     public class original
     {
+<<<<<<< HEAD
+        const int TRUE = 1;
+        const int FALSE = 1;
+
+        const int SUCCEED = 1;
+        const int FAIL = 0;
+        const int error = 0;
+        const int keyword = 1;
+        const int spec_symbol = 2;
+        const int identifier = 3;
+        const int num_constant = 41;
+        const int str_constant = 42;
+        const int char_constant = 43;
+        const int comment = 5;
+        const int end = 6;
+
+        static void main(string[] args)
+=======
         private const int TRUE = 1;
         private const int FALSE = 0;
 
@@ -24,6 +42,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens2
         private const int end = 6;
 
         static void Main(string[] args)
+>>>>>>> PexFaultLocalization/master
         {
             string fname;
             string tok;

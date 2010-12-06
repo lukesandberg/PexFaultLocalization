@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{342C3D43-64CD-41AD-A70A-B9FCA673EF30}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Replace</RootNamespace>
+    <AssemblyName>Replace</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseVersion.cs" />
+    <Compile Include="IReplace.cs" />
+    <Compile Include="Version32.cs" />
+    <Compile Include="Verion11.cs" />
+    <Compile Include="Version12.cs" />
+    <Compile Include="Version13.cs" />
+    <Compile Include="Version14.cs" />
+    <Compile Include="Version15.cs" />
+    <Compile Include="Version16.cs" />
+    <Compile Include="Version17.cs" />
+    <Compile Include="Version18.cs" />
+    <Compile Include="Version19.cs" />
+    <Compile Include="Version20.cs" />
+    <Compile Include="Version5.cs" />
+    <Compile Include="Version21.cs" />
+    <Compile Include="Version22.cs" />
+    <Compile Include="Version23.cs" />
+    <Compile Include="Version24.cs" />
+    <Compile Include="Version25.cs" />
+    <Compile Include="Version26.cs" />
+    <Compile Include="Version27.cs" />
+    <Compile Include="Version28.cs" />
+    <Compile Include="Version29.cs" />
+    <Compile Include="Version30.cs" />
+    <Compile Include="Version3.cs" />
+    <Compile Include="Version31.cs" />
+    <Compile Include="Version4.cs" />
+    <Compile Include="Version6.cs" />
+    <Compile Include="Version7.cs" />
+    <Compile Include="Version8.cs" />
+    <Compile Include="Version9.cs" />
+    <Compile Include="Version10.cs" />
+    <Compile Include="Version2.cs" />
+    <Compile Include="Version1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{1CA50A24-45C3-4676-858F-28003B28CECA}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
