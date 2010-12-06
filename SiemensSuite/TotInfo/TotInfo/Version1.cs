@@ -314,7 +314,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
                     if (k < 0L)
                     {
                         info = -2.0;
-                        /* 				goto ret1; missing code */
+                        /*goto ret1; missing code*/
                     }
 
                     sum += (double)k;
