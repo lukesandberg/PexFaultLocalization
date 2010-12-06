@@ -74,4 +74,14 @@ namespace FaultLocalization
             return line;
         }
     }
+
+    public class IntensityRater : StatisticalRater
+    {
+        protected override StatementSuspiciousnessInfo applyRating(StatementSuspiciousnessInfo line, uint passed, uint failed)
+        {
+            base.applyRating(line, passed, failed);
+            line.SuspiciousnessRatings.Add(this, Math.Max(line.Passed, line.Failed));
+            return line;
+        }
+    }
 }
