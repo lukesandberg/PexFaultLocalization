@@ -20,9 +20,6 @@
         <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.MBaseVersion.BehaveAsNotImplemented">
             <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
         </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.MBaseVersion.Bind(Edu.Nlu.Sir.Siemens.Replace.IReplace)">
-            <summary>Binds the members of the interface to the mole.</summary>
-        </member>
         <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.MBaseVersion.Bind(Edu.Nlu.Sir.Siemens.Shared.FaultyVersion)">
             <summary>Binds the members of the interface to the mole.</summary>
         </member>
@@ -172,6 +169,29 @@
             <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.subline(T:System.Char[],T:System.Char[],T:System.Char[])"/>
             </summary>
         </member>
+        <member name="T:Edu.Nlu.Sir.Siemens.Replace.Moles.MIReplace">
+            <summary>Mole type of <see cref="T:Edu.Nlu.Sir.Siemens.Replace.IReplace"/>
+            .</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.MIReplace.#ctor(Edu.Nlu.Sir.Siemens.Replace.IReplace)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.MIReplace.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.MIReplace.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.Replace.Moles.MIReplace.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.Replace.Moles.MIReplace.Constructor">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.#ctor"/>
+            </summary>
+        </member>
+        <member name="T:Edu.Nlu.Sir.Siemens.Replace.Moles.MIReplace.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
         <member name="T:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion">
             <summary>Stub type of <see cref="T:Edu.Nlu.Sir.Siemens.Replace.BaseVersion"/>
             .</summary>
@@ -179,8 +199,152 @@
         <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.#ctor">
             <summary>Initializes a new instance</summary>
         </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.AmatchCharArrayInt32CharArrayInt32">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.amatch(T:System.Char[],T:System.Int32,T:System.Char[],T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.Caseerror(System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.Caseerror(T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.CaseerrorInt32">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.Caseerror(T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.ChangeCharArrayCharArray">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.change(T:System.Char[],T:System.Char[])"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.EscCharArrayInt32Ref">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.esc(T:System.Char[],T:System.Int32@)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.GetpatCharArrayCharArrayOut">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.getpat(T:System.Char[],T:System.Char[]@)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.GetsubCharArrayCharArrayOut">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.getsub(T:System.Char[],T:System.Char[]@)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.In_pat_setChar">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.in_pat_set(T:System.Char)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.In_set_2Char">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.in_set_2(T:System.Char)"/>
+            </summary>
+        </member>
         <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.InitializeStub">
             <summary>Initializes a new instance of type SBaseVersion</summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.LocateCharCharArrayInt32">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.locate(T:System.Char,T:System.Char[],T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.Main(System.Char[][])">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.Main(T:System.Char[][])"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.MainCharArrayArray">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.Main(T:System.Char[][])"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.MakepatCharArrayInt32CharCharArrayOut">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.makepat(T:System.Char[],T:System.Int32,T:System.Char,T:System.Char[]@)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.MakesubCharArrayInt32CharCharArrayOut">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.makesub(T:System.Char[],T:System.Int32,T:System.Char,T:System.Char[]@)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.PatsizeCharArrayInt32">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.patsize(T:System.Char[],T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.PutsubCharArrayInt32Int32CharArray">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.putsub(T:System.Char[],T:System.Int32,T:System.Int32,T:System.Char[])"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.SublineCharArrayCharArrayCharArray">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.subline(T:System.Char[],T:System.Char[],T:System.Char[])"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.addstr(System.Char,System.Char[]@,System.Int32@,System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.addstr(T:System.Char,T:System.Char[]@,T:System.Int32@,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.amatch(System.Char[],System.Int32,System.Char[],System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.amatch(T:System.Char[],T:System.Int32,T:System.Char[],T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.change(System.Char[],System.Char[])">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.change(T:System.Char[],T:System.Char[])"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.dodash(System.Char,System.Char[],System.Int32@,System.Char[],System.Int32@,System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.dodash(T:System.Char,T:System.Char[],T:System.Int32@,T:System.Char[],T:System.Int32@,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.esc(System.Char[],System.Int32@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.esc(T:System.Char[],T:System.Int32@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.getccl(System.Char[],System.Int32@,System.Char[],System.Int32@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.getccl(T:System.Char[],T:System.Int32@,T:System.Char[],T:System.Int32@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.getline(System.Char[]@,System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.getline(T:System.Char[]@,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.getpat(System.Char[],System.Char[]@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.getpat(T:System.Char[],T:System.Char[]@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.getsub(System.Char[],System.Char[]@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.getsub(T:System.Char[],T:System.Char[]@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.in_pat_set(System.Char)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.in_pat_set(T:System.Char)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.in_set_2(System.Char)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.in_set_2(T:System.Char)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.locate(System.Char,System.Char[],System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.locate(T:System.Char,T:System.Char[],T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.makepat(System.Char[],System.Int32,System.Char,System.Char[]@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.makepat(T:System.Char[],T:System.Int32,T:System.Char,T:System.Char[]@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.makesub(System.Char[],System.Int32,System.Char,System.Char[]@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.makesub(T:System.Char[],T:System.Int32,T:System.Char,T:System.Char[]@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.omatch(System.Char[],System.Int32@,System.Char[],System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.omatch(T:System.Char[],T:System.Int32@,T:System.Char[],T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.patsize(System.Char[],System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.patsize(T:System.Char[],T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.putsub(System.Char[],System.Int32,System.Int32,System.Char[])">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.putsub(T:System.Char[],T:System.Int32,T:System.Int32,T:System.Char[])"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.stclose(System.Char[],System.Int32@,System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.stclose(T:System.Char[],T:System.Int32@,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.subline(System.Char[],System.Char[],System.Char[])">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.BaseVersion.subline(T:System.Char[],T:System.Char[],T:System.Char[])"/>
+            </summary>
         </member>
         <member name="P:Edu.Nlu.Sir.Siemens.Replace.Moles.SBaseVersion.CallBase">
             <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
@@ -193,10 +357,14 @@
             .</summary>
         </member>
         <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.#ctor">
-            <summary>Initializes a new instance of type SIReplace</summary>
+            <summary>Initializes a new instance</summary>
         </member>
         <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.AmatchCharArrayInt32CharArrayInt32">
             <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.amatch(T:System.Char[],T:System.Int32,T:System.Char[],T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.Caseerror(System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.Caseerror(T:System.Int32)"/>
             </summary>
         </member>
         <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.CaseerrorInt32">
@@ -205,90 +373,6 @@
         </member>
         <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.ChangeCharArrayCharArray">
             <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.change(T:System.Char[],T:System.Char[])"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#Caseerror(System.Int32)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.Caseerror(T:System.Int32)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#Main(System.Char[][])">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.Main(T:System.Char[][])"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#addstr(System.Char,System.Char[]@,System.Int32@,System.Int32)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.addstr(T:System.Char,T:System.Char[]@,T:System.Int32@,T:System.Int32)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#amatch(System.Char[],System.Int32,System.Char[],System.Int32)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.amatch(T:System.Char[],T:System.Int32,T:System.Char[],T:System.Int32)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#change(System.Char[],System.Char[])">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.change(T:System.Char[],T:System.Char[])"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#dodash(System.Char,System.Char[],System.Int32@,System.Char[],System.Int32@,System.Int32)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.dodash(T:System.Char,T:System.Char[],T:System.Int32@,T:System.Char[],T:System.Int32@,T:System.Int32)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#esc(System.Char[],System.Int32@)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.esc(T:System.Char[],T:System.Int32@)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#getccl(System.Char[],System.Int32@,System.Char[],System.Int32@)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.getccl(T:System.Char[],T:System.Int32@,T:System.Char[],T:System.Int32@)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#getline(System.Char[]@,System.Int32)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.getline(T:System.Char[]@,T:System.Int32)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#getpat(System.Char[],System.Char[]@)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.getpat(T:System.Char[],T:System.Char[]@)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#getsub(System.Char[],System.Char[]@)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.getsub(T:System.Char[],T:System.Char[]@)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#in_pat_set(System.Char)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.in_pat_set(T:System.Char)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#in_set_2(System.Char)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.in_set_2(T:System.Char)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#locate(System.Char,System.Char[],System.Int32)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.locate(T:System.Char,T:System.Char[],T:System.Int32)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#makepat(System.Char[],System.Int32,System.Char,System.Char[]@)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.makepat(T:System.Char[],T:System.Int32,T:System.Char,T:System.Char[]@)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#makesub(System.Char[],System.Int32,System.Char,System.Char[]@)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.makesub(T:System.Char[],T:System.Int32,T:System.Char,T:System.Char[]@)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#omatch(System.Char[],System.Int32@,System.Char[],System.Int32)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.omatch(T:System.Char[],T:System.Int32@,T:System.Char[],T:System.Int32)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#patsize(System.Char[],System.Int32)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.patsize(T:System.Char[],T:System.Int32)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#putsub(System.Char[],System.Int32,System.Int32,System.Char[])">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.putsub(T:System.Char[],T:System.Int32,T:System.Int32,T:System.Char[])"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#stclose(System.Char[],System.Int32@,System.Int32)">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.stclose(T:System.Char[],T:System.Int32@,T:System.Int32)"/>
-            </summary>
-        </member>
-        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.r::Edu#Nlu#Sir#Siemens#Replace#IReplace#subline(System.Char[],System.Char[],System.Char[])">
-            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.subline(T:System.Char[],T:System.Char[],T:System.Char[])"/>
             </summary>
         </member>
         <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.EscCharArrayInt32Ref">
@@ -311,8 +395,15 @@
             <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.in_set_2(T:System.Char)"/>
             </summary>
         </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.InitializeStub">
+            <summary>Initializes a new instance of type SIReplace</summary>
+        </member>
         <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.LocateCharCharArrayInt32">
             <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.locate(T:System.Char,T:System.Char[],T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.Main(System.Char[][])">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.Main(T:System.Char[][])"/>
             </summary>
         </member>
         <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.MainCharArrayArray">
@@ -338,6 +429,88 @@
         <member name="F:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.SublineCharArrayCharArrayCharArray">
             <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.subline(T:System.Char[],T:System.Char[],T:System.Char[])"/>
             </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.addstr(System.Char,System.Char[]@,System.Int32@,System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.addstr(T:System.Char,T:System.Char[]@,T:System.Int32@,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.amatch(System.Char[],System.Int32,System.Char[],System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.amatch(T:System.Char[],T:System.Int32,T:System.Char[],T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.change(System.Char[],System.Char[])">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.change(T:System.Char[],T:System.Char[])"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.dodash(System.Char,System.Char[],System.Int32@,System.Char[],System.Int32@,System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.dodash(T:System.Char,T:System.Char[],T:System.Int32@,T:System.Char[],T:System.Int32@,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.esc(System.Char[],System.Int32@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.esc(T:System.Char[],T:System.Int32@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.getccl(System.Char[],System.Int32@,System.Char[],System.Int32@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.getccl(T:System.Char[],T:System.Int32@,T:System.Char[],T:System.Int32@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.getline(System.Char[]@,System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.getline(T:System.Char[]@,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.getpat(System.Char[],System.Char[]@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.getpat(T:System.Char[],T:System.Char[]@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.getsub(System.Char[],System.Char[]@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.getsub(T:System.Char[],T:System.Char[]@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.in_pat_set(System.Char)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.in_pat_set(T:System.Char)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.in_set_2(System.Char)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.in_set_2(T:System.Char)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.locate(System.Char,System.Char[],System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.locate(T:System.Char,T:System.Char[],T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.makepat(System.Char[],System.Int32,System.Char,System.Char[]@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.makepat(T:System.Char[],T:System.Int32,T:System.Char,T:System.Char[]@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.makesub(System.Char[],System.Int32,System.Char,System.Char[]@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.makesub(T:System.Char[],T:System.Int32,T:System.Char,T:System.Char[]@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.omatch(System.Char[],System.Int32@,System.Char[],System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.omatch(T:System.Char[],T:System.Int32@,T:System.Char[],T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.patsize(System.Char[],System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.patsize(T:System.Char[],T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.putsub(System.Char[],System.Int32,System.Int32,System.Char[])">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.putsub(T:System.Char[],T:System.Int32,T:System.Int32,T:System.Char[])"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.stclose(System.Char[],System.Int32@,System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.stclose(T:System.Char[],T:System.Int32@,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.subline(System.Char[],System.Char[],System.Char[])">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.Replace.IReplace.subline(T:System.Char[],T:System.Char[],T:System.Char[])"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.Replace.Moles.SIReplace.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
         </member>
     </members>
 </doc>
