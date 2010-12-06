@@ -158,7 +158,11 @@ namespace ValueReplacement
 		public void Rewrite()
 		{
 			if(!RewritePrepare())
+			{
+				Console.WriteLine("skipping rewrite");
+				Console.Read();
 				return;
+			}
 			MarkAssembly();
 
 			var methods = Assembly.Modules

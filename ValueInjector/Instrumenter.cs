@@ -93,11 +93,11 @@ namespace ValueInjector
 			{
 				counts[location] = 1;
 			}
-			if(counts[location] > 30000)
+			if(counts[location] > 20000)
 			{
 				throw new Exception("Value Replacement infinite loop");
 			}
-			if(counts[location] > 20000)
+			if(counts[location] > 10000)
 			{
 				return value;
 			}

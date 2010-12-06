@@ -30,7 +30,7 @@ namespace ValueReplacement
 			}
 			catch(Exception e)
 			{
-
+				Console.WriteLine(e);
 			}
 		}
 
@@ -67,8 +67,10 @@ namespace ValueReplacement
 			        }
 			    }
 			}
-			if(File.Exists("results.csv"))
-				File.Delete("results.csv");
+			if(File.Exists("result.csv"))
+				File.Delete("result.csv");
+			Console.WriteLine("found " + ivmps.Count + " ivmps");
+			
 			using(var writer = new StreamWriter(File.OpenWrite("result.csv")))
 			{
 				writer.WriteLine("FileName, Start Line, End Line, Start Column, End Column, #IVMPs");
