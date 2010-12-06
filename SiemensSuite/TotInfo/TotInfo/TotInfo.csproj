@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5CADB8CC-8379-47DA-BB1F-92633519C4FE}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TotInfo</RootNamespace>
     <AssemblyName>TotInfo</AssemblyName>
@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="BaseVersion.cs" />
     <Compile Include="ITotInfo.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Version23.cs" />
     <Compile Include="Version22.cs" />
     <Compile Include="Version10.cs" />
