@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>schedule2.Moles</name>
+    </assembly>
+    <members>
+        <member name="T:schedule2.Moles.MProcess">
+            <summary>Mole type of <see cref="T:schedule2.Process"/>
+            .</summary>
+        </member>
+        <member name="M:schedule2.Moles.MProcess.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:schedule2.Moles.MProcess.#ctor(schedule2.Process)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:schedule2.Moles.MProcess.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:schedule2.Moles.MProcess.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:schedule2.Moles.MProcess.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:schedule2.Moles.MProcess.Constructor">
+            <summary>Sets the mole of <see cref="M:schedule2.Process.#ctor"/>
+            </summary>
+        </member>
+        <member name="T:schedule2.Moles.MProcess.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="T:schedule2.Moles.MProgram">
+            <summary>Mole type of <see cref="T:schedule2.Program"/>
+            .</summary>
+        </member>
+        <member name="M:schedule2.Moles.MProgram.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:schedule2.Moles.MProgram.#ctor(schedule2.Program)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:schedule2.Moles.MProgram.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:schedule2.Moles.MProgram.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.Constructor">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.MainStringArray">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.Main(T:System.String[])"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.block">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.block"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.enqueueInt32Process">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.enqueue(T:System.Int32,T:schedule2.Process)"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.finish">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.finish"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.flush">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.flush"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.getCurrent">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.getCurrent"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.get_processInt32SingleProcessRef">
+            <summary>Sets the mole of <see cref="P:schedule2.Program.process(T:System.Int32,T:System.Single,T:schedule2.Process@)"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.new_jobInt32">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.new_job(T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.put_endInt32Process">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.put_end(T:System.Int32,T:schedule2.Process)"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.quantum_expire">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.quantum_expire"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.readFileString">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.readFile(T:System.String)"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.rescheduleInt32">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.reschedule(T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.scheduleInt32Int32Single">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.schedule(T:System.Int32,T:System.Int32,T:System.Single)"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.unblockSingle">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.unblock(T:System.Single)"/>
+            </summary>
+        </member>
+        <member name="P:schedule2.Moles.MProgram.upgrade_prioInt32Single">
+            <summary>Sets the mole of <see cref="M:schedule2.Program.upgrade_prio(T:System.Int32,T:System.Single)"/>
+            </summary>
+        </member>
+        <member name="T:schedule2.Moles.MProgram.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="T:schedule2.Moles.SProcess">
+            <summary>Stub type of <see cref="T:schedule2.Process"/>
+            .</summary>
+        </member>
+        <member name="M:schedule2.Moles.SProcess.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:schedule2.Moles.SProcess.InitializeStub">
+            <summary>Initializes a new instance of type SProcess</summary>
+        </member>
+        <member name="P:schedule2.Moles.SProcess.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:schedule2.Moles.SProcess.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:schedule2.Moles.SProgram">
+            <summary>Stub type of <see cref="T:schedule2.Program"/>
+            .</summary>
+        </member>
+        <member name="M:schedule2.Moles.SProgram.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:schedule2.Moles.SProgram.InitializeStub">
+            <summary>Initializes a new instance of type SProgram</summary>
+        </member>
+        <member name="P:schedule2.Moles.SProgram.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:schedule2.Moles.SProgram.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+    </members>
+</doc>

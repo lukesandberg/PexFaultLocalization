@@ -14,14 +14,15 @@ namespace ValueReplacement
 		{
 			//string sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\strings\Strings.sln";
 			//string test_proj_name = "Strings.Tests";
-			string sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\tcas\tcas\tcas.sln";
-			string test_proj_name = "tcas.Tests";
+			string sln = args[0];
+			string test_proj_name = args[1];
 			CodeRewriter rewriter = new CodeRewriter(sln, test_proj_name);
 			rewriter.Rewrite();
 
 			TestSuite tests = new TestSuite(Path.GetDirectoryName(sln));
 			ReflectionTestRunner runner = new ReflectionTestRunner(tests);
 			RunFaultLocalization(runner);
+			//Console.Read();
 		}
 
 		static void RunFaultLocalization(ReflectionTestRunner runner)
