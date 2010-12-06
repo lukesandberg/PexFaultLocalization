@@ -12,17 +12,26 @@ namespace ValueReplacement
 	{
 		static void Main(string[] args)
 		{
-			//String sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\TotInfo\TotInfo.sln";
-			//string test_proj_name = "TotInfo.Tests";
-			string sln = args[0];
-			string test_proj_name = args[1];
-			CodeRewriter rewriter = new CodeRewriter(sln, test_proj_name);
-			rewriter.Rewrite();
+			try
+			{
+				
+				//String sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\TotInfo\TotInfo.sln";
+				//string test_proj_name = "TotInfo.Tests";
+				string sln = args[0];
+				string test_proj_name = args[1];
+				//String sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\Replace\Replace.sln";
+				//String test_proj_name = @"Replace.Tests";
+				CodeRewriter rewriter = new CodeRewriter(sln, test_proj_name);
+				rewriter.Rewrite();
 
-			TestSuite tests = new TestSuite(Path.GetDirectoryName(sln));
-			ReflectionTestRunner runner = new ReflectionTestRunner(tests);
-			RunFaultLocalization(runner);
-			//Console.Read();
+				TestSuite tests = new TestSuite(Path.GetDirectoryName(sln));
+				ReflectionTestRunner runner = new ReflectionTestRunner(tests);
+				RunFaultLocalization(runner);
+			}
+			catch(Exception e)
+			{
+
+			}
 		}
 
 		static void RunFaultLocalization(ReflectionTestRunner runner)

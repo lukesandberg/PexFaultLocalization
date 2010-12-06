@@ -6,10 +6,10 @@ using Edu.Nlu.Sir.Siemens.Shared;
 
 namespace Edu.Nlu.Sir.Siemens.Replace
 {
-    public partial class BaseVersion : IReplace
+	public class BaseVersion : FaultyVersion, IReplace
     {
-        public int[] FaultLines { get { return new int[] { 114 }; } }
-        public FaultType FaultType { get { return FaultType.IF_OPERATOR_CHANGE; } }
+        public int[] FaultLines { get { return new int[] { 115 }; } }
+        public FaultType FaultType { get { return FaultType.IF_CONDITION_CHANGE; } }
 
         public const int NULL = 0;
 
@@ -40,9 +40,9 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         getline(out char[] s,
         int maxsize)
         {
-
+            
             Console.In.ReadLine(out s, maxsize);
-
+            
             return (s != null);
         }
 
@@ -111,8 +111,8 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                         junk = addstr(src[i], ref dest, ref j, maxset);
                     else if (j <= 1 || src[i + 1] == ENDSTR)
                         junk = addstr(DASH, ref dest, ref j, maxset);
-                    else if ((Char.IsLetterOrDigit(src[i - 1])) & (Char.IsLetterOrDigit(src[i + 1])) //FAULT: replaced logical with bitwise and
-                       && (src[i - 1] <= src[i + 1]))
+                    else if ((Char.IsLetterOrDigit(src[i - 1])) && (Char.IsLetterOrDigit(src[i + 1]))
+                      /* && (src[i - 1] <= src[i + 1])*/)//FAULT: missing code
                     {
                         for (k = src[i - 1] + 1; k <= src[i + 1]; k++)
                         {
@@ -337,7 +337,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                 if (!in_pat_set(pat[j]))
                 {
                     Console.Write("in omatch: can't happen\n");
-                    Environment.Exit(-1);
+                    throw new Exception("(-1)");
                 }
                 else
                 {
@@ -391,7 +391,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             if (!in_pat_set(pat[n]))
             {
                 Console.Write("in patsize: can't happen\n");
-                Environment.Exit(-1);
+                throw new Exception("(-1)");
             }
             else
                 switch (pat[n])
@@ -537,14 +537,14 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             if (args.Length < 2)
             {
                 Console.Write("usage: change from [to]\n");
-                Environment.Exit(1);
+                throw new Exception("(1)");
             };
 
             result = getpat(args[1], out pat);
             if (!result)
             {
                 Console.Write("change: illegal \"from\" pattern\n");
-                Environment.Exit(2);
+                throw new Exception("(2)");
             }
 
             if (args.Length >= 3)
@@ -553,12 +553,12 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                 if (!result)
                 {
                     Console.Write("change: illegal \"to\" char[]\n");
-                    Environment.Exit(3);
+                    throw new Exception("(3)");
                 }
             }
             else
             {
-                sub = new char[] { '\0' };
+                sub = new char[]{'\0'};
             }
 
             change(pat, sub);
@@ -569,7 +569,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         Caseerror(int n)
         {
             Console.Write("Missing case limb: line %d\n", n);
-            Environment.Exit(4);
+            throw new Exception("(4)");
         }
 
     }

@@ -10,10 +10,10 @@ namespace ValueReplacementRunner
 {
 	class Program
 	{
-		static String exes = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\TotInfo\exes";
-		static String sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\TotInfo\TotInfo.sln";
-		static String tp_name = @"TotInfo.Tests";
-		static String p_name = @"TotInfo";
+		static String exes = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\Replace\exes";
+		static String sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\Replace\Replace.sln";
+		static String tp_name = @"Replace.Tests";
+		static String p_name = @"Replace";
 		static String vr_exe = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\ValueReplacement\bin\Debug\ValueReplacement.exe";
 
 		static void Main(string[] args)
@@ -47,12 +47,16 @@ namespace ValueReplacementRunner
 
 				proc.Start();
 				proc.WaitForExit();
-				File.Copy("result.csv", Path.GetFileNameWithoutExtension(run.exe) + "_results.csv", true);
+				if(File.Exists("result.csv"))
+					File.Copy("result.csv", Path.GetFileNameWithoutExtension(run.exe) + "_results.csv", true);
+				else
+					Console.WriteLine("failed to gather results for " + run.exe);
 			}
 		}
 
 		static void build_and_copy(String version)
 		{
+			Console.WriteLine(version);
 			String proj_dir = Path.Combine(Path.GetDirectoryName(sln), p_name);
 			String target_v = Path.Combine(proj_dir, version + ".cs");
 			String fn = Path.Combine(proj_dir, "BaseVersion.cs");

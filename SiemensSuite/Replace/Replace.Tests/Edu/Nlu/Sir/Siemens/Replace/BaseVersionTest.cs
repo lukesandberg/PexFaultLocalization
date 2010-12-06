@@ -10,7 +10,7 @@ using System.Text;
 namespace Edu.Nlu.Sir.Siemens.Replace
 {
     /// <summary>This class contains parameterized unit tests for BaseVersion</summary>
-    [PexClass(typeof(IReplace))]
+    [PexClass(typeof(BaseVersion))]
     [PexAllowedExceptionFromTypeUnderTest(typeof(InvalidOperationException))]
     [PexAllowedExceptionFromTypeUnderTest(typeof(ArgumentException), AcceptExceptionSubtypes = true)]
     [TestClass]

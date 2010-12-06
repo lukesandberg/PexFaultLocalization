@@ -22,20 +22,34 @@ namespace FaultLocalization.Util
 			Object obj = System.Activator.CreateInstance(type, true);
 			DTE2 dte2 = (DTE2) obj;
 			var Solution = (Solution2) dte2.Solution;
-			Thread.Sleep(500);
 			try
 			{
-
-				Solution.Open(sln);
-				Thread.Sleep(500);
+				COMRetry(() => Solution.Open(sln));
 				SolutionBuild2 build = (SolutionBuild2) Solution.SolutionBuild;
-				build.Build(true);
-				Thread.Sleep(500);
+				COMRetry(() => build.Build(true));
 			}
 			finally
 			{
-				Solution.Close();
-				dte2.Quit();
+				COMRetry(() =>
+				{
+					Solution.Close();
+					dte2.Quit();
+				});
+			}
+		}
+		private static void COMRetry(Action a)
+		{
+			while(true)
+			{
+				try
+				{
+					a();
+					break;
+				}
+				catch(COMException)
+				{
+					Thread.Sleep(500);
+				}
 			}
 		}
 
@@ -48,38 +62,18 @@ namespace FaultLocalization.Util
 			Solution = (Solution2) dte2.Solution;
 			try
 			{
-				Solution.Open(solutionPath);
-				Thread.Sleep(500);
-				while(true)
-				{
-					try
-					{
-						SolutionBuild2 build = (SolutionBuild2) Solution.SolutionBuild;
-						build.Build(true);
-						_projects = Solution.Projects.Cast<dynamic>().Select(d => d.FullName).Cast<String>()
+				COMRetry(() => Solution.Open(solutionPath));
+				COMRetry(() => _projects = Solution.Projects.Cast<dynamic>().Select(d => d.FullName).Cast<String>()
 										.Where(n => !String.IsNullOrEmpty(n))
-										.Select(n => new CSProject(n)).ToList();
-						break;
-					}
-					catch(COMException)
-					{ }
-				}
+										.Select(n => new CSProject(n)).ToList());
 			}
 			finally
 			{
-				while(true)
+				COMRetry(() =>
 				{
-					try
-					{
-						Thread.Sleep(500);
-						Solution.Close();
-						Thread.Sleep(500);
-						dte2.Quit();
-						break;
-					}
-					catch(COMException)
-					{ }
-				}
+					Solution.Close();
+					dte2.Quit();
+				});
 			}
 		}
 	}
