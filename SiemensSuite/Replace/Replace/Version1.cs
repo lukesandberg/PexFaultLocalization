@@ -6,11 +6,7 @@ using Edu.Nlu.Sir.Siemens.Shared;
 
 namespace Edu.Nlu.Sir.Siemens.Replace
 {
-<<<<<<< HEAD
-    public class Version1: IReplace, FaultyVersion
-=======
 	public class BaseVersion : FaultyVersion, IReplace
->>>>>>> PexFaultLocalization/master
     {
         public int[] FaultLines { get { return new int[] { 104 }; } }
         public FaultType FaultType { get { return FaultType.ARRAY_INDEX_CHANGE; } }

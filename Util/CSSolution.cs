@@ -26,6 +26,7 @@ namespace FaultLocalization.Util
 			{
 				COMRetry(() => Solution.Open(sln));
 				SolutionBuild2 build = (SolutionBuild2) Solution.SolutionBuild;
+				COMRetry(() => build.Clean(true));
 				COMRetry(() => build.Build(true));
 			}
 			finally

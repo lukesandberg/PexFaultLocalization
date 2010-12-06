@@ -19,10 +19,7 @@ namespace FaultLocalization
 		}
 		public static ExecutedTest CreateTest(String trxFileLocation)
 		{
-            String text = File.ReadAllText(trxFileLocation);
-            text = Regex.Replace(text, "<Message>.*", "<Message />");
-            text = Regex.Replace(text, "<StdOut>.*", "<StdOut />");
-            XDocument trx_doc = XDocument.Parse(text);
+            XDocument trx_doc = ParseTestResults(trxFileLocation);
 			var xmlns = XNamespace.Get(trx_doc.Elements().First().Attribute("xmlns").Value);
 			var unitTestElement = trx_doc.Descendants(xmlns + "UnitTest").First();
 			var id = Guid.Parse(unitTestElement.Attribute("id").Value);
@@ -50,6 +47,17 @@ namespace FaultLocalization
 			}
 			return rval;
 		}
+
+        private static XDocument ParseTestResults(String trxFileLocation)
+        {
+            String text = File.ReadAllText(trxFileLocation);
+            text = Regex.Replace(text, "<Message>.*", "<Message />");
+            text = Regex.Replace(text, "<\\/Message>.*", "<Message />");
+            text = Regex.Replace(text, "<StdOut>.*", "<StdOut />");
+            text = Regex.Replace(text, "<\\/StdOut>.*", "<StdOut />");
+            XDocument trx_doc = XDocument.Parse(text);
+            return trx_doc;
+        }
 
 		public String Name { get; private set; }
 		public Guid ID { get; private set; }

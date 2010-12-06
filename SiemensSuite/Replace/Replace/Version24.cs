@@ -6,7 +6,7 @@ using Edu.Nlu.Sir.Siemens.Shared;
 
 namespace Edu.Nlu.Sir.Siemens.Replace
 {
-    public class Version24: IReplace, FaultyVersion
+    public class BaseVersion: IReplace, FaultyVersion
     {
         public int[] FaultLines { get { return new int[] { 359 }; } }
         public FaultType FaultType { get { return FaultType.MISSING_CODE; } }
