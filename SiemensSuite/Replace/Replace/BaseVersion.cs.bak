@@ -6,9 +6,9 @@ using Edu.Nlu.Sir.Siemens.Shared;
 
 namespace Edu.Nlu.Sir.Siemens.Replace
 {
-    public class Version11: IReplace, FaultyVersion
+    public partial class BaseVersion : IReplace
     {
-        public int[] FaultLines { get { return new int[] { 115 }; } }
+        public int[] FaultLines { get { return new int[] { 114 }; } }
         public FaultType FaultType { get { return FaultType.IF_OPERATOR_CHANGE; } }
 
         public const int NULL = 0;
@@ -36,17 +36,17 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         public const int CLOSIZE = 1;
 
 
-        public override bool
+        public bool
         getline(out char[] s,
         int maxsize)
         {
-            
+
             Console.In.ReadLine(out s, maxsize);
-            
+
             return (s != null);
         }
 
-        public override bool
+        public bool
         addstr(char c,
         ref char[] outset,
         ref int j,
@@ -64,7 +64,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public override char
+        public char
         esc(char[] s, ref int i)
         {
             char result;
@@ -87,7 +87,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public override void
+        public void
         dodash(char delim,
         char[] src,
         ref int i,
@@ -111,8 +111,8 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                         junk = addstr(src[i], ref dest, ref j, maxset);
                     else if (j <= 1 || src[i + 1] == ENDSTR)
                         junk = addstr(DASH, ref dest, ref j, maxset);
-                    else if ((Char.IsLetterOrDigit(src[i - 1])) && (Char.IsLetterOrDigit(src[i + 1]))
-                       && (src[i - 1] > src[i + 1])) //FAULT: replaced <= with >
+                    else if ((Char.IsLetterOrDigit(src[i - 1])) & (Char.IsLetterOrDigit(src[i + 1])) //FAULT: replaced logical with bitwise and
+                       && (src[i - 1] <= src[i + 1]))
                     {
                         for (k = src[i - 1] + 1; k <= src[i + 1]; k++)
                         {
@@ -126,7 +126,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public override bool
+        public bool
         getccl(char[] arg,
         ref int i,
         char[] pat,
@@ -150,7 +150,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return (arg[i] == CCLEND);
         }
 
-        public override void
+        public void
         stclose(char[] pat,
         ref int j,
         int lastj)
@@ -169,18 +169,18 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             pat[lastj] = CLOSURE;
         }
 
-        public override bool in_set_2(char c)
+        public bool in_set_2(char c)
         {
             return (c == BOL || c == EOL || c == CLOSURE);
         }
 
-        public override bool in_pat_set(char c)
+        public bool in_pat_set(char c)
         {
             return (c == LITCHAR || c == BOL || c == EOL || c == ANY
             || c == CCL || c == NCCL || c == CLOSURE);
         }
 
-        public override int
+        public int
         makepat(char[] arg,
          int start,
         char delim,
@@ -240,7 +240,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public override bool
+        public bool
         getpat(char[] arg,
         out char[] pat)
         {
@@ -250,7 +250,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return (makeres > 0);
         }
 
-        public override int
+        public int
         makesub(char[] arg,
             int from,
             char delim,
@@ -287,7 +287,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public override bool
+        public bool
         getsub(char[] arg,
             out char[] sub)
         {
@@ -297,7 +297,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return (makeres > 0);
         }
 
-        public override bool
+        public bool
         locate(char c,
             char[] pat,
             int offset)
@@ -320,7 +320,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return flag;
         }
 
-        public override bool
+        public bool
         omatch(char[] lin,
             ref int i,
             char[] pat,
@@ -383,7 +383,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public override int
+        public int
         patsize(char[] pat,
             int n)
         {
@@ -417,7 +417,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return size;
         }
 
-        public override int
+        public int
         amatch(char[] lin,
             int offset,
             char[] pat,
@@ -464,7 +464,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return offset;
         }
 
-        public override void
+        public void
         putsub(char[] lin,
          int s1, int s2,
          char[] sub)
@@ -488,7 +488,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public override void
+        public void
         subline(char[] lin,
          char[] pat,
          char[] sub)
@@ -515,7 +515,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public override void
+        public void
         change(char[] pat, char[] sub)
         {
             char[] line = new char[MAXSTR];
@@ -529,7 +529,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public override void Main(char[][] args)
+        public void Main(char[][] args)
         {
             char[] pat = new char[MAXSTR], sub = new char[MAXSTR];
             bool result;
@@ -558,14 +558,14 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
             else
             {
-                sub = new char[]{'\0'};
+                sub = new char[] { '\0' };
             }
 
             change(pat, sub);
             return;
         }
 
-        public override void
+        public void
         Caseerror(int n)
         {
             Console.Write("Missing case limb: line %d\n", n);

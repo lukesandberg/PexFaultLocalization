@@ -49,29 +49,6 @@
     <Compile Include="BaseVersion.cs" />
     <Compile Include="ITotInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Version23.cs" />
-    <Compile Include="Version22.cs" />
-    <Compile Include="Version10.cs" />
-    <Compile Include="Version11.cs" />
-    <Compile Include="Version12.cs" />
-    <Compile Include="Version13.cs" />
-    <Compile Include="Version14.cs" />
-    <Compile Include="Version15.cs" />
-    <Compile Include="Version16.cs" />
-    <Compile Include="Version17.cs" />
-    <Compile Include="Version18.cs" />
-    <Compile Include="Version19.cs" />
-    <Compile Include="Version2.cs" />
-    <Compile Include="Version20.cs" />
-    <Compile Include="Version4.cs" />
-    <Compile Include="Version5.cs" />
-    <Compile Include="Version3.cs" />
-    <Compile Include="Version6.cs" />
-    <Compile Include="Version7.cs" />
-    <Compile Include="Version8.cs" />
-    <Compile Include="Version9.cs" />
-    <Compile Include="Version21.cs" />
-    <Compile Include="Version1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

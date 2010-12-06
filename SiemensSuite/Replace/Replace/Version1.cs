@@ -6,7 +6,11 @@ using Edu.Nlu.Sir.Siemens.Shared;
 
 namespace Edu.Nlu.Sir.Siemens.Replace
 {
+<<<<<<< HEAD
     public class Version1: IReplace, FaultyVersion
+=======
+	public class BaseVersion : FaultyVersion, IReplace
+>>>>>>> PexFaultLocalization/master
     {
         public int[] FaultLines { get { return new int[] { 104 }; } }
         public FaultType FaultType { get { return FaultType.ARRAY_INDEX_CHANGE; } }
@@ -337,7 +341,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                 if (!in_pat_set(pat[j]))
                 {
                     Console.Write("in omatch: can't happen\n");
-                    Environment.Exit(-1);
+                    throw new Exception("(-1)");
                 }
                 else
                 {
@@ -391,7 +395,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             if (!in_pat_set(pat[n]))
             {
                 Console.Write("in patsize: can't happen\n");
-                Environment.Exit(-1);
+                throw new Exception("(-1)");
             }
             else
                 switch (pat[n])
@@ -537,14 +541,14 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             if (args.Length < 2)
             {
                 Console.Write("usage: change from [to]\n");
-                Environment.Exit(1);
+                throw new Exception("(1)");
             };
 
             result = getpat(args[1], out pat);
             if (!result)
             {
                 Console.Write("change: illegal \"from\" pattern\n");
-                Environment.Exit(2);
+                throw new Exception("(2)");
             }
 
             if (args.Length >= 3)
@@ -553,7 +557,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                 if (!result)
                 {
                     Console.Write("change: illegal \"to\" char[]\n");
-                    Environment.Exit(3);
+                    throw new Exception("(3)");
                 }
             }
             else
@@ -569,7 +573,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         Caseerror(int n)
         {
             Console.Write("Missing case limb: line %d\n", n);
-            Environment.Exit(4);
+            throw new Exception("(4)");
         }
 
     }

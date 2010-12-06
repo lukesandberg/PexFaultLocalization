@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TotInfo.Moles</name>
+    </assembly>
+    <members>
+        <member name="T:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion">
+            <summary>Mole type of <see cref="T:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion"/>
+            .</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.#ctor(Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.Bind(Edu.Nlu.Sir.Siemens.Shared.FaultyVersion)">
+            <summary>Binds the members of the interface to the mole.</summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.Constructor">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.#ctor"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.FaultLinesGet">
+            <summary>Sets the mole of <see cref="P:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.FaultLines"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.FaultTypeGet">
+            <summary>Sets the mole of <see cref="P:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.FaultType"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.InfoTblInt32Int32Int64ArrayInt32Out">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.InfoTbl(T:System.Int32,T:System.Int32,T:System.Int64[],T:System.Int32@)"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.LGammaDouble">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.LGamma(T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.MainStringArray">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.Main(T:System.String[])"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.QChiSqDoubleInt32">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.QChiSq(T:System.Double,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.QGammaDoubleDouble">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.QGamma(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion._Mainb__0String">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.&lt;Main&gt;b__0(T:System.String)"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.gcfDoubleDouble">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.gcf(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.gserDoubleDouble">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.gser(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="T:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.AllInstances.FaultLinesGet">
+            <summary>Sets the mole of <see cref="P:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.FaultLines"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.AllInstances.FaultTypeGet">
+            <summary>Sets the mole of <see cref="P:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.FaultType"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.AllInstances.InfoTblInt32Int32Int64ArrayInt32Out">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.InfoTbl(T:System.Int32,T:System.Int32,T:System.Int64[],T:System.Int32@)"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.AllInstances.LGammaDouble">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.LGamma(T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.AllInstances.MainStringArray">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.Main(T:System.String[])"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.AllInstances.QChiSqDoubleInt32">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.QChiSq(T:System.Double,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.AllInstances.QGammaDoubleDouble">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.QGamma(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.AllInstances.gcfDoubleDouble">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.gcf(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MBaseVersion.AllInstances.gserDoubleDouble">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.gser(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="T:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MITotInfo">
+            <summary>Mole type of <see cref="T:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo"/>
+            .</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MITotInfo.#ctor(Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MITotInfo.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MITotInfo.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MITotInfo.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MITotInfo.Constructor">
+            <summary>Sets the mole of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo.#ctor"/>
+            </summary>
+        </member>
+        <member name="T:Edu.Nlu.Sir.Siemens.TotInfo.Moles.MITotInfo.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="T:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion">
+            <summary>Stub type of <see cref="T:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion"/>
+            .</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.GcfDoubleDouble">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.gcf(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.GserDoubleDouble">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.gser(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.InfoTbl(System.Int32,System.Int32,System.Int64[],System.Int32@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.InfoTbl(T:System.Int32,T:System.Int32,T:System.Int64[],T:System.Int32@)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.InfoTblInt32Int32Int64ArrayInt32Out">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.InfoTbl(T:System.Int32,T:System.Int32,T:System.Int64[],T:System.Int32@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.InitializeStub">
+            <summary>Initializes a new instance of type SBaseVersion</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.LGamma(System.Double)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.LGamma(T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.LGammaDouble">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.LGamma(T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.QChiSq(System.Double,System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.QChiSq(T:System.Double,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.QChiSqDoubleInt32">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.QChiSq(T:System.Double,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.QGamma(System.Double,System.Double)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.QGamma(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.QGammaDoubleDouble">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.QGamma(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.gcf(System.Double,System.Double)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.gcf(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.gser(System.Double,System.Double)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.BaseVersion.gser(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SBaseVersion.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="T:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo">
+            <summary>Stub type of <see cref="T:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo"/>
+            .</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.GcfDoubleDouble">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo.gcf(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.GserDoubleDouble">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo.gser(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.InfoTbl(System.Int32,System.Int32,System.Int64[],System.Int32@)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo.InfoTbl(T:System.Int32,T:System.Int32,T:System.Int64[],T:System.Int32@)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.InfoTblInt32Int32Int64ArrayInt32Out">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo.InfoTbl(T:System.Int32,T:System.Int32,T:System.Int64[],T:System.Int32@)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.InitializeStub">
+            <summary>Initializes a new instance of type SITotInfo</summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.LGamma(System.Double)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo.LGamma(T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.LGammaDouble">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo.LGamma(T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.QChiSq(System.Double,System.Int32)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo.QChiSq(T:System.Double,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.QChiSqDoubleInt32">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo.QChiSq(T:System.Double,T:System.Int32)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.QGamma(System.Double,System.Double)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo.QGamma(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="F:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.QGammaDoubleDouble">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo.QGamma(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.gcf(System.Double,System.Double)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo.gcf(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="M:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.gser(System.Double,System.Double)">
+            <summary>Sets the stub of <see cref="M:Edu.Nlu.Sir.Siemens.TotInfo.ITotInfo.gser(T:System.Double,T:System.Double)"/>
+            </summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:Edu.Nlu.Sir.Siemens.TotInfo.Moles.SITotInfo.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+    </members>
+</doc>

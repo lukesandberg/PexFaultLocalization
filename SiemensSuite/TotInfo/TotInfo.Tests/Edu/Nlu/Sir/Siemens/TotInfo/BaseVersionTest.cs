@@ -9,7 +9,7 @@ using Microsoft.Pex.Framework.Generated;
 namespace Edu.Nlu.Sir.Siemens.TotInfo
 {
     /// <summary>This class contains parameterized unit tests for TotInfoVersionFactory.getTotInfoVersion()</summary>
-    [PexClass(typeof(ITotInfo))]
+    [PexClass(typeof(BaseVersion))]
     [PexAllowedExceptionFromTypeUnderTest(typeof(InvalidOperationException))]
     [PexAllowedExceptionFromTypeUnderTest(typeof(ArgumentException), AcceptExceptionSubtypes = true)]
     [TestClass]
