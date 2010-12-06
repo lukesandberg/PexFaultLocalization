@@ -26,7 +26,7 @@ namespace FaultLocalization
 
 			String exePath = Path.Combine(TestResultsPath, "exes");
 
-			foreach(String exe in Directory.GetFiles(exePath))
+			foreach(String exe in Directory.GetFiles(exePath, "*.exe"))
 			{
                 TestSuite tests;
                 try
@@ -40,10 +40,14 @@ namespace FaultLocalization
                 }
 
 				String projectName = Path.GetFileNameWithoutExtension(TestResultsPath);
-				String solutionOutput = Path.Combine(TestResultsPath, projectName, "bin", "Debug", projectName + ".exe");
+				String solutionOutput = Path.Combine(TestResultsPath, projectName, "bin", "Debug", projectName);
+
+                String exeName = Path.GetFileNameWithoutExtension(exe);
+                String pdb = Path.Combine(exePath, exeName + ".pdb");
 
 				Console.WriteLine("Copying " + exe + " to " + solutionOutput);
-				File.Copy(exe, solutionOutput, true);
+				File.Copy(exe, solutionOutput + ".exe", true);
+                File.Copy(pdb, solutionOutput + ".pdb", true);
 
 				try
 				{
