@@ -6,11 +6,11 @@ using Edu.Nlu.Sir.Siemens.Shared;
 
 namespace Edu.Nlu.Sir.Siemens.Replace
 {
-    /// <summary>
-    /// /* -*- Last-Edit: Mon Dec 7 10:31:51 1992 by Tarak S. Goradia; -*- */
-    /// </summary>
     public partial class BaseVersion : IReplace
     {
+        public int[] FaultLines { get { return new int[] { 114 }; } }
+        public FaultType FaultType { get { return FaultType.IF_OPERATOR_CHANGE; } }
+
         public const int NULL = 0;
 
         public const int MAXSTR = 100;
@@ -40,7 +40,9 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         getline(out char[] s,
         int maxsize)
         {
+
             Console.In.ReadLine(out s, maxsize);
+
             return (s != null);
         }
 
@@ -65,7 +67,6 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         public char
         esc(char[] s, ref int i)
         {
-
             char result;
             if (s[i] != ESCAPE)
                 result = s[i];
@@ -110,7 +111,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                         junk = addstr(src[i], ref dest, ref j, maxset);
                     else if (j <= 1 || src[i + 1] == ENDSTR)
                         junk = addstr(DASH, ref dest, ref j, maxset);
-                    else if ((Char.IsLetterOrDigit(src[i - 1])) && (Char.IsLetterOrDigit(src[i + 1]))
+                    else if ((Char.IsLetterOrDigit(src[i - 1])) & (Char.IsLetterOrDigit(src[i + 1])) //FAULT: replaced logical with bitwise and
                        && (src[i - 1] <= src[i + 1]))
                     {
                         for (k = src[i - 1] + 1; k <= src[i + 1]; k++)
@@ -467,7 +468,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         putsub(char[] lin,
          int s1, int s2,
          char[] sub)
-        {            
+        {
             int i;
             int j;
 
@@ -557,10 +558,10 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
             else
             {
-                sub = new char[]{'\0'};
+                sub = new char[] { '\0' };
             }
 
-            change(pat, sub);;
+            change(pat, sub);
             return;
         }
 

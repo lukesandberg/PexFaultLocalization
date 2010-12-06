@@ -25,9 +25,8 @@
           <Configuration>
             <CodeCoverage xmlns="">
               <Regular>
-                <CodeCoverageItem binaryFile="TotInfo\bin\Debug\TotInfo.dll" pdbFile="TotInfo\bin\Debug\TotInfo.pdb" instrumentInPlace="true" />
-                <CodeCoverageItem binaryFile="Shared\bin\Debug\Shared.dll" pdbFile="Shared\bin\Debug\Shared.pdb" instrumentInPlace="true" />
-                <CodeCoverageItem binaryFile="Replace\bin\Debug\Replace.dll" pdbFile="Replace\bin\Debug\Replace.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Replace\bin\Debug\Replace.exe" pdbFile="Replace\bin\Debug\Replace.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="D:\Documents and Settings\de050528\My Documents\Visual Studio 2010\Projects\RunIndividualUnitTests\SiemensSuite\Shared\bin\Debug\Shared.dll" pdbFile="D:\Documents and Settings\de050528\My Documents\Visual Studio 2010\Projects\RunIndividualUnitTests\SiemensSuite\Shared\bin\Debug\Shared.pdb" instrumentInPlace="true" />
               </Regular>
             </CodeCoverage>
           </Configuration>
