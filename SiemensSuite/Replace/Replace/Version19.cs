@@ -6,7 +6,7 @@ using Edu.Nlu.Sir.Siemens.Shared;
 
 namespace Edu.Nlu.Sir.Siemens.Replace
 {
-    public class Version19: FaultyVersion, IReplace
+    public class Version19: IReplace, FaultyVersion
     {
         public int[] FaultLines { get { return new int[] { 43 }; } }
         public FaultType FaultType { get { return FaultType.CONSTANT_VALUE_CHANGE; } }
@@ -36,14 +36,14 @@ namespace Edu.Nlu.Sir.Siemens.Replace
         public const int CLOSIZE = 1;
 
 
-        public bool
+        public override bool
         getline(out char[] s,
         int maxsize)
         {
             return Console.In.ReadLine(out s, 104);//FAULT: changed to 104
         }
 
-        public bool
+        public override bool
         addstr(char c,
         ref char[] outset,
         ref int j,
@@ -61,7 +61,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public char
+        public override char
         esc(char[] s, ref int i)
         {
             char result;
@@ -84,7 +84,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public void
+        public override void
         dodash(char delim,
         char[] src,
         ref int i,
@@ -123,7 +123,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public bool
+        public override bool
         getccl(char[] arg,
         ref int i,
         char[] pat,
@@ -147,7 +147,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return (arg[i] == CCLEND);
         }
 
-        public void
+        public override void
         stclose(char[] pat,
         ref int j,
         int lastj)
@@ -166,18 +166,18 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             pat[lastj] = CLOSURE;
         }
 
-        public bool in_set_2(char c)
+        public override bool in_set_2(char c)
         {
             return (c == BOL || c == EOL || c == CLOSURE);
         }
 
-        public bool in_pat_set(char c)
+        public override bool in_pat_set(char c)
         {
             return (c == LITCHAR || c == BOL || c == EOL || c == ANY
             || c == CCL || c == NCCL || c == CLOSURE);
         }
 
-        public int
+        public override int
         makepat(char[] arg,
          int start,
         char delim,
@@ -237,7 +237,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public bool
+        public override bool
         getpat(char[] arg,
         out char[] pat)
         {
@@ -247,7 +247,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return (makeres > 0);
         }
 
-        public int
+        public override int
         makesub(char[] arg,
             int from,
             char delim,
@@ -284,7 +284,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public bool
+        public override bool
         getsub(char[] arg,
             out char[] sub)
         {
@@ -294,7 +294,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return (makeres > 0);
         }
 
-        public bool
+        public override bool
         locate(char c,
             char[] pat,
             int offset)
@@ -317,7 +317,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return flag;
         }
 
-        public bool
+        public override bool
         omatch(char[] lin,
             ref int i,
             char[] pat,
@@ -334,7 +334,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                 if (!in_pat_set(pat[j]))
                 {
                     Console.Write("in omatch: can't happen\n");
-                    Environment.Exit(-1);
+                    throw new Exception("(-1)");
                 }
                 else
                 {
@@ -380,7 +380,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return result;
         }
 
-        public int
+        public override int
         patsize(char[] pat,
             int n)
         {
@@ -388,7 +388,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             if (!in_pat_set(pat[n]))
             {
                 Console.Write("in patsize: can't happen\n");
-                Environment.Exit(-1);
+                throw new Exception("(-1)");
             }
             else
                 switch (pat[n])
@@ -414,7 +414,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return size;
         }
 
-        public int
+        public override int
         amatch(char[] lin,
             int offset,
             char[] pat,
@@ -461,7 +461,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return offset;
         }
 
-        public void
+        public override void
         putsub(char[] lin,
          int s1, int s2,
          char[] sub)
@@ -485,7 +485,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public void
+        public override void
         subline(char[] lin,
          char[] pat,
          char[] sub)
@@ -512,7 +512,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public void
+        public override void
         change(char[] pat, char[] sub)
         {
             char[] line = new char[MAXSTR];
@@ -526,7 +526,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             }
         }
 
-        public void Main(char[][] args)
+        public override void Main(char[][] args)
         {
             char[] pat = new char[MAXSTR], sub = new char[MAXSTR];
             bool result;
@@ -534,14 +534,14 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             if (args.Length < 2)
             {
                 Console.Write("usage: change from [to]\n");
-                Environment.Exit(1);
+                throw new Exception("(1)");
             };
 
             result = getpat(args[1], out pat);
             if (!result)
             {
                 Console.Write("change: illegal \"from\" pattern\n");
-                Environment.Exit(2);
+                throw new Exception("(2)");
             }
 
             if (args.Length >= 3)
@@ -550,7 +550,7 @@ namespace Edu.Nlu.Sir.Siemens.Replace
                 if (!result)
                 {
                     Console.Write("change: illegal \"to\" char[]\n");
-                    Environment.Exit(3);
+                    throw new Exception("(3)");
                 }
             }
             else
@@ -562,11 +562,11 @@ namespace Edu.Nlu.Sir.Siemens.Replace
             return;
         }
 
-        public void
+        public override void
         Caseerror(int n)
         {
             Console.Write("Missing case limb: line %d\n", n);
-            Environment.Exit(4);
+            throw new Exception("(4)");
         }
 
     }

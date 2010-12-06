@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Edu.Nlu.Sir.Siemens.TotInfo
 {
-    public class BaseVersion: ITotInfo
+    public class BaseVersion : ITotInfo
     {
         public const int MAXLINE = 256;
         public const int MAXTBL = 1000;
@@ -82,7 +82,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
                 }
 
                 /* input tallies */
-                
+
                 string valuesString = Console.In.ReadToEnd();
                 string[] valuesLine = valuesString.Split("\n".ToCharArray());
                 string[][] values = (string[][])valuesLine.Select(l => l.Split(" ".ToCharArray()));
@@ -106,7 +106,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
                 }
 
                 /* compute statistic */
-                info = InfoTbl(r, c, f,out infodf);
+                info = InfoTbl(r, c, f, out infodf);
 
                 /* print results */
 
@@ -139,7 +139,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
             Environment.Exit(EXIT_SUCCESS);
         }
 
-        public double LGamma(double x)
+        public override double LGamma(double x)
         {
             double[] cof =
 	{
@@ -170,7 +170,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
 
 
 
-        public double
+        public override double
             gser(double a, double x)
         {
             double ap, del, sum;
@@ -193,7 +193,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
             throw new ApplicationException("Execution should not have reached this line");
         }
 
-        public double
+        public override double
             gcf(double a, double x)
         {
             int n;
@@ -227,14 +227,14 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
             throw new ApplicationException("Execution should not have reached this line");
         }
 
-        public double
+        public override double
             QGamma(double a, double x)
         {
 
             return x < a + 1.0 ? 1.0 - gser(a, x) : gcf(a, x);
         }
 
-        public double
+        public override double
             QChiSq(double chisq, int df)
         {
             return QGamma((double)df / 2.0, chisq / 2.0);
@@ -258,7 +258,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
         /// <param name="f">r*c frequency tallies</param>
         /// <param name="pdf">return # d.f. for chi-square</param>
         /// <returns></returns>
-        public double
+        public override double
             InfoTbl(int r, int c, long[] f, out int pdf)
         {
             int i;		/* row index */
@@ -278,18 +278,20 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
             }
 
             pdf = rdf * cdf;		/* total degrees of freedom */
-            try {
-            xi = new double[r];
+            try
+            {
+                xi = new double[r];
             }
-            catch(OutOfMemoryException)
+            catch (OutOfMemoryException)
             {
                 info = -4.0;
                 goto ret3;
             }
-            try {
-            xj = new double[c];
-            } 
-            catch(OutOfMemoryException)
+            try
+            {
+                xj = new double[c];
+            }
+            catch (OutOfMemoryException)
             {
                 info = -4.0;
                 goto ret2;

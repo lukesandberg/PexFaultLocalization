@@ -8,7 +8,7 @@ using Edu.Nlu.Sir.Siemens.Shared;
 
 namespace Edu.Nlu.Sir.Siemens.TotInfo
 {
-    public class Version1: FaultyVersion, ITotInfo
+	public class BaseVersion : ITotInfo, FaultyVersion
     {
         public int[] FaultLines { get { return new int[] { 317 }; } }
         public FaultType FaultType { get { return FaultType.MISSING_CODE; } } 
@@ -143,7 +143,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
             Environment.Exit(EXIT_SUCCESS);
         }
 
-        public double LGamma(double x)
+        public override double LGamma(double x)
         {
             double[] cof =
 	{
@@ -174,7 +174,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
 
 
 
-        public double
+        public override double
             gser(double a, double x)
         {
             double ap, del, sum;
@@ -197,7 +197,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
             throw new ApplicationException("Execution should not have reached this line");
         }
 
-        public double
+        public override double
             gcf(double a, double x)
         {
             int n;
@@ -231,14 +231,14 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
             throw new ApplicationException("Execution should not have reached this line");
         }
 
-        public double
+        public override double
             QGamma(double a, double x)
         {
 
             return x < a + 1.0 ? 1.0 - gser(a, x) : gcf(a, x);
         }
 
-        public double
+        public override double
             QChiSq(double chisq, int df)
         {
             return QGamma((double)df / 2.0, chisq / 2.0);
@@ -262,7 +262,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
         /// <param name="f">r*c frequency tallies</param>
         /// <param name="pdf">return # d.f. for chi-square</param>
         /// <returns></returns>
-        public double
+        public override double
             InfoTbl(int r, int c, long[] f, out int pdf)
         {
             int i;		/* row index */
@@ -314,7 +314,7 @@ namespace Edu.Nlu.Sir.Siemens.TotInfo
                     if (k < 0L)
                     {
                         info = -2.0;
-                        /* 				goto ret1; missing code */
+                        /*goto ret1; missing code*/
                     }
 
                     sum += (double)k;
