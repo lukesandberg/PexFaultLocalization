@@ -23,31 +23,35 @@ namespace FaultLocalization
 
 			String TestResultsPath = args[0];
 			Console.WriteLine("Searching " + TestResultsPath + "...");
-			TestSuite tests;
-			try
-			{
-				tests = new TestSuite(TestResultsPath);
-			}
-			catch(Exception ex)
-			{
-				Die(ex);
-				return;
-			}
 
 			String exePath = Path.Combine(TestResultsPath, "exes");
 
-			foreach(String exe in Directory.GetFiles(exePath))
+			foreach(String exe in Directory.GetFiles(exePath, "*.exe"))
 			{
+                TestSuite tests;
+                try
+                {
+                    tests = new TestSuite(TestResultsPath);
+                }
+                catch (Exception ex)
+                {
+                    Die(ex);
+                    return;
+                }
 
 				String projectName = Path.GetFileNameWithoutExtension(TestResultsPath);
-				String solutionOutput = Path.Combine(TestResultsPath, projectName, "bin", "Debug", projectName + ".exe");
+				String solutionOutput = Path.Combine(TestResultsPath, projectName, "bin", "Debug", projectName);
+
+                String exeName = Path.GetFileNameWithoutExtension(exe);
+                String pdb = Path.Combine(exePath, exeName + ".pdb");
 
 				Console.WriteLine("Copying " + exe + " to " + solutionOutput);
-				File.Copy(exe, solutionOutput, true);
+				File.Copy(exe, solutionOutput + ".exe", true);
+                File.Copy(pdb, solutionOutput + ".pdb", true);
 
 				try
 				{
-					var testRunner = new ReflectionTestRunner(tests);
+					var testRunner = new CoverageTestRunner(tests);
 					testRunner.RunTests();
 				}
 				catch(Exception ex)
@@ -67,7 +71,7 @@ namespace FaultLocalization
 					ISuspiciousnessRater rater = (ISuspiciousnessRater) SuspicousnessRaterType.GetConstructor(Type.EmptyTypes).Invoke(new object[0]);
 					rater.RateLines(ratedLines, testResults);
 				}
-				OutputResults(ratedLines, Path.GetFileNameWithoutExtension(exePath));
+				OutputResults(ratedLines, Path.Combine(TestResultsPath, Path.GetFileNameWithoutExtension(exe)));
 			}
 			Console.Read();
 		}

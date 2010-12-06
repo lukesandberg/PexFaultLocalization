@@ -45,14 +45,15 @@ namespace FaultLocalization
                 DateTime testDllModDate = File.GetLastWriteTimeUtc(testDllPath);
                 DateTime allTestResultsModDate = File.GetLastWriteTimeUtc(tests.AllTestsResultsFile(testDllPath));
                 DateTime individualTestsModDate = File.GetLastWriteTimeUtc(tests.TestResultsDirectory(testDllPath));
-                if (testDllModDate > allTestResultsModDate)
+                needsToRun.Add(testDllPath, true);
+                /*if (testDllModDate > allTestResultsModDate)
                 {
                     needsToRun.Add(testDllPath, true);
                 }
                 else if (coveredDllModDates.Any(date => date > individualTestsModDate))
                 {
                     needsToRun.Add(testDllPath, false);
-                }
+                }*/
             }
             return needsToRun;
         }

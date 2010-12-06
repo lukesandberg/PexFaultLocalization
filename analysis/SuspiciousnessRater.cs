@@ -28,10 +28,8 @@ namespace FaultLocalization
         protected virtual StatementSuspiciousnessInfo applyRating(StatementSuspiciousnessInfo line, uint passed, uint failed)
         {
             // <pex>
-            if (passed == 0uL)
-                throw new ArgumentException("passed == 0uL", "passed");
-            if (failed == 0uL)
-                throw new ArgumentException("failed == 0uL", "failed");
+            if (failed + passed == 0uL)
+                throw new ArgumentException("failed + passed == 0uL", "passed");
             if (line == (StatementSuspiciousnessInfo)null)
                 throw new ArgumentNullException("line");
             // </pex>
@@ -45,6 +43,11 @@ namespace FaultLocalization
         protected override StatementSuspiciousnessInfo applyRating(StatementSuspiciousnessInfo line, uint passed, uint failed)
         {
             base.applyRating(line, passed, failed);
+            if ((float)failed == 0)
+            {
+                line.SuspiciousnessRatings.Add(this, 0);
+                return line;
+            }
             float numerator = (float)line.Failed / (float)failed;
             float denominator = ((float)line.Passed / (float)passed) + ((float)line.Failed / (float)failed);
             float rating = numerator / denominator;
@@ -59,10 +62,25 @@ namespace FaultLocalization
         protected override StatementSuspiciousnessInfo applyRating(StatementSuspiciousnessInfo line, uint passed, uint failed)
         {
             base.applyRating(line, passed, failed);
+            if ((float)failed == 0)
+            {
+                line.SuspiciousnessRatings.Add(this, 0);
+                return line;
+            }
             float denominator = (float)Math.Sqrt(failed * (line.Failed + line.Passed));
             float rating = line.Failed / denominator;
             Debug.Assert(!Double.IsNaN(rating));
             line.SuspiciousnessRatings.Add(this, rating);
+            return line;
+        }
+    }
+
+    public class IntensityRater : StatisticalRater
+    {
+        protected override StatementSuspiciousnessInfo applyRating(StatementSuspiciousnessInfo line, uint passed, uint failed)
+        {
+            base.applyRating(line, passed, failed);
+            line.SuspiciousnessRatings.Add(this, Math.Max(line.Passed, line.Failed));
             return line;
         }
     }

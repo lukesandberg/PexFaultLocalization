@@ -12,8 +12,10 @@ namespace ValueReplacement
 	{
 		static void Main(string[] args)
 		{
-			string sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\strings\Strings.sln";
-			string test_proj_name = "Strings.Tests";
+			//string sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\strings\Strings.sln";
+			//string test_proj_name = "Strings.Tests";
+			string sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\OtherProjects\FP\FP.sln";
+			string test_proj_name = "FP.Tests";
 			CodeRewriter rewriter = new CodeRewriter(sln, test_proj_name);
 			rewriter.Rewrite();
 
@@ -59,7 +61,7 @@ namespace ValueReplacement
 			using(var writer = new StreamWriter(File.OpenWrite("result.csv")))
 			{
 				writer.WriteLine("FileName, Start Line, End Line, Start Column, End Column, #IVMPs");
-				var groups = ivmps.Select(i => i.Location).Union(Instrumenter.AllStatements).GroupBy(i => i).OrderByDescending(g => g.Count());
+				var groups = ivmps.Select(i => i.Location).Concat(Instrumenter.AllStatements).GroupBy(i => i).OrderByDescending(g => g.Count());
 				foreach(var g in groups)
 				{
 					var line = g.Key;

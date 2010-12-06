@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MiniBench</name>
+    </assembly>
+    <members>
+        <!-- Badly formed XML comment ignored for member "T:MiniBench.TestSuite`2" -->
+        <member name="T:MiniBench.BenchmarkResult">
+            <summary>
+            The result of running a benchmark test. This type is immutable and thread-safe.
+            </summary>
+        </member>
+        <member name="M:MiniBench.BenchmarkResult.#ctor(System.String,System.TimeSpan,System.UInt64)">
+            <summary>
+            Constructs a new instance with the given properties.
+            </summary>
+            <param name="name">Name of the test. Must not be null.</param>
+            <param name="duration">Duration of the test. Must be a positive period.</param>
+            <param name="iterations">Number of iterations. Must not be zero.</param>
+        </member>
+        <member name="M:MiniBench.BenchmarkResult.GetScaledScore(MiniBench.BenchmarkResult)">
+            <summary>
+            Returns the score of this result compared with the given "standard" which
+            is deemed to have a scaled score of 1.0.
+            </summary>
+            <param name="standard">Standard result to compare with. May be null,
+            in which case the raw score is returned.</param>
+        </member>
+        <member name="M:MiniBench.BenchmarkResult.ScaleToStandard(MiniBench.BenchmarkResult,MiniBench.ScalingMode)">
+            <summary>
+            Returns a new result based on this one, scaled to make it easy to compare with
+            the given standard.
+            </summary>
+            <param name="standard">The standard to scale to</param>
+            <param name="mode">How to scale the result</param>
+        </member>
+        <member name="M:MiniBench.BenchmarkResult.FindBest(System.Collections.Generic.IEnumerable{MiniBench.BenchmarkResult})">
+            <summary>
+            Finds the "best" result out of the given sequence, based on score.
+            </summary>
+        </member>
+        <member name="M:MiniBench.BenchmarkResult.FindBest``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Convenience method to find the best result from a sequence of sequences of results.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="resultSuites"></param>
+            <returns></returns>
+        </member>
+        <member name="P:MiniBench.BenchmarkResult.Duration">
+            <summary>
+            The duration of the test. This will never be zero.
+            </summary>
+        </member>
+        <member name="P:MiniBench.BenchmarkResult.Iterations">
+            <summary>
+            The number of iterations executed. This will never be zero or negative.
+            </summary>
+        </member>
+        <member name="P:MiniBench.BenchmarkResult.Name">
+            <summary>
+            The name of the test. This will never be null.
+            </summary>
+        </member>
+        <member name="P:MiniBench.BenchmarkResult.Score">
+            <summary>
+            Returns the "score" - the number of ticks per iteration, effectively.
+            Scores are really only meaningful in comparison to each other.
+            Smaller is better.
+            </summary>
+        </member>
+        <member name="F:MiniBench.BenchmarkTest`2.MinSampleTime">
+            <summary>
+            How long we need to run for to get a reasonable idea of how long
+            the test takes to execute, to guess the number of iterations required
+            for TargetTestTime.
+            </summary>
+        </member>
+        <member name="F:MiniBench.BenchmarkTest`2.TargetTestTime">
+            <summary>
+            How long we want to run the tests for when really timing it and running
+            as fast as possible.
+            </summary>
+        </member>
+        <member name="M:MiniBench.BenchmarkTest`2.Run(`0,`1)">
+            <summary>
+            Runs the test. Throws a TestFailureException if the output isn't as expected.
+            This is only checked once, before the real benchmarking gets underway.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MiniBench.ScalingMode">
+            <summary>
+            Options of how to scale results.
+            </summary>
+        </member>
+        <member name="F:MiniBench.ScalingMode.VaryDuration">
+            <summary>
+            The results all use the same number of iterations,
+            but they vary by duration.
+            </summary>
+        </member>
+        <member name="F:MiniBench.ScalingMode.VaryIterations">
+            <summary>
+            The results all have the same duration, but they
+            vary by the number of iterations completed within that time.
+            </summary>
+        </member>
+        <member name="T:MiniBench.TestFailureException">
+            <summary>
+            Exception thrown to indicate that a test has failed to return the expected result,
+            or has thrown an exception.
+            </summary>
+        </member>
+        <member name="T:MiniBench.BenchmarkSettings">
+            <summary>
+            The settings for running benchmarks. Currently consists of a calibration time and a test time.
+            </summary>
+        </member>
+        <member name="F:MiniBench.BenchmarkSettings.Default">
+            <summary>
+            The default settings.
+            </summary>
+        </member>
+        <member name="M:MiniBench.BenchmarkSettings.#ctor(System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Creates a new BenchmarkSettings object with the given settings.
+            </summary>
+            <param name="calibrationTime"></param>
+            <param name="testTime"></param>
+        </member>
+        <member name="M:MiniBench.BenchmarkSettings.Parse(System.String[])">
+            <summary>
+            Parses the given strings into a settings object.
+            </summary>
+            <remarks>Unrecognised
+            flags are ignored, but recognised flags with invalid values cause
+            an ArgumentException. Any unspecified arguments are filled in from
+            the default settings. Recognised flags:
+            <list type="bullet">
+            <item>/calibration-time:XXX (seconds)</item>
+            <item>/test-time:XXX (seconds)</item>
+            </list>
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">args is null</exception>
+            <exception cref="T:System.FormatException">Any of the elements of args is recognised as a flag,
+            but has an invalid value.</exception>
+        </member>
+        <member name="M:MiniBench.BenchmarkSettings.ParseCommandLine">
+            <summary>
+            Helper method to parse the command line arguments of the current process.
+            </summary>
+        </member>
+        <member name="P:MiniBench.BenchmarkSettings.CalibrationTime">
+            <summary>
+            How long we need a test to run for before we're willing to guess how many iterations are
+            required to achieve the desired test time.
+            </summary>
+        </member>
+        <member name="P:MiniBench.BenchmarkSettings.TestTime">
+            <summary>
+            How long we aim to run each test for.
+            </summary>
+        </member>
+        <member name="M:MiniBench.ResultSuite.ScaleByBest(MiniBench.ScalingMode)">
+            <summary>
+            Scales the contents of this result suite in the given mode, using the best result
+            (in terms of score) as the "standard".
+            </summary>
+        </member>
+        <member name="M:MiniBench.ResultSuite.Display(MiniBench.ResultColumns)">
+            <summary>
+            Convenience method to display the results when no score scaling is required and output should be Console.Out.
+            </summary>
+            <param name="columns"></param>
+        </member>
+        <member name="M:MiniBench.ResultSuite.Display(MiniBench.ResultColumns,MiniBench.BenchmarkResult)">
+            <summary>
+            Displays the results, optionally scaling scores to the given standard, printing to Console.Out.
+            </summary>
+            <param name="columns">Columns to display</param>
+            <param name="standardForScore">Result to count as a score of 1.0. May be null, in which 
+            case the raw scores (ticks per iteration) are displayed.</param>
+        </member>
+        <member name="M:MiniBench.ResultSuite.Display(System.IO.TextWriter,MiniBench.ResultColumns,MiniBench.BenchmarkResult)">
+            <summary>
+            Displays the results, optionally scaling scores to the given standard, printing to the given TextWriter.
+            </summary>
+            <param name="output">TextWriter to output to</param>
+            <param name="columns">Columns to display</param>
+            <param name="standardForScore">Result to count as a score of 1.0. May be null, in which 
+            case the raw scores (ticks per iteration) are displayed.</param>
+        </member>
+    </members>
+</doc>

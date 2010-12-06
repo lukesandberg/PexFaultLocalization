@@ -71,7 +71,7 @@ namespace ValueReplacement
 				{
 					Assembly = AssemblyDefinition.ReadAssembly(proj.AssemblyLocation, GetReaderParameters(proj));
 				}
-				catch(InvalidOperationException e)//this gets 
+				catch(InvalidOperationException)//this gets 
 				{
 					RestoreBackup();
 				}
@@ -102,15 +102,25 @@ namespace ValueReplacement
 		}
 
 		private Dictionary<Type, TypeReference> TypeLookup = new Dictionary<Type, TypeReference>();
+		private HashSet<TypeReference> KnownTypes = new HashSet<TypeReference>();
 		private TypeReference GetTypeReference(Type t)
 		{
 			TypeReference r;
 			if(!TypeLookup.TryGetValue(t, out r))
 			{
 				r = Assembly.MainModule.Import(t);
+				KnownTypes.Add(r);
 				TypeLookup[t] = r;
 			}
 			return r;
+		}
+		private TypeReference EnsureImported(TypeReference t)
+		{
+			if(KnownTypes.Contains(t))
+				return t;
+			var tr = Assembly.MainModule.Import(t);
+			KnownTypes.Add(tr);
+			return tr;
 		}
 
 		private bool RewritePrepare()
@@ -199,6 +209,7 @@ namespace ValueReplacement
 				yield return i;
 			}
 		}
+
 		private void RewriteMethod(MethodDefinition method)
 		{
 			int id = 0;
@@ -212,6 +223,10 @@ namespace ValueReplacement
 					{
 						TypeReference tr;
 						var b = CanHookInstruction(method, i, out tr);
+						if(tr != null)
+						{
+							tr = EnsureImported(tr);
+						}
 						return new { b, tr, i };
 					})
 				.Where(a => a.b)
@@ -219,14 +234,19 @@ namespace ValueReplacement
 
 			foreach(var a in toHook)
 			{
-				bool should_box = a.tr.IsValueType;
+				//bool should_box = a.tr.IsValueType || (a.tr is GenericParameter);
 				List<Instruction> sequence = new List<Instruction>();
 				//some instructions randomly don't have
-				var location = a.i.SequencePoint ?? PreviousIterator(a.i).Where(i => i.SequencePoint != null && !IsHiddenLine(i.SequencePoint)).First().SequencePoint;
+				var location = a.i.SequencePoint ?? PreviousIterator(a.i)
+					.Where(i => i.SequencePoint != null && !IsHiddenLine(i.SequencePoint))
+					.Select(i => i.SequencePoint)
+					.FirstOrDefault();
+				if(location == null)
+					continue;
 				var varId = id;
 				id++;
 				//conditionally box the targeted value
-				if(should_box)
+				//if(should_box)
 				{
 					sequence.Add(proc.Create(OpCodes.Box, a.tr));
 				}
@@ -244,7 +264,7 @@ namespace ValueReplacement
 				//sequence.Add(proc.Create(OpCodes.Castclass, a.tr));
 
 				//if we boxed before we should unbox now
-				if(should_box)
+				//if(should_box)
 				{
 					sequence.Add(proc.Create(OpCodes.Unbox_Any, a.tr));
 				}
@@ -288,18 +308,14 @@ namespace ValueReplacement
 				case Code.Ldloc_2:
 				case Code.Ldloc_3:
 				case Code.Ldloc_S:
-				case Code.Ldloca:
-				case Code.Ldloca_S:
 					throw new NotSupportedException();//we shouldnt see this
 				#endregion
 				#region fields
-				case Code.Ldflda:
-				case Code.Ldsflda:
-					throw new NotImplementedException();
 				case Code.Ldfld:
 				case Code.Ldsfld:
 					var fr = (FieldReference) i.Operand;
 					ValueType = fr.FieldType;
+					//there is an error in handling generic parameters
 					return true;
 				#endregion
 				#region arguments
@@ -317,51 +333,67 @@ namespace ValueReplacement
 				case Code.Ldarg_2:
 				case Code.Ldarg_3:
 				case Code.Ldarg_S:
-					throw new NotSupportedException();//we shouldnt see this
-				case Code.Ldarga:
-					throw new NotImplementedException();//not sure how to do this yet
-				case Code.Ldarga_S:
+				
 					throw new NotSupportedException();//we shouldnt see this
 				#endregion
-				#region elements
+				#region indirect loads elements
 				case Code.Ldelem_Any:
+					ValueType = (TypeReference) i.Operand;
+					return true;
+				case Code.Ldelem_Ref:
+					ValueType = GetTypeReference(typeof(Object));//we know its a reference type.. so it doesn't really matter
+					return true;
+				case Code.Ldlen:
+					ValueType = GetTypeReference(typeof(uint));
+					return true;
 				case Code.Ldelem_I:
 				case Code.Ldelem_I1:
 				case Code.Ldelem_I2:
 				case Code.Ldelem_I4:
-				case Code.Ldelem_I8:
-				case Code.Ldelem_R4:
-				case Code.Ldelem_R8:
-				case Code.Ldelem_Ref:
 				case Code.Ldelem_U1:
 				case Code.Ldelem_U2:
 				case Code.Ldelem_U4:
-				case Code.Ldelema:
-					throw new NotImplementedException();
-				#endregion
-
-				case Code.Ldftn:
-					return false;//we don't handle method pointers
 				case Code.Ldind_I:
 				case Code.Ldind_I1:
 				case Code.Ldind_I2:
 				case Code.Ldind_I4:
-				case Code.Ldind_I8:
-				case Code.Ldind_R4:
-				case Code.Ldind_R8:
-				case Code.Ldind_Ref:
 				case Code.Ldind_U1:
 				case Code.Ldind_U2:
 				case Code.Ldind_U4:
-				case Code.Ldlen:
-					return false;
-
-				case Code.Ldobj://loads an object
-					throw new NotImplementedException();
-
+					ValueType = GetTypeReference(typeof(Int32));
+					return true;
+				case Code.Ldind_I8:
+				case Code.Ldelem_I8:
+					ValueType = GetTypeReference(typeof(Int64));
+					return true;
+				case Code.Ldind_R4:
+				case Code.Ldelem_R4:
+					ValueType = GetTypeReference(typeof(float));
+					return true;
+				case Code.Ldelem_R8:
+				case Code.Ldind_R8:
+					ValueType = GetTypeReference(typeof(double));
+					return true;
+				case Code.Ldind_Ref:
+					ValueType = GetTypeReference(typeof(Object));//we know its a reference type.. so it doesn't really matter
+					return true;
+				case Code.Ldobj://loads an object as a value
+					ValueType = (TypeReference) i.Operand;
+					return true;
+				#endregion
+				#region address and token loads
 				case Code.Ldtoken:
 				case Code.Ldvirtftn:
-					return false;//not sure how to handle these yet
+				case Code.Ldftn:
+				case Code.Ldloca:
+				case Code.Ldflda:
+				case Code.Ldsflda:
+				case Code.Ldarga:
+				case Code.Ldelema:
+				case Code.Ldarga_S:
+				case Code.Ldloca_S:
+					return false;
+				#endregion
 				#region Load Constants,  no point in intercepting these because they never change
 				case Code.Ldstr:
 				case Code.Ldnull:
