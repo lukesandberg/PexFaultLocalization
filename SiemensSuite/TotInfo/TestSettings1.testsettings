@@ -25,8 +25,8 @@
           <Configuration>
             <CodeCoverage xmlns="">
               <Regular>
-                <CodeCoverageItem binaryFile="Shared\bin\Debug\Shared.dll" pdbFile="Shared\bin\Debug\Shared.pdb" instrumentInPlace="true" />
-                <CodeCoverageItem binaryFile="TotInfo\bin\Debug\TotInfo.dll" pdbFile="TotInfo\bin\Debug\TotInfo.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="D:\Documents and Settings\de059613\Desktop\Pex\SiemensSuite\Shared\bin\Debug\Shared.dll" pdbFile="D:\Documents and Settings\de059613\Desktop\Pex\SiemensSuite\Shared\bin\Debug\Shared.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="TotInfo\bin\Debug\TotInfo.exe" pdbFile="TotInfo\bin\Debug\TotInfo.pdb" instrumentInPlace="true" />
               </Regular>
             </CodeCoverage>
           </Configuration>
