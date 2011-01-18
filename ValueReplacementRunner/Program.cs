@@ -10,10 +10,10 @@ namespace ValueReplacementRunner
 {
 	class Program
 	{
-		static String exes = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\Replace\exes";
-		static String sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\Replace\Replace.sln";
-		static String tp_name = @"Replace.Tests";
-		static String p_name = @"Replace";
+		static String exes = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\TotInfo\exes";
+		static String sln = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\SiemensSuite\TotInfo\TotInfo.sln";
+		static String tp_name = @"TotInfo.Tests";
+		static String p_name = @"TotInfo";
 		static String vr_exe = @"D:\Documents and Settings\212059614\Desktop\PexFaultLocalization\ValueReplacement\bin\Debug\ValueReplacement.exe";
 
 		static void Main(string[] args)
