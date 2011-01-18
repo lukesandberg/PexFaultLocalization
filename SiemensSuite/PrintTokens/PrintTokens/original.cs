@@ -157,12 +157,12 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
             Token token_ptr;
             TokenStream stream_ptr;
 
-            if (args.Length > 2)
+            if (args.Length < 1)
             {
                 Console.Write("The format is print_tokens filename(optional)\n");
                 System.Environment.Exit(-1);
             }
-            stream_ptr = open_token_stream(args[1]);
+            stream_ptr = open_token_stream(args[0]);
 
             while (is_eof_token((token_ptr = get_token(stream_ptr))) == FALSE)
             {
@@ -623,7 +623,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
         {
             switch (token_ptr.token_id)
             {    /* Print the respective tokens. */
-                case ERROR: Console.Write("error,\t\""); Console.Write("%s", token_ptr.token_string);
+                case ERROR: Console.Write("error,\t\""); Console.Write(System.Text.Encoding.ASCII.GetString(token_ptr.token_string));
                     Console.Write("\".\n"); return (TRUE);
                 case EOTSTREAM: Console.Write("eof.\n"); return (TRUE);
                 case 6: Console.Write("keyword,\t\"lambda\".\n"); return (TRUE);
@@ -631,9 +631,9 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
                 case 11: Console.Write("keyword,\t\"or\".\n"); return (TRUE);
                 case 13: Console.Write("keyword,\t\"if\".\n"); return (TRUE);
                 case 16: Console.Write("keyword,\t\"xor\".\n"); return (TRUE);
-                case 17: Console.Write("identifier,\t\""); Console.Write("%s", token_ptr.token_string);
+                case 17: Console.Write("identifier,\t\""); Console.Write(System.Text.Encoding.ASCII.GetString(token_ptr.token_string));
                     Console.Write("\".\n"); return (TRUE);
-                case 18: Console.Write("numeric,\t"); Console.Write("%s", token_ptr.token_string);
+                case 18: Console.Write("numeric,\t"); Console.Write(System.Text.Encoding.ASCII.GetString(token_ptr.token_string));
                     Console.Write(".\n"); return (TRUE);
                 case 19: Console.Write("lparen.\n"); return (TRUE);
                 case 20: Console.Write("rparen.\n"); return (TRUE);
@@ -642,9 +642,9 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
                 case 23: Console.Write("quote.\n"); return (TRUE);
                 case 24: Console.Write("bquote.\n"); return (TRUE);
                 case 25: Console.Write("comma.\n"); return (TRUE);
-                case 27: Console.Write("string,\t"); Console.Write("%s", token_ptr.token_string);
+                case 27: Console.Write("string,\t"); Console.Write(System.Text.Encoding.ASCII.GetString(token_ptr.token_string));
                     Console.Write(".\n"); return (TRUE);
-                case 29: Console.Write("character,\t\""); Console.Write("%s", token_ptr.token_string);
+                case 29: Console.Write("character,\t\""); Console.Write(System.Text.Encoding.ASCII.GetString(token_ptr.token_string));
                     Console.Write("\".\n"); return (TRUE);
                 case 32: Console.Write("keyword,\t\"=>\".\n"); return (TRUE);
                 default: break;
