@@ -12,9 +12,12 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
         public int stream_ind; /* buffer index */
         public byte[] stream;  /* buffer for the file*/
 
+        public int num_read;
+
         public CharacterStream()
         {
             stream = new byte[80];
+            num_read = 0;
         }
     }
 
@@ -157,19 +160,22 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
             Token token_ptr;
             TokenStream stream_ptr;
 
-            if (args.Length > 2)
+            if (args.Length > 1)
             {
                 Console.Write("The format is print_tokens filename(optional)\n");
                 System.Environment.Exit(-1);
             }
-            stream_ptr = open_token_stream(args[1]);
+            if (args.Length < 1)
+                stream_ptr = open_token_stream(null);
+            else
+                stream_ptr = open_token_stream(args[0]);
 
             while (is_eof_token((token_ptr = get_token(stream_ptr))) == FALSE)
             {
                 print_token(token_ptr);
-                print_token(token_ptr);
-                System.Environment.Exit(0);
             }
+            print_token(token_ptr);
+            stream_ptr.ch_stream.fp.Close();
         }
 
 
@@ -194,11 +200,30 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
             stream_ptr.stream_ind = START;
             stream_ptr.stream[START] = (byte)'\0';
             if (filename == null)
-                stream_ptr.fp = Console.OpenStandardInput();
-            else if ((stream_ptr.fp = new FileStream(filename, FileMode.Open, FileAccess.Read)) == null)
             {
-                Console.Write("The file %s doesn't exists\n", filename);
-                System.Environment.Exit(0);
+                string input = Console.In.ReadToEnd();
+                stream_ptr.fp = new MemoryStream(new System.Text.UTF8Encoding().GetBytes(input));
+            }
+            else
+            {
+                try
+                {
+                    if ((stream_ptr.fp = new FileStream(filename, FileMode.Open, FileAccess.Read)) == null)
+                    {
+                        Console.Write("The file %s doesn't exists\n", filename);
+                        System.Environment.Exit(0);
+                    }
+                }
+                catch (DirectoryNotFoundException e)
+                {
+                    Console.Write("The file " + filename + " doesn't exists\n");
+                    System.Environment.Exit(0);
+                }
+                catch (FileNotFoundException e)
+                {
+                    Console.Write("The file " + filename + " doesn't exists\n");
+                    System.Environment.Exit(0);
+                }
             }
             return (stream_ptr);
         }
@@ -216,11 +241,14 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
 
         public static byte get_char(CharacterStream stream_ptr)
         {
-            if (stream_ptr.stream[stream_ptr.stream_ind] == '\0')
+            if (stream_ptr.stream_ind == stream_ptr.stream.Length || stream_ptr.stream[stream_ptr.stream_ind] == '\0')
             {
                 try
                 {
-                    stream_ptr.fp.Read(stream_ptr.stream, START, 80 - START);
+                    int ind = stream_ptr.fp.Read(stream_ptr.stream, START, 80 - START);
+                    stream_ptr.num_read += 80 - START;
+                    if (stream_ptr.num_read > stream_ptr.fp.Length)
+                        stream_ptr.stream[ind] = EOF;
                 }
                 catch (ArgumentException e)
                 {
@@ -245,8 +273,10 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
 
         static int is_end_of_character_stream(CharacterStream stream_ptr)
         {
-            if (stream_ptr.stream[stream_ptr.stream_ind - 1] == (byte)EOF)
+            if (stream_ptr.fp.Length == stream_ptr.fp.Position && stream_ptr.stream[stream_ptr.stream_ind - 1] == EOF)
+            {
                 return (TRUE);
+            }
             else
                 return (FALSE);
         }
@@ -354,7 +384,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
                     case 9:
                     case 11:
                     case 13:
-                    case 16: ch = get_char(null);
+                    case 16: ch = get_char(tstream_ptr.ch_stream);
                         if (check_delimiter(ch) == TRUE)
                         {
                             token_ptr.token_id = keyword(next_st);
@@ -403,7 +433,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
         {
             if (check_delimiter(ch) != TRUE)
             {   /* Error case */
-                token_ptr.token_id = FALSE;
+                token_ptr.token_id = ERROR;
                 while (check_delimiter(ch) == FALSE)
                 {
                     if (token_ind >= 80) break; /* Added protection - hf */
@@ -489,9 +519,10 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
                 case 13: return (IF);
                 case 16: return (XOR);
 
-                default: Console.Write("error\n"); return ERROR; break;
+                default: Console.Write("error\n"); break;
             }
             System.Environment.Exit(0);
+            return ERROR;
         }
 
         /* ********************************************************************
@@ -579,10 +610,17 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
                 return (state);
             if (baseArray[state] + ch >= 0)
             {
-                if (check[baseArray[state] + ch] == state) /* Check for the right state */
-                    return (next[baseArray[state] + ch]);
-                else
-                    return (next_state(default1[state], ch));
+                try
+                {
+                    if (check[baseArray[state] + ch] == state) /* Check for the right state */
+                        return (next[baseArray[state] + ch]);
+                    else
+                        return (next_state(default1[state], ch));
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                    return -1;
+                }
             }
             else
                 return (next_state(default1[state], ch));
@@ -605,6 +643,11 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
             return (FALSE);
         }
 
+        private static string get_null_terminated_string(string s)
+        {
+            return s.Substring(0, s.IndexOf('\0'));
+        }
+
         /* ********************************************************************
            Function name : print_token
            Input         : token
@@ -623,7 +666,7 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
         {
             switch (token_ptr.token_id)
             {    /* Print the respective tokens. */
-                case ERROR: Console.Write("error,\t\""); Console.Write("%s", token_ptr.token_string);
+                case ERROR: Console.Write("error,\t\""); Console.Write(get_null_terminated_string(System.Text.Encoding.ASCII.GetString(token_ptr.token_string)));
                     Console.Write("\".\n"); return (TRUE);
                 case EOTSTREAM: Console.Write("eof.\n"); return (TRUE);
                 case 6: Console.Write("keyword,\t\"lambda\".\n"); return (TRUE);
@@ -631,9 +674,9 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
                 case 11: Console.Write("keyword,\t\"or\".\n"); return (TRUE);
                 case 13: Console.Write("keyword,\t\"if\".\n"); return (TRUE);
                 case 16: Console.Write("keyword,\t\"xor\".\n"); return (TRUE);
-                case 17: Console.Write("identifier,\t\""); Console.Write("%s", token_ptr.token_string);
+                case 17: Console.Write("identifier,\t\""); Console.Write(get_null_terminated_string(System.Text.Encoding.ASCII.GetString(token_ptr.token_string)));
                     Console.Write("\".\n"); return (TRUE);
-                case 18: Console.Write("numeric,\t"); Console.Write("%s", token_ptr.token_string);
+                case 18: Console.Write("numeric,\t"); Console.Write(get_null_terminated_string(System.Text.Encoding.ASCII.GetString(token_ptr.token_string)));
                     Console.Write(".\n"); return (TRUE);
                 case 19: Console.Write("lparen.\n"); return (TRUE);
                 case 20: Console.Write("rparen.\n"); return (TRUE);
@@ -642,9 +685,9 @@ namespace Edu.Unl.Sir.Siemens.PrintTokens
                 case 23: Console.Write("quote.\n"); return (TRUE);
                 case 24: Console.Write("bquote.\n"); return (TRUE);
                 case 25: Console.Write("comma.\n"); return (TRUE);
-                case 27: Console.Write("string,\t"); Console.Write("%s", token_ptr.token_string);
+                case 27: Console.Write("string,\t"); Console.Write(get_null_terminated_string(System.Text.Encoding.ASCII.GetString(token_ptr.token_string)));
                     Console.Write(".\n"); return (TRUE);
-                case 29: Console.Write("character,\t\""); Console.Write("%s", token_ptr.token_string);
+                case 29: Console.Write("character,\t\""); Console.Write(get_null_terminated_string(System.Text.Encoding.ASCII.GetString(token_ptr.token_string)));
                     Console.Write("\".\n"); return (TRUE);
                 case 32: Console.Write("keyword,\t\"=>\".\n"); return (TRUE);
                 default: break;
